@@ -1,0 +1,449 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>KalyaThiru - Residential Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .notched-container {
+            position: relative;
+            border: 1px solid #8c707140;
+            border-radius: 4px;
+            padding: 0 12px;
+            background: #ffffff;
+            transition: all 0.2s ease;
+        }
+        
+        .notched-container:focus-within {
+            border-color: #570013;
+            border-width: 2px;
+            box-shadow: 0 0 0 4px rgba(87, 0, 19, 0.05);
+        }
+        
+        .notched-label {
+            position: absolute;
+            top: -10px;
+            left: 12px;
+            background-color: #fef8f4;
+            padding: 0 4px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #584141;
+            z-index: 10;
+        }
+
+        .segmented-control-item[data-active="true"] {
+            background-color: #570013;
+            color: #ffffff;
+            border-color: #570013;
+            box-shadow: 0 4px 12px rgba(87, 0, 19, 0.2);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            max-height: 250px;
+            overflow-y: auto;
+            background: white;
+            border: 1px solid #e0bfbf;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin-top: 2px;
+        }
+
+        .dropdown-menu.active {
+            display: block;
+        }
+
+        .tamil-text {
+            font-size: 0.85em;
+            line-height: 1.2;
+            opacity: 0.8;
+            margin-left: 4px;
+        }
+
+        .scroll-hide::-webkit-scrollbar {
+            width: 4px;
+        }
+        .scroll-hide::-webkit-scrollbar-thumb {
+            background: #e0bfbf;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#570013",
+                      "secondary": "#735c00",
+                      "background": "#fef8f4",
+                      "surface": "#fef8f4",
+                      "on-surface": "#1d1b19",
+                      "on-surface-variant": "#584141",
+                      "outline": "#8c7071",
+                      "outline-variant": "#e0bfbf",
+                      "surface-container": "#f3ede9",
+                      "surface-container-high": "#ede7e3",
+                      "secondary-container": "#fed65b",
+                      "on-secondary-container": "#745c00",
+                      "tertiary-fixed": "#ffdbd1",
+                      "on-tertiary-fixed-variant": "#872100"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "stack-lg": "24px",
+                      "stack-md": "12px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-md": ["Nunito Sans"],
+                      "label-lg": ["Nunito Sans"],
+                      "headline-lg-mobile": ["\"Source Serif 4\""],
+                      "headline-md": ["\"Source Serif 4\""],
+                      "display-lg": ["\"Source Serif 4\""]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-sm border-b border-outline-variant/30 h-16 flex items-center justify-between px-margin-mobile max-w-container-max mx-auto">
+<div class="flex items-center gap-base cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+<span class="font-display-lg text-2xl font-bold text-primary">KalyaThiru</span>
+</div>
+<div class="flex items-center bg-surface-container-high rounded-full px-3 py-1">
+<span class="text-primary font-bold text-xs">62%</span>
+</div>
+</header>
+<main class="pt-24 px-margin-mobile max-w-[600px] mx-auto">
+<!-- Progress Indicator -->
+<div class="mb-stack-lg">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Step 6 of 8</span>
+<span class="text-xs font-bold text-primary">Residential Details</span>
+</div>
+<div class="w-full bg-outline-variant/20 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full transition-all duration-700 ease-in-out" style="width: 62%;"></div>
+</div>
+</div>
+<!-- Main Heading -->
+<section class="mb-stack-lg">
+<h1 class="font-headline-lg-mobile text-primary mb-2 leading-tight">
+                Residential Details <br>
+<span class="text-xl font-normal opacity-70">(இருப்பிட விவரங்கள்)</span>
+</h1>
+<p class="text-sm text-on-surface-variant leading-relaxed">Select your current location. We use this to find compatible matches within your preferred vicinity.</p>
+</section>
+<!-- Residential Status Selection -->
+<section class="mb-stack-lg">
+<label class="block text-xs font-bold mb-3 text-on-surface uppercase tracking-wider">Citizenship Status</label>
+<div class="grid grid-cols-2 gap-3">
+<button class="segmented-control-item flex flex-col items-center justify-center p-4 border border-outline-variant/40 rounded-xl transition-all active:scale-[0.98]" data-active="true" id="status-indian" onclick="setStatus('indian')">
+<span class="material-symbols-outlined text-2xl mb-1">location_on</span>
+<span class="text-sm font-bold">Indian Citizen</span>
+<span class="text-[10px] opacity-80">(இந்தியக் குடிமகன்)</span>
+</button>
+<button class="segmented-control-item flex flex-col items-center justify-center p-4 border border-outline-variant/40 rounded-xl transition-all active:scale-[0.98]" data-active="false" id="status-nri" onclick="setStatus('nri')">
+<span class="material-symbols-outlined text-2xl mb-1">public</span>
+<span class="text-sm font-bold">NRI</span>
+<span class="text-[10px] opacity-80">(வெளிநாடு வாழ் இந்தியர்)</span>
+</button>
+</div>
+</section>
+<!-- Location Form -->
+<div class="space-y-6">
+<!-- Country Selection (Bilingual Searchable) -->
+<div class="relative group" id="country-dropdown-container">
+<div class="notched-container h-14 flex items-center cursor-pointer" onclick="toggleDropdown('country')"><span class="material-symbols-outlined text-on-surface-variant/50 text-lg mr-2">search</span>
+<label class="notched-label">Country <span class="text-[10px] opacity-70 ml-1">(நாடு)</span></label>
+<input autocomplete="off" class="w-full bg-transparent border-none focus:ring-0 text-on-surface h-full text-sm py-0" id="country-search" placeholder="Search Country..." type="text" value="India (இந்தியா)">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">expand_more</span>
+</div>
+<div class="dropdown-menu scroll-hide shadow-xl border-primary/10" id="country-list">
+                <div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('country', 'India (இந்தியா)')">
+                    <span class="font-bold">India</span>
+                    <span class="tamil-text text-primary">(இந்தியா)</span>
+                </div>
+            
+                <div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('country', 'USA (அமெரிக்கா)')">
+                    <span class="font-bold">USA</span>
+                    <span class="tamil-text text-primary">(அமெரிக்கா)</span>
+                </div>
+            
+                <div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('country', 'UK (ஐக்கிய இராச்சியம்)')">
+                    <span class="font-bold">UK</span>
+                    <span class="tamil-text text-primary">(ஐக்கிய இராச்சியம்)</span>
+                </div>
+            
+                <div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('country', 'Canada (கனடா)')">
+                    <span class="font-bold">Canada</span>
+                    <span class="tamil-text text-primary">(கனடா)</span>
+                </div>
+            
+                <div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('country', 'Singapore (சிங்கப்பூர்)')">
+                    <span class="font-bold">Singapore</span>
+                    <span class="tamil-text text-primary">(சிங்கப்பூர்)</span>
+                </div>
+            
+                <div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('country', 'Australia (ஆஸ்திரேலியா)')">
+                    <span class="font-bold">Australia</span>
+                    <span class="tamil-text text-primary">(ஆஸ்திரேலியா)</span>
+                </div>
+            </div>
+</div><div class="relative group" id="living-since-dropdown-container">
+<div class="notched-container h-14 flex items-center cursor-pointer" onclick="toggleDropdown('living-since')">
+<span class="material-symbols-outlined text-on-surface-variant/50 text-lg mr-2">calendar_today</span>
+<label class="notched-label">Living in Since <span class="text-[10px] opacity-70 ml-1">(வசிக்கும் ஆண்டு முதல்)</span></label>
+<input autocomplete="off" class="w-full bg-transparent border-none focus:ring-0 text-on-surface h-full text-sm py-0" id="living-since-search" placeholder="Select Year..." readonly="" type="text">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">expand_more</span>
+</div>
+<div class="dropdown-menu scroll-hide shadow-xl border-primary/10" id="living-since-list">
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', 'Birth (பிறப்பு)')">
+<span class="font-bold">Birth</span>
+<span class="tamil-text text-primary">(பிறப்பு)</span>
+</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2026')">2026</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2025')">2025</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2024')">2024</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2023')">2023</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2022')">2022</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2021')">2021</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2020')">2020</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2019')">2019</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2018')">2018</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2017')">2017</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2016')">2016</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2015')">2015</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2014')">2014</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2013')">2013</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2012')">2012</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2011')">2011</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2010')">2010</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2009')">2009</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2008')">2008</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2007')">2007</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2006')">2006</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2005')">2005</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2004')">2004</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2003')">2003</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2002')">2002</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2001')">2001</div>
+<div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" onclick="selectOption('living-since', '2000')">2000</div>
+</div>
+</div>
+<!-- State Selection (Bilingual Searchable) -->
+<div class="relative group" id="state-dropdown-container">
+<div class="notched-container h-14 flex items-center cursor-pointer" onclick="toggleDropdown('state')"><span class="material-symbols-outlined text-on-surface-variant/50 text-lg mr-2">search</span>
+<label class="notched-label">State <span class="text-[10px] opacity-70 ml-1">(மாநிலம்)</span></label>
+<input autocomplete="off" class="w-full bg-transparent border-none focus:ring-0 text-on-surface h-full text-sm py-0" id="state-search" placeholder="Select or Search State" type="text">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">expand_more</span>
+</div>
+<div class="dropdown-menu scroll-hide shadow-xl border-primary/10" id="state-list">
+<!-- Options populated by JS based on Country -->
+</div>
+</div>
+<!-- City Selection (Bilingual Searchable) -->
+<div class="relative group" id="city-dropdown-container">
+<div class="notched-container h-14 flex items-center cursor-pointer" onclick="toggleDropdown('city')"><span class="material-symbols-outlined text-on-surface-variant/50 text-lg mr-2">search</span>
+<label class="notched-label">City <span class="text-[10px] opacity-70 ml-1">(நகரம்)</span></label>
+<input autocomplete="off" class="w-full bg-transparent border-none focus:ring-0 text-on-surface h-full text-sm py-0" id="city-search" placeholder="Search City..." type="text">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">expand_more</span>
+</div>
+<div class="dropdown-menu scroll-hide shadow-xl border-primary/10" id="city-list">
+<!-- Options populated by JS based on State -->
+</div>
+</div>
+<!-- Verification Note -->
+<div class="hidden flex gap-3 p-4 bg-tertiary-fixed/40 rounded-xl text-on-tertiary-fixed-variant border border-tertiary-fixed/60" id="nri-note">
+<span class="material-symbols-outlined text-xl">info</span>
+<p class="text-xs leading-relaxed font-medium">NRI profiles require valid overseas residential proof for high-trust verification. You can upload documents in the next step.</p>
+</div>
+</div>
+<!-- Trust Shield -->
+<section class="mt-8 mb-stack-lg">
+<div class="relative overflow-hidden bg-surface-container border border-secondary/10 p-5 rounded-2xl flex items-start gap-4">
+<div class="bg-secondary-container p-2.5 rounded-full flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-on-secondary-container text-2xl" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<h3 class="font-headline-md text-lg text-secondary leading-tight mb-1">Heritage Trust Shield</h3>
+<p class="text-xs text-on-surface-variant italic leading-relaxed">"Verified residency increases profile visibility by 3.5x and establishes 100% trust with prospective families."</p><p class="text-[10px] text-on-surface-variant/70 italic leading-relaxed mt-1">"சரிபார்க்கப்பட்ட குடியிருப்பு விவரங்கள் சுயவிவரத் தெரிவுநிலையை 3.5 மடங்கு அதிகரிக்கிறது மற்றும் வருங்கால குடும்பத்தினரிடம் 100% நம்பிக்கையை ஏற்படுத்துகிறது."</p>
+</div>
+<!-- Subtle Pattern Overlay -->
+<div class="absolute -right-4 -bottom-6 opacity-[0.03] pointer-events-none">
+<span class="material-symbols-outlined text-[120px]">temple_hindu</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex gap-3 justify-between items-center bg-white p-4 border-t border-outline-variant/30 z-50 backdrop-blur-md">
+<button class="flex flex-1 items-center justify-center gap-2 border border-outline/30 text-on-surface-variant rounded-full py-3.5 hover:bg-surface-container transition-all active:scale-95 font-bold text-xs uppercase tracking-widest"><span class="material-symbols-outlined text-lg">save</span>
+            Save Progress (சேமிக்கவும்)</button>
+<button class="flex-[1.5] flex items-center justify-center gap-2 bg-primary text-white rounded-full py-3.5 hover:brightness-110 shadow-lg shadow-primary/20 transition-all active:scale-95 font-bold text-xs uppercase tracking-widest"><div class="flex flex-col items-center">
+<span class="text-xs uppercase tracking-widest">Continue</span>
+<span class="text-[10px] font-normal normal-case opacity-80">(தொடரவும்)</span>
+</div>
+<span class="material-symbols-outlined text-lg ml-1">arrow_forward</span></button>
+</nav>
+<script>
+        // Mock Data Store
+        const locationData = {
+            countries: [
+                { en: "India", ta: "இந்தியா" },
+                { en: "USA", ta: "அமெரிக்கா" },
+                { en: "UK", ta: "ஐக்கிய இராச்சியம்" },
+                { en: "Canada", ta: "கனடா" },
+                { en: "Singapore", ta: "சிங்கப்பூர்" },
+                { en: "Australia", ta: "ஆஸ்திரேலியா" }
+            ],
+            states: {
+                "India (இந்தியா)": [
+                    { en: "Tamil Nadu", ta: "தமிழ்நாடு" },
+                    { en: "Karnataka", ta: "கர்நாடகா" },
+                    { en: "Kerala", ta: "கேரளா" },
+                    { en: "Andhra Pradesh", ta: "ஆந்திரப் பிரதேசம்" },
+                    { en: "Telangana", ta: "தெலுங்கானா" },
+                    { en: "Maharashtra", ta: "மகாராஷ்டிரா" }
+                ],
+                "USA (அமெரிக்கா)": [
+                    { en: "California", ta: "கலிபோர்னியா" },
+                    { en: "Texas", ta: "டெக்சாஸ்" },
+                    { en: "New York", ta: "நியூயார்க்" }
+                ]
+            },
+            cities: {
+                "Tamil Nadu (தமிழ்நாடு)": [
+                    { en: "Chennai", ta: "சென்னை" },
+                    { en: "Coimbatore", ta: "கோயம்புத்தூர்" },
+                    { en: "Madurai", ta: "மதுரை" },
+                    { en: "Trichy", ta: "திருச்சி" },
+                    { en: "Salem", ta: "சேலம்" }
+                ],
+                "Karnataka (கர்நாடகா)": [
+                    { en: "Bangalore", ta: "பெங்களூரு" },
+                    { en: "Mysore", ta: "மைசூர்" }
+                ]
+            }
+        };
+
+        function setStatus(type) {
+            const indianBtn = document.getElementById('status-indian');
+            const nriBtn = document.getElementById('status-nri');
+            const nriNote = document.getElementById('nri-note');
+            
+            if (type === 'indian') {
+                indianBtn.setAttribute('data-active', 'true');
+                nriBtn.setAttribute('data-active', 'false');
+                nriNote.classList.add('hidden');
+            } else {
+                indianBtn.setAttribute('data-active', 'false');
+                nriBtn.setAttribute('data-active', 'true');
+                nriNote.classList.remove('hidden');
+            }
+        }
+
+        function toggleDropdown(type) {
+            const list = document.getElementById(`${type}-list`);
+            const isActive = list.classList.contains('active');
+            
+            // Close all first
+            document.querySelectorAll('.dropdown-menu').forEach(d => d.classList.remove('active'));
+            
+            if (!isActive) {
+                list.classList.add('active');
+                renderList(type);
+            }
+        }
+
+        function renderList(type, filter = '') {
+            const list = document.getElementById(`${type}-list`);
+            let items = [];
+
+            if (type === 'country') {
+                items = locationData.countries;
+            } else if (type === 'state') {
+                const country = document.getElementById('country-search').value;
+                items = locationData.states[country] || [];
+            } else if (type === 'city') {
+                const state = document.getElementById('state-search').value;
+                items = locationData.cities[state] || [];
+            }
+
+            const filteredItems = items.filter(item => 
+                `${item.en} ${item.ta}`.toLowerCase().includes(filter.toLowerCase())
+            );
+
+            list.innerHTML = filteredItems.map(item => `
+                <div class="px-4 py-3 hover:bg-primary/5 cursor-pointer border-b border-outline-variant/10 text-sm" 
+                     onclick="selectOption('${type}', '${item.en} (${item.ta})')">
+                    <span class="font-bold">${item.en}</span>
+                    <span class="tamil-text text-primary">(${item.ta})</span>
+                </div>
+            `).join('');
+
+            if (filteredItems.length === 0) {
+                list.innerHTML = `<div class="px-4 py-3 text-xs text-on-surface-variant italic">No matches found...</div>`;
+            }
+        }
+
+        function selectOption(type, value) {
+            const input = document.getElementById(`${type}-search`);
+            input.value = value;
+            document.getElementById(`${type}-list`).classList.remove('active');
+
+            // Reset child dropdowns
+            if (type === 'country') {
+                document.getElementById('state-search').value = '';
+                document.getElementById('city-search').value = '';
+            } else if (type === 'state') {
+                document.getElementById('city-search').value = '';
+            }
+        }
+
+        // Add search listeners
+        ['country', 'state', 'city'].forEach(type => {
+            const input = document.getElementById(`${type}-search`);
+            input.addEventListener('input', (e) => {
+                const list = document.getElementById(`${type}-list`);
+                list.classList.add('active');
+                renderList(type, e.target.value);
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                const container = document.getElementById(`${type}-dropdown-container`);
+                if (!container.contains(e.target)) {
+                    document.getElementById(`${type}-list`).classList.remove('active');
+                }
+            });
+        });
+
+        // Initial setup
+        window.onload = () => {
+            // Defaulting India selection states list is ready
+            renderList('country');
+        };
+    </script>
+</body></html>

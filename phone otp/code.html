@@ -1,0 +1,213 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Verify OTP | KalyaThiru Matrimony</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&amp;family=Source+Serif+4:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#872100",
+                        "tertiary-fixed": "#ffdbd1",
+                        "surface": "#fef8f4",
+                        "secondary-fixed": "#ffe088",
+                        "surface-container-low": "#f9f2ef",
+                        "surface-bright": "#fef8f4",
+                        "inverse-surface": "#32302e",
+                        "on-primary": "#ffffff",
+                        "outline": "#8c7071",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "surface-tint": "#af2b3e",
+                        "on-background": "#1d1b19",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e7e1de",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#fed65b",
+                        "tertiary": "#501000",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "primary-fixed": "#ffdada",
+                        "on-tertiary-container": "#ff8663",
+                        "on-surface": "#1d1b19",
+                        "surface-dim": "#dfd9d5",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-secondary-container": "#745c00",
+                        "inverse-on-surface": "#f6f0ec",
+                        "tertiary-fixed-dim": "#ffb5a0",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#570013",
+                        "primary-container": "#800020",
+                        "antique-gold": "#D4AF37"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "4px",
+                        "xl": "8px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "4px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "stack-md": "12px",
+                        "margin-mobile": "16px",
+                        "stack-lg": "24px",
+                        "margin-desktop": "40px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Nunito Sans"],
+                        "headline-lg-mobile": ["\"Source Serif 4\""],
+                        "label-lg": ["Nunito Sans"],
+                        "body-md": ["Nunito Sans"],
+                        "headline-md": ["\"Source Serif 4\""],
+                        "aura-tag": ["Nunito Sans"],
+                        "headline-lg": ["\"Source Serif 4\""],
+                        "label-md": ["Nunito Sans"],
+                        "display-lg": ["\"Source Serif 4\""]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "aura-tag": ["13px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .otp-input:focus {
+            border-color: #D4AF37 !important;
+            box-shadow: 0 0 0 1px #D4AF37;
+            outline: none;
+        }
+        /* Hide arrows in number input */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="bg-[#FDFBF7] text-on-surface min-h-screen flex flex-col font-body-md selection:bg-antique-gold/30">
+<!-- TopAppBar -->
+<header class="bg-surface sticky top-0 z-50 flex items-center w-full px-margin-mobile h-16 border-b border-outline-variant/20">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-variant/10 transition-colors duration-200">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<span class="ml-4 font-headline-md text-headline-md font-bold text-primary">KalyaThiru</span>
+</header>
+<main class="flex-grow flex items-center justify-center px-margin-mobile py-stack-lg">
+<div class="max-w-[440px] w-full bg-surface-container-lowest border border-outline-variant/15 p-8 rounded-lg shadow-sm">
+<!-- Identity & Content -->
+<div class="text-center mb-stack-lg">
+<div class="w-16 h-16 bg-primary-fixed flex items-center justify-center rounded-full mx-auto mb-stack-md">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-2">Verify Your Number</h1>
+<p class="font-body-md text-on-surface-variant">
+                    Enter the 6-digit code sent to <span class="font-bold text-on-surface">+91 XXXXX XXXXX</span>
+</p>
+<button class="mt-2 text-antique-gold font-label-lg hover:underline transition-all">Edit Number</button>
+</div>
+<!-- OTP Input Section -->
+<form class="space-y-stack-lg py-stack-md" id="otp-form">
+<div class="flex justify-center gap-2 sm:gap-3 mb-stack-lg" id="otp-container">
+<input class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold border-2 border-outline-variant/30 rounded-lg bg-surface focus:ring-0 transition-all" inputmode="numeric" maxlength="1" pattern="\d*" type="number">
+<input class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold border-2 border-outline-variant/30 rounded-lg bg-surface focus:ring-0 transition-all" inputmode="numeric" maxlength="1" pattern="\d*" type="number">
+<input class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold border-2 border-outline-variant/30 rounded-lg bg-surface focus:ring-0 transition-all" inputmode="numeric" maxlength="1" pattern="\d*" type="number">
+<input class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold border-2 border-outline-variant/30 rounded-lg bg-surface focus:ring-0 transition-all" inputmode="numeric" maxlength="1" pattern="\d*" type="number">
+<input class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold border-2 border-outline-variant/30 rounded-lg bg-surface focus:ring-0 transition-all" inputmode="numeric" maxlength="1" pattern="\d*" type="number">
+<input class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold border-2 border-outline-variant/30 rounded-lg bg-surface focus:ring-0 transition-all" inputmode="numeric" maxlength="1" pattern="\d*" type="number">
+</div>
+<!-- Timer -->
+<div class="text-center">
+<p class="font-label-md text-on-surface-variant flex items-center justify-center gap-1"><button type="button" class="text-primary font-bold hover:underline cursor-pointer">Resend OTP Now</button></p>
+</div>
+<!-- CTA -->
+<button class="w-full h-14 bg-primary-container text-on-primary font-label-lg rounded-lg hover:bg-primary transition-all duration-300 shadow-md active:scale-[0.98] uppercase tracking-wider" type="submit">
+                    Verify &amp; Proceed
+                </button>
+</form>
+<div class="mt-stack-lg pt-stack-md border-t border-outline-variant/10 text-center">
+<p class="font-label-md text-on-surface-variant/70">
+                    Having trouble? <a class="text-primary font-bold hover:underline" href="#">Get Help</a>
+</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="flex flex-col items-center gap-stack-md py-stack-lg px-margin-mobile border-t border-outline-variant/10 bg-surface">
+<span class="font-headline-md text-headline-md text-primary font-bold">KalyaThiru</span>
+<div class="flex gap-gutter flex-wrap justify-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Trust &amp; Safety</a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-75">© 2024 KalyaThiru Matrimony. All rights reserved.</p>
+</footer>
+<script>
+        // OTP Input Focus Logic
+        const inputs = document.querySelectorAll('.otp-input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length > 1) {
+                    e.target.value = e.target.value.slice(0, 1);
+                }
+                if (e.target.value !== '' && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && e.target.value === '' && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+
+        // Simple Timer Logic
+        let timeLeft = 59;
+        const timerDisplay = document.getElementById('timer');
+        const countdown = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                timerDisplay.parentElement.innerHTML = '<button type="button" class="text-primary font-bold hover:underline cursor-pointer">Resend OTP Now</button>';
+            } else {
+                timerDisplay.textContent = `0:${timeLeft < 10 ? '0' : ''}${timeLeft}`;
+                timeLeft--;
+            }
+        }, 1000);
+
+        // Form Submit Interaction
+        document.getElementById('otp-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const otp = Array.from(inputs).map(i => i.value).join('');
+            if (otp.length === 6) {
+                const btn = e.target.querySelector('button[type="submit"]');
+                btn.innerHTML = '<span class="flex items-center justify-center gap-2">Verifying... <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div></span>';
+                btn.disabled = true;
+                // Simulated success
+                setTimeout(() => {
+                    btn.innerHTML = 'Success!';
+                    btn.classList.replace('bg-primary-container', 'bg-green-700');
+                }, 1500);
+            }
+        });
+    </script>
+
+
+</body></html>

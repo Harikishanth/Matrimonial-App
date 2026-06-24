@@ -1,0 +1,273 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>KalyaThiru Matrimony - Onboarding Step 1</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&amp;family=Source+Serif+4:ital,opsz,wght@0,8,400;0,8,600;0,8,700;1,8,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#ff8663",
+                    "primary-container": "#800020",
+                    "on-primary-fixed": "#40000b",
+                    "inverse-on-surface": "#f6f0ec",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#241a00",
+                    "surface-container-high": "#ede7e3",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#fef8f4",
+                    "tertiary": "#501000",
+                    "primary": "#570013",
+                    "secondary": "#735c00",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1d1b19",
+                    "surface-container-highest": "#e7e1de",
+                    "surface-variant": "#e7e1de",
+                    "on-surface": "#1d1b19",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#ff828a",
+                    "secondary-fixed-dim": "#e9c349",
+                    "tertiary-fixed": "#ffdbd1",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f9f2ef",
+                    "secondary-fixed": "#ffe088",
+                    "surface-dim": "#dfd9d5",
+                    "secondary-container": "#fed65b",
+                    "outline": "#8c7071",
+                    "outline-variant": "#e0bfbf",
+                    "on-secondary-container": "#745c00",
+                    "inverse-surface": "#32302e",
+                    "tertiary-fixed-dim": "#ffb5a0",
+                    "on-primary": "#ffffff",
+                    "background": "#fef8f4",
+                    "surface-container": "#f3ede9",
+                    "primary-fixed": "#ffdada",
+                    "surface-tint": "#af2b3e",
+                    "primary-fixed-dim": "#ffb3b5",
+                    "on-surface-variant": "#584141",
+                    "on-tertiary-fixed": "#3b0900",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-error": "#ffffff",
+                    "surface": "#fef8f4",
+                    "inverse-primary": "#ffb3b5",
+                    "on-primary-fixed-variant": "#8e0f28",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#872100",
+                    "tertiary-container": "#761c00",
+                    "antique-gold": "#D4AF37",
+                    "temple-maroon": "#800020",
+                    "sandalwood": "#FDFBF7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "4px",
+                    "lg": "4px",
+                    "xl": "8px",
+                    "full": "12px"
+            },
+            "spacing": {
+                    "stack-md": "12px",
+                    "container-max": "1200px",
+                    "stack-lg": "24px",
+                    "margin-mobile": "16px",
+                    "stack-sm": "4px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Nunito Sans"],
+                    "headline-lg-mobile": ["Source Serif 4"],
+                    "label-md": ["Nunito Sans"],
+                    "body-md": ["Nunito Sans"],
+                    "display-lg": ["Source Serif 4"],
+                    "headline-lg": ["Source Serif 4"],
+                    "headline-md": ["Source Serif 4"],
+                    "aura-tag": ["Nunito Sans"],
+                    "body-lg": ["Nunito Sans"]
+            },
+            "fontSize": {
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "aura-tag": ["13px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-selection {
+            border: 2px solid #800020 !important;
+            background-color: rgba(128, 0, 32, 0.04);
+        }
+        .active-selection .check-icon {
+            display: block !important;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-sandalwood min-h-screen flex flex-col font-body-md text-on-surface">
+<!-- Header Section -->
+<header class="fixed top-0 left-0 w-full z-50 bg-background/95 backdrop-blur-md px-margin-mobile md:px-margin-desktop h-16 flex items-center justify-between border-b border-outline-variant/20">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80 transition-opacity">arrow_back</span>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary font-bold tracking-tight">KalyaThiru</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="font-label-md text-label-md text-on-surface-variant">Step 1 of 8</span>
+<div class="w-32 h-1.5 bg-outline-variant/30 rounded-full overflow-hidden">
+<div class="w-[12.5%] h-full bg-primary-container transition-all duration-500 ease-out"></div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="mt-16 mb-24 flex-grow px-margin-mobile md:px-margin-desktop pt-8 max-w-container-max mx-auto w-full">
+<div class="text-center mb-10">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">Who is this profile for?</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">(நிச்சயிக்கப்படும் நபர் யார்?)</p>
+</div>
+<!-- Grid Layout for Options -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-gutter" id="selection-grid">
+<!-- Option: Myself -->
+<div class="selection-card group relative bg-surface-container-lowest border border-outline-variant/40 rounded p-6 flex flex-col items-center justify-center cursor-pointer hover:shadow-md transition-all duration-200" onclick="selectOption(this)">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform"><img src="https://lh3.googleusercontent.com/aida/AP1WRLvSe5g8ISzdGo7nBLkY20f84S74d1VWN0Fj1gnCb_lK92QM-kzV-swtnjm_ovG0Y1K0vGOsdyH3ZJGAPb9xW_xwXQ9sQfXLFkDxn1wNXPx2DJjXcM8LPm_VVcUEaKdqS8vSueDhHG9wuJTXKAYGP2pJdKbnc_yfOdTvX6_ghVojph1JcMbrGrZqw9WHD8dO9mr_d6Xu3XyxXGna2BneYG9u4GvWMEW6MwQ-iMaxRd_3b0ep8hoGLDOr8w" alt="Myself" class="w-full h-full object-contain p-1"></div>
+<span class="font-label-lg text-label-lg text-on-surface text-center mb-1">Myself</span>
+<span class="font-label-md text-label-md text-on-surface-variant opacity-60">எனக்காக</span>
+<div class="check-icon absolute top-3 right-3 hidden text-antique-gold">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+</div>
+</div>
+<!-- Option: Daughter -->
+<div class="selection-card group relative bg-surface-container-lowest border border-outline-variant/40 rounded p-6 flex flex-col items-center justify-center cursor-pointer hover:shadow-md transition-all duration-200" onclick="selectOption(this)">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuARDey34kSF_w4JM6uigvl82fvWoQ1ZEK4GKy4yn-y96Tl8gDvIYoxgggz0HZNi_AaPjSvK5JGqOFd9q1ViHosOIIr0R29429fJ93HVNpna7ikf4SJGERUMwQ8ydBhDiTI2bvsJeFINA7Av9ixilfugGrohmZmyV8EmvK8D2rEP7MH1tUfCeXFTW4Q8naFWxS-3o6wljFrdZ-jG-tj_xLCBi3emZAVbppbHYou38EwYyrjZYxqOgg2zesrq1XE7rMbPb2-OsSO_Zsc" alt="Daughter" class="w-full h-full object-contain p-1"></div>
+<span class="font-label-lg text-label-lg text-on-surface text-center mb-1">Daughter</span>
+<span class="font-label-md text-label-md text-on-surface-variant opacity-60">மகளுக்காக</span>
+<div class="check-icon absolute top-3 right-3 hidden text-antique-gold">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+</div>
+</div>
+<!-- Option: Son -->
+<div class="selection-card group relative bg-surface-container-lowest border border-outline-variant/40 rounded p-6 flex flex-col items-center justify-center cursor-pointer hover:shadow-md transition-all duration-200" onclick="selectOption(this)">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6qW-fMeMaE5FD5fRYdpuIGHFf9_N2zPXMF8ktdjYvzduopRjdVsLsRQHQJxFjWWYjfHi5BHjuOp-VqnSsf7UIYtama3ETV1H6u1O3areh54aLhsNEq2rJMMswX7kw--UuIYb5QsLZesEw-eEihcbkOwbROUcNCDSdpnFwzXrZHMFeWqCdbE2pq79beNQyBljUJvpsMAj2-ae33AtrEGSdpZQb9kyIHSyeOwAP9IboZ9wpL1DPGfldXpuD1N3niaMSUde8IrEReMg" alt="Son" class="w-full h-full object-contain p-1"></div>
+<span class="font-label-lg text-label-lg text-on-surface text-center mb-1">Son</span>
+<span class="font-label-md text-label-md text-on-surface-variant opacity-60">மகனுக்காக</span>
+<div class="check-icon absolute top-3 right-3 hidden text-antique-gold">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+</div>
+</div>
+<!-- Option: Sister -->
+<div class="selection-card group relative bg-surface-container-lowest border border-outline-variant/40 rounded p-6 flex flex-col items-center justify-center cursor-pointer hover:shadow-md transition-all duration-200" onclick="selectOption(this)">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform"><img src="https://lh3.googleusercontent.com/aida/AP1WRLsjvzydzmnuJdC8CEt7Jytj2xZvC_WsuhBZ2YHXylK6qGIYhzJU7-KH9DMV_W_NzH-DSt7YwzrJuM2d9RxucsHF0JqWNuzAUqaMGGc78mp02ssdy03bSrliKojFMjSJtnjP4NPA0v7DZRkXjg7c3xDpbmc-7xofe9pzAvFSSiwDN9cbOTR4-_E2NO9fX_TLeQGtxmkyu6BCqxiTxtAPAQRqj9A2lgVkjnzIRvd5p1Jt_5WJpoSn55sd4Q" alt="Sister" class="w-full h-full object-contain p-1"></div>
+<span class="font-label-lg text-label-lg text-on-surface text-center mb-1">Sister</span>
+<span class="font-label-md text-label-md text-on-surface-variant opacity-60">சகோதரிக்காக</span>
+<div class="check-icon absolute top-3 right-3 hidden text-antique-gold">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+</div>
+</div>
+<!-- Option: Brother -->
+<div class="selection-card group relative bg-surface-container-lowest border border-outline-variant/40 rounded p-6 flex flex-col items-center justify-center cursor-pointer hover:shadow-md transition-all duration-200" onclick="selectOption(this)">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform"><img src="https://lh3.googleusercontent.com/aida/AP1WRLtKuIaejN9veWuSATxr0GeW4ckWQ-ts2lBp5L_Sg68Qjs6BENdt7yPNZd8kq_Y7a2HfekLqNeNuEOWKK3Px24hzQlK2W5MPnQBix4uxoRVso7NRn72Q0YL2NM-oXOPcegUHY-8f0nimzSxFYYHbBl0gknXwYmtA6Cz4yma8FKrnOjFCAZcUpZcdKA6bw3fyBxezKIjrXAPZPm-dsi4A5vEG2Y9X1rjKCtJpNvAwdRhfiLgZ4Yk5eW6qqw" alt="Brother" class="w-full h-full object-contain p-1"></div>
+<span class="font-label-lg text-label-lg text-on-surface text-center mb-1">Brother</span>
+<span class="font-label-md text-label-md text-on-surface-variant opacity-60">சகோதரனுக்காக</span>
+<div class="check-icon absolute top-3 right-3 hidden text-antique-gold">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+</div>
+</div>
+<!-- Option: Relative -->
+<div class="selection-card group relative bg-surface-container-lowest border border-outline-variant/40 rounded p-6 flex flex-col items-center justify-center cursor-pointer hover:shadow-md transition-all duration-200" onclick="selectOption(this)">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform"><img src="https://lh3.googleusercontent.com/aida/AP1WRLst_xZ1P-R3SEDqJ4R_OVB6FoweOl8Y5utWqbyjgXUcK0KuPokvh3MCkIVORq7ZQb_pqVw1fKhiwgyxpLIVZJAd5ny5lmZBt-YHgQJaMELbj8YVv2VR3eipkMdJxb3ItYcnpRCKeMArS3xezcRq9UqB7P7Ot3Zd8GYmHpRe-lowZ0VD-3n1t1Op41E6fgBHXuwY1gAh0yVPIpqdxXhaNzxLTuFQuLgw6kowP9tnpy-FTnf08akc0xRBJ1w" alt="Relative" class="w-full h-full object-contain p-1"></div>
+<span class="font-label-lg text-label-lg text-on-surface text-center mb-1">Relative</span>
+<span class="font-label-md text-label-md text-on-surface-variant opacity-60">உறவினருக்காக</span>
+<div class="check-icon absolute top-3 right-3 hidden text-antique-gold">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+</div>
+</div>
+<!-- Option: Friend -->
+<div class="selection-card group relative bg-surface-container-lowest border border-outline-variant/40 rounded p-6 flex flex-col items-center justify-center cursor-pointer hover:shadow-md transition-all duration-200" onclick="selectOption(this)">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform"><img src="https://lh3.googleusercontent.com/aida/AP1WRLun3Gbza9_n5FP-9dHy9PnVwbwmAhknb5yrRA2M2osxjDgdZPEakyPCUcPBaYKFe8gupMJWeQ_SHsK8WUbNoO_hpjDLbuaE2Gs49h2pcURIVjLMldGn20nSXsUcR4oBBgV-1eO97tTATPhb9v4VWSkM1Z_TvBL5KURtN-evq5atKIuZgVGKgIrYI6AtwlVNxfEZExBj0HRX7D9RDqVT5lm9Xq-DGtOjL9AMHNhajB8-BUawrOx4fRyOcA" alt="Friend" class="w-full h-full object-contain p-1"></div>
+<span class="font-label-lg text-label-lg text-on-surface text-center mb-1">Friend</span>
+<span class="font-label-md text-label-md text-on-surface-variant opacity-60">நண்பருக்காக</span>
+<div class="check-icon absolute top-3 right-3 hidden text-antique-gold">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+</div>
+</div>
+<!-- Option: Father -->
+<div class="selection-card group relative bg-surface-container-lowest border border-outline-variant/40 rounded p-6 flex flex-col items-center justify-center cursor-pointer hover:shadow-md transition-all duration-200" onclick="selectOption(this)">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform"><img src="https://lh3.googleusercontent.com/aida/AP1WRLuJZwex2jWdKT29sXuvPvoXuh-rvk0IAngFWVlxsPg-5uhs86Q69LnRI2OsYIAn1gbtnpJa6UsCu1f9SMsbzT8JL1kyse82Ed9PKlVWP_gP0NGeZ3JQT4iP6kwY8Ldv3OESkh-8QiVADH8_4LLKfBlK4WgarKOAYKg7QYqi8UrhpYmCr5CUWY5VnbrX7XBQP7p2fMjGEOA5UspEf4AQpcxtow63hET0PWV-h03kqrgKxij2XSpmB5TyAA" alt="Father" class="w-full h-full object-contain p-1"></div>
+<span class="font-label-lg text-label-lg text-on-surface text-center mb-1">Father</span>
+<span class="font-label-md text-label-md text-on-surface-variant opacity-60">தந்தைக்கு</span>
+<div class="check-icon absolute top-3 right-3 hidden text-antique-gold"><span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span></div>
+</div>
+<!-- Option: Mother -->
+<div class="selection-card group relative bg-surface-container-lowest border border-outline-variant/40 rounded p-6 flex flex-col items-center justify-center cursor-pointer hover:shadow-md transition-all duration-200" onclick="selectOption(this)">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform"><img src="https://lh3.googleusercontent.com/aida/AP1WRLtbVY2aiL6EqqQIico5wx1NpulnGLNjcd-kz58kdlyzPSXazEqP-nPa-vXdboXvesBbpVP7DfKlB3kHaCj3y7HEJo9CJkVqixBvmqzj6ke5GiPdZ4gQKKX-ZFVFoNXa871A35vxb83RQWXopoxfnib_Wis-AzrUzZixUsfgv4h9IZ__nA7FDARQo4YrBE6nDlDmEewxqe3I38x2_YYojVdOLMB4DhU0p-KHl6B8g9CjBrWr9KNv7D8-dQ" alt="Mother" class="w-full h-full object-contain p-1"></div>
+<span class="font-label-lg text-label-lg text-on-surface text-center mb-1">Mother</span>
+<span class="font-label-md text-label-md text-on-surface-variant opacity-60">தாய்க்கு</span>
+<div class="check-icon absolute top-3 right-3 hidden text-antique-gold"><span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span></div>
+</div>
+</div>
+<!-- Illustration / Background Accent -->
+
+</main>
+<!-- Sticky Bottom Navigation -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface-container-lowest/90 backdrop-blur-md border-t border-outline-variant/20 py-4 px-margin-mobile flex justify-center items-center z-50">
+<div class="max-w-container-max w-full flex justify-end">
+<button class="w-full md:w-auto md:min-w-[200px] bg-primary-container text-on-primary-container font-label-lg text-label-lg py-4 px-8 rounded opacity-50 cursor-not-allowed hover:bg-primary transition-all active:scale-95 flex items-center justify-center gap-2" disabled="" id="continue-btn">
+                Continue (தொடரவும்)
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</footer>
+<script>
+        function selectOption(element) {
+            // Remove active state from all cards
+            const cards = document.querySelectorAll('.selection-card');
+            cards.forEach(card => card.classList.remove('active-selection'));
+            
+            // Add active state to clicked card
+            element.classList.add('active-selection');
+
+            // Enable the continue button
+            const btn = document.getElementById('continue-btn');
+            btn.removeAttribute('disabled');
+            btn.classList.remove('opacity-50', 'cursor-not-allowed');
+            
+            // Subtle feedback
+            console.log("Selected:", element.querySelector('.font-label-lg').innerText);
+        }
+
+        // Intercept click on continue button for a simple loading state effect
+        document.getElementById('continue-btn').addEventListener('click', function() {
+            if (!this.hasAttribute('disabled')) {
+                this.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Loading...';
+                setTimeout(() => {
+                    alert("Transitioning to Step 2: Basic Details");
+                    this.innerHTML = 'Continue (தொடரவும்) <span class="material-symbols-outlined">arrow_forward</span>';
+                }, 1000);
+            }
+        });
+    </script>
+
+
+
+
+</body></html>

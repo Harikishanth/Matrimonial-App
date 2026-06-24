@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KalyaThiru - Partner Preferences</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&amp;family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#ffb3b5",
+                        "tertiary-fixed": "#ffdbd1",
+                        "inverse-on-surface": "#f6f0ec",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb5a0",
+                        "on-tertiary-fixed-variant": "#872100",
+                        "surface-container": "#f3ede9",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#ede7e3",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f9f2ef",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#ffdada",
+                        "on-secondary-container": "#745c00",
+                        "surface-dim": "#dfd9d5",
+                        "outline": "#8c7071",
+                        "on-tertiary-fixed": "#3b0900",
+                        "background": "#fef8f4",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e7e1de",
+                        "on-background": "#1d1b19",
+                        "on-primary-container": "#ff828a",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#fef8f4",
+                        "surface": "#fef8f4",
+                        "tertiary": "#501000",
+                        "surface-variant": "#e7e1de",
+                        "on-tertiary-container": "#ff8663",
+                        "on-secondary-fixed": "#241a00",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#af2b3e",
+                        "secondary": "#735c00",
+                        "secondary-container": "#fed65b",
+                        "inverse-primary": "#ffb3b5",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#40000b",
+                        "primary": "#570013",
+                        "tertiary-container": "#761c00",
+                        "primary-container": "#800020",
+                        "outline-variant": "#e0bfbf",
+                        "secondary-fixed": "#ffe088",
+                        "inverse-surface": "#32302e",
+                        "on-surface-variant": "#584141",
+                        "on-surface": "#1d1b19"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "4px",
+                        "stack-lg": "24px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "margin-desktop": "40px",
+                        "stack-md": "12px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Nunito Sans"],
+                        "headline-lg-mobile": ["\"Source Serif 4\""],
+                        "body-md": ["Nunito Sans"],
+                        "body-lg": ["Nunito Sans"],
+                        "aura-tag": ["Nunito Sans"],
+                        "label-lg": ["Nunito Sans"],
+                        "display-lg": ["\"Source Serif 4\""],
+                        "headline-lg": ["\"Source Serif 4\""],
+                        "headline-md": ["\"Source Serif 4\""]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "aura-tag": ["13px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .custom-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #570013;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+        }
+        .chip-active {
+            background-color: #800020;
+            color: #ffffff;
+            border-color: #800020;
+        }
+        select optgroup {
+            font-weight: 700;
+            color: #570013;
+            background: #f9f2ef;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen selection:bg-primary-fixed-dim selection:text-primary">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim border-b border-outline-variant/30">
+<div class="flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-stack-md">
+<button class="p-base active:scale-95 duration-150 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary italic">KalyaThiru</h1>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-md text-label-md text-on-surface-variant">Step 10 of 10 (படி 10/10)</span>
+<div class="w-32 h-1 bg-surface-container-highest rounded-full mt-1 overflow-hidden">
+<div class="h-full bg-primary w-[95%]"></div>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile max-w-2xl mx-auto pb-40">
+<!-- Header Text -->
+<section class="mb-stack-lg">
+<h2 class="font-headline-md text-headline-md-mobile md:text-headline-md text-primary mb-2">Partner Preferences (துணை விருப்பங்கள்)</h2>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                Set your preferences to find the most compatible matches. (பொருத்தமான வரன்களைக் கண்டறிய உங்கள் விருப்பங்களை அமைக்கவும்.)
+            </p>
+</section>
+<!-- Preferences Form -->
+<div class="space-y-stack-lg space-y-8">
+<!-- Age Range Section -->
+<section class="p-stack-md bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-secondary">calendar_month</span>
+<h3 class="font-label-lg text-label-lg text-primary">Age Range (வயது வரம்பு)</h3>
+</div>
+<div class="space-y-4 px-2">
+<div class="relative h-2 bg-surface-container-highest rounded-full">
+<div class="absolute h-full bg-primary rounded-full" style="left: 20%; right: 40%"></div>
+<div class="absolute top-1/2 -translate-y-1/2 left-[20%] w-6 h-6 bg-surface border-2 border-primary rounded-full shadow-sm cursor-pointer"></div>
+<div class="absolute top-1/2 -translate-y-1/2 left-[60%] w-6 h-6 bg-surface border-2 border-primary rounded-full shadow-sm cursor-pointer"></div>
+</div>
+<div class="flex justify-between text-label-md text-on-surface-variant">
+<span>18 Years</span>
+<span class="text-primary font-bold">24 - 35 Years</span>
+<span>60 Years</span>
+</div>
+</div>
+</section>
+<!-- Height Section -->
+<section class="p-stack-md bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-secondary">straighten</span>
+<h3 class="font-label-lg text-label-lg text-primary">Height (உயரம்)</h3>
+</div>
+<div class="space-y-4 px-2">
+<div class="relative h-2 bg-surface-container-highest rounded-full">
+<div class="absolute h-full bg-primary rounded-full" style="left: 30%; right: 30%"></div>
+<div class="absolute top-1/2 -translate-y-1/2 left-[30%] w-6 h-6 bg-surface border-2 border-primary rounded-full shadow-sm cursor-pointer"></div>
+<div class="absolute top-1/2 -translate-y-1/2 left-[70%] w-6 h-6 bg-surface border-2 border-primary rounded-full shadow-sm cursor-pointer"></div>
+</div>
+<div class="flex justify-between text-label-md text-on-surface-variant">
+<span>4'0"</span>
+<span class="text-primary font-bold">5'0" - 6'0"</span>
+<span>7'0"</span>
+</div>
+</div>
+</section>
+<!-- Marital Status Section -->
+<section class="p-stack-md bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-secondary">favorite</span>
+<h3 class="font-label-lg text-label-lg text-primary">Marital Status (திருமண நிலை)</h3>
+</div>
+<div class="flex flex-wrap gap-2 gap-stack-md">
+<button class="chip-active px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Never Married</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Divorced</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Widowed</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Awaiting Divorce</button>
+</div>
+</section>
+<!-- Religious Alignment Section -->
+<section class="p-stack-md bg-surface-container-low rounded-xl border border-outline-variant/10"><div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-secondary">temple_hindu</span>
+<h3 class="font-label-lg text-label-lg text-primary">Religious Alignment (மத விருப்பம்)</h3>
+</div>
+<div class="space-y-stack-md">
+<div class="relative">
+<select class="w-full bg-surface border border-outline-variant/50 rounded-lg p-4 focus:ring-1 focus:ring-primary focus:border-primary outline-none appearance-none h-[56px] border-1" id="religion-select">
+<option value="">Select Religions...</option>
+<option value="Hindu">Hindu (இந்து)</option>
+<option value="Christian">Christian (கிறிஸ்தவர்)</option>
+<option value="Muslim">Muslim (முஸ்லிம்)</option>
+<option value="Atheist">Atheist (நாத்திகர்)</option>
+<option value="Other">Other (மற்றவை)</option>
+</select>
+<div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 empty:hidden" id="selected-religions-pills">
+<!-- Selection pills will be injected here -->
+</div>
+</div></section>
+<!-- Caste Section (Moved after Religious Alignment) -->
+<section class="p-stack-md bg-surface-container-low rounded-xl border border-outline-variant/10"><div class="flex items-center justify-between mb-stack-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">groups</span>
+<h3 class="font-label-lg text-label-lg text-primary">Caste (சாதி)</h3>
+</div>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="w-4 h-4 text-primary bg-surface border-outline-variant rounded focus:ring-primary focus:ring-1" id="caste-no-bar" type="checkbox"/>
+<span class="text-label-md text-on-surface-variant group-hover:text-primary transition-colors">Caste No Bar</span>
+</label>
+</div>
+<div class="space-y-stack-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface border border-outline-variant/50 rounded-lg py-2 pl-10 pr-4 text-body-md focus:ring-1 focus:ring-primary outline-none h-[56px] border-1" id="caste-search" placeholder="Search Caste (சாதியைத் தேடு)..." type="text"/>
+</div>
+<div class="relative">
+<select class="w-full bg-surface border border-outline-variant/50 rounded-lg p-4 focus:ring-1 focus:ring-primary focus:border-primary outline-none appearance-none disabled:bg-surface-container-highest disabled:cursor-not-allowed h-[56px] border-1" id="caste-select">
+<option value="">Select Caste...</option>
+<option value="Brahmin">Brahmin (பிராமணர்)</option>
+<option value="Chettiar">Chettiar (செட்டியார்)</option>
+<option value="Gounder">Gounder (கவுண்டர்)</option>
+<option value="Iyer">Iyer (ஐயர்)</option>
+<option value="Iyengar">Iyengar (ஐயங்கார்)</option>
+<option value="Mudaliar">Mudaliar (முதலியார்)</option>
+<option value="Nadars">Nadars (நாடார்)</option>
+<option value="Pillai">Pillai (பிள்ளை)</option>
+<option value="Vanniyar">Vanniyar (வன்னியர்)</option>
+<option value="Thevar">Thevar (தேவர்)</option>
+<option value="Yadava">Yadava (யாதவர்)</option>
+</select>
+<div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 empty:hidden" id="selected-castes-pills">
+</div>
+</div></section><section class="p-stack-md bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-secondary">auto_awesome</span>
+<h3 class="font-label-lg text-label-lg text-primary">Astro &amp; Lineage (ஜாதகம் மற்றும் கோத்திரம்)</h3>
+</div>
+<div class="grid grid-cols-1 gap-stack-md">
+<div class="space-y-1">
+<label class="text-label-md text-on-surface-variant">Preferred Gothram (விருப்பமான கோத்திரம்)</label>
+<input class="w-full bg-surface border border-outline-variant/50 rounded-lg p-3 focus:ring-1 focus:ring-primary outline-none h-[56px] border-1" placeholder="Enter Gothram or 'Any'" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-label-md text-on-surface-variant">Preferred Star/Nakshatram (விருப்பமான நட்சத்திரம்)</label>
+<div class="flex flex-wrap gap-2 mt-2 gap-stack-md">
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all min-h-[40px]">Doesn't Matter (பொருட்டல்ல)</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all min-h-[40px]">Select Specific Stars...</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Educational Qualification Section (Moved after Caste) -->
+<section class="p-stack-md bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-secondary">school</span>
+<h3 class="font-label-lg text-label-lg text-primary">Educational Qualification (கல்வித் தகுதி)</h3>
+</div>
+<div class="flex flex-wrap gap-2 gap-stack-md">
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Schooling</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Diploma</button>
+<button class="chip-active px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md transition-all active:scale-95 whitespace-nowrap min-h-[40px]">UG</button>
+<button class="chip-active px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md transition-all active:scale-95 whitespace-nowrap min-h-[40px]">PG</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Doctorate</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Professional</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Doesn't Matter (பொருட்டல்ல)</button></div>
+</section>
+<!-- Occupation Section (Moved after Education) -->
+<section class="p-stack-md bg-surface-container-low rounded-xl border border-outline-variant/10"><div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-secondary">work</span>
+<h3 class="font-label-lg text-label-lg text-primary">Occupation (வேலை)</h3>
+</div>
+<div class="space-y-stack-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface border border-outline-variant/50 rounded-lg py-2 pl-10 pr-4 text-body-md focus:ring-1 focus:ring-primary outline-none h-[56px] border-1" id="occ-search" placeholder="Search Occupation (வேலையைத் தேடு)..." type="text"/>
+</div>
+<div class="relative">
+<select class="w-full bg-surface border border-outline-variant/50 rounded-lg p-4 focus:ring-1 focus:ring-primary focus:border-primary outline-none appearance-none h-[56px] border-1" id="occ-select">
+<option value="">Select Occupations...</option>
+<optgroup label="Professional">
+<option>Software Professional (மென்பொருள் நிபுணர்)</option>
+<option>Doctor (மருத்துவர்)</option>
+<option>Engineer (பொறியாளர்)</option>
+<option>Lawyer (வழக்கறிஞர்)</option>
+</optgroup>
+<optgroup label="Business &amp; Finance">
+<option>Business Owner (வணிக உரிமையாளர்)</option>
+<option>Banker (வங்கியாளர்)</option>
+<option>Accountant (கணக்காளர்)</option>
+</optgroup>
+<optgroup label="Public Service">
+<option>Government Employee (அரசு ஊழியர்)</option>
+<option>Teacher (ஆசிரியர்)</option>
+<option>Defense / Police (பாதுகாப்பு / காவல்துறை)</option>
+</optgroup>
+</select>
+<div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 empty:hidden" id="selected-occ-pills">
+</div>
+</div></section>
+<!-- Eating Habits Section -->
+<section class="p-stack-md bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-secondary">restaurant</span>
+<h3 class="font-label-lg text-label-lg text-primary">Eating Habits (உணவு பழக்கம்)</h3>
+</div>
+<div class="flex flex-wrap gap-2 gap-stack-md">
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Vegetarian</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Non-Vegetarian</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Eggetarian</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Vegan</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Doesn't Matter (பொருட்டல்ல)</button></div>
+</section><section class="p-stack-md bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-secondary">set_meal</span>
+<h3 class="font-label-lg text-label-lg text-primary">Food Preferences (உணவு விருப்பங்கள்)</h3>
+</div>
+<div class="flex flex-wrap gap-2 gap-stack-md">
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all min-h-[40px]">Jain (சைவம் - ஜெயின்)</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all min-h-[40px]">Halal (ஹலால்)</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all min-h-[40px]">No Beef (மாட்டு இறைச்சி தவிர்ப்பு)</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all min-h-[40px]">No Pork (பன்றி இறைச்சி தவிர்ப்பு)</button>
+</div>
+</section>
+<!-- Physical Type Section -->
+<section class="p-stack-md bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-secondary">accessibility_new</span>
+<h3 class="font-label-lg text-label-lg text-primary">Physical Type (உடல் வகை)</h3>
+</div>
+<div class="flex flex-wrap gap-2 gap-stack-md">
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Slim</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Athletic</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Average</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Heavy</button>
+<button class="bg-surface px-3 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 whitespace-nowrap min-h-[40px]">Doesn't Matter (பொருட்டல்ல)</button></div>
+</section>
+<!-- Wealth & Income Section -->
+<section class="p-stack-md bg-surface-container-low rounded-xl border border-outline-variant/10"><div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-secondary">payments</span>
+<h3 class="font-label-lg text-label-lg text-primary">Wealth &amp; Income (செல்வம் மற்றும் வருமானம்)</h3>
+</div>
+<div class="space-y-stack-md">
+<div class="space-y-2">
+<label class="text-label-md text-on-surface-variant">Family Wealth (குடும்ப சொத்து மதிப்பு)</label>
+<div class="relative">
+<select class="w-full bg-surface border border-outline-variant/50 rounded-lg p-4 focus:ring-1 focus:ring-primary focus:border-primary outline-none appearance-none h-[56px] border-1" id="wealth-select">
+<option value="">Select Wealth Tiers...</option>
+<option>Middle Class (நடுத்தர வர்க்கம்)</option>
+<option>Upper Middle Class (உயர் நடுத்தர வர்க்கம்)</option>
+<option>Rich / Affluent (செல்வந்தர்)</option>
+<option>High Net Worth (மிகவும் செல்வந்தர்)</option>
+</select>
+<div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 empty:hidden" id="selected-wealth-pills"></div>
+</div>
+<div class="grid grid-cols-2 gap-stack-md">
+<div class="space-y-1">
+<label class="text-label-md text-on-surface-variant">Min Annual Income</label>
+<select class="w-full bg-surface border border-outline-variant/50 rounded-lg p-4 focus:ring-1 focus:ring-primary focus:border-primary outline-none appearance-none h-[56px] border-1"><option value="DoesntMatter">Doesn't Matter</option>
+<option>₹5 Lakhs</option>
+<option>₹10 Lakhs</option>
+<option>₹25 Lakhs</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="text-label-md text-on-surface-variant">Max Annual Income</label>
+<select class="w-full bg-surface border border-outline-variant/50 rounded-lg p-4 focus:ring-1 focus:ring-primary focus:border-primary outline-none appearance-none h-[56px] border-1"><option value="DoesntMatter">No Limit</option>
+<option>₹50 Lakhs</option>
+<option>₹1 Crore+</option>
+</select>
+</div>
+</div>
+</div></section>
+<!-- Habits Section -->
+<section class="p-stack-md bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-secondary">smoking_rooms</span>
+<h3 class="font-label-lg text-label-lg text-primary">Habits (பழக்கவழக்கங்கள்)</h3>
+</div>
+<div class="space-y-stack-md">
+<div class="space-y-2">
+<p class="text-label-md text-on-surface-variant">Smoking</p>
+<div class="flex flex-wrap gap-2 gap-stack-md">
+<button class="bg-surface px-4 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 min-h-[40px]">No</button>
+<button class="bg-surface px-4 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 min-h-[40px]">Occasionally</button>
+<button class="bg-surface px-4 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 min-h-[40px]">Regular</button>
+<button class="bg-surface px-4 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 min-h-[40px]">Doesn't Matter (பொருட்டல்ல)</button></div>
+</div>
+<div class="space-y-2">
+<p class="text-label-md text-on-surface-variant">Drinking</p>
+<div class="flex flex-wrap gap-2 gap-stack-md">
+<button class="bg-surface px-4 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 min-h-[40px]">No</button>
+<button class="bg-surface px-4 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 min-h-[40px]">Occasionally</button>
+<button class="bg-surface px-4 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 min-h-[40px]">Regular</button>
+<button class="bg-surface px-4 py-2 border border-outline-variant rounded-full text-[13px] font-label-md text-on-surface-variant hover:border-primary transition-all active:scale-95 min-h-[40px]">Doesn't Matter (பொருட்டல்ல)</button></div>
+</div>
+</div>
+</section>
+<section class="p-stack-md bg-secondary/5 border-2 border-dashed border-secondary/30 rounded-xl flex gap-stack-md items-start">
+<div class="bg-secondary p-2 rounded-lg text-on-secondary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-secondary mb-1">Heritage Trust Tip</h4>
+<p class="font-body-md text-on-surface-variant leading-snug">
+                        Setting wider preferences increases your match pool by <span class="text-secondary font-bold">4x</span>. (பரந்த விருப்பங்களை அமைப்பது உங்கள் வரன்களின் எண்ணிக்கையை 4 மடங்கு அதிகரிக்கும்.)
+                    </p>
+</div>
+</section>
+</div>
+</main>
+<!-- Navigation Shell / Footer -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-center bg-surface/90 backdrop-blur-md border-t border-outline-variant/20 py-base px-margin-mobile z-50">
+<div class="w-full max-w-2xl flex items-center justify-center">
+<button class="flex items-center justify-center gap-stack-md w-full bg-primary text-on-primary rounded-xl py-4 px-8 shadow-sm hover:brightness-110 active:scale-[0.98] transition-all duration-200 shadow-md active:scale-95">
+<span class="font-label-lg text-label-lg">Continue (தொடரவும்)</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</nav>
+<!-- Visual Embellishment: Subtle background texture -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[-1]" style="background-image: url('https://www.transparenttextures.com/patterns/rice-paper.png');"></div>
+<script>
+        const casteData = {
+            "Hindu": ["Brahmin", "Chettiar", "Gounder", "Iyer", "Iyengar", "Mudaliar", "Nadars", "Pillai", "Vanniyar"],
+            "Christian": ["RC", "CSI", "Pentecostal", "Evangelical", "Orthodox"],
+            "Muslim": ["Sunni", "Shia", "Lebbai", "Marakayar", "Rawther"],
+            "Atheist": ["No Caste Preferences"],
+            "Other": ["Any"]
+        };
+
+        const religionSelect = document.getElementById('religion-select');
+        const casteSelect = document.getElementById('caste-select');
+        const casteNoBar = document.getElementById('caste-no-bar');
+        const selectedCastesDiv = document.getElementById('selected-castes');
+
+        function updateCasteOptions() {
+            const religion = religionSelect.value;
+            const castes = casteData[religion] || [];
+            
+            casteSelect.innerHTML = '<option value="">Select Caste...</option>';
+            castes.forEach(caste => {
+                const opt = document.createElement('option');
+                opt.value = caste;
+                opt.textContent = caste;
+                casteSelect.appendChild(opt);
+            });
+        }
+
+        religionSelect.addEventListener('change', () => {
+            updateCasteOptions();
+            selectedCastesDiv.innerHTML = '';
+        });
+
+        casteNoBar.addEventListener('change', () => {
+            casteSelect.disabled = casteNoBar.checked;
+            if (casteNoBar.checked) {
+                selectedCastesDiv.innerHTML = '';
+                const chip = createChip('Any / Caste No Bar', true);
+                selectedCastesDiv.appendChild(chip);
+            } else {
+                selectedCastesDiv.innerHTML = '';
+            }
+        });
+
+        casteSelect.addEventListener('change', () => {
+            if (casteSelect.value && !casteNoBar.checked) {
+                const chip = createChip(casteSelect.value);
+                selectedCastesDiv.appendChild(chip);
+                casteSelect.value = '';
+            }
+        });
+
+        function createChip(text, permanent = false) {
+            const span = document.createElement('span');
+            span.className = "inline-flex items-center gap-1 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-md text-label-md";
+            span.textContent = text;
+            
+            if (!permanent) {
+                const btn = document.createElement('button');
+                btn.className = "material-symbols-outlined text-[16px] hover:text-error transition-colors";
+                btn.textContent = "close";
+                btn.onclick = () => span.remove();
+                span.appendChild(btn);
+            }
+            return span;
+        }
+
+        // Multi-select chip interaction
+        document.querySelectorAll('button.bg-surface, button.chip-active').forEach(button => {
+            button.addEventListener('click', () => {
+                if(button.classList.contains('chip-active')) {
+                    button.classList.remove('chip-active');
+                    button.classList.add('bg-surface', 'text-on-surface-variant');
+                } else {
+                    button.classList.add('chip-active');
+                    button.classList.remove('bg-surface', 'text-on-surface-variant');
+                }
+            });
+        });
+
+        // Initialize
+        updateCasteOptions();
+    </script>
+</body></html>

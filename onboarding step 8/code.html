@@ -1,0 +1,289 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Heritage Trust - Family Details</title>
+<!-- Font Links -->
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#ffdbd1",
+                    "inverse-on-surface": "#f6f0ec",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#ede7e3",
+                    "on-tertiary-container": "#ff8663",
+                    "on-primary-container": "#ff828a",
+                    "tertiary-fixed-dim": "#ffb5a0",
+                    "secondary-fixed": "#ffe088",
+                    "outline": "#8c7071",
+                    "secondary-fixed-dim": "#e9c349",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-tertiary-fixed": "#3b0900",
+                    "surface-bright": "#fef8f4",
+                    "primary-fixed-dim": "#ffb3b5",
+                    "on-tertiary-fixed-variant": "#872100",
+                    "inverse-primary": "#ffb3b5",
+                    "surface-container-highest": "#e7e1de",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#761c00",
+                    "tertiary": "#501000",
+                    "on-surface": "#1d1b19",
+                    "secondary-container": "#fed65b",
+                    "on-primary-fixed-variant": "#8e0f28",
+                    "on-primary-fixed": "#40000b",
+                    "on-secondary-fixed": "#241a00",
+                    "surface-variant": "#e7e1de",
+                    "outline-variant": "#e0bfbf",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#745c00",
+                    "surface-tint": "#af2b3e",
+                    "inverse-surface": "#32302e",
+                    "surface-container-low": "#f9f2ef",
+                    "surface-container": "#f3ede9",
+                    "primary-container": "#800020",
+                    "on-surface-variant": "#584141",
+                    "surface-dim": "#dfd9d5",
+                    "background": "#fef8f4",
+                    "surface": "#fef8f4",
+                    "error-container": "#ffdad6",
+                    "primary": "#570013",
+                    "secondary": "#735c00",
+                    "on-background": "#1d1b19",
+                    "primary-fixed": "#ffdada"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "gutter": "24px",
+                    "container-max": "1200px",
+                    "margin-desktop": "40px",
+                    "stack-sm": "4px",
+                    "margin-mobile": "16px",
+                    "stack-md": "12px",
+                    "stack-lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Source Serif 4"],
+                    "display-lg": ["Source Serif 4"],
+                    "label-md": ["Nunito Sans"],
+                    "body-lg": ["Nunito Sans"],
+                    "headline-lg": ["Source Serif 4"],
+                    "headline-md": ["Source Serif 4"],
+                    "body-md": ["Nunito Sans"],
+                    "label-lg": ["Nunito Sans"],
+                    "aura-tag": ["Nunito Sans"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "aura-tag": ["13px", {"lineHeight": "16px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .progress-bar {
+            background: linear-gradient(90deg, #570013 90%, #e7e1de 90%);
+        }
+        .dropdown-chevron {
+            pointer-events: none;
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        /* Custom radio chip styling */
+        .chip-radio:checked + label {
+            background-color: #570013;
+            color: #ffffff;
+            border-color: #570013;
+        }
+        .chip-radio:checked + label .check-icon {
+            display: block;
+        }
+        /* Smooth transitions for visibility */
+        #wealth_section {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-10px);
+            margin-top: 0 !important;
+        }
+        #wealth_section.visible {
+            max-height: 200px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: 2.5rem !important; /* matches space-y-10 parent spacing */
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex flex-col items-center">
+<!-- Top AppBar (Mobile Style for this flow) -->
+<header class="bg-surface docked full-width top-0 border-b border-outline-variant flex justify-between items-center w-full px-margin-mobile h-16 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-container-high transition-colors p-2 rounded-full">arrow_back</span>
+<h1 class="font-headline-md text-headline-md-mobile text-primary font-display-lg">Family details (குடும்ப விவரங்கள்)</h1>
+</div>
+</header>
+<!-- Progress Indicator -->
+<div class="w-full bg-surface py-4 px-margin-mobile">
+<div class="max-w-[600px] mx-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="text-label-md text-on-surface-variant font-headline-md">Step 8 of 8 (படி 8/8)</span>
+<span class="text-label-md text-primary font-bold font-headline-md">90%</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[90%] transition-all duration-500"></div>
+</div>
+</div>
+</div>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-[600px] flex-grow px-margin-mobile pt-8 pb-32">
+<div class="space-y-10">
+<!-- Headline Section -->
+<section class="space-y-2">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Family Details (குடும்ப விவரங்கள்)</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Please provide details about your family's social and financial background. 
+                (உங்கள் குடும்பத்தின் சமூகம் மற்றும் நிதிப் பின்னணி பற்றிய விவரங்களை வழங்கவும்.)
+            </p>
+</section>
+<!-- Section 1: Family Status -->
+<section class="space-y-4">
+<label class="text-label-lg text-on-surface block uppercase tracking-wider font-headline-md">Family Status (குடும்ப நிலை)</label>
+<div class="grid grid-cols-1 gap-3">
+<div class="relative">
+<input class="chip-radio hidden" id="middle_class" name="family_status" type="radio" value="middle_class">
+<label class="flex items-center justify-between px-4 py-4 border border-outline rounded-lg cursor-pointer transition-all hover:bg-surface-container-low text-body-lg text-on-surface font-headline-md" for="middle_class">
+<span class="">Middle class (நடுத்தர வர்க்கம்)</span>
+<span class="material-symbols-outlined text-primary check-icon hidden">check_circle</span>
+</label>
+</div>
+<div class="relative">
+<input class="chip-radio hidden" id="upper_middle" name="family_status" type="radio" value="upper_middle">
+<label class="flex items-center justify-between px-4 py-4 border border-outline rounded-lg cursor-pointer transition-all hover:bg-surface-container-low text-body-lg text-on-surface font-headline-md" for="upper_middle">
+<span class="">Upper middle class (உயர் நடுத்தர வர்க்கம்)</span>
+<span class="material-symbols-outlined text-primary check-icon hidden">check_circle</span>
+</label>
+</div>
+<div class="relative">
+<input class="chip-radio hidden" id="rich_elite" name="family_status" type="radio" value="rich_elite">
+<label class="flex items-center justify-between px-4 py-4 border border-outline rounded-lg cursor-pointer transition-all hover:bg-surface-container-low text-body-lg text-on-surface font-headline-md" for="rich_elite">
+<span class="">Rich / Affluent (Elite) (செல்வந்தர் / வசதியானவர்)</span>
+<span class="material-symbols-outlined text-primary check-icon hidden">check_circle</span>
+</label>
+</div>
+</div>
+</section>
+<!-- Section 2: Family Wealth - Conditional Visibility -->
+<section class="space-y-4 relative z-50 visible" id="wealth_section"><label class="text-label-lg text-on-surface block uppercase tracking-wider font-headline-md" for="wealth_dropdown_trigger">Family Wealth / Net worth (குடும்ப செல்வம் / மொத்த சொத்து மதிப்பு)</label>
+<div class="relative"><select id="wealth_dropdown" class="w-full h-14 bg-surface border border-outline rounded-lg px-4 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none cursor-pointer"><option value="" disabled="" selected="" class="">Select family wealth / net worth</option><option value="aspiring_rich" class="">Aspiring Rich - Below ₹ 10 Crores (வளர்ந்து வரும் செல்வந்தர் - ₹ 10 கோடிக்கு கீழே)</option><option value="rich" class="">Rich - ₹ 10 Crores to 50 Crores (செல்வந்தர் - ₹ 10 கோடி முதல் 50 கோடி வரை)</option><option value="super_rich" class="">Super Rich - ₹ 50 Crores to 200 Crores (மிகவும் செல்வந்தர் - ₹ 50 கோடி முதல் 200 கோடி வரை)</option><option value="ultra_rich" class="">Ultra Rich - Above ₹ 200 Crores (அதி நவீன செல்வந்தர் - ₹ 200 கோடிக்கு மேலே)</option></select>
+</div></section>
+<!-- Section 3: Bio -->
+<section class="space-y-4">
+<div class="flex justify-between items-end">
+<label class="text-label-lg text-on-surface block uppercase tracking-wider font-headline-md" for="bio">A few words about myself (என்னை பற்றி சில வரிகள்)</label>
+</div>
+<div class="relative group">
+<textarea class="w-full bg-surface border border-outline rounded-lg p-4 font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none resize-none" id="bio" placeholder="I am a professional with a Bachelor's degree currently working in Chennai..." rows="5"></textarea>
+<div class="flex justify-between items-center mt-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Minimum 50 characters</span>
+<button class="text-secondary font-label-lg text-label-lg hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="auto_awesome">auto_awesome</span>
+                        Help me write this
+                    </button>
+</div>
+</div>
+</section>
+<!-- Trust Shield Component -->
+<section class="bg-surface-container-low border border-outline-variant p-6 rounded-lg flex items-start gap-4">
+<div class="w-full space-y-4">
+<div class="w-full h-48 rounded-lg overflow-hidden border border-outline-variant">
+<img alt="Heritage Trust Shield" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7zA20ngHXQvME4O-4Kqf7jSpJjSlG-5z0MEFesRA9GP08LglIi72mMqqhrhbO_kVXZ2XbffMfQXnxlLpGfj9sctn_39l0wowKMlItjvyt3c_jYRpw7i66ZNJIQcbRvYQZtIUt7iMyu4cOtDoFyo8Rl7HJlzqsQLT5YkXzZY0CTZYjoaTZBtJvNq0cKbUT_KVwIv13jsSBp8WhPwnhp8cw8E_ALZmgTF5oCwOTnnS_QfVW3ViCfT_DCgAVlt5turfHtnY3taDeyHs">
+</div>
+<div class="space-y-1">
+<h4 class="text-headline-md text-on-surface font-headline-md">Heritage Trust Shield</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Verified family and wealth details establish 100% trust with prospective matches. (சரிபார்க்கப்பட்ட குடும்பம் மற்றும் சொத்து விவரங்கள் 100% நம்பிக்கையை உருவாக்குகின்றன.)</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Buttons -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant px-margin-mobile py-6 flex flex-col gap-4 items-center z-50">
+<div class="w-full max-w-[600px] flex gap-4">
+<button class="flex-1 h-14 border border-primary rounded-full font-label-lg text-label-lg text-primary hover:bg-surface-container-high transition-all active:scale-95">Save Draft</button>
+<button class="flex-[2] h-14 bg-primary rounded-full font-label-lg text-label-lg text-on-primary flex justify-center items-center gap-2 hover:opacity-90 shadow-lg transition-all active:scale-95">Continue (தொடரவும்)<span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+</footer>
+<!-- Decorative Backdrop Gradient -->
+<div class="fixed inset-0 pointer-events-none -z-10 opacity-30">
+<div class="absolute top-0 right-0 w-96 h-96 bg-secondary-fixed opacity-20 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-primary-fixed opacity-10 blur-3xl rounded-full -translate-x-1/2 translate-y-1/2"></div>
+</div>
+<script>
+    // Interaction logic for conditional visibility
+    const wealthSection = document.getElementById('wealth_section');
+    const familyStatusRadios = document.querySelectorAll('input[name="family_status"]');
+
+    function toggleWealthVisibility() {
+        const selectedStatus = document.querySelector('input[name="family_status"]:checked');
+        if (selectedStatus && selectedStatus.value === 'rich_elite') {
+            wealthSection.classList.add('visible');
+        } else {
+            wealthSection.classList.remove('visible');
+        }
+    }
+
+    familyStatusRadios.forEach(radio => {
+        radio.addEventListener('change', toggleWealthVisibility);
+    });
+
+    // Initialize state
+    toggleWealthVisibility();
+
+    // Bio character count placeholder
+    const bioArea = document.getElementById('bio');
+    bioArea.addEventListener('input', () => {
+        // Future logic for character count tracking
+    });
+</script>
+
+
+
+
+
+
+</body></html>

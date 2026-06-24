@@ -1,0 +1,381 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Profile Details - Afrin Zulfia</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#dfd9d5",
+                        "primary": "#570013",
+                        "on-surface": "#1d1b19",
+                        "tertiary": "#501000",
+                        "primary-container": "#800020",
+                        "inverse-surface": "#32302e",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffdbd1",
+                        "on-tertiary-container": "#ff8663",
+                        "surface-bright": "#fef8f4",
+                        "secondary-fixed": "#ffe088",
+                        "outline-variant": "#e0bfbf",
+                        "on-background": "#1d1b19",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f6f0ec",
+                        "on-error-container": "#93000a",
+                        "outline": "#8c7071",
+                        "on-tertiary-fixed": "#3b0900",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#584141",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#241a00",
+                        "background": "#fef8f4",
+                        "inverse-primary": "#ffb3b5",
+                        "on-primary-container": "#ff828a",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e7e1de",
+                        "tertiary-fixed-dim": "#ffb5a0",
+                        "on-secondary-fixed-variant": "#574500",
+                        "secondary-fixed-dim": "#e9c349",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#735c00",
+                        "surface-tint": "#af2b3e",
+                        "surface-container-low": "#f9f2ef",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "surface": "#fef8f4",
+                        "on-primary-fixed": "#40000b",
+                        "secondary-container": "#fed65b",
+                        "tertiary-container": "#761c00",
+                        "surface-container-high": "#ede7e3",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#745c00",
+                        "surface-container": "#f3ede9",
+                        "primary-fixed": "#ffdada",
+                        "on-tertiary-fixed-variant": "#872100",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "surface-container-highest": "#e7e1de"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "12px",
+                        "container-max": "1200px",
+                        "margin-mobile": "16px",
+                        "stack-lg": "24px",
+                        "gutter": "24px",
+                        "stack-sm": "4px",
+                        "margin-desktop": "40px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["\"Source Serif 4\""],
+                        "headline-md": ["\"Source Serif 4\""],
+                        "label-md": ["Nunito Sans"],
+                        "body-md": ["Nunito Sans"],
+                        "label-lg": ["Nunito Sans"],
+                        "headline-lg-mobile": ["\"Source Serif 4\""],
+                        "body-lg": ["Nunito Sans"],
+                        "aura-tag": ["Nunito Sans"],
+                        "headline-lg": ["\"Source Serif 4\""]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "aura-tag": ["13px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .trust-seal-border {
+            border: 1px solid #735c00;
+        }
+        .bilingual-label::after {
+            content: attr(data-tamil);
+            font-size: 0.85em;
+            margin-left: 4px;
+            opacity: 0.8;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fef8f4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e0bfbf;
+            border-radius: 10px;
+        }
+        .active-tab {
+            border-bottom: 2px solid #570013;
+            color: #570013;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant px-margin-mobile h-16 flex justify-between items-center">
+<button aria-label="Back" class="flex items-center justify-center p-2 hover:bg-surface-container-high transition-colors rounded-full">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<div class="flex items-center gap-2 px-3 py-1 bg-secondary-fixed rounded-full trust-seal-border">
+<span class="material-symbols-outlined text-secondary scale-75" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-lg text-secondary text-label-lg tracking-wider">VERIFIED / சரிபார்க்கப்பட்டது</span>
+</div>
+<button class="font-label-lg text-primary text-label-lg hover:underline transition-all">A / அ</button>
+</header>
+<main class="mt-16 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 mb-16"><section class="relative w-full mb-stack-lg rounded-xl overflow-hidden shadow-lg aspect-[4/5] bg-surface-container-high">
+  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+  <img src="https://images.unsplash.com/photo-1589156280159-27698a70f29e?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" alt="Profile Portrait" class="w-full h-full object-cover">
+  <div class="absolute bottom-0 left-0 w-full p-6 z-20">
+    <h1 class="font-headline-lg text-headline-lg text-white mb-1">Afrin Zulfia</h1>
+    <div class="flex items-center gap-3 text-white/90 font-label-md text-label-md">
+      <span class="bg-white/20 backdrop-blur-md px-2 py-0.5 rounded">ID: M11268813</span>
+      <span class="flex items-center gap-1">
+        <span class="w-2 h-2 rounded-full bg-secondary-fixed"></span>
+        Last seen few hours ago
+      </span>
+    </div>
+    <div class="flex gap-3 mt-4">
+      <button class="flex-1 flex items-center justify-center gap-2 bg-white/10 backdrop-blur-md border border-white/30 py-2 rounded text-white font-label-lg hover:bg-white/20 transition-all" onclick="const isLiked = this.getAttribute('data-liked') === 'true'; if (!isLiked) { this.setAttribute('data-liked', 'true'); this.classList.add('bg-white/30'); this.innerHTML = '&lt;span class=&quot;material-symbols-outlined text-sm&quot; style=&quot;font-variation-settings: \'FILL\' 1;&quot;&gt;favorite&lt;/span&gt;Liked by you'; } else { this.setAttribute('data-liked', 'false'); this.classList.remove('bg-white/30'); this.innerHTML = '&lt;span class=&quot;material-symbols-outlined text-sm&quot; style=&quot;font-variation-settings: \'FILL\' 1;&quot;&gt;favorite&lt;/span&gt;Like'; }"><span class="material-symbols-outlined text-sm" style="font-variation-settings: &quot;FILL&quot; 1;">favorite</span>Like</button>
+      <button class="flex-1 flex items-center justify-center gap-2 bg-white/10 backdrop-blur-md border border-white/30 py-2 rounded text-white font-label-lg hover:bg-white/20 transition-all">
+        <span class="material-symbols-outlined text-sm">share</span>
+        Share
+      </button>
+    </div>
+  </div>
+</section><section class="bg-surface-container-lowest p-6 border border-outline-variant rounded-lg shadow-sm mb-stack-lg">
+  <div class="flex justify-between items-start mb-2">
+    <h2 class="font-headline-lg text-headline-lg text-on-surface"><br></h2>
+    <div class="flex gap-3">
+      <button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant text-primary hover:bg-primary-container hover:text-on-primary transition-colors">
+        <span class="material-symbols-outlined">call</span>
+      </button>
+      <button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant text-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors" onclick="window.location.href='{{DATA:SCREEN:SCREEN_109}}'">
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.938 3.659 1.434 5.633 1.434h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+      </button>
+    </div>
+  </div>
+  
+  <div class="space-y-1 text-on-surface font-body-md">
+    <div class="flex items-center gap-2">
+      <span class="">Never married</span>
+      <span class="text-outline-variant">•</span>
+      <span class="">Profile created by parents</span>
+      <span class="text-outline-variant">•</span>
+      <span class="">26 yrs</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="">5'2"</span>
+      <span class="text-outline-variant">•</span>
+      <span class="">Muslim - Shafi (Caste No Bar)</span>
+      <span class="text-outline-variant">•</span>
+      <span class="">M.Tech.</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="">Research Assistant</span>
+      <span class="text-outline-variant">•</span>
+      <span class="">₹ 9 - 10 lakhs per annum</span>
+    </div>
+    <div class="pt-1">
+      <span class="">Chennai</span>
+    </div>
+  </div>
+</section>
+<!-- Profile Header -->
+
+<!-- Tabbed Navigation -->
+<nav class="flex overflow-x-auto border-b border-outline-variant mb-stack-lg sticky top-16 bg-surface z-40 scrollbar-hide"><button class="whitespace-nowrap px-6 py-4 font-label-lg text-label-lg uppercase tracking-widest transition-all active-tab" onclick="scrollToSection('personal')">Personal (தனிப்பட்ட)</button><button class="whitespace-nowrap px-6 py-4 font-label-lg text-label-lg uppercase tracking-widest transition-all hover:text-primary active-tab" onclick="scrollToSection('family')">Family (குடும்பம்)</button><button class="whitespace-nowrap px-6 py-4 font-label-lg text-label-lg uppercase tracking-widest transition-all hover:text-primary active-tab" onclick="scrollToSection('professional')">Professional (தொழில்முறை)</button><button class="whitespace-nowrap px-6 py-4 font-label-lg text-label-lg uppercase tracking-widest transition-all hover:text-primary active-tab" onclick="scrollToSection('contact')">Contact (தொடர்பு)</button><button class="whitespace-nowrap px-6 py-4 font-label-lg text-label-lg uppercase tracking-widest transition-all hover:text-primary active-tab" onclick="scrollToSection('preferences-section')">Preferences (விருப்பங்கள்)</button></nav>
+<!-- Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<div class="lg:col-span-8 space-y-stack-lg">
+<!-- Personal Info Section -->
+<section class="bg-surface-container-lowest p-stack-lg border border-outline-variant rounded-lg shadow-sm" id="personal"><div class="flex items-center gap-3 mb-6"><span class="material-symbols-outlined text-primary">person</span><h2 class="font-headline-md text-headline-md text-primary">Personal Information (தனிப்பட்ட விவரங்கள்)</h2></div><div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8"><div><p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Age / வயது</p><p class="font-body-lg text-body-lg text-on-surface">26 years and 1 month</p></div><div><p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Height / உயரம்</p><p class="font-body-lg text-body-lg text-on-surface">5'2"</p></div><div><p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Mother Tongue / தாய்மொழி</p><p class="font-body-lg text-body-lg text-on-surface text-primary font-bold">Tamil</p></div><div><p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Profile created by / சுயவிவரத்தை உருவாக்கியவர்</p><p class="font-body-lg text-body-lg text-on-surface">Parents</p></div><div><p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Marital Status / திருமண நிலை</p><p class="font-body-lg text-body-lg text-on-surface">Never married</p></div><div><p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Religion / மதம்</p><p class="font-body-lg text-body-lg text-on-surface">Muslim - Sunni</p></div><div><p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Caste / சாதி</p><p class="font-body-lg text-body-lg text-on-surface">Muslim - Shafi (Caste No Bar)</p></div><div><p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Lives In / வசிப்பிடம்</p><p class="font-body-lg text-body-lg text-on-surface">Chennai, Tamil Nadu</p></div><div><p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Eating Habits / உணவு பழக்கம்</p><p class="font-body-lg text-body-lg text-on-surface">Non-vegetarian</p></div><div><p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Occupation / தொழில்</p><p class="font-body-lg text-body-lg text-on-surface">Research Assistant</p></div></div></section>
+<!-- About Myself -->
+<section class="bg-surface-container-lowest p-stack-lg border border-outline-variant rounded-lg">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+<h2 class="font-headline-md text-headline-md text-primary">About Myself (என்னைப் பற்றி)</h2>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg border-l-4 border-primary">
+<p class="font-body-lg text-body-lg text-on-surface italic leading-relaxed">"My daughter is a research assistant with a Master's degree currently working in private sector. We belong to Upper middle class &amp; Nuclear family with traditional values and residing at Chennai ."</p>
+</div>
+</section>
+<!-- Family Info -->
+<section class="bg-surface-container-lowest p-stack-lg border border-outline-variant rounded-lg shadow-sm" id="family">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">family_history</span>
+<h2 class="font-headline-md text-headline-md text-primary">Family Information (குடும்ப விவரங்கள்)</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Family Status / குடும்ப நிலை</p>
+<p class="font-body-lg text-body-lg text-on-surface">Upper middle class</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Parents / பெற்றோர்</p>
+<p class="font-body-lg text-body-lg text-on-surface">Father is employed, Mother is a home maker</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Brothers / சகோதரர்கள்</p>
+<p class="font-body-lg text-body-lg text-on-surface">1 brother</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Family Values / குடும்ப மதிப்புகள்</p>
+<p class="font-body-lg text-body-lg text-on-surface">Traditional</p>
+</div>
+</div>
+</section><section class="bg-surface-container-lowest p-stack-lg border border-outline-variant rounded-lg shadow-sm" id="contact"><div class="flex items-center gap-3 mb-6"><span class="material-symbols-outlined text-primary">call</span><h2 class="font-headline-md text-headline-md text-primary">Contact Information (தொடர்பு விவரங்கள்)</h2></div><div class="space-y-4"><div><p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Mobile Number / கைபேசி எண்</p><div class="flex flex-col gap-2"><p class="font-body-lg text-body-lg text-on-surface">+91 98*********</p><button class="flex items-center gap-1 text-primary font-label-lg hover:underline"><span class="material-symbols-outlined text-sm">lock</span> Upgrade to view <span class="material-symbols-outlined text-sm">chevron_right</span></button></div></div></div></section>
+<!-- Professional Details -->
+<section class="bg-surface-container-lowest p-stack-lg border border-outline-variant rounded-lg shadow-sm" id="professional">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">work</span>
+<h2 class="font-headline-md text-headline-md text-primary">Professional Details (தொழில்முறை விவரங்கள்)</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Education / கல்வி</p>
+<p class="font-body-lg text-body-lg text-on-surface text-primary font-bold">M.Tech.</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Occupation / தொழில்</p>
+<p class="font-body-lg text-body-lg text-on-surface">Research Assistant</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Income / வருமானம்</p>
+<p class="font-body-lg text-body-lg text-on-surface">₹ 9 - 10 lakhs per annum</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Employment / வேலைவாய்ப்பு</p>
+<p class="font-body-lg text-body-lg text-on-surface">Works in Private Sector</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Sidebar / Preferences -->
+<section class="bg-surface-container-lowest p-stack-lg border border-outline-variant rounded-lg shadow-sm" id="preferences-section"><div class="flex items-center gap-3 mb-6"><span class="material-symbols-outlined text-primary">favorite_border</span><h2 class="font-headline-md text-headline-md text-primary">Partner Preferences (துணை விருப்பங்கள்)</h2></div><div class="space-y-8"><div class="space-y-4"><h3 class="font-label-lg text-label-lg text-secondary uppercase tracking-widest border-b border-outline-variant pb-2">Religious Preferences (மத விருப்பங்கள்)</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div class="flex justify-between items-end border-b border-dotted border-outline-variant pb-1"><span class="text-label-md text-on-surface-variant">Preferred Caste (சாதி)</span><span class="text-body-md text-on-surface">Muslim - Shafi</span></div><div class="flex justify-between items-end border-b border-dotted border-outline-variant pb-1"><span class="text-label-md text-on-surface-variant">Preferred Subcaste (உட்சாதி)</span><span class="text-body-md text-on-surface">Any</span></div><div class="flex justify-between items-end border-b border-dotted border-outline-variant pb-1"><span class="text-label-md text-on-surface-variant">Preferred Star (நட்சத்திரம்)</span><span class="text-body-md text-on-surface">Doesn't matter</span></div><div class="flex justify-between items-end border-b border-dotted border-outline-variant pb-1"><span class="text-label-md text-on-surface-variant">Preferred Dosham (தோஷம்)</span><span class="text-body-md text-on-surface">No</span></div></div></div><div class="space-y-4"><h3 class="font-label-lg text-label-lg text-secondary uppercase tracking-widest border-b border-outline-variant pb-2">Professional Preferences (தொழில்முறை விருப்பங்கள்)</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div class="flex justify-between items-end border-b border-dotted border-outline-variant pb-1"><span class="text-label-md text-on-surface-variant">Preferred Education (கல்வி)</span><span class="text-body-md text-on-surface">Master's or above</span></div><div class="flex justify-between items-end border-b border-dotted border-outline-variant pb-1"><span class="text-label-md text-on-surface-variant">Preferred Employment (வேலைவாய்ப்பு)</span><span class="text-body-md text-on-surface">Private/Government</span></div><div class="flex justify-between items-end border-b border-dotted border-outline-variant pb-1"><span class="text-label-md text-on-surface-variant">Preferred Occupation (தொழில்)</span><span class="text-body-md text-on-surface">Professional</span></div><div class="flex justify-between items-end border-b border-dotted border-outline-variant pb-1"><span class="text-label-md text-on-surface-variant">Preferred Income (வருமானம்)</span><span class="text-body-md text-on-surface">₹ 10L+ per annum</span></div></div></div><div class="space-y-4"><h3 class="font-label-lg text-label-lg text-secondary uppercase tracking-widest border-b border-outline-variant pb-2">Location Preferences (இட விருப்பங்கள்)</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div class="flex justify-between items-end border-b border-dotted border-outline-variant pb-1"><span class="text-label-md text-on-surface-variant">Preferred Country (நாடு)</span><span class="text-body-md text-on-surface">India</span></div></div></div></div></section><aside class="lg:col-span-4 space-y-stack-lg">
+<section class="bg-primary text-on-primary p-6 rounded-lg shadow-xl sticky top-24" id="preferences">
+<div class="text-center mb-6">
+<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-on-primary/10 mb-4 border-2 border-secondary-fixed">
+<span class="font-headline-md text-headline-md text-secondary-fixed">19/21</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-1">Compatibility Score</h3>
+<p class="font-label-md text-label-md opacity-80">Matching preferences (விருப்பங்கள் பொருந்தும்)</p>
+</div>
+<div class="space-y-4 text-on-primary">
+<div class="flex items-center justify-between border-b border-on-primary/10 pb-2">
+<span class="font-label-lg text-label-lg">Caste (சாதி)</span>
+<span class="material-symbols-outlined text-secondary-fixed">check_circle</span>
+</div>
+<div class="flex items-center justify-between border-b border-on-primary/10 pb-2">
+<span class="font-label-lg text-label-lg">Age (வயது)</span>
+<span class="material-symbols-outlined text-secondary-fixed">check_circle</span>
+</div>
+<div class="flex items-center justify-between border-b border-on-primary/10 pb-2">
+<span class="font-label-lg text-label-lg">Education (கல்வி)</span>
+<span class="material-symbols-outlined text-on-primary/30">cancel</span>
+</div>
+<div class="flex items-center justify-between border-b border-on-primary/10 pb-2">
+<span class="font-label-lg text-label-lg">Income (வருமானம்)</span>
+<span class="material-symbols-outlined text-secondary-fixed">check_circle</span>
+</div>
+<div class="flex items-center justify-between border-b border-on-primary/10 pb-2">
+<span class="font-label-lg text-label-lg">Location (இடம்)</span>
+<span class="material-symbols-outlined text-secondary-fixed">check_circle</span>
+</div>
+</div>
+<button class="w-full mt-6 py-3 bg-secondary-fixed text-on-secondary-fixed font-label-lg text-label-lg rounded hover:bg-secondary-container transition-all active:scale-95">
+                        VIEW ALL PREFERENCES
+                    </button>
+</section>
+<!-- Aura Tags (Traits) -->
+<div class="bg-surface-container-high p-6 rounded-lg">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-4">Personality Traits</h3>
+<div class="flex flex-wrap gap-2">
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-aura-tag text-aura-tag">Traditional Values</span>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-aura-tag text-aura-tag">Academic Focus</span>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full font-aura-tag text-aura-tag">Chennai Resident</span>
+<span class="bg-outline-variant text-primary px-3 py-1 rounded-full font-aura-tag text-aura-tag">Research Professional</span>
+</div>
+</div>
+</aside></div>
+</main>
+<!-- Fixed Action Bar -->
+<footer class="fixed bottom-0 w-full z-50 bg-surface border-t border-outline-variant shadow-[0_-4px_10px_rgba(0,0,0,0.05)]"><div class="max-w-container-max mx-auto px-margin-mobile py-2 flex flex-col gap-2"><div class="flex gap-3"><button class="flex-1 flex items-center justify-center gap-1 py-1.5 border border-primary bg-surface text-primary font-label-md rounded transition-all active:scale-95" onclick="window.location.href='{{DATA:SCREEN:SCREEN_223}}'"><span class="material-symbols-outlined text-sm">close</span><span class="">Don't Show</span></button><button class="flex-1 flex items-center justify-center gap-1 py-1.5 border border-primary bg-surface text-primary font-label-md rounded transition-all active:scale-95" onclick="const toast = document.createElement('div'); toast.className = 'fixed bottom-24 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-6 py-3 rounded-full shadow-xl z-[100] font-label-lg animate-bounce'; toast.innerText = 'Profile Skipped'; document.body.appendChild(toast); setTimeout(() =&gt; { toast.remove(); document.querySelector('section img').src = 'https://images.unsplash.com/photo-1531123897727-8f129e16fd8c?q=80&amp;w=1000&amp;auto=format&amp;fit=crop'; document.querySelector('h1').innerText = 'Deepika Sundar'; document.querySelector('section .flex.items-center.gap-3 span:first-child').innerText = 'ID: M99283741'; document.querySelector('section + section .space-y-1 span:nth-child(5)').innerText = '25 yrs'; document.querySelector('section + section .space-y-1 div:nth-child(2) span:first-child').innerText = &quot;5'3\&quot;&quot;; }, 800);"><span class="">Skip</span><span class="material-symbols-outlined text-sm">double_arrow</span></button></div><button class="w-full flex flex-col items-center justify-center py-1.5 text-on-primary rounded shadow-lg transition-all bg-primary hover:bg-primary-container active:scale-95" onclick="this.disabled = true; this.classList.add('opacity-50', 'cursor-not-allowed'); this.classList.remove('active:scale-95', 'bg-primary', 'hover:bg-primary-container'); this.classList.add('bg-primary-container'); this.innerHTML = '&lt;div class=\'flex items-center gap-2\'&gt;&lt;span class=\'material-symbols-outlined text-sm\' style=\'font-variation-settings: &quot;FILL&quot; 1;\'&gt;check_circle&lt;/span&gt;&lt;span class=\'font-label-lg uppercase tracking-widest\'&gt;INTEREST SENT&lt;/span&gt;&lt;/div&gt;&lt;span class=\'text-label-md opacity-90\'&gt;விருப்பம் அனுப்பப்பட்டது&lt;/span&gt;';"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">favorite</span><span class="font-label-lg uppercase tracking-widest">SEND INTEREST</span></div><span class="text-label-md opacity-90">விருப்பம் அனுப்பு</span></button></div></footer>
+<script>
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                const yOffset = -140; // TopAppBar + Nav height
+                const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({top: y, behavior: 'smooth'});
+            }
+
+            // Update active tab styling
+            const buttons = document.querySelectorAll('nav button');
+            buttons.forEach(btn => btn.classList.remove('active-tab', 'text-primary', 'font-bold'));
+            buttons.forEach(btn => btn.classList.add('text-on-surface-variant'));
+            
+            event.currentTarget.classList.add('active-tab');
+            event.currentTarget.classList.remove('text-on-surface-variant');
+        }
+
+        // Highlight active tab on scroll
+        window.addEventListener('scroll', () => {
+            const sections = ['personal', 'family', 'professional', 'preferences'];
+            let current = '';
+
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (element) {
+                    const sectionTop = element.offsetTop;
+                    if (pageYOffset >= sectionTop - 160) {
+                        current = section;
+                    }
+                }
+            });
+
+            const buttons = document.querySelectorAll('nav button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active-tab');
+                btn.classList.add('text-on-surface-variant');
+                if (btn.getAttribute('onclick').includes(current)) {
+                    btn.classList.add('active-tab');
+                    btn.classList.remove('text-on-surface-variant');
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body></html>

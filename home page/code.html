@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html lang="en"><svg aria-hidden="true" class="inline-defs-container" style="position:absolute;width:0;height:0;overflow:hidden"></svg><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KalyaThiru | Home Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&amp;family=Source+Serif+4:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#32302e",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-dim": "#dfd9d5",
+                        "surface-container-highest": "#e7e1de",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#872100",
+                        "tertiary-fixed": "#ffdbd1",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "on-primary-fixed": "#40000b",
+                        "on-tertiary-container": "#ff8663",
+                        "secondary": "#735c00",
+                        "surface-container-high": "#ede7e3",
+                        "primary": "#570013",
+                        "surface": "#fef8f4",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#fef8f4",
+                        "surface-variant": "#e7e1de",
+                        "on-tertiary-fixed": "#3b0900",
+                        "on-secondary-container": "#745c00",
+                        "on-surface": "#1d1b19",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#501000",
+                        "background": "#fef8f4",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#fed65b",
+                        "surface-container": "#f3ede9",
+                        "surface-tint": "#af2b3e",
+                        "inverse-on-surface": "#f6f0ec",
+                        "outline": "#8c7071",
+                        "primary-fixed": "#ffdada",
+                        "on-surface-variant": "#584141",
+                        "inverse-primary": "#ffb3b5",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1d1b19",
+                        "on-primary-container": "#ff828a",
+                        "surface-container-low": "#f9f2ef",
+                        "tertiary-container": "#761c00",
+                        "tertiary-fixed-dim": "#ffb5a0",
+                        "secondary-fixed": "#ffe088",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#e0bfbf",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#800020"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "stack-md": "12px",
+                        "stack-lg": "24px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "stack-sm": "4px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Nunito Sans"],
+                        "label-lg": ["Nunito Sans"],
+                        "headline-lg-mobile": ["Source Serif 4"],
+                        "body-lg": ["Nunito Sans"],
+                        "headline-md": ["Source Serif 4"],
+                        "aura-tag": ["Nunito Sans"],
+                        "display-lg": ["Source Serif 4"],
+                        "body-md": ["Nunito Sans"],
+                        "headline-lg": ["Source Serif 4"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "aura-tag": ["13px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrolling-wrapper {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .scrolling-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(140, 112, 113, 0.1);
+        }
+        .elite-gradient {
+            background: linear-gradient(135deg, #570013 0%, #800020 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- Top AppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-background border-b border-outline-variant/20">
+<div class="flex items-center gap-base">
+<span class="font-headline-md text-headline-md font-bold text-primary">KalyaThiru</span>
+<div class="hidden md:flex bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-lg text-[10px] font-bold uppercase tracking-wider">
+                Trust Score: 85
+            </div>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="relative active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary cursor-pointer">notifications</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80 transition-opacity">menu</span>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto space-y-stack-lg">
+<!-- Profile Completeness -->
+<section class="bg-white p-4 rounded-xl shadow-sm border border-outline-variant/10 mb-stack-lg"><div class="flex items-center gap-4"><div class="relative"><div class="w-16 h-16 rounded-full bg-surface-container overflow-hidden border-2 border-secondary"><img alt="Ananth Raman" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA9SnwlB1_dgRNxXLeT7AYF5jE6wi8mVXmCsVUGYZ6Ps67EBxKmwYoQ_doxEvZxQ4ZiI0h5J7nx7N0SaOvWWkG_QEhnbftKaNqYQyQDGlsNvzlVsQeepcwJNGQT-9sKXA2KYZqzF7OUXYQBIo8Dfh_liJyultghGyCJzbWBIVGgdHJrnp2BTc3ku-ov5fM6s419dRxKgik8t2YHsvW21bhNVKtvRahogOFvR_O_Picn-PbuC82Tmrd7TRxdLf-qB9yHWa4GguwIF4"/></div><button class="absolute -bottom-1 -right-1 bg-primary text-white rounded-full p-1 border-2 border-white shadow-sm" style="background: linear-gradient(135deg, #FFD700 0%, #FFB800 100%); color: #570013; box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);"><span class="material-symbols-outlined text-xs">add</span></button></div><div class="flex-1"><h1 class="font-headline-md text-lg text-on-surface">Ananth Raman</h1><div class="flex flex-col mt-0.5"><span class="text-xs font-semibold text-on-surface-variant">Free Member</span><span class="text-[10px] text-on-surface-variant">(இலவச உறுப்பினர்)</span></div></div><button class="bg-secondary text-primary px-4 py-1.5 rounded-lg font-bold text-xs uppercase tracking-wider shadow-sm active:scale-95 transition-transform" style="background: linear-gradient(135deg, #FFD700 0%, #FFB800 100%); color: #570013; box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);">Upgrade</button></div></section><section class="bg-surface-container-lowest p-stack-lg rounded-xl border border-outline-variant/20 shadow-sm">
+<div class="flex justify-between items-center mb-stack-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Complete Your Profile (உங்கள் சுயவிவரத்தைப் பூர்த்தி செய்யவும்)</h2>
+<p class="font-label-md text-label-md text-on-surface-variant">Profile completeness score 35%</p>
+</div>
+<div class="w-24 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="w-[35%] h-full bg-primary"></div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-base">
+<button class="flex flex-col items-center justify-center p-stack-md bg-surface-container hover:bg-surface-container-high transition-colors rounded-lg group bg-secondary-container/30">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center mb-base text-on-primary-container">
+<span class="material-symbols-outlined">add_a_photo</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Add Photo (புகைப்படம்)</span>
+</button>
+<button class="flex flex-col items-center justify-center p-stack-md bg-surface-container hover:bg-surface-container-high transition-colors rounded-lg group bg-secondary-container/30">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center mb-base text-on-secondary-container">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Verify Profile (சரிபார்)</span>
+</button>
+<button class="flex flex-col items-center justify-center p-stack-md bg-surface-container hover:bg-surface-container-high transition-colors rounded-lg group bg-secondary-container/30">
+<div class="w-12 h-12 rounded-full bg-tertiary-container flex items-center justify-center mb-base text-on-tertiary-container">
+<span class="material-symbols-outlined">family_restroom</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Family Details (குடும்ப விவரங்கள்)</span>
+</button>
+</div>
+</section>
+<!-- Hero Section: Heritage Trust Elite -->
+<section class="elite-gradient rounded-xl p-stack-lg text-white relative overflow-hidden flex flex-col items-center text-center">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg height="100%" preserveaspectratio="none" viewbox="0 0 100 100" width="100%">
+<pattern height="20" id="temple-pattern" patternunits="userSpaceOnUse" width="20" x="0" y="0">
+<path d="M10 0 L20 20 L0 20 Z" fill="currentColor"></path>
+</pattern>
+<rect fill="url(#temple-pattern)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<div class="relative z-10 py-6">
+<span class="material-symbols-outlined text-secondary-fixed text-display-lg mb-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<h1 class="font-headline-lg text-headline-lg text-white mb-base">Heritage Trust Elite (பாரம்பரிய அறக்கட்டளை எலைட்)</h1>
+<p class="font-body-md text-body-md text-primary-fixed mb-stack-lg max-w-md mx-auto">
+                    You qualify for our exclusive premium circle. Connect with highly compatible, verified elite matches. (எங்கள் பிரத்யேக பிரீமியம் வட்டத்திற்கு நீங்கள் தகுதியுடையவர்.)
+                </p>
+<button class="bg-secondary-fixed text-on-secondary-fixed px-stack-lg py-3 rounded-lg font-label-lg hover:brightness-110 active:scale-95 transition-all">
+                    Confirm Details (விவரங்களை உறுதிப்படுத்தவும்)
+                </button>
+</div>
+</section>
+<!-- Matches Section -->
+<section class="space-y-stack-md">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface">Matches For You (உங்களுக்கான வரன்கள்)</h2>
+<p class="font-body-md text-on-surface-variant">Based on your preferences</p>
+</div>
+<a class="text-primary font-bold hover:underline flex items-center gap-1 font-label-md" href="#">
+                    View All <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="scrolling-wrapper gap-gutter pb-4">
+<!-- Profile Card 1 -->
+<div class="min-w-[200px] md:min-w-[240px] bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden relative group shrink-0">
+<div class="absolute top-2 right-2 z-10">
+<div class="bg-secondary text-white px-2 py-1 rounded text-[10px] font-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">verified</span> VERIFIED
+                        </div>
+</div>
+<img alt="Profile" class="w-full h-48 md:h-64 object-cover" data-alt="A portrait of a young Indian woman wearing a traditional elegant saree, standing in a sun-drenched courtyard with classical Tamil architecture. The lighting is warm and golden, emphasizing a sophisticated and heritage-focused matchmaking aesthetic. Her expression is calm and confident, framed by a soft Ivory background that highlights her features and the intricate fabric details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV3Da70S8O3mQsfaJtkWNudxg7nbO3qYl4DavdPQt_dTnnjhEOEV94HiSzsptG48RAszVjL9vqoVc4upAO_e2DH6b0YuUIEKBwysKVyvx_nFpFGQMNX_EJFHSeldqyuAO_gIe0Njmw9ja8nTzEbNamn1iRqeMxwIi2fuOq4ZGkoEEzgPbAPcphRIq9eTK4pz0xPySmVccDWuG42wtqTwJ66QzHGTP1jJ6s_RS4sMKFqdaBZTVhiYieMXeXR4UBShVirJEk5SMHUlg"/>
+<div class="p-stack-md">
+<h3 class="font-headline-md text-body-lg text-on-surface">Priyanka R.</h3>
+<p class="text-on-surface-variant font-label-md mb-base">24 Yrs, 5'4" • Chennai</p>
+<div class="flex flex-wrap gap-1">
+<span class="bg-primary-fixed-dim text-on-primary-fixed px-2 py-0.5 rounded-full text-[10px] font-bold uppercase">Software Eng</span>
+</div>
+</div>
+</div>
+<!-- Profile Card 2 -->
+<div class="min-w-[200px] md:min-w-[240px] bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden relative group shrink-0">
+<img alt="Profile" class="w-full h-48 md:h-64 object-cover" data-alt="A professional portrait of a South Asian man in a clean, modern corporate setting. He is wearing a high-quality tailored suit, reflecting success and reliability. The environment is bright and airy with a Soft Ivory color palette, creating a trustworthy and premium matchmaking profile atmosphere. The lighting is natural and even, highlighting his friendly yet professional expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrcci5BjQK3Q5GCSRATndqLEXJYYXLEuX7eEkFdK8B-yiAG-92U35ENzDaPkfcqsp5fIoN9lQD2S-MpdBq0KEfC14E3amsBU8mJpZ8V40GchqqH-swIAso4SaT8NAZw97J3Xk1ZUNvY2c8CDCBq409Nzinlyi4blNr1G-nX3g6HhmfHuf3LZ2nNyLrp_JrjwKlp6ZKu72TKw2kRyHdq7XID4xxNqb-O67j7y9LcXnp8OsX9RxojUockWf1I6KvLu2eyQ_YXZYAxak"/>
+<div class="p-stack-md">
+<h3 class="font-headline-md text-body-lg text-on-surface">Arun Kumar</h3>
+<p class="text-on-surface-variant font-label-md mb-base">28 Yrs, 5'11" • Madurai</p>
+<div class="flex flex-wrap gap-1">
+<span class="bg-secondary-fixed-dim text-on-secondary-fixed px-2 py-0.5 rounded-full text-[10px] font-bold uppercase">MBA Graduate</span>
+</div>
+</div>
+</div>
+<!-- Profile Card 3 -->
+<div class="min-w-[200px] md:min-w-[240px] bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden relative group shrink-0">
+<img alt="Profile" class="w-full h-48 md:h-64 object-cover" data-alt="Close-up portrait of a Tamil woman with elegant traditional jewelry, set against a background of soft focus temple carvings. The image utilizes a sophisticated color scheme of Deep Maroon and Antique Gold accents, embodying a heritage-trust vibe. The lighting is cinematic, casting soft shadows that suggest depth and character, perfect for an institutional matchmaking platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBloTdX8Bq1nuiTKTTHQ2KUlwzKFwWZhCB5O-yyNy0LDNMu9gl1wkuzSN0B-dg-BonboLapttGFD07AQciJrMtaSVvWtS0yIlFxstBl9uv2lQm3xcr03DlCs8Y3-Z2P2VHAXztPTsOoe1kM8miFY6cIfJIFRoL9alzmppfGWl0533LnZ7VAWA7QFR7Yo7FS7QqlZQ3bk0iMyo9JrUI17cJOuZeKeBwtpP7IPyo0kLwgw9qXGGg9lqVXHbuV8FelvHwmUbhPACxXj5E"/>
+<div class="p-stack-md">
+<h3 class="font-headline-md text-body-lg text-on-surface">Deepika S.</h3>
+<p class="text-on-surface-variant font-label-md mb-base">26 Yrs, 5'2" • Coimbatore</p>
+<div class="flex flex-wrap gap-1">
+<span class="bg-tertiary-fixed-dim text-on-tertiary-fixed px-2 py-0.5 rounded-full text-[10px] font-bold uppercase">Classical Artist</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Membership Banner -->
+<section class="bg-secondary-container/30 rounded-xl border-2 border-secondary/20 p-stack-lg relative overflow-hidden">
+<div class="flex flex-col md:flex-row items-center gap-gutter relative z-10">
+<div class="flex-1 space-y-stack-md text-center md:text-left">
+<div class="inline-block bg-primary text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tighter">Limited Offer</div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-secondary-container">
+                        Become a Paid Member &amp; Save 61% (கட்டண உறுப்பினராகி 61% சேமிக்கவும்)
+                    </h2>
+<ul class="space-y-base text-on-surface-variant font-body-md inline-block text-left">
+<li class="flex items-center gap-base"><span class="material-symbols-outlined text-secondary font-bold">check_circle</span> Unlimited messaging (வரம்பற்ற செய்திகள்)</li>
+<li class="flex items-center gap-base"><span class="material-symbols-outlined text-secondary font-bold">check_circle</span> Call/WhatsApp verified matches (அழைப்பு/வாட்ஸ்அப் வசதி)</li>
+<li class="flex items-center gap-base"><span class="material-symbols-outlined text-secondary font-bold">check_circle</span> See who viewed you (உங்களைப் பார்த்தவர்களைக் காணுங்கள்)</li>
+</ul>
+<div>
+<button class="bg-primary text-white px-stack-lg py-3 rounded-lg font-label-lg shadow-lg active:scale-95 transition-transform">
+                            See Membership Plans (திட்டங்களைக் காண்க)
+                        </button>
+</div>
+</div>
+<div class="w-full md:w-1/3 aspect-square rounded-xl overflow-hidden shadow-xl border-4 border-white">
+<img alt="Success" class="w-full h-full object-cover" data-alt="A warm, professional lifestyle photograph of a happy South Asian couple sharing a moment over coffee in a bright, modern cafe setting. The colors are dominated by warm sandalwood tones and Soft Ivory, creating a sense of 'Warm Trust' and success. The lighting is airy and high-key, conveying a hopeful and sophisticated atmosphere typical of high-end social matchmaking." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrYzbEvLdTUA5iKo0WthAHezAhY9lnTYz2UOadtW1hvXQb_cRYV0WvX9VMnvH2Eip1WnUsl-6U9_gvpK75ClPAvffpPhY1Z4T4FwfCb138-UAh-kF6wiZylFvrTyH84Gp4T1tZVHVScLYvW3W69RMHCgbNNlvIoMGFR3uej_wHTfpPh6oreHyo13y_QKjz6VXLy8wXWSOwdXW-pYSLOMXo7BLY6Huyg3HTQGk5ZuPAZZ6bvKFoSaHzujBFhLCtZf6d4R-dLs3wUys"/>
+</div>
+</div>
+</section><section class="space-y-stack-md mt-stack-lg">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface">Profiles You Viewed (15) (உங்களால் பார்க்கப்பட்ட வரன்கள்)</h2>
+</div>
+</div>
+<div class="scrolling-wrapper gap-gutter pb-4">
+<div class="min-w-[200px] md:min-w-[240px] bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden relative group shrink-0">
+<img alt="Profile" class="w-full h-48 md:h-64 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBloTdX8Bq1nuiTKTTHQ2KUlwzKFwWZhCB5O-yyNy0LDNMu9gl1wkuzSN0B-dg-BonboLapttGFD07AQciJrMtaSVvWtS0yIlFxstBl9uv2lQm3xcr03DlCs8Y3-Z2P2VHAXztPTsOoe1kM8miFY6cIfJIFRoL9alzmppfGWl0533LnZ7VAWA7QFR7Yo7FS7QqlZQ3bk0iMyo9JrUI17cJOuZeKeBwtpP7IPyo0kLwgw9qXGGg9lqVXHbuV8FelvHwmUbhPACxXj5E"/>
+<div class="p-stack-md">
+<h3 class="font-headline-md text-body-lg text-on-surface">Ashifa Parveen</h3>
+<p class="text-on-surface-variant font-label-md mb-base">23 Yrs, 5'3"</p>
+<p class="text-[10px] text-on-surface-variant">Viewed on: 15 Jun 2026</p>
+</div>
+</div>
+<div class="min-w-[200px] md:min-w-[240px] bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden relative group shrink-0">
+<img alt="Profile" class="w-full h-48 md:h-64 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV3Da70S8O3mQsfaJtkWNudxg7nbO3qYl4DavdPQt_dTnnjhEOEV94HiSzsptG48RAszVjL9vqoVc4upAO_e2DH6b0YuUIEKBwysKVyvx_nFpFGQMNX_EJFHSeldqyuAO_gIe0Njmw9ja8nTzEbNamn1iRqeMxwIi2fuOq4ZGkoEEzgPbAPcphRIq9eTK4pz0xPySmVccDWuG42wtqTwJ66QzHGTP1jJ6s_RS4sMKFqdaBZTVhiYieMXeXR4UBShVirJEk5SMHUlg"/>
+<div class="p-stack-md">
+<h3 class="font-headline-md text-body-lg text-on-surface">Rifa</h3>
+<p class="text-on-surface-variant font-label-md mb-base">25 Yrs, 5'5"</p>
+<p class="text-[10px] text-on-surface-variant">Viewed on: 15 Jun 2026</p>
+</div>
+</div>
+<div class="min-w-[200px] md:min-w-[240px] bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden relative group shrink-0">
+<img alt="Profile" class="w-full h-48 md:h-64 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzxYlxKbG4k7wSd34tjkiE8yWf8Vh_sNZEelxpeG3SiCwSPt8VNE5t3HEmqyPbzrneenbnsouW9kwjPbD3CrU19iRbzpntszP4PF3axnSPhPiOxI6_VgTl_kw4t9BsNOV1bpKq2aDR8ry0cHErNuWfVwliFHz1fb9GnpMcvRz6VCX6uZTLlGR2F7p9IUFpXUZOHWy76sjPI7pSQpiKbCSGtAow635UCJcUrbkoshpergiwN-auGRv-CUdIS-0VPjLftgyNU1HN-uY"/>
+<div class="p-stack-md">
+<h3 class="font-headline-md text-body-lg text-on-surface">Syeda Sha</h3>
+<p class="text-on-surface-variant font-label-md mb-base">24 Yrs, 5'4"</p>
+<p class="text-[10px] text-on-surface-variant">Viewed on: 15 Jun 2026</p>
+</div>
+</div>
+</div>
+<div class="flex justify-center">
+<button class="text-primary font-bold hover:underline font-label-md">View all</button>
+</div>
+</section>
+<section class="bg-surface-container-low p-stack-lg rounded-xl border border-outline-variant/10 mt-stack-lg">
+<h3 class="font-headline-md text-on-surface mb-stack-md">Photo Requests (புகைப்படக் கோரிக்கைகள்)</h3>
+<div class="flex flex-col gap-base">
+<p class="font-body-md text-on-surface font-semibold">Requests received (1)</p>
+<p class="font-body-md text-on-surface-variant">1 member has requested you to add a photo to your profile</p>
+<button class="bg-primary-container text-white px-stack-lg py-2 rounded-lg font-label-lg w-fit mt-1 active:scale-95 transition-transform" style="background-color: #800020;">Add Photo</button>
+</div>
+</section>
+<!-- Social Proof Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Who Viewed You -->
+<section class="bg-surface-container-low p-stack-lg rounded-xl border border-outline-variant/10">
+<div class="flex justify-between items-center mb-stack-md">
+<h3 class="font-headline-md text-on-surface">Who Viewed You (11) (உங்களைப் பார்த்தவர்கள்)</h3>
+<a class="text-primary font-bold text-sm" href="#">View All</a>
+</div>
+<div class="flex -space-x-4 mb-stack-md">
+<img alt="user" class="w-12 h-12 rounded-full border-2 border-white object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzxYlxKbG4k7wSd34tjkiE8yWf8Vh_sNZEelxpeG3SiCwSPt8VNE5t3HEmqyPbzrneenbnsouW9kwjPbD3CrU19iRbzpntszP4PF3axnSPhPiOxI6_VgTl_kw4t9BsNOV1bpKq2aDR8ry0cHErNuWfVwliFHz1fb9GnpMcvRz6VCX6uZTLlGR2F7p9IUFpXUZOHWy76sjPI7pSQpiKbCSGtAow635UCJcUrbkoshpergiwN-auGRv-CUdIS-0VPjLftgyNU1HN-uY"/>
+<img alt="user" class="w-12 h-12 rounded-full border-2 border-white object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA9SnwlB1_dgRNxXLeT7AYF5jE6wi8mVXmCsVUGYZ6Ps67EBxKmwYoQ_doxEvZxQ4ZiI0h5J7nx7N0SaOvWWkG_QEhnbftKaNqYQyQDGlsNvzlVsQeepcwJNGQT-9sKXA2KYZqzF7OUXYQBIo8Dfh_liJyultghGyCJzbWBIVGgdHJrnp2BTc3ku-ov5fM6s419dRxKgik8t2YHsvW21bhNVKtvRahogOFvR_O_Picn-PbuC82Tmrd7TRxdLf-qB9yHWa4GguwIF4"/>
+<img alt="user" class="w-12 h-12 rounded-full border-2 border-white object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJKnrpav6X4bUdapz6axcCjqSklL7l1GXtwKkXdajV-mz_U671mMEaOGHoC8btxOs8S6N97yluxYZQ-XuJq1P8aUhZtzma73nsqB2RHE5booTP_Ck-Vr_mdfCDLBOxBSUoVGQyUTFunudvOsz8AO9s_qE66jdhYDCupv_AwELQYH-QEMjyv2hHEkCgrEgTPZNMDoqHb8GxanSJIXtEW9dYITGUPsEzea6eemfNwDUhDZsd6mbks4J50lZLHB5SnTdGSnaLEl4v8ls"/>
+<div class="w-12 h-12 rounded-full border-2 border-white bg-primary text-white flex items-center justify-center font-bold text-xs">+8</div>
+</div>
+<p class="font-label-md text-on-surface-variant">8 members visited your profile today. Upgrade to see their details.</p>
+</section>
+<!-- Success Stories -->
+<section class="bg-surface-container-low p-stack-lg rounded-xl border border-outline-variant/10 relative overflow-hidden">
+<h3 class="font-headline-md text-on-surface mb-stack-md">Success Stories (வெற்றிக் கதைகள்)</h3>
+<div class="flex items-center gap-stack-md bg-white p-base rounded-lg">
+<div class="w-16 h-16 rounded-lg bg-surface-variant shrink-0 overflow-hidden">
+<img alt="story" class="w-full h-full object-cover" data-alt="A small, high-contrast testimonial image of a smiling South Asian couple in festive attire, reflecting a successful union. The lighting is warm and bright, emphasizing a 'Heritage Trust' feel with clean white space surrounding the image in the UI card. The mood is celebratory and reliable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAT6F8TUASUqzRe5Yn7m-BAOGZvxq88FToaVtQ7l28Srbe--9I3ZJMtQqNYwqCH-an_Qmq7uhZWtih_Ec6kRIVVqgp9FIOMfXa63qhsawsSN5cbP3x5zBrLWCsZIxF3ZolEFPL3aK9RmudmUINAuKnRnq7zAxKAspI8Q5ZRYO9YnpuNRB-KhZ_rD96eSUK5OyxvHlDew0szHZ6fkBFXHhhVL_mDdP5ReeGvJKk_myphvvrpRG2xyfwSDJ3vAW2I8vv6-7wj2-Wyt0"/>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-on-surface italic">"Found my soulmate within 3 months! KalyaThiru verified profiles made it so easy."</p>
+<p class="font-label-md text-primary font-bold mt-1">— Anjali &amp; Vikram</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Trust Footnote -->
+<section class="flex flex-col md:flex-row items-center justify-between gap-gutter py-stack-lg border-t border-outline-variant/20 opacity-80">
+<div class="flex items-center gap-stack-md">
+<div class="p-2 bg-white rounded shadow-sm border border-outline-variant/20">
+<span class="material-symbols-outlined text-secondary text-3xl">workspace_premium</span>
+</div>
+<div>
+<h4 class="font-headline-md text-body-lg font-bold text-on-surface">Lakhs of Happy Marriages (லட்சக்கணக்கான மகிழ்ச்சியான திருமணங்கள்)</h4>
+<p class="font-label-md text-on-surface-variant">Featured in the Limca Book of Records for the highest documented marriages.</p>
+</div>
+</div>
+<div class="flex gap-stack-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">share</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">info</span>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface-container-lowest py-2 border-t border-outline-variant/10 rounded-t-xl"><a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-3 py-1 transition-transform duration-150 active:scale-95" href="#"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span><span class="font-label-md text-[10px]">Home</span></a><a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95" href="#"><span class="material-symbols-outlined">favorite</span><span class="font-label-md text-[10px]">Matches</span></a><a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95" href="#"><span class="material-symbols-outlined">auto_awesome</span><span class="font-label-md text-[10px]">AI Search</span></a><a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95 relative" href="#"><span class="material-symbols-outlined">chat_bubble</span><span class="font-label-md text-[10px]">Messages</span><span class="absolute top-0 right-1 w-2 h-2 bg-error rounded-full"></span></a><a class="flex flex-col items-center justify-center text-secondary transition-colors active:scale-95" href="#"><span class="material-symbols-outlined" style="color: #D4AF37; font-variation-settings: 'FILL' 1;">workspace_premium</span><span class="font-label-md text-[10px]">Upgrade</span></a><a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95" href="#"><span class="material-symbols-outlined">person</span><span class="font-label-md text-[10px]">Profile</span></a></nav>
+<script>
+        // Simple Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => button.classList.add('opacity-80'));
+            button.addEventListener('mouseup', () => button.classList.remove('opacity-80'));
+            button.addEventListener('mouseleave', () => button.classList.remove('opacity-80'));
+        });
+    </script>
+</body></html>

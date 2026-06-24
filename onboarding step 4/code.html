@@ -1,0 +1,292 @@
+<!DOCTYPE html><html class="light" lang="ta" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>KalyaThiru - Step 4 of 5 Registration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;family=Nunito+Sans:ital,wght@0,200..1000;1,200..1000&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#800020",
+                        "on-secondary-container": "#745c00",
+                        "tertiary-fixed": "#ffdbd1",
+                        "secondary-fixed": "#ffe088",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#dfd9d5",
+                        "inverse-surface": "#32302e",
+                        "on-tertiary-fixed": "#3b0900",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-container-low": "#f9f2ef",
+                        "on-background": "#1d1b19",
+                        "surface-container-highest": "#e7e1de",
+                        "surface-container": "#f3ede9",
+                        "primary": "#570013",
+                        "outline-variant": "#e0bfbf",
+                        "on-primary-fixed": "#40000b",
+                        "inverse-on-surface": "#f6f0ec",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-tertiary-container": "#ff8663",
+                        "tertiary-fixed-dim": "#ffb5a0",
+                        "on-tertiary-fixed-variant": "#872100",
+                        "tertiary-container": "#761c00",
+                        "inverse-primary": "#ffb3b5",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "outline": "#8c7071",
+                        "surface": "#fef8f4",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fef8f4",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-tint": "#af2b3e",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#fef8f4",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#ff828a",
+                        "surface-container-high": "#ede7e3",
+                        "surface-variant": "#e7e1de",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#fed65b",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#735c00",
+                        "on-surface": "#1d1b19",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#501000",
+                        "primary-fixed": "#ffdada",
+                        "on-surface-variant": "#584141"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "stack-sm": "4px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "stack-lg": "24px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "stack-md": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Nunito Sans"],
+                        "label-md": ["Nunito Sans"],
+                        "label-lg": ["Nunito Sans"],
+                        "headline-lg": ["Source Serif 4"],
+                        "headline-md": ["Source Serif 4"],
+                        "body-md": ["Nunito Sans"],
+                        "display-lg": ["Source Serif 4"],
+                        "headline-lg-mobile": ["Source Serif 4"],
+                        "aura-tag": ["Nunito Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "aura-tag": ["13px", {"lineHeight": "16px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .notched-container {
+            position: relative;
+            padding-top: 10px;
+        }
+        .notched-label {
+            position: absolute;
+            top: 0;
+            left: 12px;
+            background-color: #fef8f4; /* bg-background / sandalwood */
+            padding: 0 6px;
+            z-index: 10;
+        }
+        .radio-chip:checked + label {
+            background-color: #800020;
+            color: #ffffff;
+            border-color: #800020;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e0bfbf;
+            border-radius: 10px;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen flex flex-col items-center">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-background border-b border-outline-variant/20">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-high transition-colors rounded-full">arrow_back</button>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md font-bold text-primary">KalyaThiru</h1>
+</div>
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-high transition-colors rounded-full">more_vert</button>
+</header>
+<main class="w-full max-w-2xl px-margin-mobile pt-24 pb-32 flex flex-col items-stretch">
+<!-- Step Indicator -->
+<div class="mb-stack-lg">
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-lg text-primary uppercase tracking-wider">Step 4 of 8 (படி 4/8)</span>
+<span class="font-label-md text-on-surface-variant">40% Complete</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[80%] transition-all duration-500 ease-out"></div>
+</div>
+</div>
+<!-- Title -->
+<div class="mb-stack-lg">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-primary mb-1">Religious &amp; Community Details</h2>
+<p class="font-body-md text-on-surface-variant">(மதம் மற்றும் சமூக விவரங்கள்)</p>
+</div>
+<!-- Form Fields -->
+<form class="space-y-gutter" id="registration-step-4">
+<!-- Religion Dropdown -->
+<div class="notched-container group">
+<label class="notched-label font-label-md text-on-surface-variant group-focus-within:text-primary transition-colors">Religion (மதம்)</label>
+<select class="w-full h-14 bg-transparent border border-outline focus:border-primary-container focus:ring-1 focus:ring-primary-container rounded-lg px-4 font-body-md text-on-surface transition-all appearance-none cursor-pointer" id="religion-select" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23584141'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1.5em;"><option disabled="" selected="" value="" class="">Select Religion (மதத்தைத் தேர்ந்தெடுக்கவும்)</option><option value="hindu" class="">Hindu (இந்து)</option><option value="muslim" class="">Muslim (முஸ்லீம்)</option><option value="christian" class="">Christian (கிறிஸ்தவம்)</option><option value="atheist" class="">Atheist (நாத்திகர்)</option><option value="buddhism" class="">Buddhism (பௌத்தம்)</option><option value="jainism" class="">Jainism (சமணம்)</option><option value="sikhism" class="">Sikhism (சீக்கியம்)</option><option value="others" class="">Others (மற்றவை)</option></select>
+
+</div>
+<!-- Caste Dropdown (Dynamic Content based on Religion) -->
+<div class="notched-container group" id="caste-container">
+<label class="notched-label font-label-md text-on-surface-variant group-focus-within:text-primary transition-colors">Caste (சாதி)</label>
+<select class="w-full h-14 bg-transparent border border-outline focus:border-primary-container focus:ring-1 focus:ring-primary-container rounded-lg px-4 font-body-md text-on-surface transition-all appearance-none cursor-pointer" id="caste-select" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23584141'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1.5em;"><option value="" disabled="" selected="">Select Caste</option><option value="adi-dravida">Adi-Dravida</option><option value="anglican-church-of-india">Anglican Church of India</option><option value="anglo-indian">Anglo-Indian</option><option value="apostolic-christian-assembly">Apostolic Christian Assembly</option><option value="assemblies-of-god">Assemblies of God</option><option value="baptist">Baptist</option><option value="bettiah-christian">Bettiah Christian</option><option value="bible-mission">Bible Mission</option><option value="born-again">Born Again</option><option value="brethren-assembly">Brethren Assembly</option><option value="chaldean-syrian-church">Chaldean Syrian Church</option><option value="cheramar">Cheramar</option><option value="church-of-god">Church of God</option><option value="church-of-north-india">Church of North India</option><option value="church-of-south-india">Church of South India</option><option value="east-indian-catholic">East Indian Catholic</option><option value="el-shaddai">El Shaddai</option><option value="evangelical-church-of-india">Evangelical Church of India</option><option value="fernando">Fernando</option><option value="goan-catholic">Goan Catholic</option><option value="indian-pentecostal-church">Indian Pentecostal Church</option><option value="jacobite-syrian-orthodox-church">Jacobite Syrian Orthodox Church</option><option value="knanaya-catholic">Knanaya Catholic</option><option value="knanaya-jacobite">Knanaya Jacobite</option><option value="lutheran">Lutheran</option><option value="malabar-independent-syrian-church">Malabar Independent Syrian Church</option><option value="malankara-orthodox-syrian-church">Malankara Orthodox Syrian Church</option><option value="mangalorean-catholic">Mangalorean Catholic</option><option value="mar-thoma-syrian-church">Mar Thoma Syrian Church</option><option value="mennonite-brethren">Mennonite Brethren</option><option value="methodist-church-in-india">Methodist Church in India</option><option value="nadar">Nadar</option><option value="new-life-fellowship">New Life Fellowship</option><option value="paravan">Paravan</option><option value="presbyterian">Presbyterian</option><option value="pulaya">Pulaya</option><option value="roman-catholic">Roman Catholic</option><option value="salvation-army">Salvation Army</option><option value="scheduled-tribe-christian">Scheduled Tribe Christian</option><option value="seventh-day-adventist">Seventh-day Adventist</option><option value="syro-malabar-catholic">Syro-Malabar Catholic</option><option value="syro-malankara-catholic">Syro-Malankara Catholic</option><option value="vellalar">Vellalar</option><option value="caste-no-bar">Caste No Bar</option><option value="others">Others</option></select>
+
+</div>
+<!-- Caste No Bar Checkbox -->
+<div class="flex items-start gap-3 p-4 bg-surface-container-low border border-outline-variant/30 rounded-xl">
+<div class="flex items-center h-5">
+<input class="h-5 w-5 rounded border-outline text-primary-container focus:ring-primary-container cursor-pointer" id="caste-no-bar" name="caste-no-bar" type="checkbox" placeholder="on" value="">
+</div>
+<div class="flex flex-col">
+<label class="font-body-md font-bold text-on-surface cursor-pointer" for="caste-no-bar">Caste No Bar</label>
+<p class="text-label-md text-on-surface-variant">Willing to marry from any caste (எந்த சாதியிலிருந்தும் திருமணம் செய்து கொள்ள விருப்பம்)</p>
+</div>
+</div>
+<!-- Subcaste (Optional) -->
+<div class="notched-container group">
+<label class="notched-label font-label-md text-on-surface-variant group-focus-within:text-primary transition-colors">Subcaste (உட்சாதி - விருப்பத்திற்குரியது)</label>
+<input class="w-full h-14 bg-transparent border border-outline focus:border-primary-container focus:ring-1 focus:ring-primary-container rounded-lg px-4 font-body-md text-on-surface transition-all" placeholder="Specify if any (ஏதேனும் இருந்தால் குறிப்பிடவும்)" type="text">
+</div>
+<!-- Dosham Selection -->
+<div class="space-y-stack-md">
+<div class="flex items-center gap-2">
+<label class="font-label-lg text-primary uppercase tracking-wider">Dosham (தோஷம்)</label>
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">verified</span>
+</div>
+<div class="flex gap-4">
+<div class="flex-1">
+<input class="hidden radio-chip" id="dosham-yes" name="dosham" type="radio" value="yes">
+<label class="flex flex-col items-center justify-center h-16 border border-outline rounded-xl cursor-pointer hover:bg-surface-container transition-all" for="dosham-yes">
+<span class="font-body-md font-bold">Yes</span>
+<span class="text-[11px] opacity-70">ஆம்</span>
+</label>
+</div>
+<div class="flex-1">
+<input class="hidden radio-chip" id="dosham-no" name="dosham" type="radio" value="no">
+<label class="flex flex-col items-center justify-center h-16 border border-outline rounded-xl cursor-pointer hover:bg-surface-container transition-all" for="dosham-no">
+<span class="font-body-md font-bold">No</span>
+<span class="text-[11px] opacity-70">இல்லை</span>
+</label>
+</div>
+<div class="flex-1">
+<input checked="" class="hidden radio-chip" id="dosham-none" name="dosham" type="radio" value="none">
+<label class="flex flex-col items-center justify-center h-16 border border-outline rounded-xl cursor-pointer hover:bg-surface-container transition-all" for="dosham-none">
+<span class="font-body-md font-bold">None</span>
+<span class="text-[11px] opacity-70">எதுவுமில்லை</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Decorative Visual Context -->
+<div class="mt-gutter p-6 rounded-2xl bg-surface-container-high/50 border border-outline-variant/20 overflow-hidden relative min-h-[160px]">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary-container">temple_hindu</span>
+<h4 class="font-label-lg text-primary">Community Trust</h4>
+</div>
+<p class="font-body-md text-on-surface-variant leading-relaxed">KalyaThiru respects every tradition. Your community details help us find matches that share your cultural heritage and values.</p>
+</div>
+<!-- Background visual motif -->
+<div class="absolute -bottom-8 -right-8 opacity-5 transform rotate-12 scale-150">
+<span class="material-symbols-outlined text-[120px]">diversity_3</span>
+</div>
+</div>
+</form>
+</main>
+<!-- Sticky Bottom Navigation -->
+<div class="fixed bottom-0 left-0 w-full p-margin-mobile bg-background/80 backdrop-blur-md border-t border-outline-variant/10 z-40">
+<div class="max-w-2xl mx-auto flex flex-col sm:flex-row gap-4">
+<button class="w-full h-16 bg-primary-container text-on-primary font-bold rounded-full flex items-center justify-center gap-3 active:scale-95 transition-all shadow-lg shadow-primary-container/30 hover:brightness-110"><span class="font-label-lg uppercase tracking-wider">Continue (தொடரவும்)</span><span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+</div>
+<!-- Script to handle dynamic caste lists -->
+<script>
+        const hinduCastes = [
+            "Agnikula Kshatriya", "Agamudaiyar", "Adi Dravida", "Ambalakarar", "Anuppa Gounder", "Arundhathiyar", "Balija Naidu", "Beri Chettiar", "Boyar", "Brahmin", "Chakkiliyan", "Choia Vellalar", "Devanga Chettiar", "Devendrakula Velalar", "Elur Chettiar", "Ganjam Reddy", "Gavara Naidu", "Idaiyar", "Irular", "Iyer", "Iyengar", "Kadar", "Kadayan", "Kaladi", "Kallar", "Kaloddar", "Kamma Naidu", "Kanikaran", "Karkatha Vellalar", "Kasukkara Chettiar", "Konar", "Kongu Vellala Gounder", "Kosavar", "Kota", "Kudumban", "Kulala", "Kuruman", "Kurumba", "Kuyavar", "Madari", "Madiga", "Malayali", "Maravar", "Maruthuvar", "Meenavar", "Moopanar", "Mudaliar", "Muthuraja", "Muttarasan", "Muthuriyar", "Nadar", "Nagarathar", "Naidu", "Navithan", "Nayakar", "Nellorepet Boyar", "Oddar", "Padayachi", "Pagadai", "Pallar", "Palli", "Pannadi", "Paraiyar", "Parvatharajakulam", "Pattanavar", "Pandit", "Reddiar", "Reddy", "Sadhu Chettiar", "Saiva Vellalar", "Sambavar", "Sembadavar", "Shanar", "Thondaimandala Vellalar", "Thoti", "Toda", "Vadugar", "Valaiyar", "Valluvan", "Vannan", "Vanniyakula Kshatriya", "Vanniyar", "Veluthadar", "Yadava", "No Caste"
+        ];
+
+        const muslimCastes = [
+            "Ahl-e-Hadith", "Ansar", "Ansari", "Ashraf", "Baig", "Bohra", "Caste No Bar", "Dawoodi Bohra", "Dekkani", "Dhakni", "Dudekula", "Farooqi", "Halai Memon", "Hanafi", "Ismaili", "Kayalar", "Khan", "Khoja", "Kutchi Memon", "Ladaf", "Labbay", "Lebbai", "Mansoori", "Mapilla", "Mappila", "Marakayar", "Maraicar", "Memon", "Mir", "Momin", "Mughal", "Muslim - Others", "Navayat", "Nawayath", "Pathan", "Pinjara", "Qassab", "Qureshi", "Ravuttar", "Rowther", "Salafi", "Sayyid", "Shafi", "Shaikh", "Sheikh", "Shia", "Siddiqui", "Sunni", "Syed"
+        ];
+
+        const christianDenominations = [
+            "Adi-Dravida", "Anglican Church of India", "Anglo-Indian", "Apostolic Christian Assembly", "Assemblies of God", "Baptist", "Bettiah Christian", "Bible Mission", "Born Again", "Brethren Assembly", "Chaldean Syrian Church", "Cheramar", "Church of God", "Church of North India", "Church of South India", "East Indian Catholic", "El Shaddai", "Evangelical Church of India", "Fernando", "Goan Catholic", "Indian Pentecostal Church", "Jacobite Syrian Orthodox Church", "Knanaya Catholic", "Knanaya Jacobite", "Lutheran", "Malabar Independent Syrian Church", "Malankara Orthodox Syrian Church", "Mangalorean Catholic", "Mar Thoma Syrian Church", "Mennonite Brethren", "Methodist Church in India", "Nadar", "New Life Fellowship", "Paravan", "Presbyterian", "Pulaya", "Roman Catholic", "Salvation Army", "Scheduled Tribe Christian", "Seventh-day Adventist", "Syro-Malabar Catholic", "Syro-Malankara Catholic", "Vellalar", "Caste No Bar", "Others"
+        ];
+
+        const otherCastes = ["Caste No Bar", "Community Not Listed"];
+
+        const religionSelect = document.getElementById('religion-select');
+        const casteSelect = document.getElementById('caste-select');
+
+        religionSelect.addEventListener('change', function() {
+            const religion = this.value;
+            casteSelect.innerHTML = '<option value="" disabled selected>Select Caste</option>';
+            
+            let list = [];
+            if (religion === 'hindu') list = hinduCastes;
+            else if (religion === 'muslim') list = muslimCastes;
+            else if (religion === 'christian') list = christianDenominations;
+            else list = otherCastes;
+
+            list.forEach(caste => {
+                const option = document.createElement('option');
+                option.value = caste.toLowerCase().replace(/\s+/g, '-');
+                option.textContent = caste;
+                casteSelect.appendChild(option);
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

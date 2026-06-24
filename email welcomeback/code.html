@@ -1,0 +1,210 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Login | KalyaThiru Matrimony</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&amp;family=Source+Serif+4:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#af2b3e",
+                        "surface-container-high": "#ede7e3",
+                        "secondary": "#735c00",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-bright": "#fef8f4",
+                        "surface-dim": "#dfd9d5",
+                        "secondary-container": "#fed65b",
+                        "inverse-on-surface": "#f6f0ec",
+                        "primary": "#570013",
+                        "secondary-fixed-dim": "#e9c349",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#761c00",
+                        "on-secondary-container": "#745c00",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#ffdada",
+                        "surface-container": "#f3ede9",
+                        "outline-variant": "#e0bfbf",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-variant": "#e7e1de",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "on-primary": "#ffffff",
+                        "background": "#fef8f4",
+                        "surface": "#fef8f4",
+                        "primary-container": "#800020",
+                        "on-tertiary-container": "#ff8663",
+                        "on-primary-fixed": "#40000b",
+                        "tertiary": "#501000",
+                        "on-tertiary-fixed-variant": "#872100",
+                        "error": "#ba1a1a",
+                        "on-background": "#1d1b19",
+                        "surface-container-low": "#f9f2ef",
+                        "on-primary-container": "#ff828a",
+                        "inverse-surface": "#32302e",
+                        "on-surface": "#1d1b19",
+                        "on-tertiary-fixed": "#3b0900",
+                        "surface-container-highest": "#e7e1de",
+                        "outline": "#8c7071",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#584141",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdbd1",
+                        "secondary-fixed": "#ffe088",
+                        "inverse-primary": "#ffb3b5",
+                        "tertiary-fixed-dim": "#ffb5a0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "stack-sm": "4px",
+                        "stack-lg": "24px",
+                        "container-max": "1200px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin-mobile": "16px",
+                        "stack-md": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Nunito Sans"],
+                        "label-lg": ["Nunito Sans"],
+                        "body-md": ["Nunito Sans"],
+                        "headline-lg": ["\"Source Serif 4\""],
+                        "label-md": ["Nunito Sans"],
+                        "headline-lg-mobile": ["\"Source Serif 4\""],
+                        "display-lg": ["\"Source Serif 4\""],
+                        "aura-tag": ["Nunito Sans"],
+                        "headline-md": ["\"Source Serif 4\""]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "aura-tag": ["13px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-pattern {
+            background-image: radial-gradient(circle at 2px 2px, rgba(140, 112, 113, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-secondary-container/30">
+<!-- Top Navigation Shell (Transactional Filter: Simplified) -->
+<header class="flex items-center w-full px-margin-mobile md:px-margin-desktop h-16 bg-surface border-b border-outline-variant/20 fixed top-0 z-50">
+<div class="flex items-center gap-stack-md cursor-pointer" onclick="window.history.back()">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">KalyaThiru</span>
+</div>
+</header>
+<main class="min-h-screen pt-16 flex items-center justify-center relative overflow-hidden hero-pattern">
+<!-- Background Elements -->
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
+<div class="max-w-[480px] w-full px-margin-mobile py-stack-lg relative z-10">
+<!-- Login Container -->
+<div class="bg-surface-container-lowest border border-outline-variant/10 shadow-sm rounded-lg p-stack-lg md:p-10">
+<!-- Brand Anchor & Welcome -->
+<div class="text-center mb-stack-lg">
+<div class="inline-flex items-center justify-center w-16 h-16 bg-primary/5 rounded-full mb-stack-md">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">temple_hindu</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg md:text-headline-lg text-primary mb-stack-sm">Welcome Back</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Enter your registered email address to login</p>
+</div>
+<!-- Login Form -->
+<form class="space-y-stack-lg" onsubmit="event.preventDefault();">
+<div class="space-y-stack-sm">
+<label class="font-label-lg text-label-lg text-on-surface-variant block uppercase tracking-wider" for="email">Registered Email</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-stack-md flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant group-focus-within:text-primary transition-colors">mail</span>
+</div>
+<input class="w-full h-12 pl-11 pr-stack-md bg-surface border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none rounded-lg text-body-md transition-all placeholder:text-outline/60" id="email" name="email" placeholder="name@example.com" required="" type="email">
+</div>
+</div>
+<button class="w-full h-14 bg-primary text-on-primary font-label-lg text-label-lg rounded-lg hover:bg-primary-container hover:text-on-primary-container active:scale-[0.98] transition-all flex items-center justify-center gap-stack-md shadow-md" type="submit">
+                        Get OTP on Email
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="flex items-center my-stack-lg">
+<div class="flex-grow border-t border-outline-variant/20"></div>
+<span class="px-stack-md font-label-md text-label-md text-outline">OR</span>
+<div class="flex-grow border-t border-outline-variant/20"></div>
+</div>
+<!-- Alternative Login -->
+<div class="text-center">
+<a class="inline-flex items-center gap-stack-sm font-label-lg text-label-lg text-primary hover:text-surface-tint transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl">phone_android</span>
+                        Login via Mobile Number
+                    </a>
+</div>
+</div>
+<!-- Bottom Links -->
+<div class="mt-stack-lg text-center space-y-stack-sm">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Don't have an account? 
+                    <a class="font-label-lg text-label-lg text-primary hover:underline underline-offset-4 ml-1" href="#">Register Now</a>
+</p>
+<p class="font-label-md text-label-md text-outline px-margin-mobile">
+                    By continuing, you agree to our <a class="hover:text-on-surface" href="#">Terms of Service</a> and <a class="hover:text-on-surface" href="#">Privacy Policy</a>.
+                </p>
+</div>
+</div>
+</main>
+<!-- Simple Footer (Suppressed active navigation as this is a focused task page) -->
+<footer class="bg-surface border-t border-outline-variant/10 py-stack-lg px-margin-mobile">
+<div class="max-w-container-max mx-auto flex flex-col items-center gap-stack-md">
+<div class="font-headline-md text-headline-md text-primary opacity-50">KalyaThiru</div>
+<div class="flex flex-wrap justify-center gap-stack-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Trust &amp; Safety</a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-center">© 2024 KalyaThiru Matrimony. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interaction for input focus
+        const emailInput = document.getElementById('email');
+        const container = emailInput.closest('.group');
+        
+        emailInput.addEventListener('focus', () => {
+            container.classList.add('shadow-sm');
+        });
+        
+        emailInput.addEventListener('blur', () => {
+            container.classList.remove('shadow-sm');
+        });
+    </script>
+</body></html>

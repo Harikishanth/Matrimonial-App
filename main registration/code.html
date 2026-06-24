@@ -1,0 +1,233 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>KalyaThiru | Phone Verification</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&amp;family=Source+Serif+4:wght@600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#872100",
+                    "tertiary-fixed": "#ffdbd1",
+                    "surface": "#fef8f4",
+                    "secondary-fixed": "#ffe088",
+                    "surface-container-low": "#f9f2ef",
+                    "surface-bright": "#fef8f4",
+                    "inverse-surface": "#32302e",
+                    "on-primary": "#ffffff",
+                    "outline": "#8c7071",
+                    "primary-fixed-dim": "#ffb3b5",
+                    "surface-tint": "#af2b3e",
+                    "on-background": "#1d1b19",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e7e1de",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#fed65b",
+                    "tertiary": "#501000",
+                    "on-primary-fixed-variant": "#8e0f28",
+                    "primary-fixed": "#ffdada",
+                    "on-tertiary-container": "#ff8663",
+                    "on-surface": "#1d1b19",
+                    "surface-dim": "#dfd9d5",
+                    "secondary-fixed-dim": "#e9c349",
+                    "on-secondary-container": "#745c00",
+                    "inverse-on-surface": "#f6f0ec",
+                    "tertiary-container": "#761c00",
+                    "on-surface-variant": "#584141",
+                    "on-secondary-fixed": "#241a00",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#e0bfbf",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-primary-container": "#ff828a",
+                    "on-tertiary-fixed": "#3b0900",
+                    "surface-container": "#f3ede9",
+                    "on-primary-fixed": "#40000b",
+                    "surface-container-high": "#ede7e3",
+                    "error": "#ba1a1a",
+                    "secondary": "#735c00",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#800020",
+                    "inverse-primary": "#ffb3b5",
+                    "background": "#fef8f4",
+                    "surface-container-highest": "#e7e1de",
+                    "tertiary-fixed-dim": "#ffb5a0",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#570013"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-sm": "4px",
+                    "gutter": "24px",
+                    "container-max": "1200px",
+                    "stack-md": "12px",
+                    "margin-mobile": "16px",
+                    "stack-lg": "24px",
+                    "margin-desktop": "40px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Nunito Sans"],
+                    "headline-lg-mobile": ["\"Source Serif 4\""],
+                    "label-lg": ["Nunito Sans"],
+                    "body-md": ["Nunito Sans"],
+                    "headline-md": ["\"Source Serif 4\""],
+                    "aura-tag": ["Nunito Sans"],
+                    "headline-lg": ["\"Source Serif 4\""],
+                    "label-md": ["Nunito Sans"],
+                    "display-lg": ["\"Source Serif 4\""]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "aura-tag": ["13px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .trust-badge {
+            background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        input:focus {
+            outline: none;
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface min-h-screen flex flex-col">
+<!-- Top Navigation (From Shared Components) -->
+<header class="flex items-center w-full px-margin-mobile h-16 bg-surface border-b border-outline-variant/20 fixed top-0 z-50">
+<div class="flex items-center justify-between w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-primary cursor-pointer">arrow_back</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">KalyaThiru</span>
+</div>
+<div class="hidden md:flex gap-stack-lg items-center">
+<span class="text-on-surface-variant font-label-lg cursor-pointer hover:text-primary transition-colors">Help</span>
+<span class="text-on-surface-variant font-label-lg cursor-pointer hover:text-primary transition-colors">Safety</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col items-center justify-center pt-24 px-margin-mobile pb-stack-lg">
+<!-- Header Branding & Trust Signal -->
+<div class="text-center mb-stack-lg space-y-2">
+<h1 class="font-headline-lg text-headline-lg text-primary">Phone Verification</h1>
+<div class="flex items-center justify-center gap-1 opacity-80">
+<span class="material-symbols-outlined text-[16px] text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">100% Secure &amp; Verified</span>
+</div>
+</div>
+<!-- Login Card -->
+<div class="w-full max-w-[400px] bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-gutter shadow-sm">
+<div class="mb-stack-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-stack-sm text-center">Create Your Account</h2>
+<p class="font-body-md text-body-md text-on-surface-variant text-center opacity-70">Join TN Matrimony to find your perfect partner.</p>
+</div>
+<form class="space-y-stack-lg" onsubmit="return false;">
+<!-- Phone Input Group -->
+<div class="space-y-stack-sm">
+<label class="block font-label-md text-label-md text-on-surface-variant uppercase ml-1">Mobile Number</label>
+<div class="relative flex items-center border border-outline rounded-lg bg-surface-container-low transition-all duration-200 focus-within:border-primary-container group">
+<div class="flex items-center pl-stack-md pr-stack-sm border-r border-outline-variant/50">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] mr-2">call</span>
+<span class="font-body-md font-bold text-on-surface">+91</span>
+</div>
+<input class="w-full py-4 px-stack-md bg-transparent font-body-md text-on-surface border-none focus:ring-0 placeholder:text-on-surface-variant/40" maxlength="10" placeholder="உங்கள் கைப்பேசி எண்" type="tel">
+</div>
+<p class="text-[11px] text-on-surface-variant italic ml-1">* We'll send an OTP to verify your account.</p>
+</div>
+<!-- CTA Button -->
+<button class="w-full bg-primary-container hover:bg-primary text-on-primary py-4 rounded-lg font-label-lg transition-all duration-300 transform active:scale-[0.98] flex items-center justify-center gap-2">
+                    Get OTP
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</form>
+<!-- Social/Alternative Footer -->
+<div class="mt-stack-lg pt-stack-lg border-t border-outline-variant/10 text-center">
+<p class="font-label-md text-on-surface-variant">Don't have a phone handy?</p>
+<button class="mt-stack-sm text-primary font-label-md hover:underline decoration-primary/30">Verify via Email</button>
+</div>
+</div>
+<!-- Aesthetic Imagery Component -->
+<div class="mt-margin-desktop w-full max-w-container-max grid grid-cols-1 md:grid-cols-3 gap-stack-md opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
+<div class="h-32 rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A macro shot of intricate gold temple jewelry laid out on a soft sandalwood colored silk cloth. The lighting is warm and directional, highlighting the craftsmanship and traditional Tamil heritage. The mood is sophisticated, institutional, and rooted in deep cultural trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0VXyQolRsrsiiYYZV2PGiONlCON6P2F9ZwKItS8vKz4BZrI2qKKR0zFZAaYvyJSvFiDGYHzPLdVQsgJpgQ-fJp9EN-tQgUmRgZtQirXxDzBy_gIda764zNgvXuRh8iX1G8bSQ6IHHzvte0RV6yAQIn5__ZjqRENdq6YhAO7nNR1nxJYFgNZGcSP7LbVj7gukZEmz3FGq6PBzby8nK5glEAzL-rp8toAd7e-3S7XcXsxC6RHw5wliNHUry34Th5sE_N-pbAmlhhg4">
+</div>
+<div class="h-32 rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A serene morning scene in a traditional South Indian household with steam rising from a brass filter kaapi tumbler sitting on an ivory stone surface. Sunlight filters through a wooden window creating soft shadows. The aesthetic is modern-editorial with a focus on heritage and stability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_J_RzyFKiAv9FPcfJNviRgE8ZUhugM6dE9LBLL_HZUg8VItSb2tejUyh4RA0l-o9c0kIJ7nXcrXcvw1p_Uw59JeJvOe1go02thYFr863aG2UWdi8KCuf9NSuDPI4hbv3r-50HT0JrfkPlqCKC5_9HZCAaHZpOniXIXUMa-cKtHeYb06eoCvKZFuIxLlMAHdiedOUISbEtIFAYP3Q_Jkd5hbPT3NtKVENGg1YsfhNXzTZmu58QGVKcuELpJwH0fHG1bCHVTMe1tdk">
+</div>
+<div class="h-32 rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Abstract architectural lines of a Dravidian temple gopuram shot in high contrast black and white against a bright sky. The focus is on the structural stability and permanence of the stone carvings, representing institutional trust and reliable matrimonial alliances." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBs1ILsvA-i-pU6aLj10ktSUZu3l_kDjgU6dsGZg-JRAWOq1oZ73aT1gLZYZJGc-c2jMyNRc9wdYIY4LIrBYC61LdjQclREZsByEt7mLNj4Q1rrqAs_R9gw4kRGsU9g1eF8Y2rYpOEcwVVKb5ofdA_pxi4qhhVX1CqxlR4xgrBS6SgGJXzzCrUbr-sqoSMlkTvUQ14v7gGFLySDjVev7WAwfNjUOwMkiB3jsaTDLkGZQC-KCkmsaQo2dUgBM2u0pFTBxRLV64Gpys">
+</div>
+</div>
+</main>
+<!-- Footer (From Shared Components) -->
+<footer class="flex flex-col items-center gap-stack-md py-stack-lg px-margin-mobile bg-surface border-t border-outline-variant/10">
+<div class="flex gap-stack-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Trust &amp; Safety</a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 KalyaThiru Matrimony. All rights reserved.</p>
+</footer>
+<!-- Simple Interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.querySelector('input[type="tel"]');
+            const button = document.querySelector('button.bg-primary-container');
+
+            input.addEventListener('input', (e) => {
+                // Remove non-numeric characters
+                e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                
+                // Simple validation feedback
+                if(e.target.value.length === 10) {
+                    input.parentElement.classList.add('border-primary');
+                    input.parentElement.classList.remove('border-outline');
+                } else {
+                    input.parentElement.classList.remove('border-primary');
+                    input.parentElement.classList.add('border-outline');
+                }
+            });
+
+            // Ripple-like effect on button click
+            button.addEventListener('mousedown', function(e) {
+                this.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', function(e) {
+                this.classList.remove('scale-95');
+            });
+        });
+    </script>
+
+
+</body></html>

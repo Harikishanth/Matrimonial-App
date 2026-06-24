@@ -1,0 +1,246 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>KalyaThiru - Personal Details</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#872100",
+                    "surface-container": "#f3ede9",
+                    "surface-container-highest": "#e7e1de",
+                    "tertiary-fixed": "#ffdbd1",
+                    "tertiary-container": "#761c00",
+                    "on-surface-variant": "#584141",
+                    "tertiary": "#501000",
+                    "primary-fixed-dim": "#ffb3b5",
+                    "on-secondary-container": "#745c00",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#735c00",
+                    "on-primary-fixed": "#40000b",
+                    "surface-container-low": "#f9f2ef",
+                    "on-primary-fixed-variant": "#8e0f28",
+                    "on-error": "#ffffff",
+                    "primary-container": "#800020",
+                    "surface-bright": "#fef8f4",
+                    "on-tertiary-container": "#ff8663",
+                    "on-secondary-fixed-variant": "#574500",
+                    "secondary-fixed-dim": "#e9c349",
+                    "inverse-surface": "#32302e",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#ede7e3",
+                    "secondary-container": "#fed65b",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e7e1de",
+                    "on-primary-container": "#ff828a",
+                    "on-secondary-fixed": "#241a00",
+                    "on-background": "#1d1b19",
+                    "inverse-on-surface": "#f6f0ec",
+                    "primary-fixed": "#ffdada",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#ffe088",
+                    "tertiary-fixed-dim": "#ffb5a0",
+                    "primary": "#570013",
+                    "surface-dim": "#dfd9d5",
+                    "outline": "#8c7071",
+                    "on-surface": "#1d1b19",
+                    "on-tertiary-fixed": "#3b0900",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#af2b3e",
+                    "surface": "#fef8f4",
+                    "outline-variant": "#e0bfbf",
+                    "background": "#fef8f4",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#ffb3b5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-sm": "4px",
+                    "stack-lg": "24px",
+                    "margin-desktop": "40px",
+                    "container-max": "1200px",
+                    "stack-md": "12px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Nunito Sans"],
+                    "label-md": ["Nunito Sans"],
+                    "headline-md": ["Source Serif 4"],
+                    "display-lg": ["Source Serif 4"],
+                    "body-lg": ["Nunito Sans"],
+                    "body-md": ["Nunito Sans"],
+                    "aura-tag": ["Nunito Sans"],
+                    "headline-lg": ["Source Serif 4"],
+                    "headline-lg-mobile": ["Source Serif 4"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .input-container input:focus ~ label,
+        .input-container input:not(:placeholder-shown) ~ label {
+            transform: translateY(-1.5rem) scale(0.85);
+            color: #570013; /* primary */
+        }
+        
+        .reveal-animation {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .reveal-animation.show {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 1.5rem;
+        }
+
+        .step-transition {
+            transition: width 0.6s ease-in-out;
+        }
+        
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md text-body-md" style="background-color: #FDFBF4;">
+<!-- TopAppBar Shell -->
+<header class="bg-surface border-b border-outline-variant/15 w-full top-0 sticky z-50">
+<div class="flex items-center px-margin-mobile h-16 w-full max-w-container-max mx-auto">
+<button aria-label="Go back" class="cursor-pointer active:scale-95 hover:bg-surface-container-low transition-colors p-2 rounded-full mr-2">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">Personal Details <span class="text-body-md font-normal block md:inline opacity-80">(தனிப்பட்ட விவரங்கள்)</span></h1>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile pt-stack-lg pb-32">
+<!-- Progress Indicator -->
+<div class="mb-stack-lg">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">STEP 2 OF 5 <span class="opacity-70">(படி 2/5)</span></span>
+<span class="font-label-md text-label-md text-primary font-bold">40% Complete</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary step-transition" style="width: 40%;"></div>
+</div>
+</div>
+<!-- Hero Content -->
+<div class="mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-sm">Tell us a bit about yourself <span class="text-headline-md block opacity-70">(உங்களைப் பற்றிச் சொல்லுங்கள்)</span></h2>
+<p class="text-on-surface-variant font-body-md text-body-md leading-relaxed">Building your profile with accurate details helps us find the most compatible matches for your heritage and lifestyle. <span class="block mt-1 text-sm opacity-75">(துல்லியமான விவரங்களுடன் உங்கள் சுயவிவரத்தை உருவாக்குவது உங்கள் பாரம்பரியம் மற்றும் வாழ்க்கை முறைக்கு ஏற்ற பொருத்தங்களைக் கண்டறிய உதவுகிறது.)</span></p>
+</div>
+<!-- Form Section -->
+<form class="space-y-stack-lg max-w-xl" id="registrationForm">
+<!-- First Name -->
+<div class="relative mt-2">
+<input class="peer w-full h-14 px-4 border border-outline-variant focus:border-primary bg-transparent text-on-surface rounded-lg transition-all outline-none" id="firstName" name="firstName" placeholder=" " required="" type="text" value="Anand">
+<label class="absolute left-3 -top-2.5 px-1 bg-surface text-on-surface-variant transition-all duration-200 font-label-md text-label-md peer-placeholder-shown:top-4 peer-placeholder-shown:left-4 peer-placeholder-shown:text-label-lg peer-focus:-top-2.5 peer-focus:left-3 peer-focus:text-primary peer-focus:text-label-md" for="firstName">First Name <span class="text-[11px] font-normal opacity-80">(முதல் பெயர்)</span> *</label>
+</div>
+<!-- Middle Name -->
+<div class="relative mt-2">
+<input class="peer w-full h-14 px-4 border border-outline-variant focus:border-primary bg-transparent text-on-surface rounded-lg transition-all outline-none" id="middleName" name="middleName" placeholder=" " type="text">
+<label class="absolute left-3 -top-2.5 px-1 bg-surface text-on-surface-variant transition-all duration-200 font-label-md text-label-md peer-placeholder-shown:top-4 peer-placeholder-shown:left-4 peer-placeholder-shown:text-label-lg peer-focus:-top-2.5 peer-focus:left-3 peer-focus:text-primary peer-focus:text-label-md" for="middleName">Middle Name <span class="text-[11px] font-normal opacity-80">(இடைப்பெயர்)</span></label>
+</div>
+<!-- Last Name -->
+<div class="relative mt-2">
+<input class="peer w-full h-14 px-4 border border-outline-variant focus:border-primary bg-transparent text-on-surface rounded-lg transition-all outline-none" id="lastName" name="lastName" placeholder=" " required="" type="text" value="Iyer">
+<label class="absolute left-3 -top-2.5 px-1 bg-surface text-on-surface-variant transition-all duration-200 font-label-md text-label-md peer-placeholder-shown:top-4 peer-placeholder-shown:left-4 peer-placeholder-shown:text-label-lg peer-focus:-top-2.5 peer-focus:left-3 peer-focus:text-primary peer-focus:text-label-md" for="lastName">Last Name <span class="text-[11px] font-normal opacity-80">(கடைசி பெயர்)</span> *</label>
+</div>
+<!-- Placeholder for Reveal -->
+<!-- Date of Birth (Hidden initially) -->
+<div class="reveal-animation show" id="dobSection"><div class="relative mt-2">
+<input class="peer w-full h-14 px-4 border border-outline-variant focus:border-primary bg-transparent text-on-surface rounded-lg transition-all outline-none" id="dob" name="dob" placeholder=" " type="date" value="1992-05-15">
+<label class="absolute left-3 -top-2.5 px-1 bg-surface text-primary font-bold transition-all duration-200 font-label-md text-label-md" for="dob">Date of Birth <span class="text-[11px] font-normal opacity-80">(பிறந்த தேதி)</span></label>
+</div>
+<p class="mt-2 text-on-secondary-fixed-variant font-label-md text-label-md flex items-start gap-1"><span class="material-symbols-outlined text-[16px] mt-0.5 opacity-70">info</span><span class="leading-tight">We use this to verify age and calculate horoscope compatibility. <span class="block text-[11px] opacity-70 mt-0.5">(வயதைச் சரிபார்க்கவும் ஜாதகப் பொருத்தத்தைக் கணக்கிடவும் இதைப் பயன்படுத்துகிறோம்.)</span></span></p></div>
+</form>
+<!-- Institutional Trust Seal -->
+<div class="mt-stack-lg p-stack-md bg-secondary-fixed/20 border border-secondary/10 rounded-lg flex items-start gap-4">
+<div class="p-2 bg-secondary-container text-on-secondary-container rounded-full shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface font-bold">Privacy Guaranteed <span class="font-normal opacity-70">(தனியுரிமை உறுதி செய்யப்பட்டது)</span></h4>
+<p class="font-body-md text-[14px] text-on-surface-variant leading-relaxed">KalyaThiru adheres to strict institutional privacy standards. Your personal data is encrypted and only shared with verified matches as per your settings. <span class="block mt-1 italic text-[12px] opacity-75">(KalyaThiru கடுமையான நிறுவன தனியுரிமை தரநிலைகளை கடைபிடிக்கிறது. உங்கள் தனிப்பட்ட தரவு குறியாக்கம் செய்யப்பட்டுள்ளது மற்றும் உங்கள் அமைப்புகளின்படி சரிபார்க்கப்பட்ட பொருத்தங்களுடன் மட்டுமே பகிரப்படும்.)</span></p>
+</div>
+</div>
+</main>
+<!-- Bottom Actions Shell -->
+<div class="fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant/15 z-50">
+<div class="max-w-container-max mx-auto px-margin-mobile py-4 flex flex-col items-center">
+<button class="w-full md:w-auto md:min-w-[240px] h-14 px-8 font-label-lg text-label-lg rounded-lg transition-all active:scale-95 flex items-center justify-center gap-2 bg-primary-container text-on-primary" id="continueBtn">Continue (தொடரவும்) <span class="material-symbols-outlined">arrow_forward</span></button>
+<p class="mt-3 font-label-md text-label-md text-on-surface-variant">By continuing, you agree to our Terms of Service</p>
+</div>
+</div>
+<!-- Background Atmospheric Element -->
+<div class="fixed top-0 right-0 -z-10 opacity-10 pointer-events-none">
+<img alt="Traditional South Indian temple architectural details" class="w-[600px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpvbG0MrF8JHsmqvrwnHQQl6lCKCjxTmKSKQ-HmYludPatUuTJAjRjb39OpaeYYSowlJ0kPh_EhPaY5j4XmjiYnO-amfz2RQS7sHju4RWSr8e-Htx73VEjnsPc9zWoPy2riqhujZe9tcxGptssAh5hakQwWTNm5MtBDdbzi_TWgcc97jBMfoB9ISGHWa3vhIx33r8UZjJX2rLhUBW-tbT3ftaNBf7WbY2Gs70fLtUhET7kGwc49cY3b4jZ0P1Po6YZEfBZ3-rGgfc">
+</div>
+<script>
+        const firstName = document.getElementById('firstName');
+        const lastName = document.getElementById('lastName');
+        const dobPlaceholder = document.getElementById('dobPlaceholder');
+        const dobSection = document.getElementById('dobSection');
+        const dobInput = document.getElementById('dob');
+        const continueBtn = document.getElementById('continueBtn');
+
+        function checkInputs() {
+            const hasFirst = firstName.value.trim().length > 0;
+            const hasLast = lastName.value.trim().length > 0;
+            
+            // Reveal DOB section
+            if (hasFirst && hasLast) {
+                dobPlaceholder.classList.add('hidden');
+                dobSection.classList.add('show');
+            } else {
+                dobPlaceholder.classList.remove('hidden');
+                dobSection.classList.remove('show');
+            }
+
+            // Enable Continue Button
+            const hasDob = dobInput.value !== "";
+            if (hasFirst && hasLast && hasDob) {
+                continueBtn.disabled = false;
+                continueBtn.classList.remove('bg-surface-container-highest', 'text-on-surface-variant', 'cursor-not-allowed');
+                continueBtn.classList.add('bg-primary-container', 'text-on-primary', 'shadow-md');
+            } else {
+                continueBtn.disabled = true;
+                continueBtn.classList.add('bg-surface-container-highest', 'text-on-surface-variant', 'cursor-not-allowed');
+                continueBtn.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-md');
+            }
+        }
+
+        firstName.addEventListener('input', checkInputs);
+        lastName.addEventListener('input', checkInputs);
+        dobInput.addEventListener('change', checkInputs);
+
+        continueBtn.addEventListener('mousedown', function() {
+            if(!this.disabled) this.style.transform = "scale(0.97)";
+        });
+        continueBtn.addEventListener('mouseup', function() {
+            if(!this.disabled) this.style.transform = "scale(1)";
+        });
+    </script>
+</body></html>
