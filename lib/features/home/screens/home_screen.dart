@@ -1599,6 +1599,12 @@ class _HomeScreenState extends State<HomeScreen> {
           });
           if (isUpgrade) {
             _showSubscriptionSheet();
+          } else if (index == 2) {
+            // Interests Page
+            context.push('/interests', extra: {'isPaidMember': _isPaidMember});
+          } else if (index == 4) {
+            // Messages / Communication Center
+            context.push('/communication', extra: {'isPaidMember': _isPaidMember});
           } else if (index != 0) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(

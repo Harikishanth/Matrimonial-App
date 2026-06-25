@@ -13,6 +13,8 @@ import '../../features/onboarding/screens/onboarding_screens.dart';
 import '../../features/home/screens/home_screen.dart';
 import '../../features/profile/models/profile_model.dart';
 import '../../features/profile/screens/profile_detail_screen.dart';
+import '../../features/communication/screens/communication_center_screen.dart';
+import '../../features/interests/screens/interests_screen.dart';
 
 class AppRoutes {
   static CustomTransitionPage _slideTransition(BuildContext context, GoRouterState state, Widget child) {
@@ -193,6 +195,32 @@ class AppRoutes {
             context,
             state,
             ProfileDetailScreen(profile: profile),
+          );
+        },
+      ),
+      // Communication Center Screen
+      GoRoute(
+        path: '/communication',
+        pageBuilder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          final isPaid = extra?['isPaidMember'] as bool? ?? false;
+          return _slideTransition(
+            context,
+            state,
+            CommunicationCenterScreen(isPaidMember: isPaid),
+          );
+        },
+      ),
+      // Interests Screen
+      GoRoute(
+        path: '/interests',
+        pageBuilder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          final isPaid = extra?['isPaidMember'] as bool? ?? false;
+          return _slideTransition(
+            context,
+            state,
+            InterestsScreen(isPaidMember: isPaid),
           );
         },
       ),
