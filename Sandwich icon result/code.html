@@ -1,0 +1,257 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Anbu Matrimony - Profile Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..900;1,8..60,400..900&amp;family=Nunito+Sans:ital,wght@0,200..1000;1,200..1000&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#ffdada",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#40000b",
+                        "on-tertiary-fixed-variant": "#872100",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#fef8f4",
+                        "primary-container": "#800020",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "tertiary-fixed": "#ffdbd1",
+                        "primary": "#570013",
+                        "on-secondary-fixed": "#241a00",
+                        "on-surface": "#1d1b19",
+                        "secondary-container": "#fed65b",
+                        "inverse-on-surface": "#f6f0ec",
+                        "on-tertiary-fixed": "#3b0900",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e7e1de",
+                        "surface-dim": "#dfd9d5",
+                        "outline": "#8c7071",
+                        "on-background": "#1d1b19",
+                        "on-primary-container": "#ff828a",
+                        "on-primary": "#ffffff",
+                        "background": "#fef8f4",
+                        "surface-tint": "#af2b3e",
+                        "surface": "#fef8f4",
+                        "on-tertiary-container": "#ff8663",
+                        "inverse-surface": "#32302e",
+                        "tertiary-fixed-dim": "#ffb5a0",
+                        "on-secondary-fixed-variant": "#574500",
+                        "inverse-primary": "#ffb3b5",
+                        "surface-container-high": "#ede7e3",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#761c00",
+                        "secondary": "#735c00",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#ffe088",
+                        "tertiary": "#501000",
+                        "surface-container-low": "#f9f2ef",
+                        "on-surface-variant": "#584141",
+                        "on-error": "#ffffff",
+                        "surface-container": "#f3ede9",
+                        "outline-variant": "#e0bfbf",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-secondary-container": "#745c00",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e7e1de"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "container-max": "1200px",
+                        "stack-md": "12px",
+                        "stack-lg": "24px",
+                        "stack-sm": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["\"Source Serif 4\""],
+                        "aura-tag": ["Nunito Sans"],
+                        "body-lg": ["Nunito Sans"],
+                        "label-md": ["Nunito Sans"],
+                        "headline-lg-mobile": ["\"Source Serif 4\""],
+                        "headline-lg": ["\"Source Serif 4\""],
+                        "body-md": ["Nunito Sans"],
+                        "headline-md": ["\"Source Serif 4\""],
+                        "label-lg": ["Nunito Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "aura-tag": ["13px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #FDFBF7;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e0bfbf;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface bg-surface min-h-screen flex flex-col items-center">
+<nav class="fixed top-0 w-full z-50 bg-surface flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 border-b border-outline-variant/20 dark:border-outline/30">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary scale-95 active:scale-90 transition-transform">close</button>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary font-headline-lg">kalyaThiru</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant">headset_mic</span>
+</div>
+</nav>
+<main class="w-full max-w-container-max flex-1 mt-[72px] pb-[80px] custom-scrollbar overflow-y-auto">
+<section class="px-margin-mobile py-stack-lg border-b border-outline-variant/10 bg-white">
+<div class="flex items-center gap-stack-lg">
+<div class="relative">
+<img alt="Ananth Raman" class="w-20 h-20 rounded-full border-2 border-secondary-container object-cover" data-alt="A portrait of a sophisticated South Indian man named Ananth Raman, wearing a traditional cream silk shirt. He has a warm smile and refined features. The background is a soft, blurred study room with warm amber lighting, reflecting a professional yet heritage-focused lifestyle. The lighting is soft and flattering, emphasizing a trustworthy personality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6xNeJz919l4dAetbhf5NS4FPHU-v5fq7rmuM7zRN1i0XwG5zD_LJ4YSkUv1asNAcezAF7mpQ_gE419Rq0yCIjHddkGsa2V4DKFti9eiiBST0CIm_89DmXwqL1tUgyDd8beR2avnt9oHwA4f9iZd2xAPF9jUjZSWyOg6Sp6YWlrECmG6qBof3WR2YEnG-BDXZsm_wrqTxkByaiBvsNKJY159mtuNZU2IIsUG83fAcvalu2L-u_Opomj-xcdTa3Xk9CxtuybbCehN8">
+<div class="absolute -bottom-1 -right-1 bg-secondary p-1 rounded-full border-2 border-white">
+<span class="material-symbols-outlined text-[14px] text-white" style="font-variation-settings: 'FILL' 1;">edit</span>
+</div>
+</div>
+<div class="flex-1">
+<h1 class="font-headline-md text-headline-md text-primary">Ananth Raman</h1>
+<p class="font-label-md text-label-md text-on-surface-variant mt-0.5">Heritage ID: AR992014</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="font-label-md text-label-md px-2 py-0.5 bg-surface-container-high text-on-surface-variant rounded">Free Member</span>
+<button class="font-label-md text-label-md text-on-primary-container font-bold hover:underline">Upgrade Now</button>
+</div>
+</div>
+</div>
+<div class="mt-stack-lg">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Profile Completion</span>
+<span class="font-label-md text-label-md text-primary font-bold">35%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 35%"></div>
+</div>
+</div>
+</section>
+<section class="py-4">
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-stack-lg px-margin-mobile py-4 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined text-on-secondary-container p-2 bg-secondary-fixed rounded-lg" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="flex-1 font-label-lg text-label-lg text-on-surface">Verify Your Profile (உங்கள் சுயவிவரத்தை சரிபார்க்கவும்)</span>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</a>
+<a class="flex items-center gap-stack-lg px-margin-mobile py-4 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined text-on-surface-variant">people</span>
+<span class="flex-1 font-label-lg text-label-lg text-on-surface">Matches (பொருத்தங்கள்)</span>
+</a>
+<a class="flex items-center gap-stack-lg px-margin-mobile py-4 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined text-on-surface-variant">favorite</span>
+<span class="flex-1 font-label-lg text-label-lg text-on-surface">Interests (ஆர்வங்கள்)</span>
+</a>
+<a class="flex items-center gap-stack-lg px-margin-mobile py-4 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined text-on-surface-variant">auto_awesome</span>
+<span class="flex-1 font-label-lg text-label-lg text-on-surface">Daily Recommendation (தினசரி பரிந்துரை)</span>
+</a>
+<a class="flex items-center gap-stack-lg px-margin-mobile py-4 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined text-on-surface-variant">chat_bubble</span>
+<span class="flex-1 font-label-lg text-label-lg text-on-surface">Messages (செய்திகள்)</span>
+</a>
+<hr class="mx-margin-mobile border-outline-variant/10 my-2">
+<a class="flex items-center gap-stack-lg px-margin-mobile py-4 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined text-on-surface-variant">person_edit</span>
+<span class="flex-1 font-label-lg text-label-lg text-on-surface">Edit Profile (சுயவிவரத்தைத் திருத்தவும்)</span>
+</a>
+<a class="flex items-center gap-stack-lg px-margin-mobile py-4 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined text-on-surface-variant">settings_accessibility</span>
+<span class="flex-1 font-label-lg text-label-lg text-on-surface">Edit Partner Preference (துணை விருப்பங்களைத் திருத்தவும்)</span>
+</a>
+<a class="flex items-center gap-stack-lg px-margin-mobile py-4 bg-primary/5 hover:bg-primary/10 transition-all" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="flex-1 font-label-lg text-label-lg text-primary font-bold">Upgrade Now (இப்போது மேம்படுத்தவும்)</span>
+<span class="text-secondary font-aura-tag text-aura-tag bg-secondary-fixed px-2 py-0.5 rounded shrink-0">61% OFF</span>
+</a>
+<hr class="mx-margin-mobile border-outline-variant/10 my-2">
+<a class="flex items-center gap-stack-lg px-margin-mobile py-4 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+<span class="flex-1 font-label-lg text-label-lg text-on-surface">Privacy Settings (தனியுரிமை அமைப்புகள்)</span>
+</a>
+<a class="flex items-center gap-stack-lg px-margin-mobile py-4 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined text-on-surface-variant">notifications_active</span>
+<span class="flex-1 font-label-lg text-label-lg text-on-surface">Communication Settings (தொடர்பு அமைப்புகள்)</span>
+</a>
+<a class="flex items-center gap-stack-lg px-margin-mobile py-4 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined text-on-surface-variant">manage_accounts</span>
+<span class="flex-1 font-label-lg text-label-lg text-on-surface">Account Settings (கணக்கு அமைப்புகள்)</span>
+</a>
+<a class="flex items-center gap-stack-lg px-margin-mobile py-4 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined text-on-surface-variant">star</span>
+<span class="flex-1 font-label-lg text-label-lg text-on-surface">Rate Us (எங்களை மதிப்பிடவும்)</span>
+</a>
+<a class="flex items-center gap-stack-lg px-margin-mobile py-4 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined text-on-surface-variant">help</span>
+<span class="flex-1 font-label-lg text-label-lg text-on-surface">24x7 Help Center (24x7 உதவி மையம்)</span>
+</a>
+</div>
+</section>
+<footer class="px-margin-mobile py-8 bg-surface-container-low flex flex-col gap-4">
+<div class="flex gap-4">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary underline" href="#">Terms &amp; Conditions</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary underline" href="#">Privacy Policy</a>
+</div>
+<p class="font-label-md text-label-md text-outline">App version 11.8.232.108</p>
+</footer>
+</main>
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface-container-lowest dark:bg-surface-dim flex justify-around items-center pt-2 pb-safe px-4 shadow-lg border-t border-outline-variant/15 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all py-1 px-4 active:scale-95" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all py-1 px-4 active:scale-95" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-md text-label-md">Matches</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all py-1 px-4 active:scale-95" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-md text-label-md">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-1 active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md font-bold">Profile</span>
+</a>
+</nav>
+<script>
+        document.querySelectorAll('a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href') === '#') e.preventDefault();
+            });
+        });
+    </script>
+
+
+</body></html>

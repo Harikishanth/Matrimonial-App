@@ -1,0 +1,606 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Edit Profile | KalyaThiru</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#e9c349",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#3b0900",
+                    "outline-variant": "#e0bfbf",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#872100",
+                    "on-primary-container": "#ff828a",
+                    "surface-bright": "#fef8f4",
+                    "on-primary-fixed-variant": "#8e0f28",
+                    "secondary-fixed": "#ffe088",
+                    "secondary-container": "#fed65b",
+                    "surface-container-highest": "#e7e1de",
+                    "on-background": "#1d1b19",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#f3ede9",
+                    "on-secondary-fixed": "#241a00",
+                    "on-primary-fixed": "#40000b",
+                    "on-secondary-container": "#745c00",
+                    "inverse-primary": "#ffb3b5",
+                    "surface": "#fef8f4",
+                    "primary": "#570013",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-surface-variant": "#584141",
+                    "primary-fixed-dim": "#ffb3b5",
+                    "tertiary": "#501000",
+                    "outline": "#8c7071",
+                    "primary-fixed": "#ffdada",
+                    "on-error": "#ffffff",
+                    "background": "#fef8f4",
+                    "inverse-surface": "#32302e",
+                    "surface-variant": "#e7e1de",
+                    "surface-tint": "#af2b3e",
+                    "tertiary-fixed-dim": "#ffb5a0",
+                    "on-surface": "#1d1b19",
+                    "surface-container-low": "#f9f2ef",
+                    "secondary": "#735c00",
+                    "tertiary-container": "#761c00",
+                    "on-tertiary-container": "#ff8663",
+                    "tertiary-fixed": "#ffdbd1",
+                    "surface-dim": "#dfd9d5",
+                    "inverse-on-surface": "#f6f0ec",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#ede7e3",
+                    "primary-container": "#800020",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-lg": "24px",
+                    "stack-sm": "4px",
+                    "gutter": "24px",
+                    "container-max": "1200px",
+                    "stack-md": "12px",
+                    "margin-desktop": "40px",
+                    "margin-mobile": "16px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["\"Source Serif 4\""],
+                    "label-lg": ["Nunito Sans"],
+                    "aura-tag": ["Nunito Sans"],
+                    "headline-md": ["\"Source Serif 4\""],
+                    "body-lg": ["Nunito Sans"],
+                    "label-md": ["Nunito Sans"],
+                    "headline-lg-mobile": ["\"Source Serif 4\""],
+                    "body-md": ["Nunito Sans"],
+                    "display-lg": ["\"Source Serif 4\""]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "aura-tag": ["13px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fef8f4; /* Soft Ivory */
+            color: #1d1b19; /* On Surface */
+            font-family: 'Nunito Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .section-card {
+            background-color: #ffffff;
+            border: 1px solid rgba(140, 112, 113, 0.15);
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+        .heritage-border {
+            border-left: 4px solid #570013; /* Temple Maroon accent */
+        }
+        .progress-bar-fill {
+            transition: width 1s ease-in-out;
+        }
+        .bottom-sheet {
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bottom-sheet.open {
+            transform: translateY(0);
+        }
+        .overlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .selection-list-item:active {
+            background-color: #f3ede9;
+        }
+        .selection-list-item.selected {
+            background-color: #ffdada;
+            color: #570013;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="flex justify-center" style="overflow: auto;">
+<div class="w-full max-w-container-max min-h-screen flex flex-col md:flex-row bg-surface">
+<!-- Main Scrollable Content -->
+<main class="flex-1 overflow-y-auto pb-32">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-margin-mobile h-16 flex justify-between items-center border-b border-outline-variant/30">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors active:scale-95" onclick="window.history.back()">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">Edit Profile</h1>
+</div>
+<div class="flex items-center">
+<button class="px-4 py-1.5 border border-primary text-primary rounded-full text-label-md font-bold hover:bg-primary/5 transition-colors mr-2">PREVIEW</button>
+<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</header>
+<div class="px-margin-mobile md:px-margin-desktop py-stack-lg space-y-stack-lg max-w-4xl mx-auto">
+<!-- Profile Photo Card -->
+<div class="section-card p-stack-lg flex flex-col items-center">
+<div class="relative w-40 h-40 md:w-56 md:h-56 mb-stack-md">
+<div class="w-full h-full rounded-lg overflow-hidden border-2 border-outline-variant/50 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHrRj-E7c9YdhlSwq78nfRJcDRaINRQWDPxJR6EOyNZgmOmOIAfpALXuunTFm1zxQvq3A_NGT9YhzHkiW5wYoINAroFzqriCKIDIzsDkmNK86nV6iGZQikEp78Al1Uds8B2L92e8uLCdLAT1bs1WaVKN7yjePSkISneX8Xj6ftL6RGEOHN4a9pE4JruMisiXASCDi6BxpT-eTPdVmUSD-S-4qD4xutYOCwo3tDcR55JQzWBJTqxXF1Q3OGaqY6fDgYOkC8NwjjJq4">
+</div>
+<button class="flex items-center justify-center gap-2 border border-outline text-primary rounded-full font-label-lg hover:bg-primary-container hover:text-white transition-colors active:opacity-90 absolute bottom-0 right-0 w-12 h-12 bg-white shadow-lg" onclick="toggleBottomSheet('upload-sheet')">
+<span class="material-symbols-outlined text-[20px]">photo_camera</span>
+</button>
+</div>
+<div class="w-full space-y-2 mb-stack-lg">
+<div class="flex justify-between items-center text-label-md font-label-md text-on-surface-variant">
+<span class="uppercase tracking-wider">Profile Completeness</span>
+<span class="text-primary font-bold">46%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="progress-bar-fill h-full bg-secondary-container" style="width: 46%;"></div>
+</div>
+<p class="text-[11px] text-center text-on-surface-variant">Add more details to increase your visibility to potential matches.</p>
+</div>
+<div class="flex gap-4 w-full">
+<button class="flex-1 flex items-center justify-center gap-2 border border-outline text-primary py-3 rounded-full font-label-lg hover:bg-primary-container hover:text-white transition-colors active:opacity-90" onclick="toggleBottomSheet('contact-sheet')">
+                            Edit Contact
+                        </button>
+<button class="flex-1 flex items-center justify-center gap-2 border border-outline text-primary py-3 rounded-full font-label-lg hover:bg-primary-container hover:text-white transition-colors active:opacity-90" onclick="toggleBottomSheet('upload-sheet')">
+                            Add Photos
+                        </button>
+</div>
+</div>
+<!-- Personal Information -->
+<section class="section-card heritage-border">
+<div class="p-stack-md flex justify-between items-center border-b border-outline-variant/10">
+<h2 class="font-headline-md text-headline-md text-primary">Personal Information</h2>
+<button class="text-primary p-2"><span class="material-symbols-outlined">edit</span></button>
+</div>
+<div class="p-stack-md space-y-6">
+<div>
+<div class="flex items-center gap-2 mb-2 text-primary">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+<label class="text-label-md font-bold">A few words about my brother</label>
+</div>
+<div class="p-stack-md bg-surface-container-low rounded italic text-body-md text-on-surface border border-outline-variant/20">
+                                "Mubashir is a hardworking and family-oriented person who values traditional roots while embracing modern growth..."
+                            </div>
+</div>
+<div class="space-y-4">
+<h3 class="flex items-center gap-2 text-primary font-bold border-b border-outline-variant/30 pb-1">
+<span class="material-symbols-outlined text-[20px]">description</span> Basic Details
+</h3>
+<div class="grid grid-cols-1 gap-y-4">
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Name (பெயர்)</label>
+<p class="font-body-md text-on-surface font-semibold">Mubashir</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Age (வயது)</label>
+<p class="font-body-md text-on-surface font-semibold">26 Yrs</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Height (உயரம்)</label>
+<p class="font-body-md text-on-surface font-semibold">5 Ft 8 In / 173 Cms</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Weight (எடை)</label>
+<p class="font-body-md text-on-surface font-semibold">60 Kgs / 132 lbs</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Marital Status (திருமண நிலை)</label>
+<p class="font-body-md text-on-surface font-semibold">Never Married</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Mother Tongue (தாய்மொழி)</label>
+<p class="font-body-md text-on-surface font-semibold">Tamil</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Physical Status (உடல் நிலை)</label>
+<p class="font-body-md text-on-surface font-semibold">Normal</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Body Type (உடல் அமைப்பு)</label>
+<p class="font-body-md text-on-surface font-semibold">Athletic</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Profile Created By (பதிவு செய்தவர்)</label>
+<p class="font-body-md text-on-surface font-semibold">Sibling</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Eating Habits (உணவு பழக்கம்)</label>
+<p class="font-body-md text-on-surface font-semibold">Non Vegetarian</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Drinking Habits (குடி பழக்கம்)</label>
+<p class="font-body-md text-on-surface font-semibold">Never drinks</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Smoking Habits (புகை பழக்கம்)</label>
+<p class="font-body-md text-on-surface font-semibold">Never smokes</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Religious Information -->
+<section class="section-card heritage-border">
+<div class="p-stack-md flex justify-between items-center border-b border-outline-variant/10">
+<h2 class="font-headline-md text-headline-md text-primary">Religious Information</h2>
+<button class="text-primary p-2"><span class="material-symbols-outlined">edit</span></button>
+</div>
+<div class="p-stack-md space-y-4">
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Religion (மதம்)</label>
+<p class="font-body-md text-on-surface font-semibold">Muslim - Others</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Sect (பிரிவு)</label>
+<p class="font-body-md text-on-surface font-semibold text-right">Muslim - Shafi (Caste No Bar)</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Star (நட்சத்திரம்)</label>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('Star', ['Ashwini', 'Bharani', 'Krithika', 'Rohini', 'Mrigashira'])">+ Add Details</button>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Raasi (ராசி)</label>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('Raasi', ['Mesham', 'Rishabam', 'Midhunam', 'Kadagam', 'Simmam'])">+ Add Details</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Professional Information -->
+<section class="section-card heritage-border">
+<div class="p-stack-md flex justify-between items-center border-b border-outline-variant/10">
+<h2 class="font-headline-md text-headline-md text-primary">Professional Information</h2>
+<button class="text-primary p-2"><span class="material-symbols-outlined">edit</span></button>
+</div>
+<div class="p-stack-md space-y-4">
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Education Category</label>
+<p class="font-body-md text-on-surface font-semibold text-right">B.Arch. - Bachelor of Architecture</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">College / Institution</label>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('College/Institution', ['IIT Madras', 'Anna University', 'NIT Trichy'])">+ Add Details</button>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Education in Detail</label>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('Education in Detail', ['B.Arch with specialization in Urban Design', 'B.Arch General'])">+ Add Details</button>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Occupation</label>
+<p class="font-body-md text-on-surface font-semibold">Officer</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Occupation in Detail</label>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('Occupation in Detail', ['Senior Architect', 'Junior Architect', 'Site Manager'])">+ Add Details</button>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Organization</label>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('Organization', ['L&amp;T Construction', 'Shapoorji Pallonji', 'DLF'])">+ Add Details</button>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Employed In</label>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('Employed In', ['Private', 'Government', 'Business', 'Self Employed', 'Not Working'])">Private</button>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Annual Income</label>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('Annual Income', ['Rs. 5 - 10 Lakhs', 'Rs. 10 - 15 Lakhs', 'Rs. 15 - 20 Lakhs', 'Rs. 20 - 25 Lakhs', 'Rs. 25 - 30 Lakhs', 'Rs. 30 Lakhs and Above'])">Rs. 25 - 30 Lakhs</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Location Information -->
+<section class="section-card heritage-border">
+<div class="p-stack-md flex justify-between items-center border-b border-outline-variant/10">
+<h2 class="font-headline-md text-headline-md text-primary">Location</h2>
+<button class="text-primary p-2"><span class="material-symbols-outlined">edit</span></button>
+</div>
+<div class="p-stack-md space-y-4">
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Country (நாடு)</label>
+<p class="font-body-md text-on-surface font-semibold">India</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">State (மாநிலம்)</label>
+<p class="font-body-md text-on-surface font-semibold">TamilNadu</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">City (நகரம்)</label>
+<p class="font-body-md text-on-surface font-semibold">Chennai</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Citizenship (குடியுரிமை)</label>
+<p class="font-body-md text-on-surface font-semibold">India</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Ancestral Origin (முன்னோர்கள் பூர்வீகம்)</label>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('Ancestral Origin', ['Madurai', 'Trichy', 'Coimbatore', 'Salem', 'Tirunelveli'])">+ Add Details</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Family Details -->
+<section class="section-card heritage-border">
+<div class="p-stack-md flex justify-between items-center border-b border-outline-variant/10">
+<h2 class="font-headline-md text-headline-md text-primary">Family Details</h2>
+<button class="text-primary p-2"><span class="material-symbols-outlined">edit</span></button>
+</div>
+<div class="p-stack-md space-y-4">
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Family Values</label>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('Family Values', ['Traditional', 'Moderate', 'Liberal'])">+ Add Details</button>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Family Type</label>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('Family Type', ['Nuclear', 'Joint', 'Others'])">+ Add Details</button>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Family Status</label>
+<p class="font-body-md text-on-surface font-semibold">Middle Class</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Father's Occupation</label>
+<p class="font-body-md text-on-surface font-semibold">Business Man</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Mother's Occupation</label>
+<p class="font-body-md text-on-surface font-semibold">Homemaker</p>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Brother(s)</label>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('Brother(s)', ['None', '1', '2', '3+'])">+ Add Details</button>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Brother(s) Married</label>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('Brother(s) Married', ['None', '1', '2', '3+'])">+ Add Details</button>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Sister(s)</label>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('Sister(s)', ['None', '1', '2', '3+'])">+ Add Details</button>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-body-md text-on-surface-variant">Sister(s) Married</label>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('Sister(s) Married', ['None', '1', '2', '3+'])">+ Add Details</button>
+</div>
+</div>
+</div>
+</section>
+<!-- About our family -->
+<section class="section-card heritage-border">
+<div class="p-stack-md flex justify-between items-center border-b border-outline-variant/10">
+<h2 class="font-headline-md text-headline-md text-primary">About our family</h2>
+<button class="text-primary p-2"><span class="material-symbols-outlined">edit</span></button>
+</div>
+<div class="p-stack-md">
+<button class="text-on-tertiary-container font-bold" onclick="showToast('Editing family description...')">+ Add Details</button>
+</div>
+</section>
+<!-- Hobbies & Interests -->
+<section class="section-card heritage-border">
+<div class="p-stack-md flex justify-between items-center border-b border-outline-variant/10">
+<h2 class="font-headline-md text-headline-md text-primary">Hobbies &amp; Interests</h2>
+<button class="text-primary p-2"><span class="material-symbols-outlined">edit</span></button>
+</div>
+<div class="p-stack-md">
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed rounded-full text-aura-tag font-aura-tag">Photography</span>
+<span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed rounded-full text-aura-tag font-aura-tag">Travel</span>
+<span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed rounded-full text-aura-tag font-aura-tag">Classical Music</span>
+</div>
+<button class="text-on-tertiary-container font-bold" onclick="openSelectionMenu('Interests', ['Cooking', 'Reading', 'Gaming', 'Painting', 'Yoga'])">+ Add Details</button>
+</div>
+</section>
+<!-- Partner Preference Banner -->
+<div class="section-card bg-gradient-to-br from-white to-surface-container p-6 border-none shadow-sm flex flex-col gap-4">
+<h3 class="font-headline-md text-headline-md text-primary leading-tight">Edit your partner preferences to get relevant matches.</h3>
+<button class="w-full py-4 bg-primary-container text-white font-bold rounded-full shadow-md active:scale-95 transition-transform">Edit Preferences</button>
+</div>
+</div>
+</main>
+</div>
+<!-- Overlay -->
+<div class="overlay fixed inset-0 bg-black/60 z-[60]" id="modal-overlay" onclick="closeAllSheets()"></div>
+<!-- Interactive Selection Menu (Searchable Dropdown) -->
+<div class="bottom-sheet fixed bottom-0 left-0 right-0 max-w-lg mx-auto bg-white rounded-t-3xl z-[70] flex flex-col h-[85vh] shadow-2xl" id="selection-sheet">
+<div class="w-12 h-1 bg-outline-variant/40 rounded-full mx-auto my-4 flex-shrink-0"></div>
+<div class="px-6 pb-4 border-b border-outline-variant/10">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md text-primary" id="selection-title">Select Interests</h3>
+<button class="p-2" onclick="closeAllSheets()"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl py-3 pl-10 pr-4 focus:ring-2 focus:ring-primary focus:outline-none" id="selection-search" placeholder="Search..." type="text">
+</div>
+</div>
+<div class="flex-1 overflow-y-auto px-2 py-4" id="selection-list"><div class="selection-list-item px-6 py-4 cursor-pointer hover:bg-surface-container-low transition-colors flex items-center justify-between"><span class="">Cooking</span><span class="material-symbols-outlined text-primary opacity-0 selected-check">check</span></div><div class="selection-list-item px-6 py-4 cursor-pointer hover:bg-surface-container-low transition-colors flex items-center justify-between"><span class="">Reading</span><span class="material-symbols-outlined text-primary opacity-0 selected-check">check</span></div><div class="selection-list-item px-6 py-4 cursor-pointer hover:bg-surface-container-low transition-colors flex items-center justify-between"><span class="">Gaming</span><span class="material-symbols-outlined text-primary opacity-0 selected-check">check</span></div><div class="selection-list-item px-6 py-4 cursor-pointer hover:bg-surface-container-low transition-colors flex items-center justify-between"><span class="">Painting</span><span class="material-symbols-outlined text-primary opacity-0 selected-check">check</span></div><div class="selection-list-item px-6 py-4 cursor-pointer hover:bg-surface-container-low transition-colors flex items-center justify-between"><span class="">Yoga</span><span class="material-symbols-outlined text-primary opacity-0 selected-check">check</span></div></div>
+<div class="p-6 border-t border-outline-variant/10">
+<button class="w-full bg-primary text-white py-4 rounded-full font-bold shadow-lg active:scale-95 transition-all" onclick="saveSelection()">Save Choice</button>
+</div>
+</div>
+<!-- Upload Photos Sheet -->
+<div class="bottom-sheet fixed bottom-0 left-0 right-0 max-w-lg mx-auto bg-white rounded-t-3xl z-[70] p-margin-mobile shadow-2xl" id="upload-sheet">
+<div class="w-12 h-1 bg-outline-variant/40 rounded-full mx-auto mb-6"></div>
+<h3 class="font-headline-md text-headline-md text-primary mb-6 text-center">Add Photos</h3>
+<div class="space-y-4">
+<button class="w-full flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-xl transition-colors text-left" onclick="closeAllSheets()">
+<div class="w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-full text-primary">
+<span class="material-symbols-outlined">photo_library</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg">Choose from Gallery</p>
+<p class="text-label-md text-on-surface-variant">Select existing photos from your device</p>
+</div>
+</button>
+<button class="w-full flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-xl transition-colors text-left" onclick="closeAllSheets()">
+<div class="w-12 h-12 bg-secondary-fixed flex items-center justify-center rounded-full text-on-secondary-fixed">
+<span class="material-symbols-outlined">photo_camera</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg">Take a Photo</p>
+<p class="text-label-md text-on-surface-variant">Open camera to capture a new profile picture</p>
+</div>
+</button>
+</div>
+<button class="w-full mt-6 py-3 font-label-lg text-on-surface-variant" onclick="closeAllSheets()">Cancel</button>
+</div>
+<!-- Edit Contact Sheet -->
+<div class="bottom-sheet fixed bottom-0 left-0 right-0 max-w-lg mx-auto bg-white rounded-t-3xl z-[70] p-margin-mobile shadow-2xl" id="contact-sheet">
+<div class="w-12 h-1 bg-outline-variant/40 rounded-full mx-auto mb-6"></div>
+<h3 class="font-headline-md text-headline-md text-primary mb-6 text-center">Update Mobile Number</h3>
+<div class="space-y-stack-lg">
+<div>
+<label class="text-label-md font-label-md text-on-surface-variant block mb-2">Primary Mobile Number</label>
+<div class="flex gap-2">
+<div class="w-20 bg-surface-container-high p-3 rounded text-center border border-outline-variant/30">+91</div>
+<input class="flex-1 bg-surface border border-outline-variant/50 rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary" type="tel" value="9876543210">
+</div>
+</div>
+<p class="text-label-md text-on-surface-variant">A verification OTP will be sent to this number for security.</p>
+<button class="w-full bg-primary text-white py-4 rounded-xl font-label-lg shadow-lg active:scale-95 transition-all" onclick="showToast('Contact updated successfully'); closeAllSheets();">
+                Save &amp; Verify
+            </button>
+</div>
+<button class="w-full mt-4 py-3 font-label-lg text-on-surface-variant" onclick="closeAllSheets()">Cancel</button>
+</div>
+<!-- Toast Notification -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-6 py-3 rounded-full text-label-md shadow-xl transition-all duration-300 pointer-events-none z-[100] opacity-0 translate-y-4" id="toast">Editing family description...</div>
+<script>
+        let currentTargetField = null;
+
+        function toggleBottomSheet(id) {
+            const overlay = document.getElementById('modal-overlay');
+            const sheet = document.getElementById(id);
+            
+            overlay.classList.add('active');
+            sheet.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAllSheets() {
+            const overlay = document.getElementById('modal-overlay');
+            const sheets = document.querySelectorAll('.bottom-sheet');
+            
+            overlay.classList.remove('active');
+            sheets.forEach(sheet => sheet.classList.remove('open'));
+            document.body.style.overflow = 'auto';
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.remove('opacity-0', 'translate-y-4');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-4');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 3000);
+        }
+
+        function openSelectionMenu(title, options) {
+            const sheetTitle = document.getElementById('selection-title');
+            const listContainer = document.getElementById('selection-list');
+            const searchInput = document.getElementById('selection-search');
+            
+            sheetTitle.textContent = "Select " + title;
+            listContainer.innerHTML = '';
+            searchInput.value = '';
+            
+            options.forEach(opt => {
+                const item = document.createElement('div');
+                item.className = "selection-list-item px-6 py-4 cursor-pointer hover:bg-surface-container-low transition-colors flex items-center justify-between";
+                item.innerHTML = `<span>${opt}</span><span class="material-symbols-outlined text-primary opacity-0 selected-check">check</span>`;
+                item.onclick = function() {
+                    document.querySelectorAll('.selection-list-item').forEach(el => {
+                        el.classList.remove('selected');
+                        el.querySelector('.selected-check').classList.add('opacity-0');
+                    });
+                    this.classList.add('selected');
+                    this.querySelector('.selected-check').classList.remove('opacity-0');
+                };
+                listContainer.appendChild(item);
+            });
+            
+            toggleBottomSheet('selection-sheet');
+        }
+
+        function saveSelection() {
+            const selected = document.querySelector('.selection-list-item.selected');
+            if (selected) {
+                showToast("Choice saved: " + selected.querySelector('span').textContent);
+                closeAllSheets();
+            } else {
+                showToast("Please select an option first");
+            }
+        }
+
+        // Search logic for selection menu
+        document.getElementById('selection-search').addEventListener('input', function(e) {
+            const filter = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.selection-list-item');
+            items.forEach(item => {
+                const text = item.querySelector('span').textContent.toLowerCase();
+                item.style.display = text.includes(filter) ? 'flex' : 'none';
+            });
+        });
+    </script>
+
+
+
+
+</body></html>

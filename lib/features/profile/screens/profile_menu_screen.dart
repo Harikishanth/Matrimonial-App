@@ -231,39 +231,42 @@ class _ProfileMenuScreenState extends State<ProfileMenuScreen> {
                     children: [
                       Row(
                         children: [
-                          Stack(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(color: KalyaThiruTheme.antiqueGold, width: 2),
-                                ),
-                                child: CircleAvatar(
-                                  radius: 36,
-                                  backgroundImage: NetworkImage(
-                                    state.photoPath != null
-                                        ? state.photoPath!
-                                        : 'https://lh3.googleusercontent.com/aida-public/AB6AXuD6xNeJz919l4dAetbhf5NS4FPHU-v5fq7rmuM7zRN1i0XwG5zD_LJ4YSkUv1asNAcezAF7mpQ_gE419Rq0yCIjHddkGsa2V4DKFti9eiiBST0CIm_89DmXwqL1tUgyDd8beR2avnt9oHwA4f9iZd2xAPF9jUjZSWyOg6Sp6YWlrECmG6qBof3WR2YEnG-BDXZsm_wrqTxkByaiBvsNKJY159mtuNZU2IIsUG83fAcvalu2L-u_Opomj-xcdTa3Xk9CxtuybbCehN8',
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                right: 0,
-                                child: Container(
-                                  padding: const EdgeInsets.all(4),
-                                  decoration: const BoxDecoration(
-                                    color: KalyaThiruTheme.primaryMaroon,
+                          GestureDetector(
+                            onTap: () => context.push('/edit_profile'),
+                            child: Stack(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
                                     shape: BoxShape.circle,
+                                    border: Border.all(color: KalyaThiruTheme.antiqueGold, width: 2),
                                   ),
-                                  child: const Icon(
-                                    Icons.edit,
-                                    size: 12,
-                                    color: Colors.white,
+                                  child: CircleAvatar(
+                                    radius: 36,
+                                    backgroundImage: NetworkImage(
+                                      state.photoPath != null
+                                          ? state.photoPath!
+                                          : 'https://lh3.googleusercontent.com/aida-public/AB6AXuD6xNeJz919l4dAetbhf5NS4FPHU-v5fq7rmuM7zRN1i0XwG5zD_LJ4YSkUv1asNAcezAF7mpQ_gE419Rq0yCIjHddkGsa2V4DKFti9eiiBST0CIm_89DmXwqL1tUgyDd8beR2avnt9oHwA4f9iZd2xAPF9jUjZSWyOg6Sp6YWlrECmG6qBof3WR2YEnG-BDXZsm_wrqTxkByaiBvsNKJY159mtuNZU2IIsUG83fAcvalu2L-u_Opomj-xcdTa3Xk9CxtuybbCehN8',
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                                Positioned(
+                                  bottom: 0,
+                                  right: 0,
+                                  child: Container(
+                                    padding: const EdgeInsets.all(4),
+                                    decoration: const BoxDecoration(
+                                      color: KalyaThiruTheme.primaryMaroon,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: const Icon(
+                                      Icons.edit,
+                                      size: 12,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(width: 16),
                           Expanded(
@@ -423,11 +426,7 @@ class _ProfileMenuScreenState extends State<ProfileMenuScreen> {
                 _buildMenuOption(
                   icon: Icons.person_outline,
                   title: lang == 'en' ? 'Edit Profile' : 'சுயவிவரத்தைத் திருத்தவும்',
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Edit Profile coming soon!')),
-                    );
-                  },
+                  onTap: () => context.push('/edit_profile'),
                 ),
                 _buildMenuOption(
                   icon: Icons.settings_accessibility,

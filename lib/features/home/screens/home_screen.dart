@@ -730,7 +730,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             icon: Icons.camera_alt_outlined,
                             bg: KalyaThiruTheme.primaryMaroon,
                             title: lang == 'en' ? 'Add Photo' : 'புகைப்படம்',
-                            onTap: () => context.go('/onboarding/step9'),
+                            onTap: () => context.push('/edit_profile?section=photo'),
                           ),
                           _buildQuickActionButton(
                             icon: Icons.verified_user_outlined,
@@ -742,7 +742,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             icon: Icons.people_outline,
                             bg: const Color(0xFF8B5A2B),
                             title: lang == 'en' ? 'Family Details' : 'குடும்ப விவரங்கள்',
-                            onTap: () => context.go('/onboarding/step8'),
+                            onTap: () => context.push('/edit_profile?section=family'),
                           ),
                         ],
                       ),
