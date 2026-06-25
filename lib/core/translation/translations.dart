@@ -548,6 +548,276 @@ class AppTranslations {
       'en': 'Success Stories',
       'ta': 'வெற்றி கதைகள்',
     },
+
+    // ─── Communication Center ─────────────────────────────────
+    'comm_title': {
+      'en': 'Messages',
+      'ta': 'செய்திகள்',
+    },
+    'comm_tab_messages': {
+      'en': 'Messages\nReceived',
+      'ta': 'பெறப்பட்ட\nசெய்திகள்',
+    },
+    'comm_tab_awaiting': {
+      'en': 'Awaiting\nResponse',
+      'ta': 'பதில்\nஎதிர்பார்ப்பு',
+    },
+    'comm_tab_calls': {
+      'en': 'Calls',
+      'ta': 'அழைப்புகள்',
+    },
+    'comm_assisted_service': {
+      'en': 'Assisted Service',
+      'ta': 'உதவி சேவை',
+    },
+    'comm_assisted_desc': {
+      'en': 'Find your match 3x faster with our personal Matrimony Experts.',
+      'ta': 'எங்கள் தனிப்பட்ட திருமண நிபுணர்களுடன் 3 மடங்கு வேகமாக உங்கள் வரனைக் கண்டறியுங்கள்.',
+    },
+    'comm_incoming_messages': {
+      'en': 'Incoming messages from paid\nmembers',
+      'ta': 'கட்டண உறுப்பினர்களிடமிருந்து\nவரும் செய்திகள்',
+    },
+    'comm_filter': {
+      'en': 'Filter',
+      'ta': 'வடிகட்டு',
+    },
+    'comm_no_pending': {
+      'en': 'No pending responses',
+      'ta': 'நிலுவையில் பதில்கள் இல்லை',
+    },
+    'comm_no_pending_desc': {
+      'en': "All your messages have been seen.\nWe'll notify you once someone replies.",
+      'ta': 'உங்கள் அனைத்து செய்திகளும் பார்க்கப்பட்டுள்ளன.\nயாரேனும் பதிலளித்தவுடன் நாங்கள் உங்களுக்கு அறிவிப்போம்.',
+    },
+    'comm_contacted_by_you': {
+      'en': 'Contacted by You',
+      'ta': 'நீங்கள் தொடர்பு கொண்டவை',
+    },
+    'comm_contacted_you': {
+      'en': 'Contacted You',
+      'ta': 'உங்களைத் தொடர்பு கொண்டவை',
+    },
+    'comm_no_call_history': {
+      'en': 'No call history',
+      'ta': 'அழைப்பு வரலாறு இல்லை',
+    },
+    'comm_call_outgoing': {
+      'en': 'Outgoing',
+      'ta': 'வெளிச்செல்',
+    },
+    'comm_call_missed': {
+      'en': 'Missed',
+      'ta': 'தவறவிட்டது',
+    },
+    'comm_call_incoming': {
+      'en': 'Incoming',
+      'ta': 'உள்வரும்',
+    },
+    'comm_upgrade_title': {
+      'en': 'Upgrade to Call',
+      'ta': 'அழைக்க மேம்படுத்தவும்',
+    },
+    'comm_upgrade_desc': {
+      'en': 'Phone calls are available for paid members only. Upgrade now to connect directly with your matches.',
+      'ta': 'தொலைபேசி அழைப்புகள் கட்டண உறுப்பினர்களுக்கு மட்டுமே கிடைக்கும். உங்கள் வரன்களுடன் நேரடியாக இணைய இப்போது மேம்படுத்தவும்.',
+    },
+    'comm_upgrade_btn': {
+      'en': 'UPGRADE NOW',
+      'ta': 'இப்போது மேம்படுத்து',
+    },
+    'comm_maybe_later': {
+      'en': 'Maybe Later',
+      'ta': 'பிறகு பார்க்கலாம்',
+    },
+    'comm_search_coming': {
+      'en': 'Search coming soon',
+      'ta': 'தேடல் விரைவில் வரும்',
+    },
+    'comm_shortlist': {
+      'en': 'Shortlist Profile',
+      'ta': 'சுயவிவரத்தை பட்டியலிடு',
+    },
+    'comm_share': {
+      'en': 'Share Profile',
+      'ta': 'சுயவிவரத்தை பகிர்',
+    },
+    'comm_delete': {
+      'en': 'Delete Conversation',
+      'ta': 'உரையாடலை நீக்கு',
+    },
+    'comm_report': {
+      'en': 'Report Profile',
+      'ta': 'சுயவிவரத்தை புகார் செய்',
+    },
+    'comm_block': {
+      'en': 'Block Profile',
+      'ta': 'சுயவிவரத்தை தடு',
+    },
+    'comm_calling': {
+      'en': 'Calling',
+      'ta': 'அழைக்கிறது',
+    },
+    'interests_received': {
+      'en': 'Interests Received',
+      'ta': 'வரப்பெற்ற ஆர்வங்கள்',
+    },
+    'interests_sent': {
+      'en': 'Interests Sent',
+      'ta': 'அனுப்பிய ஆர்வங்கள்',
+    },
+    'interests_all': {
+      'en': 'All',
+      'ta': 'அனைத்தும்',
+    },
+    'interests_pending': {
+      'en': 'Pending',
+      'ta': 'நிலுவையில்',
+    },
+    'interests_accepted': {
+      'en': 'Accepted',
+      'ta': 'ஏற்றுக்கொள்ளப்பட்டவை',
+    },
+    'interests_declined': {
+      'en': 'Declined',
+      'ta': 'நிராகரிக்கப்பட்டவை',
+    },
+    'interests_search_id': {
+      'en': 'Search by Profile ID',
+      'ta': 'சுயவிவர ஐடி மூலம் தேடுக',
+    },
+    'interests_no_profiles': {
+      'en': 'No profiles found',
+      'ta': 'சுயவிவரங்கள் ஏதும் இல்லை',
+    },
+    'interests_filter': {
+      'en': 'Filter',
+      'ta': 'வடிகட்டி',
+    },
+    'interests_clear': {
+      'en': 'Clear',
+      'ta': 'அழி',
+    },
+    'interests_apply': {
+      'en': 'Apply',
+      'ta': 'பயன்படுத்து',
+    },
+    'interests_delete': {
+      'en': 'Delete Profile',
+      'ta': 'சுயவிவரத்தை நீக்கு',
+    },
+    'interests_share': {
+      'en': 'Share Profile',
+      'ta': 'சுயவிவரத்தை பகிர்',
+    },
+    'interests_send_msg': {
+      'en': 'SEND MESSAGE',
+      'ta': 'செய்தி அனுப்பு',
+    },
+    'interests_call': {
+      'en': 'CALL',
+      'ta': 'அழைப்பு',
+    },
+    'interests_status_accepted_received': {
+      'en': 'She accepted your invite',
+      'ta': 'அவர் உங்கள் அழைப்பை ஏற்றுக்கொண்டார்',
+    },
+    'interests_status_accepted_sent': {
+      'en': 'You accepted their invite',
+      'ta': 'நீங்கள் அவர்களின் அழைப்பை ஏற்றுக்கொண்டீர்கள்',
+    },
+    'interests_status_pending_received': {
+      'en': 'Awaiting Your Response',
+      'ta': 'உங்கள் பதிலுக்காக காத்திருக்கிறது',
+    },
+    'interests_status_pending_sent': {
+      'en': 'Awaiting Their Response',
+      'ta': 'அவர்களின் பதிலுக்காக காத்திருக்கிறது',
+    },
+    'interests_status_declined_received': {
+      'en': 'You declined this interest',
+      'ta': 'நீங்கள் இந்த ஆர்வத்தை நிராகரித்தீர்கள்',
+    },
+    'interests_status_declined_sent': {
+      'en': 'They declined your interest',
+      'ta': 'அவர்கள் உங்கள் ஆர்வத்தை நிராகரித்தனர்',
+    },
+    'interests_all_history_received': {
+      'en': 'History of all interests sent to you',
+      'ta': 'உங்களுக்கு அனுப்பப்பட்ட அனைத்து ஆர்வங்களின் வரலாறு',
+    },
+    'interests_all_history_sent': {
+      'en': 'History of all interests sent by you',
+      'ta': 'நீங்கள் அனுப்பிய அனைத்து ஆர்வங்களின் வரலாறு',
+    },
+    'interests_pending_history_received': {
+      'en': 'Interests awaiting your acceptance',
+      'ta': 'உங்கள் ஒப்புதலுக்காக காத்திருக்கும் ஆர்வங்கள்',
+    },
+    'interests_pending_history_sent': {
+      'en': 'Interests awaiting their acceptance',
+      'ta': 'அவர்களின் ஒப்புதலுக்காக காத்திருக்கும் ஆர்வங்கள்',
+    },
+    'interests_accepted_history_received': {
+      'en': 'Interests you have accepted',
+      'ta': 'நீங்கள் ஏற்றுக்கொண்ட ஆர்வங்கள்',
+    },
+    'interests_accepted_history_sent': {
+      'en': 'Interests they have accepted',
+      'ta': 'அவர்கள் ஏற்றுக்கொண்ட ஆர்வங்கள்',
+    },
+    'interests_declined_history_received': {
+      'en': 'Interests you have declined',
+      'ta': 'நீங்கள் நிராகரித்த ஆர்வங்கள்',
+    },
+    'interests_declined_history_sent': {
+      'en': 'Interests they have declined',
+      'ta': 'அவர்கள் நிராகரித்த ஆர்வங்கள்',
+    },
+    'interests_explore_matches': {
+      'en': 'Explore Matches',
+      'ta': 'வரன்களை ஆராயுங்கள்',
+    },
+    'interests_no_received_desc': {
+      'en': 'All your received interests will appear here. Start receiving interests by completing your profile and uploading photos.',
+      'ta': 'உங்களுக்கு வந்த அனைத்து ஆர்வங்களும் இங்கு தோன்றும். உங்கள் சுயவிவரத்தை பூர்த்தி செய்து புகைப்படங்களை பதிவேற்றுவதன் மூலம் ஆர்வங்களைப் பெறத் தொடங்குங்கள்.',
+    },
+    'interests_no_sent_desc': {
+      'en': 'All your sent interests will appear here. Start sending interests to matching profiles to connect.',
+      'ta': 'நீங்கள் அனுப்பிய அனைத்து ஆர்வங்களும் இங்கு தோன்றும். இணைய விரும்பும் வரன்களுக்கு ஆர்வங்களை அனுப்பத் தொடங்குங்கள்.',
+    },
+    'filter_unread': {
+      'en': 'Unread',
+      'ta': 'படிக்காதவை',
+    },
+    'filter_unread_desc': {
+      'en': "Interests you haven't read yet",
+      'ta': 'நீங்கள் இன்னும் படிக்காத ஆர்வங்கள்',
+    },
+    'filter_read': {
+      'en': 'Read',
+      'ta': 'படித்தவை',
+    },
+    'filter_read_desc': {
+      'en': 'Interests you have already read',
+      'ta': 'நீங்கள் ஏற்கனவே படித்த ஆர்வங்கள்',
+    },
+    'filter_accepted': {
+      'en': 'Accepted',
+      'ta': 'ஏற்றுக்கொள்ளப்பட்டவை',
+    },
+    'filter_accepted_desc': {
+      'en': 'Interests that have been approved',
+      'ta': 'அங்கீகரிக்கப்பட்ட ஆர்வங்கள்',
+    },
+    'filter_declined': {
+      'en': 'Declined',
+      'ta': 'நிராகரிக்கப்பட்டவை',
+    },
+    'filter_declined_desc': {
+      'en': 'Interests that have been passed on',
+      'ta': 'கடந்து செல்லப்பட்ட ஆர்வங்கள்',
+    },
   };
 
   static String translate(String key, String langCode) {
