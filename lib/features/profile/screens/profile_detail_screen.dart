@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/theme/theme.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 import '../models/profile_model.dart';
+import '../../../core/translation/option_translations.dart';
 
 class ProfileDetailScreen extends StatefulWidget {
   final ProfileModel profile;
@@ -164,6 +165,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
   }
 
   void _showSubscriptionSheet() {
+    final lang = context.read<OnboardingCubit>().state.langCode;
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -196,7 +198,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
               ),
               const SizedBox(height: 16),
               Text(
-                'UPGRADE TO PREMIUM',
+                lang == 'en' ? 'UPGRADE TO PREMIUM' : 'பிரீமியத்திற்கு மேம்படுத்தவும்',
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       color: KalyaThiruTheme.primaryDark,
                       fontWeight: FontWeight.bold,
@@ -204,15 +206,32 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
               ),
               const SizedBox(height: 8),
               Text(
-                'Unlock unlimited contact numbers, direct WhatsApp chats, horoscope matches, and premium profile highlights.',
+                lang == 'en'
+                    ? 'Unlock unlimited contact numbers, direct WhatsApp chats, horoscope matches, and premium profile highlights.'
+                    : 'வரம்பற்ற தொலைபேசி எண்கள், நேரடி வாட்ஸ்அப் அரட்டைகள், ஜாதகப் பொருத்தங்கள் மற்றும் பிரீமியம் சுயவிவரங்களை அறியுங்கள்.',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: KalyaThiruTheme.mutedGray),
               ),
               const SizedBox(height: 24),
               // Premium benefits list
-              _buildBenefitRow(Icons.check_circle, 'View verified Phone & WhatsApp numbers directly'),
-              _buildBenefitRow(Icons.check_circle, 'Send unlimited personalized messages & interests'),
-              _buildBenefitRow(Icons.check_circle, 'See mutual horoscopes and star compatibility scores'),
+              _buildBenefitRow(
+                Icons.check_circle,
+                lang == 'en'
+                    ? 'View verified Phone & WhatsApp numbers directly'
+                    : 'சரிபார்க்கப்பட்ட தொலைபேசி மற்றும் வாட்ஸ்அப் எண்களை நேரடியாகக் காண்க',
+              ),
+              _buildBenefitRow(
+                Icons.check_circle,
+                lang == 'en'
+                    ? 'Send unlimited personalized messages & interests'
+                    : 'வரம்பற்ற தனிப்பயனாக்கப்பட்ட செய்திகள் & ஆர்வங்களை அனுப்பவும்',
+              ),
+              _buildBenefitRow(
+                Icons.check_circle,
+                lang == 'en'
+                    ? 'See mutual horoscopes and star compatibility scores'
+                    : 'பரஸ்பர ஜாதகங்கள் மற்றும் நட்சத்திரப் பொருத்தங்களைக் காண்க',
+              ),
               const SizedBox(height: 32),
               SizedBox(
                 width: double.infinity,
@@ -226,8 +245,12 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
                     });
                     Navigator.pop(context);
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Thank you! Premium activated. (பிரிமியம் சேவை செயல்படுத்தப்பட்டது!)'),
+                      SnackBar(
+                        content: Text(
+                          lang == 'en'
+                              ? 'Thank you! Premium activated.'
+                              : 'நன்றி! பிரீமியம் சேவை செயல்படுத்தப்பட்டது.',
+                        ),
                         backgroundColor: Colors.green,
                       ),
                     );
@@ -237,13 +260,20 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                   ),
-                  child: const Text('ACTIVATE NOW - ₹1,499 / 3 Months'),
+                  child: Text(
+                    lang == 'en'
+                        ? 'ACTIVATE NOW - ₹1,499 / 3 Months'
+                        : 'இப்போது செயல்படுத்தவும் - ₹1,499 / 3 மாதங்கள்',
+                  ),
                 ),
               ),
               const SizedBox(height: 12),
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Maybe Later', style: TextStyle(color: KalyaThiruTheme.mutedGray)),
+                child: Text(
+                  lang == 'en' ? 'Maybe Later' : 'பிறகு செய்கிறேன்',
+                  style: const TextStyle(color: KalyaThiruTheme.mutedGray),
+                ),
               ),
             ],
           ),
@@ -410,7 +440,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
                                       ),
                                     ),
                                   Text(
-                                    p.name,
+                                    translateOption(p.name, lang),
                                     style: const TextStyle(
                                       fontSize: 28,
                                       fontWeight: FontWeight.bold,
@@ -444,22 +474,22 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
                       children: [
                         Row(
                           children: [
-                            Expanded(child: _buildQuickInfo(Icons.person_outline, '${p.age} Yrs, ${p.height}')),
-                            Expanded(child: _buildQuickInfo(Icons.favorite_border, _t(p.maritalStatus, p.maritalStatus, lang))),
+                            Expanded(child: _buildQuickInfo(Icons.person_outline, '${p.age} ${lang == 'en' ? 'Yrs' : 'வயது'}, ${p.height}')),
+                            Expanded(child: _buildQuickInfo(Icons.favorite_border, translateOption(p.maritalStatus, lang))),
                           ],
                         ),
                         const SizedBox(height: 12),
                         Row(
                           children: [
-                            Expanded(child: _buildQuickInfo(Icons.business_center_outlined, p.occupation)),
-                            Expanded(child: _buildQuickInfo(Icons.location_on_outlined, '${p.city}, ${p.state}')),
+                            Expanded(child: _buildQuickInfo(Icons.business_center_outlined, translateOption(p.occupation, lang))),
+                            Expanded(child: _buildQuickInfo(Icons.location_on_outlined, '${translateOption(p.city, lang)}, ${translateOption(p.state, lang)}')),
                           ],
                         ),
                         const SizedBox(height: 12),
                         Row(
                           children: [
-                            Expanded(child: _buildQuickInfo(Icons.menu_book_outlined, '${p.religion} - ${p.caste}')),
-                            Expanded(child: _buildQuickInfo(Icons.translate_outlined, _t(p.motherTongue, p.motherTongue, lang))),
+                            Expanded(child: _buildQuickInfo(Icons.menu_book_outlined, '${translateOption(p.religion, lang)} - ${translateOption(p.caste, lang)}')),
+                            Expanded(child: _buildQuickInfo(Icons.translate_outlined, translateOption(p.motherTongue, lang))),
                           ],
                         ),
                       ],

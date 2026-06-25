@@ -13,6 +13,8 @@ import '../../features/onboarding/screens/onboarding_screens.dart';
 import '../../features/home/screens/home_screen.dart';
 import '../../features/profile/models/profile_model.dart';
 import '../../features/profile/screens/profile_detail_screen.dart';
+import '../../features/profile/screens/profile_menu_screen.dart';
+import '../../features/profile/screens/settings_screen.dart';
 
 class AppRoutes {
   static CustomTransitionPage _slideTransition(BuildContext context, GoRouterState state, Widget child) {
@@ -196,6 +198,25 @@ class AppRoutes {
           );
         },
       ),
+      // Profile Menu (Sandwich Screen)
+      GoRoute(
+        path: '/profile_menu',
+        pageBuilder: (context, state) => _slideTransition(
+          context,
+          state,
+          const ProfileMenuScreen(),
+        ),
+      ),
+      // Settings Screen
+      GoRoute(
+        path: '/settings',
+        pageBuilder: (context, state) => _slideTransition(
+          context,
+          state,
+          const SettingsScreen(),
+        ),
+      ),
     ],
   );
+
 }

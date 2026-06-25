@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/theme/theme.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 import '../../profile/models/profile_model.dart';
+import '../../../core/translation/option_translations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -117,17 +118,17 @@ class _HomeScreenState extends State<HomeScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  profile.name,
+                                  translateOption(profile.name, lang),
                                   style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: KalyaThiruTheme.darkCharcoal),
                                 ),
                                 const SizedBox(height: 2),
                                 Text(
-                                  '${profile.age} Yrs • ${profile.height} • ${profile.city}',
+                                  '${profile.age} ${lang == 'en' ? 'Yrs' : 'வயது'} • ${profile.height} • ${translateOption(profile.city, lang)}',
                                   style: const TextStyle(fontSize: 12, color: KalyaThiruTheme.mutedGray),
                                 ),
                                 const SizedBox(height: 2),
                                 Text(
-                                  profile.occupation,
+                                  translateOption(profile.occupation, lang),
                                   style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: KalyaThiruTheme.primaryMaroon),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -160,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               const SizedBox(height: 6),
                               Text(
-                                '95% Match',
+                                lang == 'en' ? '95% Match' : '95% பொருத்தம்',
                                 style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.bold,
@@ -191,6 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: Text(
                     lang == 'en' ? 'VIEW ALL DAILY PICKS' : 'இன்றைய தேர்வுகள் அனைத்தையும் காண்க',
+                    textAlign: TextAlign.center,
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -232,6 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Subscription Details Sheet
   void _showSubscriptionSheet() {
+    final lang = context.read<OnboardingCubit>().state.langCode;
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -259,7 +262,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 20),
               Text(
-                'Upgrade Membership\n(உறுப்பினர் சேர்க்கையை மேம்படுத்தவும்)',
+                lang == 'en' ? 'Upgrade Membership' : 'உறுப்பினர் சேர்க்கையை மேம்படுத்தவும்',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       color: KalyaThiruTheme.primaryMaroon,
@@ -268,7 +271,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                'Unlock unlimited features and connect instantly with verification-first matches.',
+                lang == 'en'
+                    ? 'Unlock unlimited features and connect instantly with verification-first matches.'
+                    : 'வரம்பற்ற வசதிகளைப் பெறவும் மற்றும் சரிபார்க்கப்பட்ட வரன்களுடன் உடனடியாக இணையவும்.',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: KalyaThiruTheme.mutedGray,
@@ -290,15 +295,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Gold Elite Plan (3 Months)',
+                          lang == 'en' ? 'Gold Elite Plan (3 Months)' : 'தங்க எலைட் திட்டம் (3 மாதங்கள்)',
                           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                 color: KalyaThiruTheme.primaryMaroon,
                               ),
                         ),
                         const SizedBox(height: 4),
-                        const Text(
-                          '₹4,500  (Save 61% - Limited offer)',
-                          style: TextStyle(
+                        Text(
+                          lang == 'en'
+                              ? '₹4,500  (Save 61% - Limited offer)'
+                              : '₹4,500  (61% சேமிப்பு - வரையறுக்கப்பட்ட சலுகை)',
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: KalyaThiruTheme.antiqueGold,
                           ),
@@ -315,20 +322,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   _togglePaidState(true);
                   Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Plan Upgraded successfully! (திட்டம் வெற்றிகரமாக மேம்படுத்தப்பட்டது!)'),
+                    SnackBar(
+                      content: Text(
+                        lang == 'en'
+                            ? 'Plan Upgraded successfully!'
+                            : 'திட்டம் வெற்றிகரமாக மேம்படுத்தப்பட்டது!',
+                      ),
                       backgroundColor: KalyaThiruTheme.primaryMaroon,
                     ),
                   );
                 },
-                child: const Text('ACTIVATE NOW (செயல்படுத்தவும்)'),
+                child: Text(lang == 'en' ? 'ACTIVATE NOW' : 'இப்போது செயல்படுத்தவும்'),
               ),
               const SizedBox(height: 12),
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text(
-                  'Maybe Later',
-                  style: TextStyle(color: KalyaThiruTheme.mutedGray),
+                child: Text(
+                  lang == 'en' ? 'Maybe Later' : 'பிறகு செய்கிறேன்',
+                  style: const TextStyle(color: KalyaThiruTheme.mutedGray),
                 ),
               ),
             ],
@@ -484,11 +495,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           // Drawer menu trigger
-          Builder(
-            builder: (context) => IconButton(
-              icon: const Icon(Icons.menu, color: KalyaThiruTheme.darkCharcoal),
-              onPressed: () => Scaffold.of(context).openEndDrawer(),
-            ),
+          IconButton(
+            icon: const Icon(Icons.menu, color: KalyaThiruTheme.darkCharcoal),
+            onPressed: () => context.push('/profile_menu'),
           ),
           const SizedBox(width: 8),
         ],
@@ -614,8 +623,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Text(
                             state.firstName != null && state.firstName!.isNotEmpty
-                                ? '${state.firstName} ${state.lastName ?? ""}'
-                                : 'Ananth Raman',
+                                ? translateOption('${state.firstName} ${state.lastName ?? ""}', lang)
+                                : translateOption('Ananth Raman', lang),
                             style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -835,9 +844,17 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                itemCount: SampleProfiles.dailyPicks.length,
+                itemCount: SampleProfiles.dailyPicks.length + 1,
                 separatorBuilder: (context, index) => const SizedBox(width: 16),
                 itemBuilder: (context, index) {
+                  if (index == SampleProfiles.dailyPicks.length) {
+                    return _buildViewAllCard(
+                      context,
+                      width: 200,
+                      lang: lang,
+                      onTap: _triggerDailyPopup,
+                    );
+                  }
                   final p = SampleProfiles.dailyPicks[index];
                   return GestureDetector(
                     onTap: () {
@@ -893,12 +910,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  p.name,
+                                  translateOption(p.name, lang),
                                   style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                                 ),
                                 const SizedBox(height: 2),
                                 Text(
-                                  "${p.age} Yrs, ${p.height} • ${p.city}",
+                                  "${p.age} ${lang == 'en' ? 'Yrs' : 'வயது'}, ${p.height} • ${translateOption(p.city, lang)}",
                                   style: const TextStyle(color: KalyaThiruTheme.mutedGray, fontSize: 11),
                                 ),
                                 const SizedBox(height: 6),
@@ -910,7 +927,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     borderRadius: BorderRadius.circular(2),
                                   ),
                                   child: Text(
-                                    p.occupation,
+                                    translateOption(p.occupation, lang),
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
@@ -957,21 +974,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  TextButton.icon(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Redirecting to Matches Feed')),
-                      );
-                    },
-                    icon: Text(
-                      lang == 'en' ? 'View All' : 'அனைத்தும் காண்க',
-                      style: const TextStyle(
-                        color: KalyaThiruTheme.primaryMaroon,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    label: const Icon(Icons.arrow_forward, color: KalyaThiruTheme.primaryMaroon, size: 16),
-                  ),
                 ],
               ),
             ),
@@ -983,9 +985,21 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                itemCount: SampleProfiles.matchesForYou.length,
+                itemCount: SampleProfiles.matchesForYou.length + 1,
                 separatorBuilder: (context, index) => const SizedBox(width: 16),
                 itemBuilder: (context, index) {
+                  if (index == SampleProfiles.matchesForYou.length) {
+                    return _buildViewAllCard(
+                      context,
+                      width: 200,
+                      lang: lang,
+                      onTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Redirecting to Matches Feed')),
+                        );
+                      },
+                    );
+                  }
                   final p = SampleProfiles.matchesForYou[index];
                   return GestureDetector(
                     onTap: () {
@@ -1042,12 +1056,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  p.name,
+                                  translateOption(p.name, lang),
                                   style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                                 ),
                                 const SizedBox(height: 2),
                                 Text(
-                                  "${p.age} Yrs, ${p.height} • ${p.city}",
+                                  "${p.age} ${lang == 'en' ? 'Yrs' : 'வயது'}, ${p.height} • ${translateOption(p.city, lang)}",
                                   style: const TextStyle(color: KalyaThiruTheme.mutedGray, fontSize: 11),
                                 ),
                                 const SizedBox(height: 6),
@@ -1058,7 +1072,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     borderRadius: BorderRadius.circular(2),
                                   ),
                                   child: Text(
-                                    p.occupation,
+                                    translateOption(p.occupation, lang),
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
@@ -1180,13 +1194,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  TextButton(
-                    onPressed: _showSubscriptionSheet,
-                    child: Text(
-                      lang == 'en' ? 'View All' : 'அனைத்தும் காண்க',
-                      style: const TextStyle(color: KalyaThiruTheme.primaryMaroon, fontWeight: FontWeight.bold),
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -1196,9 +1203,17 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                itemCount: SampleProfiles.whoViewedYou.length,
+                itemCount: SampleProfiles.whoViewedYou.length + 1,
                 separatorBuilder: (context, index) => const SizedBox(width: 16),
                 itemBuilder: (context, index) {
+                  if (index == SampleProfiles.whoViewedYou.length) {
+                    return _buildViewAllCard(
+                      context,
+                      width: 130,
+                      lang: lang,
+                      onTap: _showSubscriptionSheet,
+                    );
+                  }
                   final profile = SampleProfiles.whoViewedYou[index];
                   return InkWell(
                     onTap: _isPaidMember ? () => context.push('/profile', extra: profile) : _showSubscriptionSheet,
@@ -1248,12 +1263,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  profile.name,
+                                  translateOption(profile.name, lang),
                                   style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                                 ),
                                 const SizedBox(height: 2),
                                 Text(
-                                  "${profile.age} Yrs, ${profile.height}",
+                                  "${profile.age} ${lang == 'en' ? 'Yrs' : 'வயது'}, ${profile.height}",
                                   style: const TextStyle(color: KalyaThiruTheme.mutedGray, fontSize: 10),
                                 ),
                               ],
@@ -1283,13 +1298,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      lang == 'en' ? 'View All' : 'அனைத்தும் காண்க',
-                      style: const TextStyle(color: KalyaThiruTheme.primaryMaroon, fontWeight: FontWeight.bold),
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -1299,9 +1307,21 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                itemCount: SampleProfiles.dailyPicks.length,
+                itemCount: SampleProfiles.dailyPicks.length + 1,
                 separatorBuilder: (context, index) => const SizedBox(width: 16),
                 itemBuilder: (context, index) {
+                  if (index == SampleProfiles.dailyPicks.length) {
+                    return _buildViewAllCard(
+                      context,
+                      width: 140,
+                      lang: lang,
+                      onTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Redirecting to Viewed Profiles Feed')),
+                        );
+                      },
+                    );
+                  }
                   final profile = SampleProfiles.dailyPicks[index];
                   return GestureDetector(
                     onTap: () => context.push('/profile', extra: profile),
@@ -1332,17 +1352,17 @@ class _HomeScreenState extends State<HomeScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  profile.name,
+                                  translateOption(profile.name, lang),
                                   style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                                 ),
                                 const SizedBox(height: 2),
                                 Text(
-                                  "${profile.age} Yrs, ${profile.height}",
+                                  "${profile.age} ${lang == 'en' ? 'Yrs' : 'வயது'}, ${profile.height}",
                                   style: const TextStyle(color: KalyaThiruTheme.mutedGray, fontSize: 10),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  "2 hours ago",
+                                  lang == 'en' ? '2 hours ago' : '2 மணிநேரத்திற்கு முன்பு',
                                   style: TextStyle(color: Colors.grey[400], fontSize: 8),
                                 ),
                               ],
@@ -1356,19 +1376,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             const SizedBox(height: 12),
-            Center(
-              child: TextButton(
-                onPressed: () {},
-                child: Text(
-                  lang == 'en' ? 'View all' : 'அனைத்தும் காண்க',
-                  style: const TextStyle(
-                    color: KalyaThiruTheme.primaryMaroon,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
 
             // 8. Photo Requests Container
             Padding(
@@ -1645,6 +1652,62 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
           ],
+         ),
+       ),
+     );
+   }
+
+  Future<void> _triggerDailyPopup() async {
+    final prefs = await SharedPreferences.getInstance();
+    final today = DateTime.now().toIso8601String().substring(0, 10);
+    _showDailyPopupSheet(prefs, today);
+  }
+
+  Widget _buildViewAllCard(
+    BuildContext context, {
+    required double width,
+    required String lang,
+    required VoidCallback onTap,
+  }) {
+    return Container(
+      width: width,
+      decoration: BoxDecoration(
+        color: const Color(0xFFFBF8F6),
+        border: Border.all(color: KalyaThiruTheme.outlineVariant),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: KalyaThiruTheme.primaryMaroon.withOpacity(0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.arrow_forward,
+                  color: KalyaThiruTheme.primaryMaroon,
+                  size: 24,
+                ),
+              ),
+              const SizedBox(height: 12),
+              Text(
+                lang == 'en' ? 'View All' : 'அனைத்தும் காண்க',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: KalyaThiruTheme.primaryMaroon,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
