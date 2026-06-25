@@ -182,6 +182,18 @@ const Map<String, String> optionTranslationsTa = {
   'Yoga & Meditation': 'யோகா & தியானம்',
   'Marathon & Running': 'மராத்தான் & ஓட்டம்',
   'Badminton / Tennis': 'பேட்மிண்டன் / டென்னிஸ்',
+  'Chennai': 'சென்னை',
+  'Bangalore': 'பெங்களூரு',
+  'Coimbatore': 'கோயம்புத்தூர்',
+  'Research Assistant': 'ஆராய்ச்சி உதவியாளர்',
+  'IAS Aspirant': 'ஐ.ஏ.எஸ் ஆர்வலர்',
+  'Tamil Nadu': 'தமிழ்நாடு',
+  'Karnataka': 'கர்நாடகா',
+  'Never Married': 'திருமணமாகாதவர்',
+  'Ananth Raman': 'ஆனந்த் ராமன்',
+  'Afrin Zulfia': 'அஃப்ரின் சுல்பியா',
+  'Priyanka R.': 'பிரியங்கா ஆர்.',
+  'Divya P.': 'திவ்யா பி.',
 };
 
 String translateOption(String? option, String langCode) {
