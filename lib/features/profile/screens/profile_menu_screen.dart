@@ -429,9 +429,7 @@ class _ProfileMenuScreenState extends State<ProfileMenuScreen> {
                       ? 'Edit Partner Preference'
                       : 'துணை விருப்பங்களைத் திருத்தவும்',
                   onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Edit Partner Preferences coming soon!')),
-                    );
+                    context.push('/edit_partner_preference');
                   },
                 ),
                 _buildUpgradeOption(lang),
