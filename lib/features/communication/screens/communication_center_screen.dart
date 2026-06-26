@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/theme/theme.dart';
 import '../../../core/translation/translations.dart';
+import '../../../core/translation/option_translations.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 import 'chat_screen.dart';
 
@@ -324,6 +325,7 @@ class _CommunicationCenterScreenState extends State<CommunicationCenterScreen>
         ],
         bottom: TabBar(
           controller: _tabController,
+          isScrollable: true,
           indicatorColor: KalyaThiruTheme.primaryMaroon,
           indicatorWeight: 2.5,
           labelColor: KalyaThiruTheme.primaryMaroon,
@@ -525,9 +527,12 @@ class _MessagesReceivedTabState extends State<_MessagesReceivedTab> {
         break;
     }
     if (_searchQuery.isNotEmpty) {
-      list = list
-          .where((m) => m.name.toLowerCase().contains(_searchQuery.toLowerCase()))
-          .toList();
+      list = list.where((m) {
+        final nameEn = m.name.toLowerCase();
+        final nameTa = translateOption(m.name, widget.lang).toLowerCase();
+        final query = _searchQuery.toLowerCase();
+        return nameEn.contains(query) || nameTa.contains(query);
+      }).toList();
     }
     return list;
   }
@@ -1040,7 +1045,7 @@ class _MessageCard extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (_) => ChatScreen(
-              personName: message.name,
+              personName: translateOption(message.name, lang),
               personPhotoUrl: message.photoUrl,
               isPaidMember: isPaidMember,
               isOnline: message.isOnline,
@@ -1100,7 +1105,7 @@ class _MessageCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          message.name,
+                          translateOption(message.name, lang),
                           style: TextStyle(
                             fontWeight: message.isViewed
                                 ? FontWeight.w600
@@ -1179,7 +1184,7 @@ class _MessageCard extends StatelessWidget {
                        ? () {
                            ScaffoldMessenger.of(context).showSnackBar(
                              SnackBar(
-                               content: Text('${_t('comm_calling')} ${message.name}...'),
+                               content: Text('${_t('comm_calling')} ${translateOption(message.name, lang)}...'),
                              ),
                            );
                         }
@@ -1519,7 +1524,7 @@ class _CallCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  call.name,
+                  translateOption(call.name, lang),
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -1558,7 +1563,7 @@ class _CallCard extends StatelessWidget {
                 ? () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text('${_t('comm_calling')} ${call.name}...'),
+                        content: Text('${_t('comm_calling')} ${translateOption(call.name, lang)}...'),
                       ),
                     );
                   }

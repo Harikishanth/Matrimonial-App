@@ -291,26 +291,28 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          lang == 'en' ? 'Gold Elite Plan (3 Months)' : 'தங்க எலைட் திட்டம் (3 மாதங்கள்)',
-                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                color: KalyaThiruTheme.primaryMaroon,
-                              ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          lang == 'en'
-                              ? '₹4,500  (Save 61% - Limited offer)'
-                              : '₹4,500  (61% சேமிப்பு - வரையறுக்கப்பட்ட சலுகை)',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: KalyaThiruTheme.antiqueGold,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            lang == 'en' ? 'Gold Elite Plan (3 Months)' : 'தங்க எலைட் திட்டம் (3 மாதங்கள்)',
+                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                  color: KalyaThiruTheme.primaryMaroon,
+                                ),
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 4),
+                          Text(
+                            lang == 'en'
+                                ? '₹4,500  (Save 61% - Limited offer)'
+                                : '₹4,500  (61% சேமிப்பு - வரையறுக்கப்பட்ட சலுகை)',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: KalyaThiruTheme.antiqueGold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     const Icon(Icons.check_circle, color: KalyaThiruTheme.primaryMaroon),
                   ],
