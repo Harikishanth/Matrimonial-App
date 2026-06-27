@@ -13,13 +13,12 @@ import '../../features/onboarding/screens/onboarding_screens.dart';
 import '../../features/home/screens/home_screen.dart';
 import '../../features/profile/models/profile_model.dart';
 import '../../features/profile/screens/profile_detail_screen.dart';
-<<<<<<< HEAD
 import '../../features/communication/screens/communication_center_screen.dart';
 import '../../features/interests/screens/interests_screen.dart';
-=======
 import '../../features/profile/screens/profile_menu_screen.dart';
 import '../../features/profile/screens/settings_screen.dart';
->>>>>>> 6d62fcc89e3aee5070fdd19d86c96cef723c50a6
+import '../../features/profile/screens/matches_feed_screen.dart';
+import '../../features/profile/screens/selected_matches_screen.dart';
 
 class AppRoutes {
   static CustomTransitionPage _slideTransition(BuildContext context, GoRouterState state, Widget child) {
@@ -203,7 +202,6 @@ class AppRoutes {
           );
         },
       ),
-<<<<<<< HEAD
       // Communication Center Screen
       GoRoute(
         path: '/communication',
@@ -229,7 +227,7 @@ class AppRoutes {
             InterestsScreen(isPaidMember: isPaid),
           );
         },
-=======
+      ),
       // Profile Menu (Sandwich Screen)
       GoRoute(
         path: '/profile_menu',
@@ -247,9 +245,39 @@ class AppRoutes {
           state,
           const SettingsScreen(),
         ),
->>>>>>> 6d62fcc89e3aee5070fdd19d86c96cef723c50a6
+      ),
+      // Matches Feed Screen
+      GoRoute(
+        path: '/matches',
+        pageBuilder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          final isPaid = extra?['isPaidMember'] as bool? ?? false;
+          return _slideTransition(
+            context,
+            state,
+            MatchesFeedScreen(isPaidMember: isPaid),
+          );
+        },
+      ),
+      // Selected Matches Screen
+      GoRoute(
+        path: '/selected_matches',
+        pageBuilder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          final isPaid = extra?['isPaidMember'] as bool? ?? false;
+          final title = extra?['title'] as String? ?? 'Preferred Matches';
+          final List<ProfileModel>? profiles = extra?['profiles'] as List<ProfileModel>?;
+          return _slideTransition(
+            context,
+            state,
+            SelectedMatchesScreen(
+              isPaidMember: isPaid,
+              sectionTitle: title,
+              initialProfiles: profiles,
+            ),
+          );
+        },
       ),
     ],
   );
-
 }

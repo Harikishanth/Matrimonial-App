@@ -10,7 +10,7 @@ void main() {
 }
 
 class KalyaThiruApp extends StatelessWidget {
-  const KalyaThiruApp({Key? key}) : super(key: key);
+  const KalyaThiruApp({super.key});
 
   @override
   Widget build(BuildContext context) {

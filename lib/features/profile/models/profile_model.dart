@@ -34,6 +34,8 @@ class ProfileModel {
   final String? dosham;
   final String? subcaste;
   final String? weight;
+  final String? smokingHabits;
+  final String? drinkingHabits;
 
   // About sections
   final String? bioSelf;       // "About Myself"
@@ -106,6 +108,8 @@ class ProfileModel {
     this.dosham,
     this.subcaste,
     this.weight,
+    this.smokingHabits = 'No',
+    this.drinkingHabits = 'No',
     this.bioSelf,
     this.bioFamily,
     this.familyStatus,

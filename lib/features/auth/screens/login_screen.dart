@@ -8,7 +8,7 @@ import '../../../core/widgets/regal_button.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();

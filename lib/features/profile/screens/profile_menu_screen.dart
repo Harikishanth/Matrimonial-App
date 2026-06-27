@@ -546,7 +546,7 @@ class _ProfileMenuScreenState extends State<ProfileMenuScreen> {
               ),
               child: Icon(
                 icon,
-                color: iconColor ?? KalyaThiruTheme.darkCharcoal.withOpacity(0.7),
+                color: iconColor ?? KalyaThiruTheme.darkCharcoal.withValues(alpha: 0.7),
                 size: 20,
               ),
             ),
@@ -572,7 +572,7 @@ class _ProfileMenuScreenState extends State<ProfileMenuScreen> {
     return InkWell(
       onTap: _showSubscriptionSheet,
       child: Container(
-        color: KalyaThiruTheme.primaryMaroon.withOpacity(0.05),
+        color: KalyaThiruTheme.primaryMaroon.withValues(alpha: 0.05),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         child: Row(
           children: [

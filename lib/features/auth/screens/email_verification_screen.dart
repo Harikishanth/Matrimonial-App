@@ -6,7 +6,7 @@ import '../../../core/theme/theme.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 
 class EmailVerificationScreen extends StatefulWidget {
-  const EmailVerificationScreen({Key? key}) : super(key: key);
+  const EmailVerificationScreen({super.key});
 
   @override
   State<EmailVerificationScreen> createState() => _EmailVerificationScreenState();
@@ -68,13 +68,13 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
-                      color: KalyaThiruTheme.outlineBorder.withOpacity(0.25),
+                      color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.25),
                       width: 1.2,
                     ),
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.03),
+                        color: Colors.black.withValues(alpha: 0.03),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
                       ),
@@ -92,7 +92,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                             width: 64,
                             height: 64,
                             decoration: BoxDecoration(
-                              color: KalyaThiruTheme.antiqueGold.withOpacity(0.12),
+                              color: KalyaThiruTheme.antiqueGold.withValues(alpha: 0.12),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: const Icon(
@@ -149,12 +149,12 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                           child: Container(
                             height: 56,
                             decoration: BoxDecoration(
-                              color: KalyaThiruTheme.softIvory.withOpacity(0.4),
+                              color: KalyaThiruTheme.softIvory.withValues(alpha: 0.4),
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
                                 color: _isFocused
                                     ? KalyaThiruTheme.primaryMaroon
-                                    : KalyaThiruTheme.outlineBorder.withOpacity(0.4),
+                                    : KalyaThiruTheme.outlineBorder.withValues(alpha: 0.4),
                                 width: _isFocused ? 1.5 : 1.0,
                               ),
                             ),
@@ -185,7 +185,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                                       hintText: 'e.g. aditya.kumar@example.com',
                                       hintStyle: GoogleFonts.nunitoSans(
                                         fontSize: 15,
-                                        color: KalyaThiruTheme.mutedGray.withOpacity(0.4),
+                                        color: KalyaThiruTheme.mutedGray.withValues(alpha: 0.4),
                                       ),
                                     ),
                                     validator: (value) {
@@ -221,7 +221,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                               borderRadius: BorderRadius.circular(8),
                               boxShadow: [
                                 BoxShadow(
-                                  color: KalyaThiruTheme.primaryMaroon.withOpacity(0.2),
+                                  color: KalyaThiruTheme.primaryMaroon.withValues(alpha: 0.2),
                                   blurRadius: 10,
                                   offset: const Offset(0, 4),
                                 ),
@@ -333,7 +333,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                         '© 2024 KalyaThiru Matrimony. All rights reserved.',
                         style: GoogleFonts.nunitoSans(
                           fontSize: 11,
-                          color: KalyaThiruTheme.mutedGray.withOpacity(0.7),
+                          color: KalyaThiruTheme.mutedGray.withValues(alpha: 0.7),
                         ),
                         textAlign: TextAlign.center,
                       ),

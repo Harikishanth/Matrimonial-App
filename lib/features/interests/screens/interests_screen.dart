@@ -667,8 +667,8 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
                     children: [
                       Text(
                         _activeSubTab == 'all'
-                            ? AppTranslations.translate('interests_all', lang) + ' ' + AppTranslations.translate('interests_received', lang).split(' ').last
-                            : AppTranslations.translate('interests_' + _activeSubTab, lang) + ' ' + AppTranslations.translate('interests_received', lang).split(' ').last,
+                            ? '${AppTranslations.translate('interests_all', lang)} ${AppTranslations.translate('interests_received', lang).split(' ').last}'
+                            : '${AppTranslations.translate('interests_' + _activeSubTab, lang)} ${AppTranslations.translate('interests_received', lang).split(' ').last}',
                         style: const TextStyle(
                           fontSize: 18,
                           fontFamily: 'Source Serif 4',
@@ -680,8 +680,8 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
                       Text(
                         AppTranslations.translate(
                           _currentSectionIndex == 0
-                              ? 'interests_' + _activeSubTab + '_history_received'
-                              : 'interests_' + _activeSubTab + '_history_sent',
+                              ? 'interests_${_activeSubTab}_history_received'
+                              : 'interests_${_activeSubTab}_history_sent',
                           lang,
                         ),
                         style: const TextStyle(fontSize: 11, color: KalyaThiruTheme.mutedGray),

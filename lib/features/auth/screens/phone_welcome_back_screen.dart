@@ -6,7 +6,7 @@ import '../../../core/theme/theme.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 
 class PhoneWelcomeBackScreen extends StatefulWidget {
-  const PhoneWelcomeBackScreen({Key? key}) : super(key: key);
+  const PhoneWelcomeBackScreen({super.key});
 
   @override
   State<PhoneWelcomeBackScreen> createState() => _PhoneWelcomeBackScreenState();
@@ -74,13 +74,13 @@ class _PhoneWelcomeBackScreenState extends State<PhoneWelcomeBackScreen> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
-                      color: KalyaThiruTheme.outlineBorder.withOpacity(0.25),
+                      color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.25),
                       width: 1.2,
                     ),
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.03),
+                        color: Colors.black.withValues(alpha: 0.03),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
                       ),
@@ -98,7 +98,7 @@ class _PhoneWelcomeBackScreenState extends State<PhoneWelcomeBackScreen> {
                             width: 64,
                             height: 64,
                             decoration: BoxDecoration(
-                              color: KalyaThiruTheme.primaryMaroon.withOpacity(0.08),
+                              color: KalyaThiruTheme.primaryMaroon.withValues(alpha: 0.08),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: const Icon(
@@ -154,12 +154,12 @@ class _PhoneWelcomeBackScreenState extends State<PhoneWelcomeBackScreen> {
                           child: Container(
                             height: 56,
                             decoration: BoxDecoration(
-                              color: KalyaThiruTheme.softIvory.withOpacity(0.4),
+                              color: KalyaThiruTheme.softIvory.withValues(alpha: 0.4),
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
                                 color: _isFocused
                                     ? KalyaThiruTheme.primaryMaroon
-                                    : KalyaThiruTheme.outlineBorder.withOpacity(0.4),
+                                    : KalyaThiruTheme.outlineBorder.withValues(alpha: 0.4),
                                 width: _isFocused ? 1.5 : 1.0,
                               ),
                             ),
@@ -191,7 +191,7 @@ class _PhoneWelcomeBackScreenState extends State<PhoneWelcomeBackScreen> {
                                 Container(
                                   width: 1.0,
                                   height: 28,
-                                  color: KalyaThiruTheme.outlineBorder.withOpacity(0.3),
+                                  color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.3),
                                 ),
                                 const SizedBox(width: 12),
                                 // Text Field
@@ -216,7 +216,7 @@ class _PhoneWelcomeBackScreenState extends State<PhoneWelcomeBackScreen> {
                                       hintText: 'Enter 10-digit number',
                                       hintStyle: GoogleFonts.nunitoSans(
                                         fontSize: 15,
-                                        color: KalyaThiruTheme.mutedGray.withOpacity(0.4),
+                                        color: KalyaThiruTheme.mutedGray.withValues(alpha: 0.4),
                                         fontWeight: FontWeight.normal,
                                       ),
                                     ),
@@ -251,7 +251,7 @@ class _PhoneWelcomeBackScreenState extends State<PhoneWelcomeBackScreen> {
                               borderRadius: BorderRadius.circular(8),
                               boxShadow: [
                                 BoxShadow(
-                                  color: KalyaThiruTheme.primaryMaroon.withOpacity(0.2),
+                                  color: KalyaThiruTheme.primaryMaroon.withValues(alpha: 0.2),
                                   blurRadius: 10,
                                   offset: const Offset(0, 4),
                                 ),
@@ -287,7 +287,7 @@ class _PhoneWelcomeBackScreenState extends State<PhoneWelcomeBackScreen> {
                             Expanded(
                               child: Container(
                                 height: 1.0,
-                                color: KalyaThiruTheme.outlineBorder.withOpacity(0.15),
+                                color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.15),
                               ),
                             ),
                             Padding(
@@ -304,7 +304,7 @@ class _PhoneWelcomeBackScreenState extends State<PhoneWelcomeBackScreen> {
                             Expanded(
                               child: Container(
                                 height: 1.0,
-                                color: KalyaThiruTheme.outlineBorder.withOpacity(0.15),
+                                color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.15),
                               ),
                             ),
                           ],
@@ -331,7 +331,7 @@ class _PhoneWelcomeBackScreenState extends State<PhoneWelcomeBackScreen> {
                           ),
                           style: OutlinedButton.styleFrom(
                             side: BorderSide(
-                              color: KalyaThiruTheme.outlineBorder.withOpacity(0.3),
+                              color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.3),
                               width: 1.0,
                             ),
                             padding: const EdgeInsets.symmetric(vertical: 14),
@@ -445,7 +445,7 @@ class _PhoneWelcomeBackScreenState extends State<PhoneWelcomeBackScreen> {
                         : 'தொடர்வதன் மூலம், எங்கள் சேவை விதிமுறைகள் மற்றும் தனியுரிமைக் கொள்கையை நீங்கள் ஒப்புக்கொள்கிறீர்கள்.',
                     style: GoogleFonts.nunitoSans(
                       fontSize: 11,
-                      color: KalyaThiruTheme.mutedGray.withOpacity(0.8),
+                      color: KalyaThiruTheme.mutedGray.withValues(alpha: 0.8),
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -490,7 +490,7 @@ class _PhoneWelcomeBackScreenState extends State<PhoneWelcomeBackScreen> {
                         '© 2024 KalyaThiru Matrimony. All rights reserved.',
                         style: GoogleFonts.nunitoSans(
                           fontSize: 11,
-                          color: KalyaThiruTheme.mutedGray.withOpacity(0.7),
+                          color: KalyaThiruTheme.mutedGray.withValues(alpha: 0.7),
                         ),
                         textAlign: TextAlign.center,
                       ),
