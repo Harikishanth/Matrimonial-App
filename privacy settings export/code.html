@@ -1,0 +1,368 @@
+<!DOCTYPE html><html class="light" lang="ta" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Privacy Settings | தனியுரிமை அமைப்புகள்</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#f3ede9",
+                    "secondary-fixed": "#ffe088",
+                    "on-primary-fixed": "#40000b",
+                    "on-tertiary-container": "#ff8663",
+                    "outline": "#8c7071",
+                    "inverse-on-surface": "#f6f0ec",
+                    "on-tertiary-fixed-variant": "#872100",
+                    "background": "#fef8f4",
+                    "primary": "#570013",
+                    "on-secondary-fixed": "#241a00",
+                    "on-background": "#1d1b19",
+                    "outline-variant": "#e0bfbf",
+                    "tertiary-fixed": "#ffdbd1",
+                    "primary-container": "#800020",
+                    "primary-fixed-dim": "#ffb3b5",
+                    "surface-bright": "#fef8f4",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#fed65b",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#e7e1de",
+                    "secondary-fixed-dim": "#e9c349",
+                    "secondary": "#735c00",
+                    "tertiary": "#501000",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#1d1b19",
+                    "on-primary-fixed-variant": "#8e0f28",
+                    "inverse-primary": "#ffb3b5",
+                    "tertiary-fixed-dim": "#ffb5a0",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#32302e",
+                    "surface": "#fef8f4",
+                    "on-tertiary-fixed": "#3b0900",
+                    "on-surface-variant": "#584141",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e7e1de",
+                    "primary-fixed": "#ffdada",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#ff828a",
+                    "surface-container-high": "#ede7e3",
+                    "surface-dim": "#dfd9d5",
+                    "surface-tint": "#af2b3e",
+                    "tertiary-container": "#761c00",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-secondary-container": "#745c00",
+                    "surface-container-low": "#f9f2ef"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "stack-sm": "4px",
+                    "stack-md": "12px",
+                    "container-max": "1200px",
+                    "base": "8px",
+                    "stack-lg": "24px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "headline-md": ["\"Source Serif 4\""],
+                    "display-lg": ["\"Source Serif 4\""],
+                    "label-lg": ["Nunito Sans"],
+                    "aura-tag": ["Nunito Sans"],
+                    "label-md": ["Nunito Sans"],
+                    "headline-lg": ["\"Source Serif 4\""],
+                    "body-lg": ["Nunito Sans"],
+                    "headline-lg-mobile": ["\"Source Serif 4\""],
+                    "body-md": ["Nunito Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "aura-tag": ["13px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            color: #570013;
+            border-bottom: 3px solid #800020;
+        }
+        .radio-custom:checked + label .radio-circle {
+            border-color: #800020;
+            background-color: #800020;
+            box-shadow: inset 0 0 0 3px #fef8f4;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md">
+<!-- Top Navigation Bar -->
+<header class="w-full top-0 sticky bg-surface border-b border-outline-variant z-50 transition-colors duration-200">
+<div class="flex items-center justify-between px-margin-mobile h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<button aria-label="Back" class="hover:bg-surface-container-low p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">Privacy Settings <span class="block text-sm font-body-md opacity-70">தனியுரிமை அமைப்புகள்</span></h1>
+</div>
+<button class="hover:bg-surface-container-low p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Content Canvas -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile py-stack-lg">
+<!-- Tab Bar -->
+<div class="flex border-b border-outline-variant mb-stack-lg overflow-x-auto no-scrollbar">
+<button class="tab-btn flex-1 py-4 px-2 text-center font-label-lg whitespace-nowrap transition-all active-tab" id="tab-mobile" onclick="switchTab('mobile')">
+<span class="block">Mobile</span>
+<span class="text-xs font-normal">கைபேசி</span>
+</button>
+<button class="tab-btn flex-1 py-4 px-2 text-center font-label-lg hover:bg-surface-container-low whitespace-nowrap transition-all text-on-surface-variant" id="tab-photo" onclick="switchTab('photo')">
+<span class="block">Photo</span>
+<span class="text-xs font-normal">புகைப்படம்</span>
+</button>
+<button class="tab-btn flex-1 py-4 px-2 text-center font-label-lg hover:bg-surface-container-low whitespace-nowrap transition-all text-on-surface-variant" id="tab-horoscope" onclick="switchTab('horoscope')">
+<span class="block">Horoscope</span>
+<span class="text-xs font-normal">ஜாதகம்</span>
+</button>
+</div>
+<!-- Mobile Content -->
+<section class="tab-content fade-in active" id="content-mobile">
+<div class="bg-surface-container-lowest p-stack-lg rounded-lg border border-outline/10 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">phone_android</span>
+<h2 class="font-headline-md text-headline-md text-primary-container">
+                        Phone Number Privacy <br>
+<span class="text-base font-body-md text-on-surface-variant">கைபேசி எண் தனியுரிமை</span>
+</h2>
+</div>
+<div class="space-y-4">
+<div class="relative">
+<input checked="" class="hidden radio-custom" id="m1" name="mobile_privacy" type="radio">
+<label class="flex items-start gap-4 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors" for="m1">
+<span class="radio-circle w-5 h-5 rounded-full border-2 border-outline mt-1 shrink-0 transition-all"></span>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Premium members can view and call directly</span>
+<span class="text-sm text-on-surface-variant">பிரீமியம் உறுப்பினர்கள் பார்க்கலாம் மற்றும் நேரடியாக அழைக்கலாம்</span>
+</div>
+</label>
+</div>
+<div class="relative">
+<input class="hidden radio-custom" id="m2" name="mobile_privacy" type="radio">
+<label class="flex items-start gap-4 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors" for="m2">
+<span class="radio-circle w-5 h-5 rounded-full border-2 border-outline mt-1 shrink-0 transition-all"></span>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Premium members can view but cannot call</span>
+<span class="text-sm text-on-surface-variant">பிரீமியம் உறுப்பினர்கள் பார்க்கலாம் ஆனால் நேரடியாக அழைக்க முடியாது</span>
+</div>
+</label>
+</div>
+<div class="relative">
+<input class="hidden radio-custom" id="m3" name="mobile_privacy" type="radio">
+<label class="flex items-start gap-4 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors" for="m3">
+<span class="radio-circle w-5 h-5 rounded-full border-2 border-outline mt-1 shrink-0 transition-all"></span>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Visible to all members (Standard)</span>
+<span class="text-sm text-on-surface-variant">அனைத்து உறுப்பினர்களுக்கும் தெரியும்</span>
+</div>
+</label>
+</div>
+<div class="relative">
+<input class="hidden radio-custom" id="m4" name="mobile_privacy" type="radio">
+<label class="flex items-start gap-4 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors" for="m4">
+<span class="radio-circle w-5 h-5 rounded-full border-2 border-outline mt-1 shrink-0 transition-all"></span>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Hide from free members</span>
+<span class="text-sm text-on-surface-variant">இலவச உறுப்பினர்களிடமிருந்து மறைக்கவும்</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Photo Content -->
+<section class="tab-content fade-in" id="content-photo">
+<div class="bg-surface-container-lowest p-stack-lg rounded-lg border border-outline/10 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+<h2 class="font-headline-md text-headline-md text-primary-container">
+                        Photo Visibility <br>
+<span class="text-base font-body-md text-on-surface-variant">புகைப்படத் தெரிவுநிலை</span>
+</h2>
+</div>
+<div class="space-y-4">
+<div class="relative">
+<input checked="" class="hidden radio-custom" id="p1" name="photo_privacy" type="radio">
+<label class="flex items-start gap-4 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors" for="p1">
+<span class="radio-circle w-5 h-5 rounded-full border-2 border-outline mt-1 shrink-0 transition-all"></span>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Visible to Premium members only</span>
+<span class="text-sm text-on-surface-variant">பிரீமியம் உறுப்பினர்களுக்கு மட்டும் தெரியும்</span>
+</div>
+</label>
+</div>
+<div class="relative">
+<input class="hidden radio-custom" id="p2" name="photo_privacy" type="radio">
+<label class="flex items-start gap-4 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors" for="p2">
+<span class="radio-circle w-5 h-5 rounded-full border-2 border-outline mt-1 shrink-0 transition-all"></span>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Visible to all (Standard)</span>
+<span class="text-sm text-on-surface-variant">அனைவருக்கும் தெரியும்</span>
+</div>
+</label>
+</div>
+<div class="relative">
+<input class="hidden radio-custom" id="p3" name="photo_privacy" type="radio">
+<label class="flex items-start gap-4 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors" for="p3">
+<span class="radio-circle w-5 h-5 rounded-full border-2 border-outline mt-1 shrink-0 transition-all"></span>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Hide from profiles I have not liked</span>
+<span class="text-sm text-on-surface-variant">நான் விரும்பாத சுயவிவரங்களிலிருந்து மறைக்கவும்</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Horoscope Content -->
+<section class="tab-content fade-in" id="content-horoscope">
+<div class="bg-surface-container-lowest p-stack-lg rounded-lg border border-outline/10 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<h2 class="font-headline-md text-headline-md text-primary-container">
+                        Horoscope Access <br>
+<span class="text-base font-body-md text-on-surface-variant">ஜாதக அணுகல்</span>
+</h2>
+</div>
+<div class="space-y-4">
+<div class="relative">
+<input checked="" class="hidden radio-custom" id="h1" name="h_privacy" type="radio">
+<label class="flex items-start gap-4 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors" for="h1">
+<span class="radio-circle w-5 h-5 rounded-full border-2 border-outline mt-1 shrink-0 transition-all"></span>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Premium members can download and view</span>
+<span class="text-sm text-on-surface-variant">பிரீமியம் உறுப்பினர்கள் பதிவிறக்கம் செய்து பார்க்கலாம்</span>
+</div>
+</label>
+</div>
+<div class="relative">
+<input class="hidden radio-custom" id="h2" name="h_privacy" type="radio">
+<label class="flex items-start gap-4 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors" for="h2">
+<span class="radio-circle w-5 h-5 rounded-full border-2 border-outline mt-1 shrink-0 transition-all"></span>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Premium members can view online only</span>
+<span class="text-sm text-on-surface-variant">பிரீமியம் உறுப்பினர்கள் ஆன்லைனில் மட்டுமே பார்க்க முடியும்</span>
+</div>
+</label>
+</div>
+<div class="relative">
+<input class="hidden radio-custom" id="h3" name="h_privacy" type="radio">
+<label class="flex items-start gap-4 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors" for="h3">
+<span class="radio-circle w-5 h-5 rounded-full border-2 border-outline mt-1 shrink-0 transition-all"></span>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Visible to all verified members</span>
+<span class="text-sm text-on-surface-variant">அனைத்து சரிபார்க்கப்பட்ட உறுப்பினர்களுக்கும் தெரியும்</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Card (Stylized Asset) -->
+<div class="mt-stack-lg p-6 bg-secondary-fixed/20 border border-secondary/20 rounded-lg flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<div>
+<h3 class="font-label-lg text-primary">Matrimonial Trust Seal</h3>
+<p class="text-sm text-on-surface-variant">Privacy settings are audited every 30 days to ensure your data remains secure and follows community standards.</p>
+</div>
+</div>
+</main>
+<!-- Bottom Actions -->
+<footer class="sticky bottom-0 w-full bg-surface-container-lowest p-margin-mobile border-t border-outline-variant shadow-lg z-50">
+<div class="max-w-container-max mx-auto flex gap-4">
+<button class="flex-grow bg-primary-container text-white py-4 px-8 rounded-lg font-headline-md text-center hover:bg-primary transition-all active:scale-95 flex items-center justify-center gap-2" onclick="this.innerHTML='&lt;span class=&quot;material-symbols-outlined&quot;&gt;check_circle&lt;/span&gt; Saved'; this.classList.replace('bg-primary-container', 'bg-primary');"><span class="material-symbols-outlined">save</span>Save Settings</button>
+</div>
+</footer>
+<!-- Global Toast (Hidden) -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-6 py-3 rounded-full transition-all duration-300 pointer-events-none flex items-center gap-2 opacity-0 translate-y-4" id="toast">
+<span class="material-symbols-outlined text-green-400">check_circle</span>
+<span class="">Settings updated successfully</span>
+</div>
+<script>
+        function switchTab(tabId) {
+            // Update Buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active-tab');
+                btn.classList.add('text-on-surface-variant');
+            });
+            document.getElementById('tab-' + tabId).classList.add('active-tab');
+            document.getElementById('tab-' + tabId).classList.remove('text-on-surface-variant');
+
+            // Update Content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById('content-' + tabId).classList.add('active');
+
+            // Scroll tab into view if mobile
+            document.getElementById('tab-' + tabId).scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+
+        function handleSave() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('opacity-0', 'translate-y-4');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-4');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 3000);
+        }
+
+        // Lightweight ripple/tap effect for interactive elements
+        document.querySelectorAll('label').forEach(label => {
+            label.addEventListener('click', () => {
+                label.classList.add('bg-primary/5');
+                setTimeout(() => label.classList.remove('bg-primary/5'), 150);
+            });
+        });
+    </script>
+
+
+</body></html>

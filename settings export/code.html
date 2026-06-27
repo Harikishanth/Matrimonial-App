@@ -1,0 +1,335 @@
+<!DOCTYPE html><html class="light" lang="ta" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>KalyaThiru - Settings</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&amp;family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdbd1",
+                        "surface-container-high": "#ede7e3",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#dfd9d5",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#e9c349",
+                        "secondary-container": "#fed65b",
+                        "outline": "#8c7071",
+                        "on-tertiary-fixed": "#3b0900",
+                        "on-secondary-fixed-variant": "#574500",
+                        "tertiary": "#501000",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "on-secondary-container": "#745c00",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f9f2ef",
+                        "on-background": "#1d1b19",
+                        "surface-tint": "#af2b3e",
+                        "inverse-primary": "#ffb3b5",
+                        "surface-container-highest": "#e7e1de",
+                        "primary": "#570013",
+                        "primary-container": "#800020",
+                        "inverse-surface": "#32302e",
+                        "primary-fixed": "#ffdada",
+                        "on-secondary-fixed": "#241a00",
+                        "on-primary-container": "#ff828a",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#761c00",
+                        "surface-container": "#f3ede9",
+                        "secondary": "#735c00",
+                        "tertiary-fixed-dim": "#ffb5a0",
+                        "on-tertiary-container": "#ff8663",
+                        "on-surface-variant": "#584141",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#ffe088",
+                        "inverse-on-surface": "#f6f0ec",
+                        "background": "#fef8f4",
+                        "surface-variant": "#e7e1de",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#e0bfbf",
+                        "on-surface": "#1d1b19",
+                        "on-primary-fixed": "#40000b",
+                        "on-tertiary-fixed-variant": "#872100",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fef8f4",
+                        "surface": "#fef8f4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "stack-md": "12px",
+                        "base": "8px",
+                        "margin-mobile": "16px",
+                        "stack-lg": "24px",
+                        "stack-sm": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["\"Source Serif 4\""],
+                        "aura-tag": ["Nunito Sans"],
+                        "headline-md": ["\"Source Serif 4\""],
+                        "label-md": ["Nunito Sans"],
+                        "display-lg": ["\"Source Serif 4\""],
+                        "body-md": ["Nunito Sans"],
+                        "body-lg": ["Nunito Sans"],
+                        "headline-lg-mobile": ["\"Source Serif 4\""],
+                        "label-lg": ["Nunito Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "aura-tag": ["13px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Nunito Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; display: inline-block; }
+        .tab-transition { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease-in-out; }
+        .hidden-state { display: none; pointer-events: none; }
+        .aura-tag-verified { background: linear-gradient(135deg, #e9c349 0%, #735c00 100%); }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen overflow-x-hidden">
+<!-- Top AppBar (Mandatory Shell - Supressed on sub-screens via JS logic) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-background dark:bg-surface border-b border-outline-variant/20" id="top-bar">
+<div class="flex items-center gap-4">
+<button class="active:opacity-80 transition-opacity" onclick="goBack()">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md text-primary dark:text-primary-fixed font-bold" id="app-bar-headline">KalyaThiru</h1>
+</div>
+<button class="active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">more_vert</span>
+</button>
+</header>
+<main class="pt-20 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- MAIN SETTINGS VIEW -->
+<div class="space-y-stack-md tab-transition opacity-100" id="main-settings"><h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-stack-lg">Settings (அமைப்புகள்)</h2><div class="space-y-2"><button class="w-full flex items-center justify-between p-4 bg-surface-container-low rounded-xl border border-outline/10 hover:bg-surface-container-high transition-colors text-left group" onclick="showSection('notifications-view')"><div class="flex items-center gap-4"><div class="w-10 h-10 flex items-center justify-center bg-primary/5 rounded-lg text-primary"><span class="material-symbols-outlined">notifications</span></div><div><p class="font-body-lg text-body-lg font-semibold">Notifications</p><p class="text-on-surface-variant text-label-md">அறிவிப்புகள்</p></div></div><span class="material-symbols-outlined text-on-surface-variant transition-transform group-active:translate-x-1">chevron_right</span></button><button class="w-full flex items-center justify-between p-4 bg-surface-container-low rounded-xl border border-outline/10 hover:bg-surface-container-high transition-colors text-left group" onclick="showSection('advanced-view')"><div class="flex items-center gap-4"><div class="w-10 h-10 flex items-center justify-center bg-primary/5 rounded-lg text-primary"><span class="material-symbols-outlined">settings_suggest</span></div><div><p class="font-body-lg text-body-lg font-semibold">Advanced Settings</p><p class="text-on-surface-variant text-label-md">மேம்பட்ட அமைப்புகள்</p></div></div><span class="material-symbols-outlined text-on-surface-variant transition-transform group-active:translate-x-1">chevron_right</span></button><div class="w-full bg-surface-container-low rounded-xl border border-outline/10 overflow-hidden transition-all duration-300"><button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-high transition-colors text-left group" onclick="toggleAccountMenu()"><div class="flex items-center gap-4"><div class="w-10 h-10 flex items-center justify-center bg-primary/5 rounded-lg text-primary"><span class="material-symbols-outlined">account_circle</span></div><div><p class="font-body-lg text-body-lg font-semibold">Account</p><p class="text-on-surface-variant text-label-md">கணக்கு</p></div></div><span class="material-symbols-outlined text-on-surface-variant transition-transform" id="account-chevron" style="transform: rotate(0deg);">expand_more</span></button><div class="overflow-hidden transition-all duration-300 border-t border-outline-variant/10 max-h-96 max-h-0 opacity-0 pointer-events-none" id="account-dropdown"><div class="p-2 space-y-1"><button class="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 text-on-surface transition-colors"><span class="material-symbols-outlined text-primary">lock_reset</span><div><p class="font-body-md">Change Password</p><p class="text-on-surface-variant text-[10px]">கடவுச்சொல்லை மாற்றவும்</p></div></button><button class="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 text-on-surface transition-colors"><span class="material-symbols-outlined text-primary">logout</span><div><p class="font-body-md">Logout</p><p class="text-on-surface-variant text-[10px]">வெளியேறு</p></div></button><button class="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-error/5 text-error transition-colors"><span class="material-symbols-outlined">delete_forever</span><div><p class="font-body-md">Delete Profile</p><p class="text-on-surface-variant text-[10px]">சுயவிவரத்தை நீக்கவும்</p></div></button></div></div></div></div></div>
+<!-- Advanced Settings -->
+<!-- NOTIFICATIONS VIEW -->
+<div class="tab-transition opacity-100 opacity-0 hidden-state" id="notifications-view">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-stack-lg">Notifications (அறிவிப்புகள்)</h2>
+<div class="bg-surface-container-low rounded-xl border border-outline/10 overflow-hidden divide-y divide-outline-variant/20">
+<div class="p-6 flex items-center justify-between">
+<div>
+<p class="font-body-lg text-body-lg font-semibold">Push Notifications</p>
+<p class="text-on-surface-variant text-label-md">புஷ் அறிவிப்புகள்</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="p-6 flex items-center justify-between">
+<div>
+<p class="font-body-lg text-body-lg font-semibold">Email Alerts</p>
+<p class="text-on-surface-variant text-label-md">மின்னஞ்சல் எச்சரிக்கைகள்</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="p-6 flex items-center justify-between">
+<div>
+<p class="font-body-lg text-body-lg font-semibold">Match Alerts</p>
+<p class="text-on-surface-variant text-label-md">பொருத்த அறிவிப்புகள்</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="p-6 flex items-center justify-between"><div><p class="font-body-lg text-body-lg font-semibold">Phone Number Views</p><p class="text-on-surface-variant text-label-md">போன் நம்பர் பார்த்தவர்கள்</p></div><label class="relative inline-flex items-center cursor-pointer"><input class="sr-only peer" type="checkbox"><div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div></label></div><div class="p-6 flex items-center justify-between"><div><p class="font-body-lg text-body-lg font-semibold">Shortlists</p><p class="text-on-surface-variant text-label-md">விருப்பப்பட்டியலில் சேர்த்தவர்கள்</p></div><label class="relative inline-flex items-center cursor-pointer"><input class="sr-only peer" type="checkbox"><div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div></label></div><div class="p-6 flex items-center justify-between"><div><p class="font-body-lg text-body-lg font-semibold">Chats</p><p class="text-on-surface-variant text-label-md">அரட்டைகள்</p></div><label class="relative inline-flex items-center cursor-pointer"><input class="sr-only peer" type="checkbox"><div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div></label></div><div class="p-6 flex items-center justify-between"><div><p class="font-body-lg text-body-lg font-semibold">More Alerts</p><p class="text-on-surface-variant text-label-md">கூடுதல் அறிவிப்புகள்</p></div><label class="relative inline-flex items-center cursor-pointer"><input class="sr-only peer" type="checkbox"><div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div></label></div></div>
+<div class="mt-6 space-y-4"><h3 class="font-headline-md text-headline-md text-on-surface">Matches (வரன்கள்)</h3><div class="bg-surface-container-low rounded-xl border border-outline/10 overflow-hidden divide-y divide-outline-variant/20"><div class="p-6 flex items-center justify-between"><div><p class="font-body-lg text-body-lg font-semibold">New Matches</p><p class="text-on-surface-variant text-label-md">புதிய வரன்கள்</p></div><label class="relative inline-flex items-center cursor-pointer"><input class="sr-only peer" type="checkbox"><div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div></label></div><div class="p-6 flex items-center justify-between"><div><p class="font-body-lg text-body-lg font-semibold">Daily Matches</p><p class="text-on-surface-variant text-label-md">தினசரி வரன்கள்</p></div><label class="relative inline-flex items-center cursor-pointer"><input class="sr-only peer" type="checkbox"><div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div></label></div><div class="p-6 flex items-center justify-between"><div><p class="font-body-lg text-body-lg font-semibold">Based on Activity</p><p class="text-on-surface-variant text-label-md">நடவடிக்கை அடிப்படையில்</p></div><label class="relative inline-flex items-center cursor-pointer"><input class="sr-only peer" type="checkbox"><div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div></label></div></div></div><div class="mt-6 space-y-4"><h3 class="font-headline-md text-headline-md text-on-surface">Premium (பிரிமியம்)</h3><div class="bg-surface-container-low rounded-xl border border-outline/10 overflow-hidden divide-y divide-outline-variant/20"><div class="p-6 flex items-center justify-between"><div><p class="font-body-lg text-body-lg font-semibold">Membership Offers</p><p class="text-on-surface-variant text-label-md">உறுப்பினர் சலுகைகள்</p></div><label class="relative inline-flex items-center cursor-pointer"><input class="sr-only peer" type="checkbox"><div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div></label></div></div></div></div>
+<!-- ADVANCED SETTINGS VIEW -->
+<div class="tab-transition space-y-stack-lg opacity-100 opacity-0 hidden-state" id="advanced-view">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">Advanced Settings (மேம்பட்ட அமைப்புகள்)</h2>
+<!-- Blocked Profiles Section -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 text-primary border-b border-primary/20 pb-2">
+<span class="material-symbols-outlined">block</span>
+<h3 class="font-headline-md text-headline-md">Blocked Profiles (முடக்கப்பட்டவை)</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Profile Card 1 -->
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline/10 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-xl object-cover bg-surface-dim" data-alt="A portrait of a sophisticated Tamil woman in a silk saree, warm heritage lighting, elegant pose, modern corporate photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwzSiiFgAXnlAN4ZW4pSvG3px5ZpgZqUmTaES_Fi22nAPwHf_frwtoTluOEpB4TU_gn-amgj-WZBVypTmnhg9i0x1-24X1dm9J6TMz4BP5pKaw0xmPN-dh-KkiOWASTUjiPSj-Mre7-x11eoKQsXxmSOW1vaeXUDUZ6QZ4RZIbVLCVluVZV_WEu3cg0_R6b9ZCvolySuFiygXj4QzdnUCHhzQ10AekzTkXHUaVrUKgfckn3cHv6OU-7lX6MSRmdnOA1yVYUNvwvbs">
+<div class="absolute -top-1 -right-1 bg-secondary rounded-full p-0.5 border-2 border-background shadow-sm">
+<span class="material-symbols-outlined text-[10px] text-on-secondary" style="font-variation-settings: &quot;FILL&quot; 1;">verified</span>
+</div>
+</div>
+<div>
+<p class="font-headline-md text-body-lg text-on-surface leading-tight">Abhirami K.</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="text-[10px] font-aura-tag px-2 py-0.5 rounded-full aura-tag-verified text-white uppercase tracking-wider">Verified</span>
+</div>
+</div>
+</div>
+<button class="p-2 text-primary hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">settings_backup_restore</span>
+</button>
+</div>
+<!-- Profile Card 2 -->
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline/10 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-xl object-cover bg-surface-dim" data-alt="A professional headshot of a Tamil man in traditional attire, soft ivory background, clean composition, high-end editorial wedding photography feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALNQ6WAU1phd3KaJ5McjdRKkIgo4D9ESlBnwxX-pc-S7X6r2q8eNci0bouP-Z1Ld18JhHWkylotR5nOq8w14sNR04KeckV3GtVKEOBKhiwdE3wK_HsN4CdMKYoF2y3MT7g-4I6sffBx159mIcVhmHsIzfM47ujxpc2bq_ukFNGv3D_k5Gho8wQMiSoKOUT2ljopqGXtkY4-EV-SYe7PczttVkwpXwXIHccrJisnk79gSO9iOsQ9zpoI9WzkY3iqbs1DUls0cBpTuk">
+</div>
+<div>
+<p class="font-headline-md text-body-lg text-on-surface leading-tight">Sundaram P.</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="text-[10px] font-aura-tag px-2 py-0.5 rounded-full bg-outline-variant text-on-surface-variant uppercase tracking-wider">Unverified</span>
+</div>
+</div>
+</div>
+<button class="p-2 text-primary hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">settings_backup_restore</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Hidden Profiles Section -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 text-primary border-b border-primary/20 pb-2">
+<span class="material-symbols-outlined">visibility_off</span>
+<h3 class="font-headline-md text-headline-md">Hidden Profiles (மறைக்கப்பட்டவை)</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline/10 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<img class="w-14 h-14 rounded-xl object-cover bg-surface-dim" data-alt="A stylish Tamil woman in contemporary ethnic wear, soft studio lighting, focused gaze, heritage trust brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJAGnzGwP8EcKUAdRzSkyyjFPfqWnyZ4DxpTdcC7r49WJH1Ufa74ciKnS3vdtO52PUhhYJvNUc2H0Vc7KWIjb_NViAGyviv1GafMjgVt-8zliKLV2b0tq2YjjflwZ7ZcGrj8yvihLMumzgCbo0T_ANDkxuiz2PcI4mQWISi3QbFqxTTHz-3qSEGv3I6XmUz1C4aMdFpsoNAF2HQhrpLed74z60n6GuvGCkhqk75j79kG48J9xwChP3x1QqjM5Kc3noqaNpIZURq3Q">
+<div>
+<p class="font-headline-md text-body-lg text-on-surface leading-tight">Meenakshi V.</p>
+<span class="text-[10px] font-aura-tag px-2 py-0.5 rounded-full aura-tag-verified text-white uppercase tracking-wider">Verified</span>
+</div>
+</div>
+<button class="text-label-md font-bold text-primary px-4 py-1.5 border border-primary/20 rounded-lg hover:bg-primary/5 transition-colors">Unhide</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mandatory Shell) -->
+
+<script>
+        let currentSection = 'main-settings';
+        const sectionHistory = ['main-settings'];
+
+        function showSection(sectionId) {
+            const currentEl = document.getElementById(currentSection);
+            const nextEl = document.getElementById(sectionId);
+            
+            // Fade out current
+            currentEl.classList.add('opacity-0');
+            
+            setTimeout(() => {
+                currentEl.classList.add('hidden-state');
+                nextEl.classList.remove('hidden-state');
+                
+                // Trigger animation
+                setTimeout(() => {
+                    nextEl.classList.remove('opacity-0');
+                    nextEl.classList.add('opacity-100');
+                }, 10);
+            }, 300);
+
+            currentSection = sectionId;
+            sectionHistory.push(sectionId);
+            updateAppBar();
+        }
+
+        function goBack() {
+            if (sectionHistory.length > 1) {
+                sectionHistory.pop();
+                const previousSection = sectionHistory[sectionHistory.length - 1];
+                
+                const currentEl = document.getElementById(currentSection);
+                const prevEl = document.getElementById(previousSection);
+
+                currentEl.classList.add('opacity-0');
+                
+                setTimeout(() => {
+                    currentEl.classList.add('hidden-state');
+                    prevEl.classList.remove('hidden-state');
+                    
+                    setTimeout(() => {
+                        prevEl.classList.remove('opacity-0');
+                        prevEl.classList.add('opacity-100');
+                    }, 10);
+                }, 300);
+
+                currentSection = previousSection;
+                updateAppBar();
+            } else {
+                // Potential redirect out of settings
+                console.log("Exiting settings screen");
+            }
+        }
+
+        function updateAppBar() {
+            const headline = document.getElementById('app-bar-headline');
+            const bottomNav = document.getElementById('bottom-nav');
+
+            if (currentSection === 'main-settings') {
+                headline.innerText = 'KalyaThiru';
+                bottomNav.style.display = 'flex';
+            } else if (currentSection === 'notifications-view') {
+                headline.innerText = 'Notifications';
+                bottomNav.style.display = 'none';
+            } else if (currentSection === 'advanced-view') {
+                headline.innerText = 'Advanced';
+                bottomNav.style.display = 'none';
+            }
+        }
+
+        function toggleAccountMenu() {
+            const menu = document.getElementById('account-dropdown');
+            const chevron = document.getElementById('account-chevron');
+            
+            if (menu.classList.contains('opacity-0')) {
+                menu.classList.remove('hidden-state', 'pointer-events-none', 'max-h-0', 'opacity-0');
+                menu.classList.add('max-h-96', 'opacity-100', 'mt-2');
+                chevron.style.transform = 'rotate(180deg)';
+            } else {
+                menu.classList.add('max-h-0', 'opacity-0', 'pointer-events-none');
+                menu.classList.remove('opacity-100', 'mt-2');
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Initialize App Bar
+        updateAppBar();
+    </script>
+
+
+
+
+
+
+</body></html>

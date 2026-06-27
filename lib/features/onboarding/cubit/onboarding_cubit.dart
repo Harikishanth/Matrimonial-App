@@ -112,6 +112,7 @@ class OnboardingState {
   final List<String> selectedInterests;
   final Map<String, List<String>> selectedSubInterests; // e.g. {'Reading': ['CS Books', 'Novels']}
   final String? trait;
+  final List<String> preferredCompulsoryFields;
 
   OnboardingState({
     this.langCode = 'en',
@@ -213,6 +214,7 @@ class OnboardingState {
     this.selectedInterests = const [],
     this.selectedSubInterests = const {},
     this.trait,
+    this.preferredCompulsoryFields = const [],
   });
 
   OnboardingState copyWith({
@@ -315,6 +317,7 @@ class OnboardingState {
     List<String>? selectedInterests,
     Map<String, List<String>>? selectedSubInterests,
     String? trait,
+    List<String>? preferredCompulsoryFields,
   }) {
     return OnboardingState(
       langCode: langCode ?? this.langCode,
@@ -416,6 +419,7 @@ class OnboardingState {
       selectedInterests: selectedInterests ?? this.selectedInterests,
       selectedSubInterests: selectedSubInterests ?? this.selectedSubInterests,
       trait: trait ?? this.trait,
+      preferredCompulsoryFields: preferredCompulsoryFields ?? this.preferredCompulsoryFields,
     );
   }
 
@@ -520,6 +524,7 @@ class OnboardingState {
       'selectedInterests': selectedInterests,
       'selectedSubInterests': selectedSubInterests.map((k, v) => MapEntry(k, v)),
       'trait': trait,
+      'preferredCompulsoryFields': preferredCompulsoryFields,
     };
   }
 
@@ -627,6 +632,7 @@ class OnboardingState {
           ) ??
           {},
       trait: map['trait'],
+      preferredCompulsoryFields: List<String>.from(map['preferredCompulsoryFields'] ?? []),
     );
   }
 }
@@ -771,6 +777,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     List<String>? selectedInterests,
     Map<String, List<String>>? selectedSubInterests,
     String? trait,
+    List<String>? preferredCompulsoryFields,
   }) {
     emit(this.state.copyWith(
       profileFor: profileFor ?? this.state.profileFor,
@@ -870,6 +877,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
       selectedInterests: selectedInterests ?? this.state.selectedInterests,
       selectedSubInterests: selectedSubInterests ?? this.state.selectedSubInterests,
       trait: trait ?? this.state.trait,
+      preferredCompulsoryFields: preferredCompulsoryFields ?? this.state.preferredCompulsoryFields,
     ));
     _saveToPrefs();
   }
