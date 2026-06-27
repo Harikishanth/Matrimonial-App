@@ -110,28 +110,30 @@ class _ProfileMenuScreenState extends State<ProfileMenuScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          lang == 'en' ? 'Gold Elite Plan (3 Months)' : 'தங்க எலைட் திட்டம் (3 மாதங்கள்)',
-                          style: GoogleFonts.sourceSerif4(
-                            color: KalyaThiruTheme.primaryMaroon,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            lang == 'en' ? 'Gold Elite Plan (3 Months)' : 'தங்க எலைட் திட்டம் (3 மாதங்கள்)',
+                            style: GoogleFonts.sourceSerif4(
+                              color: KalyaThiruTheme.primaryMaroon,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          lang == 'en'
-                              ? '₹4,500  (Save 61% - Limited offer)'
-                              : '₹4,500  (61% சேமிப்பு - வரையறுக்கப்பட்ட சலுகை)',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: KalyaThiruTheme.antiqueGold,
+                          const SizedBox(height: 4),
+                          Text(
+                            lang == 'en'
+                                ? '₹4,500  (Save 61% - Limited offer)'
+                                : '₹4,500  (61% சேமிப்பு - வரையறுக்கப்பட்ட சலுகை)',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: KalyaThiruTheme.antiqueGold,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     const Icon(Icons.check_circle, color: KalyaThiruTheme.primaryMaroon),
                   ],
@@ -390,10 +392,7 @@ class _ProfileMenuScreenState extends State<ProfileMenuScreen> {
                   icon: Icons.favorite_border,
                   title: lang == 'en' ? 'Interests' : 'ஆர்வங்கள்',
                   onTap: () {
-                    context.pop();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Interests feature coming soon!')),
-                    );
+                    context.push('/interests', extra: {'isPaidMember': _isPaidMember});
                   },
                 ),
                 _buildMenuOption(
@@ -410,10 +409,7 @@ class _ProfileMenuScreenState extends State<ProfileMenuScreen> {
                   icon: Icons.chat_bubble_outline,
                   title: lang == 'en' ? 'Messages' : 'செய்திகள்',
                   onTap: () {
-                    context.pop();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Messages feature coming soon!')),
-                    );
+                    context.push('/communication', extra: {'isPaidMember': _isPaidMember});
                   },
                 ),
                 const Padding(
@@ -424,9 +420,7 @@ class _ProfileMenuScreenState extends State<ProfileMenuScreen> {
                   icon: Icons.person_outline,
                   title: lang == 'en' ? 'Edit Profile' : 'சுயவிவரத்தைத் திருத்தவும்',
                   onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Edit Profile coming soon!')),
-                    );
+                    context.push('/edit_profile');
                   },
                 ),
                 _buildMenuOption(
@@ -435,9 +429,7 @@ class _ProfileMenuScreenState extends State<ProfileMenuScreen> {
                       ? 'Edit Partner Preference'
                       : 'துணை விருப்பங்களைத் திருத்தவும்',
                   onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Edit Partner Preferences coming soon!')),
-                    );
+                    context.push('/edit_partner_preference');
                   },
                 ),
                 _buildUpgradeOption(lang),

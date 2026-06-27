@@ -13,13 +13,16 @@ import '../../features/onboarding/screens/onboarding_screens.dart';
 import '../../features/home/screens/home_screen.dart';
 import '../../features/profile/models/profile_model.dart';
 import '../../features/profile/screens/profile_detail_screen.dart';
-<<<<<<< HEAD
 import '../../features/communication/screens/communication_center_screen.dart';
 import '../../features/interests/screens/interests_screen.dart';
-=======
 import '../../features/profile/screens/profile_menu_screen.dart';
 import '../../features/profile/screens/settings_screen.dart';
->>>>>>> 6d62fcc89e3aee5070fdd19d86c96cef723c50a6
+import '../../features/profile/screens/notifications_settings_screen.dart';
+import '../../features/profile/screens/advanced_settings_screen.dart';
+import '../../features/profile/screens/privacy_settings_screen.dart';
+import '../../features/profile/screens/edit_profile_screen.dart';
+import '../../features/profile/screens/edit_section_screen.dart';
+import '../../features/profile/screens/edit_partner_preference_screen.dart';
 
 class AppRoutes {
   static CustomTransitionPage _slideTransition(BuildContext context, GoRouterState state, Widget child) {
@@ -203,7 +206,6 @@ class AppRoutes {
           );
         },
       ),
-<<<<<<< HEAD
       // Communication Center Screen
       GoRoute(
         path: '/communication',
@@ -229,7 +231,7 @@ class AppRoutes {
             InterestsScreen(isPaidMember: isPaid),
           );
         },
-=======
+      ),
       // Profile Menu (Sandwich Screen)
       GoRoute(
         path: '/profile_menu',
@@ -247,7 +249,63 @@ class AppRoutes {
           state,
           const SettingsScreen(),
         ),
->>>>>>> 6d62fcc89e3aee5070fdd19d86c96cef723c50a6
+      ),
+      // Notifications Settings Screen
+      GoRoute(
+        path: '/settings/notifications',
+        pageBuilder: (context, state) => _slideTransition(
+          context,
+          state,
+          const NotificationsSettingsScreen(),
+        ),
+      ),
+      // Advanced Settings Screen
+      GoRoute(
+        path: '/settings/advanced',
+        pageBuilder: (context, state) => _slideTransition(
+          context,
+          state,
+          const AdvancedSettingsScreen(),
+        ),
+      ),
+      // Privacy Settings Screen
+      GoRoute(
+        path: '/settings/privacy',
+        pageBuilder: (context, state) => _slideTransition(
+          context,
+          state,
+          const PrivacySettingsScreen(),
+        ),
+      ),
+      // Edit Profile Screen
+      GoRoute(
+        path: '/edit_profile',
+        pageBuilder: (context, state) => _slideTransition(
+          context,
+          state,
+          const EditProfileScreen(),
+        ),
+      ),
+      // Edit Section Screen
+      GoRoute(
+        path: '/edit_profile/section',
+        pageBuilder: (context, state) {
+          final section = state.uri.queryParameters['section'] ?? 'personal';
+          return _slideTransition(
+            context,
+            state,
+            EditSectionScreen(section: section),
+          );
+        },
+      ),
+      // Edit Partner Preference Screen
+      GoRoute(
+        path: '/edit_partner_preference',
+        pageBuilder: (context, state) => _slideTransition(
+          context,
+          state,
+          const EditPartnerPreferenceScreen(),
+        ),
       ),
     ],
   );
