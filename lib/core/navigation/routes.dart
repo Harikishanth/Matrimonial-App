@@ -23,6 +23,7 @@ import '../../features/profile/screens/privacy_settings_screen.dart';
 import '../../features/profile/screens/edit_profile_screen.dart';
 import '../../features/profile/screens/edit_section_screen.dart';
 import '../../features/profile/screens/edit_partner_preference_screen.dart';
+import '../../features/profile/screens/edit_partner_preference_section_screen.dart';
 
 class AppRoutes {
   static CustomTransitionPage _slideTransition(BuildContext context, GoRouterState state, Widget child) {
@@ -306,6 +307,18 @@ class AppRoutes {
           state,
           const EditPartnerPreferenceScreen(),
         ),
+      ),
+      // Edit Partner Preference Section Screen
+      GoRoute(
+        path: '/edit_partner_preference/section',
+        pageBuilder: (context, state) {
+          final section = state.uri.queryParameters['section'] ?? 'basic';
+          return _slideTransition(
+            context,
+            state,
+            EditPartnerPreferenceSectionScreen(section: section),
+          );
+        },
       ),
     ],
   );
