@@ -14,14 +14,14 @@ class BottomSheetSelector extends StatefulWidget {
   final Widget? suffixIcon;
 
   const BottomSheetSelector({
-    Key? key,
+    super.key,
     required this.labelText,
     required this.selectedValue,
     required this.options,
     required this.onSelected,
     this.searchPlaceholder = 'Search...',
     this.suffixIcon,
-  }) : super(key: key);
+  });
 
   @override
   State<BottomSheetSelector> createState() => _BottomSheetSelectorState();
@@ -101,14 +101,14 @@ class _BottomSheetContent extends StatefulWidget {
   final void Function(String) onSelected;
 
   const _BottomSheetContent({
-    Key? key,
+    super.key,
     required this.title,
     required this.options,
     required this.selectedValue,
     required this.searchPlaceholder,
     required this.lang,
     required this.onSelected,
-  }) : super(key: key);
+  });
 
   @override
   State<_BottomSheetContent> createState() => _BottomSheetContentState();
@@ -155,7 +155,7 @@ class _BottomSheetContentState extends State<_BottomSheetContent> {
               height: 4,
               margin: const EdgeInsets.only(bottom: 16),
               decoration: BoxDecoration(
-                color: KalyaThiruTheme.outlineBorder.withOpacity(0.3),
+                color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.3),
                 borderRadius: BorderRadius.circular(2),
               ),
             ),

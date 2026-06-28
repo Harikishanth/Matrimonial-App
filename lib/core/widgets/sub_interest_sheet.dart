@@ -12,13 +12,13 @@ class SubInterestSheet extends StatefulWidget {
   final void Function(List<String>) onSaved;
 
   const SubInterestSheet({
-    Key? key,
+    super.key,
     required this.title,
     required this.tamilTitle,
     required this.availableGenres,
     required this.selectedGenres,
     required this.onSaved,
-  }) : super(key: key);
+  });
 
   @override
   State<SubInterestSheet> createState() => _SubInterestSheetState();
@@ -60,7 +60,7 @@ class _SubInterestSheetState extends State<SubInterestSheet> {
               height: 4,
               margin: const EdgeInsets.only(bottom: 16),
               decoration: BoxDecoration(
-                color: KalyaThiruTheme.outlineBorder.withOpacity(0.3),
+                color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.3),
                 borderRadius: BorderRadius.circular(2),
               ),
             ),

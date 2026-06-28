@@ -11,9 +11,9 @@ class ProfileDetailScreen extends StatefulWidget {
   final ProfileModel profile;
 
   const ProfileDetailScreen({
-    Key? key,
+    super.key,
     required this.profile,
-  }) : super(key: key);
+  });
 
   @override
   State<ProfileDetailScreen> createState() => _ProfileDetailScreenState();
@@ -338,9 +338,9 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              Colors.black.withOpacity(0.5),
+                              Colors.black.withValues(alpha: 0.5),
                               Colors.transparent,
-                              Colors.black.withOpacity(0.6),
+                              Colors.black.withValues(alpha: 0.6),
                             ],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
@@ -550,7 +550,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 10,
                     offset: const Offset(0, -4),
                   )
@@ -916,7 +916,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
                       child: Container(
-                        color: Colors.white.withOpacity(0.4),
+                        color: Colors.white.withValues(alpha: 0.4),
                         alignment: Alignment.center,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -1085,7 +1085,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
               borderRadius: BorderRadius.circular(8),
               boxShadow: [
                 BoxShadow(
-                  color: KalyaThiruTheme.primaryDark.withOpacity(0.2),
+                  color: KalyaThiruTheme.primaryDark.withValues(alpha: 0.2),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 )
@@ -1245,7 +1245,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
               borderRadius: BorderRadius.circular(8),
               boxShadow: [
                 BoxShadow(
-                  color: KalyaThiruTheme.primaryDark.withOpacity(0.2),
+                  color: KalyaThiruTheme.primaryDark.withValues(alpha: 0.2),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 )

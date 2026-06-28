@@ -7,7 +7,7 @@ import '../../../core/translation/translations.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 
 class EntryScreen extends StatelessWidget {
-  const EntryScreen({Key? key}) : super(key: key);
+  const EntryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class EntryScreen extends StatelessWidget {
           
           // 2. Opacity and Blend layer to replicate mix-blend-multiply of HTML design
           Container(
-            color: KalyaThiruTheme.softIvory.withOpacity(0.55),
+            color: KalyaThiruTheme.softIvory.withValues(alpha: 0.55),
           ),
 
           // 3. Vignette & text protection gradients
@@ -40,8 +40,8 @@ class EntryScreen extends StatelessWidget {
                 gradient: LinearGradient(
                   colors: [
                     KalyaThiruTheme.softIvory,
-                    KalyaThiruTheme.softIvory.withOpacity(0.8),
-                    KalyaThiruTheme.softIvory.withOpacity(0.3),
+                    KalyaThiruTheme.softIvory.withValues(alpha: 0.8),
+                    KalyaThiruTheme.softIvory.withValues(alpha: 0.3),
                     Colors.transparent,
                   ],
                   begin: Alignment.bottomCenter,
@@ -56,7 +56,7 @@ class EntryScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    KalyaThiruTheme.softIvory.withOpacity(0.35),
+                    KalyaThiruTheme.softIvory.withValues(alpha: 0.35),
                     Colors.transparent,
                   ],
                   begin: Alignment.topCenter,
@@ -81,14 +81,14 @@ class EntryScreen extends StatelessWidget {
                     height: 110,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: KalyaThiruTheme.softIvory.withOpacity(0.6),
+                      color: KalyaThiruTheme.softIvory.withValues(alpha: 0.6),
                       border: Border.all(
-                        color: KalyaThiruTheme.antiqueGold.withOpacity(0.4),
+                        color: KalyaThiruTheme.antiqueGold.withValues(alpha: 0.4),
                         width: 2,
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.04),
+                          color: Colors.black.withValues(alpha: 0.04),
                           blurRadius: 8,
                           offset: const Offset(0, 2),
                         ),
@@ -99,7 +99,7 @@ class EntryScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: KalyaThiruTheme.antiqueGold.withOpacity(0.25),
+                          color: KalyaThiruTheme.antiqueGold.withValues(alpha: 0.25),
                           width: 1,
                         ),
                       ),
@@ -156,7 +156,7 @@ class EntryScreen extends StatelessWidget {
                       Container(
                         width: 36,
                         height: 1,
-                        color: KalyaThiruTheme.outlineBorder.withOpacity(0.3),
+                        color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.3),
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8.0),
@@ -168,7 +168,7 @@ class EntryScreen extends StatelessWidget {
                       Container(
                         width: 36,
                         height: 1,
-                        color: KalyaThiruTheme.outlineBorder.withOpacity(0.3),
+                        color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.3),
                       ),
                     ],
                   ),
@@ -194,7 +194,7 @@ class EntryScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(4),
                               boxShadow: [
                                 BoxShadow(
-                                  color: KalyaThiruTheme.primaryMaroon.withOpacity(0.25),
+                                  color: KalyaThiruTheme.primaryMaroon.withValues(alpha: 0.25),
                                   blurRadius: 12,
                                   offset: const Offset(0, 4),
                                 ),
@@ -235,10 +235,10 @@ class EntryScreen extends StatelessWidget {
                           child: Container(
                             height: 54,
                             decoration: BoxDecoration(
-                              color: KalyaThiruTheme.softIvory.withOpacity(0.8),
+                              color: KalyaThiruTheme.softIvory.withValues(alpha: 0.8),
                               borderRadius: BorderRadius.circular(4),
                               border: Border.all(
-                                color: KalyaThiruTheme.outlineBorder.withOpacity(0.3),
+                                color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.3),
                                 width: 1.2,
                               ),
                             ),

@@ -20,14 +20,14 @@ class OnboardingLayoutWrapper extends StatelessWidget {
   final bool isContinueEnabled;
 
   const OnboardingLayoutWrapper({
-    Key? key,
+    super.key,
     required this.step,
     required this.stepIndicator,
     required this.title,
     required this.child,
     required this.onContinue,
     this.isContinueEnabled = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +113,7 @@ class OnboardingLayoutWrapper extends StatelessWidget {
 
 // --- STEP 1: PROFILE FOR ---
 class OnboardingStep1Screen extends StatelessWidget {
-  const OnboardingStep1Screen({Key? key}) : super(key: key);
+  const OnboardingStep1Screen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -239,14 +239,14 @@ class OnboardingStep1Screen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: isSelected ? const Color(0xFFFDFBF7) : Colors.white,
                     border: Border.all(
-                      color: isSelected ? KalyaThiruTheme.primaryMaroon : KalyaThiruTheme.outlineBorder.withOpacity(0.4),
+                      color: isSelected ? KalyaThiruTheme.primaryMaroon : KalyaThiruTheme.outlineBorder.withValues(alpha: 0.4),
                       width: isSelected ? 2.0 : 1.0,
                     ),
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: isSelected
                         ? [
                             BoxShadow(
-                              color: KalyaThiruTheme.primaryMaroon.withOpacity(0.06),
+                              color: KalyaThiruTheme.primaryMaroon.withValues(alpha: 0.06),
                               blurRadius: 6,
                               offset: const Offset(0, 2),
                             )
@@ -300,7 +300,7 @@ class OnboardingStep1Screen extends StatelessWidget {
                                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                       fontSize: 11,
                                       color: isSelected
-                                          ? KalyaThiruTheme.primaryMaroon.withOpacity(0.6)
+                                          ? KalyaThiruTheme.primaryMaroon.withValues(alpha: 0.6)
                                           : KalyaThiruTheme.mutedGray,
                                     ),
                                 textAlign: TextAlign.center,
@@ -357,7 +357,7 @@ class OnboardingStep1Screen extends StatelessWidget {
 
 // --- STEP 2: PERSONAL DETAILS ---
 class OnboardingStep2Screen extends StatefulWidget {
-  const OnboardingStep2Screen({Key? key}) : super(key: key);
+  const OnboardingStep2Screen({super.key});
 
   @override
   State<OnboardingStep2Screen> createState() => _OnboardingStep2ScreenState();
@@ -448,7 +448,7 @@ class _OnboardingStep2ScreenState extends State<OnboardingStep2Screen> {
           decoration: BoxDecoration(
             color: isSelected ? KalyaThiruTheme.softIvory : Colors.white,
             border: Border.all(
-              color: isSelected ? KalyaThiruTheme.primaryMaroon : KalyaThiruTheme.outlineBorder.withOpacity(0.4),
+              color: isSelected ? KalyaThiruTheme.primaryMaroon : KalyaThiruTheme.outlineBorder.withValues(alpha: 0.4),
               width: isSelected ? 1.5 : 1.0,
             ),
             borderRadius: BorderRadius.circular(8),
@@ -564,7 +564,7 @@ class _OnboardingStep2ScreenState extends State<OnboardingStep2Screen> {
               decoration: BoxDecoration(
                 color: const Color(0xFFFFFBF2),
                 border: Border.all(
-                  color: KalyaThiruTheme.antiqueGold.withOpacity(0.4),
+                  color: KalyaThiruTheme.antiqueGold.withValues(alpha: 0.4),
                   width: 1.0,
                 ),
                 borderRadius: BorderRadius.circular(8),
@@ -617,7 +617,7 @@ class _OnboardingStep2ScreenState extends State<OnboardingStep2Screen> {
 
 // --- STEP 3: PHYSICAL & MARITAL STATUS ---
 class OnboardingStep3Screen extends StatefulWidget {
-  const OnboardingStep3Screen({Key? key}) : super(key: key);
+  const OnboardingStep3Screen({super.key});
 
   @override
   State<OnboardingStep3Screen> createState() => _OnboardingStep3ScreenState();
@@ -667,7 +667,7 @@ class _OnboardingStep3ScreenState extends State<OnboardingStep3Screen> {
           decoration: BoxDecoration(
             color: isSelected ? KalyaThiruTheme.primaryMaroon : Colors.white,
             border: Border.all(
-              color: isSelected ? KalyaThiruTheme.primaryMaroon : KalyaThiruTheme.outlineBorder.withOpacity(0.4),
+              color: isSelected ? KalyaThiruTheme.primaryMaroon : KalyaThiruTheme.outlineBorder.withValues(alpha: 0.4),
               width: isSelected ? 1.5 : 1.0,
             ),
             borderRadius: BorderRadius.circular(4),
@@ -698,7 +698,7 @@ class _OnboardingStep3ScreenState extends State<OnboardingStep3Screen> {
           decoration: BoxDecoration(
             color: isSelected ? KalyaThiruTheme.primaryMaroon : Colors.white,
             border: Border.all(
-              color: isSelected ? KalyaThiruTheme.primaryMaroon : KalyaThiruTheme.outlineBorder.withOpacity(0.4),
+              color: isSelected ? KalyaThiruTheme.primaryMaroon : KalyaThiruTheme.outlineBorder.withValues(alpha: 0.4),
               width: isSelected ? 1.5 : 1.0,
             ),
             borderRadius: BorderRadius.circular(4),
@@ -966,7 +966,7 @@ class _OnboardingStep3ScreenState extends State<OnboardingStep3Screen> {
 
 // --- STEP 4: RELIGION & CASTE ---
 class OnboardingStep4Screen extends StatefulWidget {
-  const OnboardingStep4Screen({Key? key}) : super(key: key);
+  const OnboardingStep4Screen({super.key});
 
   @override
   State<OnboardingStep4Screen> createState() => _OnboardingStep4ScreenState();
@@ -1105,7 +1105,7 @@ class _OnboardingStep4ScreenState extends State<OnboardingStep4Screen> {
             color: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
-              side: BorderSide(color: KalyaThiruTheme.outlineBorder.withOpacity(0.3)),
+              side: BorderSide(color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.3)),
             ),
             child: CheckboxListTile(
               title: Text(
@@ -1141,7 +1141,7 @@ class _OnboardingStep4ScreenState extends State<OnboardingStep4Screen> {
             const SizedBox(height: 20),
           ],
           NotchedTextField(
-            labelText: AppTranslations.translate('subcaste', lang) + ' (Optional)',
+            labelText: '${AppTranslations.translate('subcaste', lang)} (Optional)',
             controller: _subcasteController,
           ),
 
@@ -1188,7 +1188,7 @@ class _OnboardingStep4ScreenState extends State<OnboardingStep4Screen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
                               side: BorderSide(
-                                color: isSelected ? KalyaThiruTheme.primaryMaroon : KalyaThiruTheme.outlineBorder.withOpacity(0.4),
+                                color: isSelected ? KalyaThiruTheme.primaryMaroon : KalyaThiruTheme.outlineBorder.withValues(alpha: 0.4),
                                 width: isSelected ? 1.5 : 1.0,
                               ),
                             ),
@@ -1228,7 +1228,7 @@ class _OnboardingStep4ScreenState extends State<OnboardingStep4Screen> {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: KalyaThiruTheme.outlineBorder.withOpacity(0.3)),
+              border: Border.all(color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.3)),
             ),
             child: Row(
               children: [
@@ -1254,7 +1254,7 @@ class _OnboardingStep4ScreenState extends State<OnboardingStep4Screen> {
 
 // --- STEP 5: EDUCATION ---
 class OnboardingStep5Screen extends StatefulWidget {
-  const OnboardingStep5Screen({Key? key}) : super(key: key);
+  const OnboardingStep5Screen({super.key});
 
   @override
   State<OnboardingStep5Screen> createState() => _OnboardingStep5ScreenState();
@@ -1448,7 +1448,7 @@ class _OnboardingStep5ScreenState extends State<OnboardingStep5Screen> {
           decoration: BoxDecoration(
             color: isSelected ? KalyaThiruTheme.softIvory : Colors.white,
             border: Border.all(
-              color: isSelected ? KalyaThiruTheme.primaryMaroon : KalyaThiruTheme.outlineBorder.withOpacity(0.4),
+              color: isSelected ? KalyaThiruTheme.primaryMaroon : KalyaThiruTheme.outlineBorder.withValues(alpha: 0.4),
               width: isSelected ? 1.5 : 1.0,
             ),
             borderRadius: BorderRadius.circular(4),
@@ -1701,7 +1701,7 @@ class _OnboardingStep5ScreenState extends State<OnboardingStep5Screen> {
                     ),
                     const SizedBox(height: 20),
                     BottomSheetSelector(
-                      labelText: AppTranslations.translate('year_of_completion', lang) + ' *',
+                      labelText: '${AppTranslations.translate('year_of_completion', lang)} *',
                       selectedValue: _doctorateYear,
                       options: years,
                       suffixIcon: const Icon(Icons.calendar_today, size: 18, color: KalyaThiruTheme.mutedGray),
@@ -1721,7 +1721,7 @@ class _OnboardingStep5ScreenState extends State<OnboardingStep5Screen> {
                     const Divider(),
                     _buildSectionHeader(AppTranslations.translate('pg_details', lang)),
                     BottomSheetSelector(
-                      labelText: AppTranslations.translate('degree', lang) + ' *',
+                      labelText: '${AppTranslations.translate('degree', lang)} *',
                       selectedValue: selectedPgDegree.isNotEmpty ? selectedPgDegree : null,
                       options: pgDegreesList,
                       onSelected: (val) {
@@ -1738,13 +1738,13 @@ class _OnboardingStep5ScreenState extends State<OnboardingStep5Screen> {
                     ),
                     const SizedBox(height: 20),
                     NotchedTextField(
-                      labelText: AppTranslations.translate('specialization', lang) + ' *',
+                      labelText: '${AppTranslations.translate('specialization', lang)} *',
                       controller: _pgSpecializationController,
                       suffixIcon: const Icon(Icons.search, size: 20, color: KalyaThiruTheme.mutedGray),
                     ),
                     const SizedBox(height: 20),
                     NotchedTextField(
-                      labelText: AppTranslations.translate('institution_name', lang) + ' *',
+                      labelText: '${AppTranslations.translate('institution_name', lang)} *',
                       controller: _pgInstitutionController,
                       suffixIcon: const Icon(Icons.search, size: 20, color: KalyaThiruTheme.mutedGray),
                     ),
@@ -1752,7 +1752,7 @@ class _OnboardingStep5ScreenState extends State<OnboardingStep5Screen> {
                     if (_qualification == 'Post-Graduation (MA, MSc, MBA, ME, etc.)') ...[
                       const SizedBox(height: 20),
                       BottomSheetSelector(
-                        labelText: AppTranslations.translate('year_of_completion', lang) + ' *',
+                        labelText: '${AppTranslations.translate('year_of_completion', lang)} *',
                         selectedValue: _pgYear,
                         options: years,
                         suffixIcon: const Icon(Icons.calendar_today, size: 18, color: KalyaThiruTheme.mutedGray),
@@ -1773,7 +1773,7 @@ class _OnboardingStep5ScreenState extends State<OnboardingStep5Screen> {
                     const Divider(),
                     _buildSectionHeader(AppTranslations.translate('ug_details', lang)),
                     BottomSheetSelector(
-                      labelText: AppTranslations.translate('degree', lang) + ' *',
+                      labelText: '${AppTranslations.translate('degree', lang)} *',
                       selectedValue: selectedUgDegree.isNotEmpty ? selectedUgDegree : null,
                       options: ugDegreesList,
                       onSelected: (val) {
@@ -1790,13 +1790,13 @@ class _OnboardingStep5ScreenState extends State<OnboardingStep5Screen> {
                     ),
                     const SizedBox(height: 20),
                     NotchedTextField(
-                      labelText: AppTranslations.translate('course_major', lang) + ' *',
+                      labelText: '${AppTranslations.translate('course_major', lang)} *',
                       controller: _ugMajorController,
                       suffixIcon: const Icon(Icons.search, size: 20, color: KalyaThiruTheme.mutedGray),
                     ),
                     const SizedBox(height: 20),
                     NotchedTextField(
-                      labelText: AppTranslations.translate('institution_name', lang) + ' *',
+                      labelText: '${AppTranslations.translate('institution_name', lang)} *',
                       controller: _ugInstitutionController,
                       suffixIcon: const Icon(Icons.search, size: 20, color: KalyaThiruTheme.mutedGray),
                     ),
@@ -1804,7 +1804,7 @@ class _OnboardingStep5ScreenState extends State<OnboardingStep5Screen> {
                     if (_qualification == 'Graduation / Bachelors (BA, BSc, BE, BTech, etc.)') ...[
                       const SizedBox(height: 20),
                       BottomSheetSelector(
-                        labelText: AppTranslations.translate('year_of_completion', lang) + ' *',
+                        labelText: '${AppTranslations.translate('year_of_completion', lang)} *',
                         selectedValue: _ugYear,
                         options: years,
                         suffixIcon: const Icon(Icons.calendar_today, size: 18, color: KalyaThiruTheme.mutedGray),
@@ -1864,19 +1864,19 @@ class _OnboardingStep5ScreenState extends State<OnboardingStep5Screen> {
                     const Divider(),
                     _buildSectionHeader(AppTranslations.translate('diploma_details', lang)),
                     NotchedTextField(
-                      labelText: AppTranslations.translate('diploma_stream', lang) + ' *',
+                      labelText: '${AppTranslations.translate('diploma_stream', lang)} *',
                       controller: _diplomaStreamController,
                       suffixIcon: const Icon(Icons.search, size: 20, color: KalyaThiruTheme.mutedGray),
                     ),
                     const SizedBox(height: 20),
                     NotchedTextField(
-                      labelText: AppTranslations.translate('polytechnic_name', lang) + ' *',
+                      labelText: '${AppTranslations.translate('polytechnic_name', lang)} *',
                       controller: _diplomaInstitutionController,
                       suffixIcon: const Icon(Icons.search, size: 20, color: KalyaThiruTheme.mutedGray),
                     ),
                     const SizedBox(height: 20),
                     BottomSheetSelector(
-                      labelText: AppTranslations.translate('year_of_completion', lang) + ' *',
+                      labelText: '${AppTranslations.translate('year_of_completion', lang)} *',
                       selectedValue: _diplomaYear,
                       options: years,
                       suffixIcon: const Icon(Icons.calendar_today, size: 18, color: KalyaThiruTheme.mutedGray),
@@ -1901,13 +1901,13 @@ class _OnboardingStep5ScreenState extends State<OnboardingStep5Screen> {
                           : (lang == 'en' ? 'SCHOOLING DETAILS (10th / 12th)' : 'பள்ளி விவரங்கள் (10-12ஆம் வகுப்பு)'),
                     ),
                     NotchedTextField(
-                      labelText: AppTranslations.translate('school_name', lang) + ' *',
+                      labelText: '${AppTranslations.translate('school_name', lang)} *',
                       controller: _schoolingNameController,
                       suffixIcon: const Icon(Icons.search, size: 20, color: KalyaThiruTheme.mutedGray),
                     ),
                     const SizedBox(height: 20),
                     BottomSheetSelector(
-                      labelText: AppTranslations.translate('board_of_education', lang) + ' *',
+                      labelText: '${AppTranslations.translate('board_of_education', lang)} *',
                       selectedValue: selectedBoard.isNotEmpty ? selectedBoard : null,
                       options: boardsList,
                       onSelected: (val) {
@@ -1924,7 +1924,7 @@ class _OnboardingStep5ScreenState extends State<OnboardingStep5Screen> {
                     ),
                     const SizedBox(height: 20),
                     BottomSheetSelector(
-                      labelText: AppTranslations.translate('year_of_completion', lang) + ' *',
+                      labelText: '${AppTranslations.translate('year_of_completion', lang)} *',
                       selectedValue: _schoolingYear,
                       options: years,
                       suffixIcon: const Icon(Icons.calendar_today, size: 18, color: KalyaThiruTheme.mutedGray),
@@ -1947,10 +1947,10 @@ class AnimatedSection extends StatelessWidget {
   final Widget child;
 
   const AnimatedSection({
-    Key? key,
+    super.key,
     required this.visible,
     required this.child,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -1965,7 +1965,7 @@ class AnimatedSection extends StatelessWidget {
 
 // --- STEP 6: RESIDENCY ---
 class OnboardingStep6Screen extends StatefulWidget {
-  const OnboardingStep6Screen({Key? key}) : super(key: key);
+  const OnboardingStep6Screen({super.key});
 
   @override
   State<OnboardingStep6Screen> createState() => _OnboardingStep6ScreenState();
@@ -2065,7 +2065,7 @@ class _OnboardingStep6ScreenState extends State<OnboardingStep6Screen> {
 
 // --- STEP 7: PROFESSIONAL ---
 class OnboardingStep7Screen extends StatefulWidget {
-  const OnboardingStep7Screen({Key? key}) : super(key: key);
+  const OnboardingStep7Screen({super.key});
 
   @override
   State<OnboardingStep7Screen> createState() => _OnboardingStep7ScreenState();
@@ -2140,7 +2140,7 @@ class _OnboardingStep7ScreenState extends State<OnboardingStep7Screen> {
 
 // --- STEP 8: FAMILY DETAILS ---
 class OnboardingStep8Screen extends StatefulWidget {
-  const OnboardingStep8Screen({Key? key}) : super(key: key);
+  const OnboardingStep8Screen({super.key});
 
   @override
   State<OnboardingStep8Screen> createState() => _OnboardingStep8ScreenState();
@@ -2226,7 +2226,7 @@ class _OnboardingStep8ScreenState extends State<OnboardingStep8Screen> {
 
 // --- STEP 9: ADD PHOTO ---
 class OnboardingStep9Screen extends StatefulWidget {
-  const OnboardingStep9Screen({Key? key}) : super(key: key);
+  const OnboardingStep9Screen({super.key});
 
   @override
   State<OnboardingStep9Screen> createState() => _OnboardingStep9ScreenState();
@@ -2280,7 +2280,7 @@ class _OnboardingStep9ScreenState extends State<OnboardingStep9Screen> {
                     border: Border.all(color: KalyaThiruTheme.outlineBorder, width: 2),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
+                        color: Colors.black.withValues(alpha: 0.05),
                         blurRadius: 10,
                         spreadRadius: 2,
                       )
@@ -2342,7 +2342,7 @@ class _OnboardingStep9ScreenState extends State<OnboardingStep9Screen> {
 
 // --- STEP 10: PARTNER PREFERENCES ---
 class OnboardingStep10Screen extends StatefulWidget {
-  const OnboardingStep10Screen({Key? key}) : super(key: key);
+  const OnboardingStep10Screen({super.key});
 
   @override
   State<OnboardingStep10Screen> createState() => _OnboardingStep10ScreenState();
@@ -2545,7 +2545,7 @@ class _OnboardingStep10ScreenState extends State<OnboardingStep10Screen> {
             max: 60,
             divisions: 42,
             activeColor: KalyaThiruTheme.primaryMaroon,
-            inactiveColor: KalyaThiruTheme.outlineBorder.withOpacity(0.3),
+            inactiveColor: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.3),
             onChanged: (RangeValues values) {
               setState(() {
                 _prefMinAge = values.start;
@@ -2574,7 +2574,7 @@ class _OnboardingStep10ScreenState extends State<OnboardingStep10Screen> {
             max: 7.0,
             divisions: 30,
             activeColor: KalyaThiruTheme.primaryMaroon,
-            inactiveColor: KalyaThiruTheme.outlineBorder.withOpacity(0.3),
+            inactiveColor: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.3),
             onChanged: (RangeValues values) {
               setState(() {
                 _prefMinHeight = values.start;
@@ -2620,7 +2620,7 @@ class _OnboardingStep10ScreenState extends State<OnboardingStep10Screen> {
             color: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
-              side: BorderSide(color: KalyaThiruTheme.outlineBorder.withOpacity(0.3)),
+              side: BorderSide(color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.3)),
             ),
             child: CheckboxListTile(
               title: Text(
@@ -2653,7 +2653,7 @@ class _OnboardingStep10ScreenState extends State<OnboardingStep10Screen> {
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  border: Border.all(color: KalyaThiruTheme.outlineBorder.withOpacity(0.4)),
+                  border: Border.all(color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.4)),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
@@ -2763,7 +2763,7 @@ class _OnboardingStep10ScreenState extends State<OnboardingStep10Screen> {
 
 // --- STEP 11: HOBBIES, BENTO INTERESTS & TRAITS ---
 class OnboardingStep11Screen extends StatefulWidget {
-  const OnboardingStep11Screen({Key? key}) : super(key: key);
+  const OnboardingStep11Screen({super.key});
 
   @override
   State<OnboardingStep11Screen> createState() => _OnboardingStep11ScreenState();
@@ -2935,7 +2935,7 @@ class _OnboardingStep11ScreenState extends State<OnboardingStep11Screen> {
                           return Container(
                             padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                             decoration: BoxDecoration(
-                              color: KalyaThiruTheme.antiqueGold.withOpacity(0.15),
+                              color: KalyaThiruTheme.antiqueGold.withValues(alpha: 0.15),
                               border: Border.all(color: KalyaThiruTheme.antiqueGold, width: 0.5),
                               borderRadius: BorderRadius.circular(2),
                             ),

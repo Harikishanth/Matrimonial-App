@@ -6,7 +6,7 @@ import '../../../core/translation/translations.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 
 class LanguageSelectionScreen extends StatelessWidget {
-  const LanguageSelectionScreen({Key? key}) : super(key: key);
+  const LanguageSelectionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                     gradient: KalyaThiruTheme.auraGold,
                     boxShadow: [
                       BoxShadow(
-                        color: KalyaThiruTheme.antiqueGold.withOpacity(0.3),
+                        color: KalyaThiruTheme.antiqueGold.withValues(alpha: 0.3),
                         blurRadius: 16,
                         spreadRadius: 2,
                       )

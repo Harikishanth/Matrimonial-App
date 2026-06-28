@@ -47,11 +47,9 @@ class KalyaThiruTheme {
       colorScheme: const ColorScheme.light(
         primary: primaryMaroon,
         secondary: antiqueGold,
-        background: softIvory,
         surface: Colors.white,
         onPrimary: Colors.white,
         onSecondary: primaryDark,
-        onBackground: darkCharcoal,
         onSurface: darkCharcoal,
         error: Color(0xFFBA1A1A),
       ),

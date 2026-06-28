@@ -6,7 +6,7 @@ import '../../../core/theme/theme.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 
 class EmailWelcomeBackScreen extends StatefulWidget {
-  const EmailWelcomeBackScreen({Key? key}) : super(key: key);
+  const EmailWelcomeBackScreen({super.key});
 
   @override
   State<EmailWelcomeBackScreen> createState() => _EmailWelcomeBackScreenState();
@@ -67,13 +67,13 @@ class _EmailWelcomeBackScreenState extends State<EmailWelcomeBackScreen> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
-                      color: KalyaThiruTheme.outlineBorder.withOpacity(0.25),
+                      color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.25),
                       width: 1.2,
                     ),
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.03),
+                        color: Colors.black.withValues(alpha: 0.03),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
                       ),
@@ -91,7 +91,7 @@ class _EmailWelcomeBackScreenState extends State<EmailWelcomeBackScreen> {
                             width: 64,
                             height: 64,
                             decoration: BoxDecoration(
-                              color: KalyaThiruTheme.primaryMaroon.withOpacity(0.08),
+                              color: KalyaThiruTheme.primaryMaroon.withValues(alpha: 0.08),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: const Icon(
@@ -147,12 +147,12 @@ class _EmailWelcomeBackScreenState extends State<EmailWelcomeBackScreen> {
                           child: Container(
                             height: 56,
                             decoration: BoxDecoration(
-                              color: KalyaThiruTheme.softIvory.withOpacity(0.4),
+                              color: KalyaThiruTheme.softIvory.withValues(alpha: 0.4),
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
                                 color: _isFocused
                                     ? KalyaThiruTheme.primaryMaroon
-                                    : KalyaThiruTheme.outlineBorder.withOpacity(0.4),
+                                    : KalyaThiruTheme.outlineBorder.withValues(alpha: 0.4),
                                 width: _isFocused ? 1.5 : 1.0,
                               ),
                             ),
@@ -183,7 +183,7 @@ class _EmailWelcomeBackScreenState extends State<EmailWelcomeBackScreen> {
                                       hintText: 'name@example.com',
                                       hintStyle: GoogleFonts.nunitoSans(
                                         fontSize: 15,
-                                        color: KalyaThiruTheme.mutedGray.withOpacity(0.4),
+                                        color: KalyaThiruTheme.mutedGray.withValues(alpha: 0.4),
                                       ),
                                     ),
                                     validator: (value) {
@@ -219,7 +219,7 @@ class _EmailWelcomeBackScreenState extends State<EmailWelcomeBackScreen> {
                               borderRadius: BorderRadius.circular(8),
                               boxShadow: [
                                 BoxShadow(
-                                  color: KalyaThiruTheme.primaryMaroon.withOpacity(0.2),
+                                  color: KalyaThiruTheme.primaryMaroon.withValues(alpha: 0.2),
                                   blurRadius: 10,
                                   offset: const Offset(0, 4),
                                 ),
@@ -255,7 +255,7 @@ class _EmailWelcomeBackScreenState extends State<EmailWelcomeBackScreen> {
                             Expanded(
                               child: Container(
                                 height: 1.0,
-                                color: KalyaThiruTheme.outlineBorder.withOpacity(0.15),
+                                color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.15),
                               ),
                             ),
                             Padding(
@@ -272,7 +272,7 @@ class _EmailWelcomeBackScreenState extends State<EmailWelcomeBackScreen> {
                             Expanded(
                               child: Container(
                                 height: 1.0,
-                                color: KalyaThiruTheme.outlineBorder.withOpacity(0.15),
+                                color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.15),
                               ),
                             ),
                           ],
@@ -299,7 +299,7 @@ class _EmailWelcomeBackScreenState extends State<EmailWelcomeBackScreen> {
                           ),
                           style: OutlinedButton.styleFrom(
                             side: BorderSide(
-                              color: KalyaThiruTheme.outlineBorder.withOpacity(0.3),
+                              color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.3),
                               width: 1.0,
                             ),
                             padding: const EdgeInsets.symmetric(vertical: 14),
@@ -413,7 +413,7 @@ class _EmailWelcomeBackScreenState extends State<EmailWelcomeBackScreen> {
                         : 'தொடர்வதன் மூலம், எங்கள் சேவை விதிமுறைகள் மற்றும் தனியுரிமைக் கொள்கையை நீங்கள் ஒப்புக்கொள்கிறீர்கள்.',
                     style: GoogleFonts.nunitoSans(
                       fontSize: 11,
-                      color: KalyaThiruTheme.mutedGray.withOpacity(0.8),
+                      color: KalyaThiruTheme.mutedGray.withValues(alpha: 0.8),
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -458,7 +458,7 @@ class _EmailWelcomeBackScreenState extends State<EmailWelcomeBackScreen> {
                         '© 2024 KalyaThiru Matrimony. All rights reserved.',
                         style: GoogleFonts.nunitoSans(
                           fontSize: 11,
-                          color: KalyaThiruTheme.mutedGray.withOpacity(0.7),
+                          color: KalyaThiruTheme.mutedGray.withValues(alpha: 0.7),
                         ),
                         textAlign: TextAlign.center,
                       ),
