@@ -17,6 +17,13 @@ import '../../features/communication/screens/communication_center_screen.dart';
 import '../../features/interests/screens/interests_screen.dart';
 import '../../features/profile/screens/profile_menu_screen.dart';
 import '../../features/profile/screens/settings_screen.dart';
+import '../../features/profile/screens/notifications_settings_screen.dart';
+import '../../features/profile/screens/advanced_settings_screen.dart';
+import '../../features/profile/screens/privacy_settings_screen.dart';
+import '../../features/profile/screens/edit_profile_screen.dart';
+import '../../features/profile/screens/edit_section_screen.dart';
+import '../../features/profile/screens/edit_partner_preference_screen.dart';
+import '../../features/profile/screens/edit_partner_preference_section_screen.dart';
 import '../../features/profile/screens/matches_feed_screen.dart';
 import '../../features/profile/screens/selected_matches_screen.dart';
 
@@ -245,6 +252,75 @@ class AppRoutes {
           state,
           const SettingsScreen(),
         ),
+      ),
+      // Notifications Settings Screen
+      GoRoute(
+        path: '/settings/notifications',
+        pageBuilder: (context, state) => _slideTransition(
+          context,
+          state,
+          const NotificationsSettingsScreen(),
+        ),
+      ),
+      // Advanced Settings Screen
+      GoRoute(
+        path: '/settings/advanced',
+        pageBuilder: (context, state) => _slideTransition(
+          context,
+          state,
+          const AdvancedSettingsScreen(),
+        ),
+      ),
+      // Privacy Settings Screen
+      GoRoute(
+        path: '/settings/privacy',
+        pageBuilder: (context, state) => _slideTransition(
+          context,
+          state,
+          const PrivacySettingsScreen(),
+        ),
+      ),
+      // Edit Profile Screen
+      GoRoute(
+        path: '/edit_profile',
+        pageBuilder: (context, state) => _slideTransition(
+          context,
+          state,
+          const EditProfileScreen(),
+        ),
+      ),
+      // Edit Section Screen
+      GoRoute(
+        path: '/edit_profile/section',
+        pageBuilder: (context, state) {
+          final section = state.uri.queryParameters['section'] ?? 'personal';
+          return _slideTransition(
+            context,
+            state,
+            EditSectionScreen(section: section),
+          );
+        },
+      ),
+      // Edit Partner Preference Screen
+      GoRoute(
+        path: '/edit_partner_preference',
+        pageBuilder: (context, state) => _slideTransition(
+          context,
+          state,
+          const EditPartnerPreferenceScreen(),
+        ),
+      ),
+      // Edit Partner Preference Section Screen
+      GoRoute(
+        path: '/edit_partner_preference/section',
+        pageBuilder: (context, state) {
+          final section = state.uri.queryParameters['section'] ?? 'basic';
+          return _slideTransition(
+            context,
+            state,
+            EditPartnerPreferenceSectionScreen(section: section),
+          );
+        },
       ),
       // Matches Feed Screen
       GoRoute(

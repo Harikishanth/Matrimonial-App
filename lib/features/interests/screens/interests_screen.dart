@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/theme/theme.dart';
 import '../../../core/translation/translations.dart';
+import '../../../core/translation/option_translations.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 import '../../communication/screens/chat_screen.dart';
 
@@ -490,7 +491,7 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
                 onTap: () {
                   Navigator.pop(ctx);
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Shared profile: ${profile.name} (${profile.id})')),
+                    SnackBar(content: Text('${lang == 'ta' ? 'சுயவிவரம் பகிரப்பட்டது' : 'Shared profile'}: ${translateOption(profile.name, lang)} (${profile.id})')),
                   );
                 },
               ),
@@ -510,7 +511,7 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
                     }
                   });
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Deleted profile: ${profile.name}')),
+                    SnackBar(content: Text('${lang == 'ta' ? 'சுயவிவரம் நீக்கப்பட்டது' : 'Deleted profile'}: ${translateOption(profile.name, lang)}')),
                   );
                 },
               ),
@@ -627,6 +628,7 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
         ],
         bottom: TabBar(
           controller: _sectionTabController,
+          isScrollable: true,
           indicatorColor: KalyaThiruTheme.primaryMaroon,
           indicatorWeight: 2.5,
           labelColor: KalyaThiruTheme.primaryMaroon,
@@ -645,13 +647,16 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
           Container(
             color: Colors.white,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            child: Row(
-              children: [
-                buildSubTabButton('interests_all', 'all'),
-                buildSubTabButton('interests_pending', 'pending'),
-                buildSubTabButton('interests_accepted', 'accepted'),
-                buildSubTabButton('interests_declined', 'declined'),
-              ],
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  buildSubTabButton('interests_all', 'all'),
+                  buildSubTabButton('interests_pending', 'pending'),
+                  buildSubTabButton('interests_accepted', 'accepted'),
+                  buildSubTabButton('interests_declined', 'declined'),
+                ],
+              ),
             ),
           ),
 
@@ -898,7 +903,7 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
                         children: [
                           Expanded(
                             child: Text(
-                              profile.name,
+                              translateOption(profile.name, lang),
                               style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -916,7 +921,7 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        '${profile.age} yrs, ${profile.height} • ${profile.occupation}',
+                        '${profile.age} ${lang == 'ta' ? 'வயது' : 'yrs'}, ${profile.height} • ${translateOption(profile.occupation, lang)}',
                         style: const TextStyle(
                           fontSize: 12,
                           color: KalyaThiruTheme.darkCharcoal,
@@ -924,7 +929,7 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        profile.location,
+                        translateOption(profile.location, lang),
                         style: const TextStyle(
                           fontSize: 12,
                           color: KalyaThiruTheme.mutedGray,
@@ -993,7 +998,7 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
                         context,
                         MaterialPageRoute(
                           builder: (_) => ChatScreen(
-                            personName: profile.name,
+                            personName: translateOption(profile.name, lang),
                             personPhotoUrl: profile.photoUrl,
                             isPaidMember: widget.isPaidMember,
                             isOnline: profile.isOnline,
@@ -1026,7 +1031,7 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
                       if (widget.isPaidMember) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('${AppTranslations.translate('comm_calling', lang)} ${profile.name}...'),
+                            content: Text('${AppTranslations.translate('comm_calling', lang)} ${translateOption(profile.name, lang)}...'),
                           ),
                         );
                       } else {

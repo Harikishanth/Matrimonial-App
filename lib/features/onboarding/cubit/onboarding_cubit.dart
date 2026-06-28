@@ -56,6 +56,22 @@ class OnboardingState {
   final String? raasi;
   final String? nakshatra;
   
+  // Custom Edit Profile Fields
+  final String? eatingHabits;
+  final String? drinkingHabits;
+  final String? smokingHabits;
+  final String? bodyType;
+  final String? ancestralOrigin;
+  final String? familyValues;
+  final String? familyType;
+  final String? parentsInfo;
+  final String? brothers;
+  final String? sisters;
+  final String? brothersMarried;
+  final String? sistersMarried;
+  final String? mobileNumber;
+  final String? whatsappNumber;
+  
   // Physical & Marital Status
   final String? height;
   final String? weight;
@@ -96,6 +112,7 @@ class OnboardingState {
   final List<String> selectedInterests;
   final Map<String, List<String>> selectedSubInterests; // e.g. {'Reading': ['CS Books', 'Novels']}
   final String? trait;
+  final List<String> preferredCompulsoryFields;
 
   OnboardingState({
     this.langCode = 'en',
@@ -149,6 +166,20 @@ class OnboardingState {
     this.gothram,
     this.raasi,
     this.nakshatra,
+    this.eatingHabits,
+    this.drinkingHabits,
+    this.smokingHabits,
+    this.bodyType,
+    this.ancestralOrigin,
+    this.familyValues,
+    this.familyType,
+    this.parentsInfo,
+    this.brothers,
+    this.sisters,
+    this.brothersMarried,
+    this.sistersMarried,
+    this.mobileNumber,
+    this.whatsappNumber,
     this.height,
     this.weight,
     this.physicalStatus,
@@ -183,6 +214,7 @@ class OnboardingState {
     this.selectedInterests = const [],
     this.selectedSubInterests = const {},
     this.trait,
+    this.preferredCompulsoryFields = const [],
   });
 
   OnboardingState copyWith({
@@ -237,6 +269,20 @@ class OnboardingState {
     String? gothram,
     String? raasi,
     String? nakshatra,
+    String? eatingHabits,
+    String? drinkingHabits,
+    String? smokingHabits,
+    String? bodyType,
+    String? ancestralOrigin,
+    String? familyValues,
+    String? familyType,
+    String? parentsInfo,
+    String? brothers,
+    String? sisters,
+    String? brothersMarried,
+    String? sistersMarried,
+    String? mobileNumber,
+    String? whatsappNumber,
     String? height,
     String? weight,
     String? physicalStatus,
@@ -271,6 +317,7 @@ class OnboardingState {
     List<String>? selectedInterests,
     Map<String, List<String>>? selectedSubInterests,
     String? trait,
+    List<String>? preferredCompulsoryFields,
   }) {
     return OnboardingState(
       langCode: langCode ?? this.langCode,
@@ -324,6 +371,20 @@ class OnboardingState {
       gothram: gothram ?? this.gothram,
       raasi: raasi ?? this.raasi,
       nakshatra: nakshatra ?? this.nakshatra,
+      eatingHabits: eatingHabits ?? this.eatingHabits,
+      drinkingHabits: drinkingHabits ?? this.drinkingHabits,
+      smokingHabits: smokingHabits ?? this.smokingHabits,
+      bodyType: bodyType ?? this.bodyType,
+      ancestralOrigin: ancestralOrigin ?? this.ancestralOrigin,
+      familyValues: familyValues ?? this.familyValues,
+      familyType: familyType ?? this.familyType,
+      parentsInfo: parentsInfo ?? this.parentsInfo,
+      brothers: brothers ?? this.brothers,
+      sisters: sisters ?? this.sisters,
+      brothersMarried: brothersMarried ?? this.brothersMarried,
+      sistersMarried: sistersMarried ?? this.sistersMarried,
+      mobileNumber: mobileNumber ?? this.mobileNumber,
+      whatsappNumber: whatsappNumber ?? this.whatsappNumber,
       height: height ?? this.height,
       weight: weight ?? this.weight,
       physicalStatus: physicalStatus ?? this.physicalStatus,
@@ -358,6 +419,7 @@ class OnboardingState {
       selectedInterests: selectedInterests ?? this.selectedInterests,
       selectedSubInterests: selectedSubInterests ?? this.selectedSubInterests,
       trait: trait ?? this.trait,
+      preferredCompulsoryFields: preferredCompulsoryFields ?? this.preferredCompulsoryFields,
     );
   }
 
@@ -414,6 +476,20 @@ class OnboardingState {
       'gothram': gothram,
       'raasi': raasi,
       'nakshatra': nakshatra,
+      'eatingHabits': eatingHabits,
+      'drinkingHabits': drinkingHabits,
+      'smokingHabits': smokingHabits,
+      'bodyType': bodyType,
+      'ancestralOrigin': ancestralOrigin,
+      'familyValues': familyValues,
+      'familyType': familyType,
+      'parentsInfo': parentsInfo,
+      'brothers': brothers,
+      'sisters': sisters,
+      'brothersMarried': brothersMarried,
+      'sistersMarried': sistersMarried,
+      'mobileNumber': mobileNumber,
+      'whatsappNumber': whatsappNumber,
       'height': height,
       'weight': weight,
       'physicalStatus': physicalStatus,
@@ -448,6 +524,7 @@ class OnboardingState {
       'selectedInterests': selectedInterests,
       'selectedSubInterests': selectedSubInterests.map((k, v) => MapEntry(k, v)),
       'trait': trait,
+      'preferredCompulsoryFields': preferredCompulsoryFields,
     };
   }
 
@@ -504,6 +581,20 @@ class OnboardingState {
       gothram: map['gothram'],
       raasi: map['raasi'],
       nakshatra: map['nakshatra'],
+      eatingHabits: map['eatingHabits'],
+      drinkingHabits: map['drinkingHabits'],
+      smokingHabits: map['smokingHabits'],
+      bodyType: map['bodyType'],
+      ancestralOrigin: map['ancestralOrigin'],
+      familyValues: map['familyValues'],
+      familyType: map['familyType'],
+      parentsInfo: map['parentsInfo'],
+      brothers: map['brothers'],
+      sisters: map['sisters'],
+      brothersMarried: map['brothersMarried'],
+      sistersMarried: map['sistersMarried'],
+      mobileNumber: map['mobileNumber'],
+      whatsappNumber: map['whatsappNumber'],
       height: map['height'],
       weight: map['weight'],
       physicalStatus: map['physicalStatus'],
@@ -541,6 +632,7 @@ class OnboardingState {
           ) ??
           {},
       trait: map['trait'],
+      preferredCompulsoryFields: List<String>.from(map['preferredCompulsoryFields'] ?? []),
     );
   }
 }
@@ -637,6 +729,20 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     String? gothram,
     String? raasi,
     String? nakshatra,
+    String? eatingHabits,
+    String? drinkingHabits,
+    String? smokingHabits,
+    String? bodyType,
+    String? ancestralOrigin,
+    String? familyValues,
+    String? familyType,
+    String? parentsInfo,
+    String? brothers,
+    String? sisters,
+    String? brothersMarried,
+    String? sistersMarried,
+    String? mobileNumber,
+    String? whatsappNumber,
     String? height,
     String? weight,
     String? physicalStatus,
@@ -671,6 +777,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     List<String>? selectedInterests,
     Map<String, List<String>>? selectedSubInterests,
     String? trait,
+    List<String>? preferredCompulsoryFields,
   }) {
     emit(this.state.copyWith(
       profileFor: profileFor ?? this.state.profileFor,
@@ -722,6 +829,20 @@ class OnboardingCubit extends Cubit<OnboardingState> {
       gothram: gothram ?? this.state.gothram,
       raasi: raasi ?? this.state.raasi,
       nakshatra: nakshatra ?? this.state.nakshatra,
+      eatingHabits: eatingHabits ?? this.state.eatingHabits,
+      drinkingHabits: drinkingHabits ?? this.state.drinkingHabits,
+      smokingHabits: smokingHabits ?? this.state.smokingHabits,
+      bodyType: bodyType ?? this.state.bodyType,
+      ancestralOrigin: ancestralOrigin ?? this.state.ancestralOrigin,
+      familyValues: familyValues ?? this.state.familyValues,
+      familyType: familyType ?? this.state.familyType,
+      parentsInfo: parentsInfo ?? this.state.parentsInfo,
+      brothers: brothers ?? this.state.brothers,
+      sisters: sisters ?? this.state.sisters,
+      brothersMarried: brothersMarried ?? this.state.brothersMarried,
+      sistersMarried: sistersMarried ?? this.state.sistersMarried,
+      mobileNumber: mobileNumber ?? this.state.mobileNumber,
+      whatsappNumber: whatsappNumber ?? this.state.whatsappNumber,
       height: height ?? this.state.height,
       weight: weight ?? this.state.weight,
       physicalStatus: physicalStatus ?? this.state.physicalStatus,
@@ -756,6 +877,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
       selectedInterests: selectedInterests ?? this.state.selectedInterests,
       selectedSubInterests: selectedSubInterests ?? this.state.selectedSubInterests,
       trait: trait ?? this.state.trait,
+      preferredCompulsoryFields: preferredCompulsoryFields ?? this.state.preferredCompulsoryFields,
     ));
     _saveToPrefs();
   }
