@@ -325,7 +325,7 @@ class _CommunicationCenterScreenState extends State<CommunicationCenterScreen>
         ],
         bottom: TabBar(
           controller: _tabController,
-          isScrollable: true,
+          isScrollable: false,
           indicatorColor: KalyaThiruTheme.primaryMaroon,
           indicatorWeight: 2.5,
           labelColor: KalyaThiruTheme.primaryMaroon,

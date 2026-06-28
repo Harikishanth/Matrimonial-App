@@ -1608,6 +1608,9 @@ class _HomeScreenState extends State<HomeScreen> {
           });
           if (isUpgrade) {
             _showSubscriptionSheet();
+          } else if (index == 1) {
+            // Matches Page
+            context.push('/matches', extra: {'isPaidMember': _isPaidMember});
           } else if (index == 2) {
             // Interests Page
             context.push('/interests', extra: {'isPaidMember': _isPaidMember});

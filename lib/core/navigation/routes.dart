@@ -24,8 +24,8 @@ import '../../features/profile/screens/edit_profile_screen.dart';
 import '../../features/profile/screens/edit_section_screen.dart';
 import '../../features/profile/screens/edit_partner_preference_screen.dart';
 import '../../features/profile/screens/edit_partner_preference_section_screen.dart';
-import '../../features/profile/screens/matches_feed_screen.dart';
-import '../../features/profile/screens/selected_matches_screen.dart';
+import '../../features/matches/screens/matches_feed_screen.dart';
+import '../../features/matches/screens/selected_matches_screen.dart';
 
 class AppRoutes {
   static CustomTransitionPage _slideTransition(BuildContext context, GoRouterState state, Widget child) {
