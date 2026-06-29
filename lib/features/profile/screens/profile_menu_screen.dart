@@ -386,7 +386,9 @@ class _ProfileMenuScreenState extends State<ProfileMenuScreen> {
                 _buildMenuOption(
                   icon: Icons.people_outline,
                   title: lang == 'en' ? 'Matches' : 'பொருத்தங்கள்',
-                  onTap: () => context.pop(),
+                  onTap: () {
+                    context.push('/matches', extra: {'isPaidMember': _isPaidMember});
+                  },
                 ),
                 _buildMenuOption(
                   icon: Icons.favorite_border,
