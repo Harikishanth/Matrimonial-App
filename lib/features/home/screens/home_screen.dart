@@ -110,6 +110,19 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: 60,
                               height: 60,
                               fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Container(
+                                  width: 60,
+                                  height: 60,
+                                  color: Colors.grey[200],
+                                  alignment: Alignment.center,
+                                  child: const Icon(
+                                    Icons.broken_image_outlined,
+                                    color: Colors.grey,
+                                    size: 20,
+                                  ),
+                                );
+                              },
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -1165,6 +1178,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600',
                         height: 160,
                         fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            height: 160,
+                            color: Colors.grey[200],
+                            alignment: Alignment.center,
+                            child: const Icon(
+                              Icons.broken_image_outlined,
+                              color: Colors.grey,
+                              size: 48,
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],

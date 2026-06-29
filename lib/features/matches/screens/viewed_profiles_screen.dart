@@ -1341,6 +1341,17 @@ class _ViewedProfilesScreenState extends State<ViewedProfilesScreen> {
                     child: Image.network(
                       p.photoUrl ?? 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600',
                       fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: Colors.grey[200],
+                          alignment: Alignment.center,
+                          child: const Icon(
+                            Icons.broken_image_outlined,
+                            color: Colors.grey,
+                            size: 48,
+                          ),
+                        );
+                      },
                     ),
                   ),
                   if (p.isVerified)

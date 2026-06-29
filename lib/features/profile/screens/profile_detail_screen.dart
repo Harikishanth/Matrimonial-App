@@ -321,14 +321,23 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
                     children: [
                       Hero(
                         tag: 'profile_pic_${p.id}',
-                        child: Container(
+                        child: SizedBox(
                           height: 380,
                           width: double.infinity,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage(p.photoUrl ?? 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600'),
-                              fit: BoxFit.cover,
-                            ),
+                          child: Image.network(
+                            p.photoUrl ?? 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600',
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                color: Colors.grey[200],
+                                alignment: Alignment.center,
+                                child: const Icon(
+                                  Icons.broken_image_outlined,
+                                  color: Colors.grey,
+                                  size: 64,
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),
@@ -474,7 +483,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
                       children: [
                         Row(
                           children: [
-                            Expanded(child: _buildQuickInfo(Icons.person_outline, '${p.age} ${lang == 'en' ? 'Yrs' : 'வயது'}, ${p.height}')),
+                            Expanded(child: _buildQuickInfo(Icons.person_outline, '${p.age} ${lang == 'en' ? 'Yrs' : 'வயது'}, ${translateOption(p.height, lang)}')),
                             Expanded(child: _buildQuickInfo(Icons.favorite_border, translateOption(p.maritalStatus, lang))),
                           ],
                         ),
@@ -751,16 +760,16 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
             ),
             child: Column(
               children: [
-                _buildInfoDetailRow(_t('Age / DOB', 'வயது / பிறந்த தேதி', lang), '${p.age} Yrs • ${p.dob ?? "N/A"}'),
-                _buildInfoDetailRow(_t('Height / Weight', 'உயரம் / எடை', lang), '${p.height} • ${p.weight ?? "N/A"}'),
-                _buildInfoDetailRow(_t('Marital Status', 'திருமண நிலை', lang), p.maritalStatus),
-                _buildInfoDetailRow(_t('Mother Tongue', 'தாய்மொழி', lang), p.motherTongue),
-                _buildInfoDetailRow(_t('Religion / Caste', 'மதம் / சாதி', lang), '${p.religion} / ${p.caste}'),
-                _buildInfoDetailRow(_t('Subcaste', 'உட்பிரிவு', lang), p.subcaste ?? 'N/A'),
-                _buildInfoDetailRow(_t('Gothram', 'கோத்திரம்', lang), p.gothram ?? 'N/A'),
-                _buildInfoDetailRow(_t('Raasi / Nakshatra', 'ராசி / நட்சத்திரம்', lang), '${p.raasi ?? "N/A"} / ${p.nakshatra ?? "N/A"}'),
-                _buildInfoDetailRow(_t('Dosham', 'தோஷம்', lang), p.dosham ?? 'None'),
-                _buildInfoDetailRow(_t('Diet Preference', 'உணவு பழக்கம்', lang), p.eatingHabits ?? 'N/A'),
+                _buildInfoDetailRow(_t('Age / DOB', 'வயது / பிறந்த தேதி', lang), '${p.age} ${lang == 'en' ? 'Yrs' : 'வயது'} • ${p.dob ?? "N/A"}'),
+                _buildInfoDetailRow(_t('Height / Weight', 'உயரம் / எடை', lang), '${translateOption(p.height, lang)} • ${translateOption(p.weight, lang)}'),
+                _buildInfoDetailRow(_t('Marital Status', 'திருமண நிலை', lang), translateOption(p.maritalStatus, lang)),
+                _buildInfoDetailRow(_t('Mother Tongue', 'தாய்மொழி', lang), translateOption(p.motherTongue, lang)),
+                _buildInfoDetailRow(_t('Religion / Caste', 'மதம் / சாதி', lang), '${translateOption(p.religion, lang)} / ${translateOption(p.caste, lang)}'),
+                _buildInfoDetailRow(_t('Subcaste', 'உட்பிரிவு', lang), translateOption(p.subcaste, lang)),
+                _buildInfoDetailRow(_t('Gothram', 'கோத்திரம்', lang), translateOption(p.gothram, lang)),
+                _buildInfoDetailRow(_t('Raasi / Nakshatra', 'ராசி / நட்சத்திரம்', lang), '${translateOption(p.raasi, lang)} / ${translateOption(p.nakshatra, lang)}'),
+                _buildInfoDetailRow(_t('Dosham', 'தோஷம்', lang), translateOption(p.dosham, lang)),
+                _buildInfoDetailRow(_t('Diet Preference', 'உணவு பழக்கம்', lang), translateOption(p.eatingHabits, lang)),
               ],
             ),
           ),
@@ -778,7 +787,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
               children: p.traits.map((trait) {
                 return Chip(
                   label: Text(
-                    trait,
+                    translateOption(trait, lang),
                     style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: KalyaThiruTheme.primaryMaroon),
                   ),
                   backgroundColor: const Color(0xFFFDE8E9),
@@ -833,12 +842,12 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
             ),
             child: Column(
               children: [
-                _buildInfoDetailRow(_t('Family Values', 'குடும்ப வழக்கம்', lang), p.familyValues ?? 'Traditional'),
-                _buildInfoDetailRow(_t('Family Status', 'குடும்ப நிலை', lang), p.familyStatus ?? 'Upper Middle Class'),
-                _buildInfoDetailRow(_t('Family Wealth', 'குடும்ப சொத்து விவரம்', lang), p.familyWealth ?? 'N/A'),
-                _buildInfoDetailRow(_t('Parents Details', 'பெற்றோர் விவரம்', lang), p.parentsInfo ?? 'N/A'),
-                _buildInfoDetailRow(_t('Brothers count', 'சகோதரர்கள் எண்ணிக்கை', lang), p.brothers ?? 'None'),
-                _buildInfoDetailRow(_t('Sisters count', 'சகோதரிகள் எண்ணிக்கை', lang), p.sisters ?? 'None'),
+                _buildInfoDetailRow(_t('Family Values', 'குடும்ம்ப வழக்கம்', lang), translateOption(p.familyValues ?? 'Traditional', lang)),
+                _buildInfoDetailRow(_t('Family Status', 'குடும்ப நிலை', lang), translateOption(p.familyStatus ?? 'Upper Middle Class', lang)),
+                _buildInfoDetailRow(_t('Family Wealth', 'குடும்ப சொத்து விவரம்', lang), translateOption(p.familyWealth, lang)),
+                _buildInfoDetailRow(_t('Parents Details', 'பெற்றோர் விவரம்', lang), translateOption(p.parentsInfo, lang)),
+                _buildInfoDetailRow(_t('Brothers count', 'சகோதரர்கள் எண்ணிக்கை', lang), translateOption(p.brothers ?? 'None', lang)),
+                _buildInfoDetailRow(_t('Sisters count', 'சகோதரிகள் எண்ணிக்கை', lang), translateOption(p.sisters ?? 'None', lang)),
               ],
             ),
           ),
@@ -867,12 +876,12 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
             ),
             child: Column(
               children: [
-                _buildInfoDetailRow(_t('Education Degree', 'கல்வி தகுதி', lang), p.education ?? p.qualification),
-                _buildInfoDetailRow(_t('Employment Sector', 'பணிபுரியும் துறை', lang), p.employmentType ?? 'Private Sector'),
-                _buildInfoDetailRow(_t('Occupation / Role', 'பணி / பதவி', lang), p.occupation),
-                _buildInfoDetailRow(_t('Annual Income', 'ஆண்டு வருமானம்', lang), p.annualIncome),
-                _buildInfoDetailRow(_t('Work Country', 'வேலை நாடு', lang), p.country),
-                _buildInfoDetailRow(_t('Work State / City', 'வேலை மாநிலம் / நகரம்', lang), '${p.state} / ${p.city}'),
+                _buildInfoDetailRow(_t('Education Degree', 'கல்வி தகுதி', lang), translateOption(p.education ?? p.qualification, lang)),
+                _buildInfoDetailRow(_t('Employment Sector', 'பணிபுரியும் துறை', lang), translateOption(p.employmentType ?? 'Private Sector', lang)),
+                _buildInfoDetailRow(_t('Occupation / Role', 'பணி / பதவி', lang), translateOption(p.occupation, lang)),
+                _buildInfoDetailRow(_t('Annual Income', 'ஆண்டு வருமானம்', lang), translateOption(p.annualIncome, lang)),
+                _buildInfoDetailRow(_t('Work Country', 'வேலை நாடு', lang), translateOption(p.country, lang)),
+                _buildInfoDetailRow(_t('Work State / City', 'வேலை மாநிலம் / நகரம்', lang), '${translateOption(p.state, lang)} / ${translateOption(p.city, lang)}'),
               ],
             ),
           ),
@@ -905,7 +914,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
                   children: [
                     _buildInfoDetailRow(_t('Mobile Phone', 'மொபைல் எண்', lang), p.mobileNumber ?? '+91 98765 43210'),
                     _buildInfoDetailRow(_t('WhatsApp Number', 'வாட்ஸ்அப் எண்', lang), p.whatsappNumber ?? '+91 98765 43210'),
-                    _buildInfoDetailRow(_t('Address / Locality', 'முகவரி / இருப்பிடம்', lang), '${p.city}, ${p.state}, ${p.country}'),
+                    _buildInfoDetailRow(_t('Address / Locality', 'முகவரி / இருப்பிடம்', lang), '${translateOption(p.city, lang)}, ${translateOption(p.state, lang)}, ${translateOption(p.country, lang)}'),
                   ],
                 ),
               ),
@@ -971,17 +980,17 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
             ),
             child: Column(
               children: [
-                _buildInfoDetailRow(_t('Partner Age Range', 'வயது வரம்பு', lang), '${p.prefMinAge} to ${p.prefMaxAge} Yrs'),
-                _buildInfoDetailRow(_t('Partner Height Range', 'உயரம் வரம்பு', lang), '${p.prefMinHeight} to ${p.prefMaxHeight}'),
-                _buildInfoDetailRow(_t('Partner Religion', 'மதம்', lang), p.prefReligion ?? 'Any'),
-                _buildInfoDetailRow(_t('Partner Caste', 'சாதி', lang), p.prefCaste ?? 'Any'),
-                _buildInfoDetailRow(_t('Partner Subcaste', 'உட்பிரிவு விருப்பம்', lang), p.prefSubcaste ?? 'Any'),
-                _buildInfoDetailRow(_t('Partner Education', 'கல்வி விருப்பம்', lang), p.prefEducation ?? 'Any'),
-                _buildInfoDetailRow(_t('Employment Type', 'வேலை விருப்பம்', lang), p.prefEmployment ?? 'Any'),
-                _buildInfoDetailRow(_t('Min Annual Income', 'குறைந்தபட்ச வருமானம்', lang), p.prefMinIncome ?? 'Any'),
-                _buildInfoDetailRow(_t('Work Country', 'நாடு', lang), p.prefCountry ?? 'India'),
-                _buildInfoDetailRow(_t('Dosham Preference', 'தோஷம் விருப்பம்', lang), p.prefDosham ?? 'Any'),
-                _buildInfoDetailRow(_t('Star Preference', 'நட்சத்திரம் விருப்பம்', lang), p.prefStar ?? 'Any'),
+                _buildInfoDetailRow(_t('Partner Age Range', 'வயது வரம்பு', lang), '${p.prefMinAge} ${_t('to', 'முதல்', lang)} ${p.prefMaxAge} ${_t('Yrs', 'வயது', lang)}'),
+                _buildInfoDetailRow(_t('Partner Height Range', 'உயரம் வரம்பு', lang), '${translateOption(p.prefMinHeight, lang)} ${_t('to', 'முதல்', lang)} ${translateOption(p.prefMaxHeight, lang)}'),
+                _buildInfoDetailRow(_t('Partner Religion', 'மதம்', lang), translateOption(p.prefReligion ?? 'Any', lang)),
+                _buildInfoDetailRow(_t('Partner Caste', 'சாதி', lang), translateOption(p.prefCaste ?? 'Any', lang)),
+                _buildInfoDetailRow(_t('Partner Subcaste', 'உட்பிரிவு விருப்பம்', lang), translateOption(p.prefSubcaste ?? 'Any', lang)),
+                _buildInfoDetailRow(_t('Partner Education', 'கல்வி விருப்பம்', lang), translateOption(p.prefEducation ?? 'Any', lang)),
+                _buildInfoDetailRow(_t('Employment Type', 'வேலை விருப்பம்', lang), translateOption(p.prefEmployment ?? 'Any', lang)),
+                _buildInfoDetailRow(_t('Min Annual Income', 'குறைந்தபட்ச வருமானம்', lang), translateOption(p.prefMinIncome ?? 'Any', lang)),
+                _buildInfoDetailRow(_t('Work Country', 'நாடு', lang), translateOption(p.prefCountry ?? 'India', lang)),
+                _buildInfoDetailRow(_t('Dosham Preference', 'தோஷம் விருப்பம்', lang), translateOption(p.prefDosham ?? 'Any', lang)),
+                _buildInfoDetailRow(_t('Star Preference', 'நட்சத்திரம் விருப்பம்', lang), translateOption(p.prefStar ?? 'Any', lang)),
               ],
             ),
           ),
@@ -1006,8 +1015,8 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
     final List<Map<String, dynamic>> comparisonPoints = [
       {
         'label': _t('Age Preference', 'வயது விருப்பம்', lang),
-        'expected': '${p.prefMinAge} - ${p.prefMaxAge} Yrs',
-        'actual': '$userAge Yrs',
+        'expected': '${p.prefMinAge} - ${p.prefMaxAge} ${_t('Yrs', 'வயது', lang)}',
+        'actual': '$userAge ${_t('Yrs', 'வயது', lang)}',
         'isMatch': _checkMatch(
           criterion: 'age',
           expected: {'min': p.prefMinAge, 'max': p.prefMaxAge},
@@ -1016,8 +1025,8 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
       },
       {
         'label': _t('Height Preference', 'உயரம் விருப்பம்', lang),
-        'expected': '${p.prefMinHeight} - ${p.prefMaxHeight}',
-        'actual': userHeightStr,
+        'expected': '${translateOption(p.prefMinHeight, lang)} - ${translateOption(p.prefMaxHeight, lang)}',
+        'actual': translateOption(userHeightStr, lang),
         'isMatch': _checkMatch(
           criterion: 'height',
           expected: {'min': _parseHeight(p.prefMinHeight), 'max': _parseHeight(p.prefMaxHeight)},
@@ -1026,44 +1035,44 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
       },
       {
         'label': _t('Religion Preference', 'மதம் விருப்பம்', lang),
-        'expected': p.prefReligion ?? 'Any',
-        'actual': userReligion,
+        'expected': translateOption(p.prefReligion ?? 'Any', lang),
+        'actual': translateOption(userReligion, lang),
         'isMatch': _checkMatch(criterion: 'religion', expected: p.prefReligion, actual: userReligion),
       },
       {
         'label': _t('Caste Preference', 'சாதி விருப்பம்', lang),
-        'expected': p.prefCaste ?? 'Any',
-        'actual': userCaste,
+        'expected': translateOption(p.prefCaste ?? 'Any', lang),
+        'actual': translateOption(userCaste, lang),
         'isMatch': p.prefCasteNoBar ? true : _checkMatch(criterion: 'caste', expected: p.prefCaste, actual: userCaste),
       },
       {
         'label': _t('Education Preference', 'கல்வி விருப்பம்', lang),
-        'expected': p.prefEducation ?? 'Any',
-        'actual': userEducation,
+        'expected': translateOption(p.prefEducation ?? 'Any', lang),
+        'actual': translateOption(userEducation, lang),
         'isMatch': _checkMatch(criterion: 'qualification', expected: p.prefEducation, actual: userEducation),
       },
       {
         'label': _t('Employment Sector', 'பணி விருப்பம்', lang),
-        'expected': p.prefEmployment ?? 'Any',
-        'actual': userEmployment,
+        'expected': translateOption(p.prefEmployment ?? 'Any', lang),
+        'actual': translateOption(userEmployment, lang),
         'isMatch': _checkMatch(criterion: 'occupation', expected: p.prefEmployment, actual: userEmployment),
       },
       {
         'label': _t('Income Preference', 'வருமானம் விருப்பம்', lang),
-        'expected': p.prefMinIncome ?? 'Any',
-        'actual': userIncome,
+        'expected': translateOption(p.prefMinIncome ?? 'Any', lang),
+        'actual': translateOption(userIncome, lang),
         'isMatch': _checkMatch(criterion: 'income', expected: p.prefMinIncome, actual: userIncome),
       },
       {
         'label': _t('Work Country', 'பணிபுரியும் நாடு', lang),
-        'expected': p.prefCountry ?? 'Any',
-        'actual': userCountry,
+        'expected': translateOption(p.prefCountry ?? 'Any', lang),
+        'actual': translateOption(userCountry, lang),
         'isMatch': _checkMatch(criterion: 'country', expected: p.prefCountry, actual: userCountry),
       },
       {
         'label': _t('Dosham Preference', 'தோஷம் விருப்பம்', lang),
-        'expected': p.prefDosham ?? 'Any',
-        'actual': userDosham,
+        'expected': translateOption(p.prefDosham ?? 'Any', lang),
+        'actual': translateOption(userDosham, lang),
         'isMatch': _checkMatch(criterion: 'dosham', expected: p.prefDosham, actual: userDosham),
       },
     ];
@@ -1128,7 +1137,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
               border: Border.all(color: KalyaThiruTheme.outlineVariant),
             ),
             child: Column(
-              children: comparisonPoints.map((pt) => _buildMatchIndicatorRow(pt)).toList(),
+              children: comparisonPoints.map((pt) => _buildMatchIndicatorRow(pt, lang)).toList(),
             ),
           ),
         ],
@@ -1159,15 +1168,14 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
     final targetEducation = p.education ?? p.qualification;
     final targetOccupation = p.occupation;
     final targetIncome = p.annualIncome;
-    final targetCountry = p.country;
     final targetEatingHabits = p.eatingHabits ?? 'Non-vegetarian';
     final targetDosham = p.dosham ?? 'None';
 
     final List<Map<String, dynamic>> comparisonPoints = [
       {
         'label': _t('Age Expectation', 'வயது எதிர்பார்ப்பு', lang),
-        'expected': '$prefMinAge - $prefMaxAge Yrs',
-        'actual': '$targetAge Yrs',
+        'expected': '$prefMinAge - $prefMaxAge ${_t('Yrs', 'வயது', lang)}',
+        'actual': '$targetAge ${_t('Yrs', 'வயது', lang)}',
         'isMatch': _checkMatch(
           criterion: 'age',
           expected: {'min': prefMinAge, 'max': prefMaxAge},
@@ -1176,8 +1184,8 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
       },
       {
         'label': _t('Height Expectation', 'உயரம் எதிர்பார்ப்பு', lang),
-        'expected': "${prefMinHeight.toStringAsFixed(1)}' to ${prefMaxHeight.toStringAsFixed(1)}'",
-        'actual': targetHeightStr,
+        'expected': "${prefMinHeight.toStringAsFixed(1)}' ${_t('to', 'முதல்', lang)} ${prefMaxHeight.toStringAsFixed(1)}'",
+        'actual': translateOption(targetHeightStr, lang),
         'isMatch': _checkMatch(
           criterion: 'height',
           expected: {'min': prefMinHeight, 'max': prefMaxHeight},
@@ -1186,44 +1194,44 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
       },
       {
         'label': _t('Religion Expectation', 'மதம் எதிர்பார்ப்பு', lang),
-        'expected': prefReligion,
-        'actual': targetReligion,
+        'expected': translateOption(prefReligion, lang),
+        'actual': translateOption(targetReligion, lang),
         'isMatch': _checkMatch(criterion: 'religion', expected: prefReligion, actual: targetReligion),
       },
       {
         'label': _t('Caste Expectation', 'சாதி எதிர்பார்ப்பு', lang),
-        'expected': prefCastes.isEmpty ? 'Any' : prefCastes.join(', '),
-        'actual': targetCaste,
+        'expected': prefCastes.isEmpty ? translateOption('Any', lang) : prefCastes.map((c) => translateOption(c, lang)).join(', '),
+        'actual': translateOption(targetCaste, lang),
         'isMatch': userState.preferredCasteNoBar ? true : _checkMatch(criterion: 'caste', expected: prefCastes, actual: targetCaste),
       },
       {
         'label': _t('Education Expectation', 'கல்வி எதிர்பார்ப்பு', lang),
-        'expected': prefQualifications.isEmpty ? 'Any' : prefQualifications.join(', '),
-        'actual': targetEducation,
+        'expected': prefQualifications.isEmpty ? translateOption('Any', lang) : prefQualifications.map((q) => translateOption(q, lang)).join(', '),
+        'actual': translateOption(targetEducation, lang),
         'isMatch': _checkMatch(criterion: 'qualification', expected: prefQualifications, actual: targetEducation),
       },
       {
         'label': _t('Occupation Expectation', 'வேலை எதிர்பார்ப்பு', lang),
-        'expected': prefOccupations.isEmpty ? 'Any' : prefOccupations.join(', '),
-        'actual': targetOccupation,
+        'expected': prefOccupations.isEmpty ? translateOption('Any', lang) : prefOccupations.map((o) => translateOption(o, lang)).join(', '),
+        'actual': translateOption(targetOccupation, lang),
         'isMatch': _checkMatch(criterion: 'occupation', expected: prefOccupations, actual: targetOccupation),
       },
       {
         'label': _t('Min Income Expectation', 'வருமான எதிர்பார்ப்பு', lang),
-        'expected': prefMinIncome,
-        'actual': targetIncome,
+        'expected': translateOption(prefMinIncome, lang),
+        'actual': translateOption(targetIncome, lang),
         'isMatch': _checkMatch(criterion: 'income', expected: prefMinIncome, actual: targetIncome),
       },
       {
         'label': _t('Eating Habits', 'உணவு பழக்கம்', lang),
-        'expected': prefEatingHabits.isEmpty ? 'Any' : prefEatingHabits.join(', '),
-        'actual': targetEatingHabits,
+        'expected': prefEatingHabits.isEmpty ? translateOption('Any', lang) : prefEatingHabits.map((h) => translateOption(h, lang)).join(', '),
+        'actual': translateOption(targetEatingHabits, lang),
         'isMatch': _checkMatch(criterion: 'eating_habits', expected: prefEatingHabits, actual: targetEatingHabits),
       },
       {
         'label': _t('Dosham Expectation', 'தோஷ எதிர்பார்ப்பு', lang),
-        'expected': prefDosham,
-        'actual': targetDosham,
+        'expected': translateOption(prefDosham, lang),
+        'actual': translateOption(targetDosham, lang),
         'isMatch': _checkMatch(criterion: 'dosham', expected: prefDosham, actual: targetDosham),
       },
     ];
@@ -1288,7 +1296,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
               border: Border.all(color: KalyaThiruTheme.outlineVariant),
             ),
             child: Column(
-              children: comparisonPoints.map((pt) => _buildMatchIndicatorRow(pt)).toList(),
+              children: comparisonPoints.map((pt) => _buildMatchIndicatorRow(pt, lang)).toList(),
             ),
           ),
         ],
@@ -1297,7 +1305,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
   }
 
   // Row builder for each criteria item with check or X
-  Widget _buildMatchIndicatorRow(Map<String, dynamic> pt) {
+  Widget _buildMatchIndicatorRow(Map<String, dynamic> pt, String lang) {
     final bool isMatch = pt['isMatch'] == true;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -1326,7 +1334,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  'Expected: ${pt['expected']} • Actual: ${pt['actual']}',
+                  '${_t('Expected', 'எதிர்பார்ப்பு', lang)}: ${pt['expected']} • ${_t('Actual', 'உண்மை', lang)}: ${pt['actual']}',
                   style: const TextStyle(fontSize: 12, color: KalyaThiruTheme.mutedGray),
                 ),
               ],
