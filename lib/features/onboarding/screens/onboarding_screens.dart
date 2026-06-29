@@ -380,10 +380,21 @@ class _OnboardingStep2ScreenState extends State<OnboardingStep2Screen> {
     _lastController.text = state.lastName ?? '';
     _dobController.text = state.dob ?? '';
     _gender = state.gender;
+
+    _firstController.addListener(_onTextChanged);
+    _lastController.addListener(_onTextChanged);
+    _dobController.addListener(_onTextChanged);
+  }
+
+  void _onTextChanged() {
+    setState(() {});
   }
 
   @override
   void dispose() {
+    _firstController.removeListener(_onTextChanged);
+    _lastController.removeListener(_onTextChanged);
+    _dobController.removeListener(_onTextChanged);
     _firstController.dispose();
     _middleController.dispose();
     _lastController.dispose();
@@ -487,11 +498,16 @@ class _OnboardingStep2ScreenState extends State<OnboardingStep2Screen> {
         ? (lang == 'en' ? 'Tell us a bit about yourself' : 'உங்களைப் பற்றி கொஞ்சம் சொல்லுங்கள்')
         : (lang == 'en' ? 'Tell us a bit about the person' : 'நம்பகமான வரன் தேடலுக்கு இவரின் விவரங்கள் தேவை');
 
+    final bool isContinueEnabled = _firstController.text.trim().isNotEmpty &&
+        _lastController.text.trim().isNotEmpty &&
+        _dobController.text.trim().isNotEmpty &&
+        (isSelf || _gender != null);
+
     return OnboardingLayoutWrapper(
       step: 2,
       stepIndicator: AppTranslations.translate('step2_indicator', lang),
       title: AppTranslations.translate('step2_title', lang),
-      isContinueEnabled: true,
+      isContinueEnabled: isContinueEnabled,
       onContinue: _saveAndContinue,
       child: Form(
         key: _formKey,
@@ -1987,10 +2003,19 @@ class _OnboardingStep6ScreenState extends State<OnboardingStep6Screen> {
     _livingSince = state.livingSince;
     _stateController.text = state.state ?? '';
     _cityController.text = state.city ?? '';
+
+    _stateController.addListener(_onTextChanged);
+    _cityController.addListener(_onTextChanged);
+  }
+
+  void _onTextChanged() {
+    setState(() {});
   }
 
   @override
   void dispose() {
+    _stateController.removeListener(_onTextChanged);
+    _cityController.removeListener(_onTextChanged);
     _stateController.dispose();
     _cityController.dispose();
     super.dispose();
@@ -2017,10 +2042,18 @@ class _OnboardingStep6ScreenState extends State<OnboardingStep6Screen> {
     final countries = ['India', 'United States', 'United Kingdom', 'Singapore', 'Malaysia', 'United Arab Emirates', 'Canada', 'Australia'];
     final years = List.generate(60, (index) => (2028 - index).toString());
 
+    final bool isNonIndian = _citizenship != null && _citizenship != 'Indian Citizen';
+    final bool isContinueEnabled = _citizenship != null &&
+        _country != null &&
+        (!isNonIndian || _livingSince != null) &&
+        _stateController.text.trim().isNotEmpty &&
+        _cityController.text.trim().isNotEmpty;
+
     return OnboardingLayoutWrapper(
       step: 6,
       stepIndicator: AppTranslations.translate('step6_indicator', lang),
       title: AppTranslations.translate('step6_title', lang),
+      isContinueEnabled: isContinueEnabled,
       onContinue: _saveAndContinue,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -2104,10 +2137,13 @@ class _OnboardingStep7ScreenState extends State<OnboardingStep7Screen> {
     final occupations = ['Software Engineer', 'Doctor / Surgeon', 'IAS / IPS / Civil Services', 'Chartered Accountant', 'Professor / Teacher', 'Business Owner', 'Architect', 'Banker', 'Defence Personnel', 'Other'];
     final incomes = ['Under ₹3 Lakhs', '₹3 - ₹5 Lakhs', '₹5 - ₹8 Lakhs', '₹8 - ₹12 Lakhs', '₹12 - ₹18 Lakhs', '₹18 - ₹25 Lakhs', '₹25 - ₹40 Lakhs', '₹40 Lakhs+'];
 
+    final bool isContinueEnabled = _empType != null && _occupation != null && _income != null;
+
     return OnboardingLayoutWrapper(
       step: 7,
       stepIndicator: AppTranslations.translate('step7_indicator', lang),
       title: AppTranslations.translate('step7_title', lang),
+      isContinueEnabled: isContinueEnabled,
       onContinue: _saveAndContinue,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -2158,10 +2194,17 @@ class _OnboardingStep8ScreenState extends State<OnboardingStep8Screen> {
     _familyStatus = state.familyStatus;
     _familyWealth = state.familyWealth;
     _bioController.text = state.bio ?? '';
+
+    _bioController.addListener(_onTextChanged);
+  }
+
+  void _onTextChanged() {
+    setState(() {});
   }
 
   @override
   void dispose() {
+    _bioController.removeListener(_onTextChanged);
     _bioController.dispose();
     super.dispose();
   }
@@ -2172,8 +2215,12 @@ class _OnboardingStep8ScreenState extends State<OnboardingStep8Screen> {
           familyWealth: _familyWealth,
           bio: _bioController.text,
         );
-    context.read<OnboardingCubit>().updateStep(9);
-    context.go('/onboarding/step9');
+    if (context.read<OnboardingCubit>().state.isOnboardingCompleted) {
+      context.go('/home');
+    } else {
+      context.read<OnboardingCubit>().updateStep(9);
+      context.go('/onboarding/step9');
+    }
   }
 
   @override
@@ -2184,10 +2231,15 @@ class _OnboardingStep8ScreenState extends State<OnboardingStep8Screen> {
     final statuses = ['Middle Class', 'Upper Middle Class', 'Affluent / Rich', 'Royal / High Heritage'];
     final wealths = ['Below ₹50 Lakhs', '₹50 Lakhs - ₹1 Crore', '₹1 Crore - ₹3 Crores', '₹3 Crores - ₹5 Crores', '₹5 Crores - ₹10 Crores', '₹10 Crores+'];
 
+    final bool isContinueEnabled = _familyStatus != null &&
+        _familyWealth != null &&
+        _bioController.text.trim().isNotEmpty;
+
     return OnboardingLayoutWrapper(
       step: 8,
       stepIndicator: AppTranslations.translate('step8_indicator', lang),
       title: AppTranslations.translate('step8_title', lang),
+      isContinueEnabled: isContinueEnabled,
       onContinue: _saveAndContinue,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -2235,6 +2287,13 @@ class OnboardingStep9Screen extends StatefulWidget {
 class _OnboardingStep9ScreenState extends State<OnboardingStep9Screen> {
   bool _isUploaded = false;
 
+  @override
+  void initState() {
+    super.initState();
+    final state = context.read<OnboardingCubit>().state;
+    _isUploaded = state.photoPath != null && state.photoPath!.isNotEmpty;
+  }
+
   void _simulateUpload() {
     setState(() => _isUploaded = true);
     ScaffoldMessenger.of(context).showSnackBar(
@@ -2255,10 +2314,15 @@ class _OnboardingStep9ScreenState extends State<OnboardingStep9Screen> {
       step: 9,
       stepIndicator: AppTranslations.translate('step9_indicator', lang),
       title: AppTranslations.translate('step9_title', lang),
+      isContinueEnabled: _isUploaded,
       onContinue: () {
         cubit.updateFields(photoPath: _isUploaded ? 'assets/avatar_placeholder.png' : null);
-        cubit.updateStep(10);
-        context.go('/onboarding/step10');
+        if (context.read<OnboardingCubit>().state.isOnboardingCompleted) {
+          context.go('/home');
+        } else {
+          cubit.updateStep(10);
+          context.go('/onboarding/step10');
+        }
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -2506,10 +2570,17 @@ class _OnboardingStep10ScreenState extends State<OnboardingStep10Screen> {
     final prefDoshams = ['None', 'Chevvai (Mars) Dosham', 'Rahu Ketu Dosham', 'Kala Sarpa Dosham', 'Any / Open', 'Don\'t Know', 'Doesn\'t Matter'];
     final incomes = ['Under ₹3 Lakhs', '₹5 Lakhs+', '₹10 Lakhs+', '₹15 Lakhs+', '₹20 Lakhs+', '₹30 Lakhs+', 'No Preference'];
 
+    final bool isHindu = _prefReligion == 'Hindu';
+    final bool isContinueEnabled = _prefReligion != null &&
+        (_prefCasteNoBar || _prefCastes.isNotEmpty) &&
+        (!isHindu || (_prefGothram != null && _prefRaasi != null && _prefStar != null && _prefDosham != null)) &&
+        _prefMinIncome != null;
+
     return OnboardingLayoutWrapper(
       step: 10,
       stepIndicator: AppTranslations.translate('step10_indicator', lang),
       title: AppTranslations.translate('step10_title', lang),
+      isContinueEnabled: isContinueEnabled,
       onContinue: _saveAndContinue,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -2868,6 +2939,7 @@ class _OnboardingStep11ScreenState extends State<OnboardingStep11Screen> {
           selectedHobbies: _selectedHobbies,
           selectedInterests: _selectedInterests,
           trait: _trait,
+          isOnboardingCompleted: true,
         );
     // Redirect to Home Dashboard Screen
     context.go('/home');
@@ -2881,10 +2953,15 @@ class _OnboardingStep11ScreenState extends State<OnboardingStep11Screen> {
     final interests = ['Philosophy', 'Tamil Literature', 'Technology', 'Ancient History', 'Nature & Travel', 'Art & Painting', 'Social Service', 'Astrophotography'];
     final traits = ['Introverted & Calm', 'Extroverted & Social', 'Analytical & Thinker', 'Creative & Expressive', 'Empathetic & Caregiver', 'Practical & Grounded'];
 
+    final bool isContinueEnabled = _selectedHobbies.isNotEmpty &&
+        _selectedInterests.isNotEmpty &&
+        _trait != null;
+
     return OnboardingLayoutWrapper(
       step: 11,
       stepIndicator: AppTranslations.translate('step11_indicator', lang),
       title: AppTranslations.translate('step11_title', lang),
+      isContinueEnabled: isContinueEnabled,
       onContinue: _completeOnboarding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

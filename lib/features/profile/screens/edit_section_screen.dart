@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 import '../../../core/theme/theme.dart';
 import '../../../core/translation/option_translations.dart';
+import '../../../core/translation/geographic_helper.dart';
+import 'package:country_state_city/country_state_city.dart' as csc;
 import '../../../core/widgets/bottom_sheet_selector.dart';
 import '../../../core/widgets/notched_text_field.dart';
 import '../../../core/widgets/sub_interest_sheet.dart';
@@ -85,6 +87,11 @@ class _EditSectionScreenState extends State<EditSectionScreen> {
   String? _cityVal;
   String? _citizenship;
   late TextEditingController _ancestralOriginController;
+
+  List<csc.Country> _allCountries = [];
+  List<csc.State> _allStates = [];
+  List<csc.City> _allCities = [];
+  bool _loadingLocations = false;
 
   // Family Details Form Variables
   String? _familyValues;
@@ -176,6 +183,10 @@ class _EditSectionScreenState extends State<EditSectionScreen> {
     _brothersMarried = state.brothersMarried;
     _sisters = state.sisters;
     _sistersMarried = state.sistersMarried;
+
+    if (widget.section == 'location') {
+      _initGeographicData();
+    }
   }
 
   @override
@@ -200,6 +211,107 @@ class _EditSectionScreenState extends State<EditSectionScreen> {
     _ancestralOriginController.dispose();
     _parentsInfoController.dispose();
     super.dispose();
+  }
+
+  Future<void> _initGeographicData() async {
+    setState(() => _loadingLocations = true);
+    try {
+      _allCountries = await GeographicHelper.getAllCountries();
+      if (_country != null) {
+        final countryModel = _allCountries.firstWhere(
+          (c) => c.name == _country,
+          orElse: () => _allCountries.first,
+        );
+        _allStates = await GeographicHelper.getStatesOfCountry(countryModel.isoCode);
+        if (_stateVal != null) {
+          final stateModel = _allStates.firstWhere(
+            (s) => s.name == _stateVal,
+            orElse: () => _allStates.first,
+          );
+          _allCities = await GeographicHelper.getStateCities(countryModel.isoCode, stateModel.isoCode);
+        }
+      }
+    } catch (e) {
+      debugPrint("Error initializing geographic data: $e");
+    } finally {
+      if (mounted) {
+        setState(() => _loadingLocations = false);
+      }
+    }
+  }
+
+  Future<void> _onCountryChanged(String val) async {
+    setState(() {
+      _country = val;
+      _stateVal = null;
+      _cityVal = null;
+      _allStates = [];
+      _allCities = [];
+      _loadingLocations = true;
+    });
+    try {
+      final countryModel = _allCountries.firstWhere(
+        (c) => c.name == val,
+        orElse: () => _allCountries.first,
+      );
+      final states = await GeographicHelper.getStatesOfCountry(countryModel.isoCode);
+      states.sort((a, b) => a.name.compareTo(b.name));
+      if (mounted) {
+        setState(() {
+          _allStates = states;
+          if (_allStates.isEmpty) {
+            _stateVal = 'Other';
+            _cityVal = 'Other';
+          }
+        });
+      }
+    } catch (e) {
+      debugPrint("Error loading states: $e");
+    } finally {
+      if (mounted) {
+        setState(() => _loadingLocations = false);
+      }
+    }
+  }
+
+  Future<void> _onStateChanged(String val) async {
+    setState(() {
+      _stateVal = val;
+      _cityVal = null;
+      _allCities = [];
+      if (val == 'Other') {
+        _cityVal = 'Other';
+      } else {
+        _loadingLocations = true;
+      }
+    });
+    if (val == 'Other') return;
+    try {
+      final countryModel = _allCountries.firstWhere(
+        (c) => c.name == _country,
+        orElse: () => _allCountries.first,
+      );
+      final stateModel = _allStates.firstWhere(
+        (s) => s.name == val,
+        orElse: () => _allStates.first,
+      );
+      final cities = await GeographicHelper.getStateCities(countryModel.isoCode, stateModel.isoCode);
+      cities.sort((a, b) => a.name.compareTo(b.name));
+      if (mounted) {
+        setState(() {
+          _allCities = cities;
+          if (_allCities.isEmpty) {
+            _cityVal = 'Other';
+          }
+        });
+      }
+    } catch (e) {
+      debugPrint("Error loading cities: $e");
+    } finally {
+      if (mounted) {
+        setState(() => _loadingLocations = false);
+      }
+    }
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -907,6 +1019,18 @@ class _EditSectionScreenState extends State<EditSectionScreen> {
   }
 
   Widget _buildLocationInfoForm(String lang) {
+    final countryOptions = _allCountries.isNotEmpty
+        ? _allCountries.map((c) => c.name).toList()
+        : EditProfileOptions.allCountries;
+
+    final stateOptions = _allStates.isNotEmpty
+        ? _allStates.map((s) => s.name).toList()
+        : const ['Other'];
+
+    final cityOptions = _allCities.isNotEmpty
+        ? _allCities.map((c) => c.name).toList()
+        : const ['Other'];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -917,24 +1041,46 @@ class _EditSectionScreenState extends State<EditSectionScreen> {
           onSelected: (val) => setState(() => _citizenship = val),
         ),
         const SizedBox(height: 20),
+        if (_loadingLocations)
+          const Padding(
+            padding: EdgeInsets.only(bottom: 12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 14,
+                  height: 14,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    valueColor: AlwaysStoppedAnimation<Color>(KalyaThiruTheme.primaryMaroon),
+                  ),
+                ),
+                SizedBox(width: 8),
+                Text(
+                  "Loading locations...",
+                  style: TextStyle(fontSize: 12, color: KalyaThiruTheme.primaryMaroon),
+                ),
+              ],
+            ),
+          ),
         BottomSheetSelector(
           labelText: lang == 'ta' ? 'நாடு' : 'Country',
           selectedValue: _country,
-          options: EditProfileOptions.countries,
-          onSelected: (val) => setState(() => _country = val),
+          options: countryOptions,
+          onSelected: (val) => _onCountryChanged(val),
         ),
         const SizedBox(height: 20),
         BottomSheetSelector(
           labelText: lang == 'ta' ? 'மாநிலம்' : 'State',
           selectedValue: _stateVal,
-          options: EditProfileOptions.states,
-          onSelected: (val) => setState(() => _stateVal = val),
+          options: stateOptions,
+          onSelected: (val) => _onStateChanged(val),
         ),
         const SizedBox(height: 20),
         BottomSheetSelector(
           labelText: lang == 'ta' ? 'நகரம்' : 'City',
           selectedValue: _cityVal,
-          options: EditProfileOptions.cities,
+          options: cityOptions,
           onSelected: (val) => setState(() => _cityVal = val),
         ),
         const SizedBox(height: 20),

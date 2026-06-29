@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/auth/screens/language_selection_screen.dart';
 import '../../features/auth/screens/splash_screen.dart';
@@ -10,6 +11,7 @@ import '../../features/auth/screens/email_welcome_back_screen.dart';
 import '../../features/auth/screens/phone_otp_screen.dart';
 import '../../features/auth/screens/email_otp_screen.dart';
 import '../../features/onboarding/screens/onboarding_screens.dart';
+import '../../features/onboarding/cubit/onboarding_cubit.dart';
 import '../../features/home/screens/home_screen.dart';
 import '../../features/profile/models/profile_model.dart';
 import '../../features/profile/screens/profile_detail_screen.dart';
@@ -54,6 +56,15 @@ class AppRoutes {
 
   static final GoRouter router = GoRouter(
     initialLocation: '/home',
+    redirect: (context, state) {
+      try {
+        final onboardingState = context.read<OnboardingCubit>().state;
+        if (onboardingState.isOnboardingCompleted && state.uri.path.startsWith('/onboarding')) {
+          return '/home';
+        }
+      } catch (_) {}
+      return null;
+    },
     routes: [
       // Language Selection (New first screen)
       GoRoute(
