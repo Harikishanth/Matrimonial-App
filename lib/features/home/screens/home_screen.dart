@@ -996,9 +996,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: 200,
                       lang: lang,
                       onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Redirecting to Matches Feed')),
-                        );
+                        context.push('/selected_matches', extra: {
+                          'isPaidMember': _isPaidMember,
+                          'title': lang == 'en' ? 'Matches For You' : 'உங்களுக்கான வரன்கள்',
+                          'profiles': SampleProfiles.matchesForYou,
+                        });
                       },
                     );
                   }
@@ -1213,12 +1215,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       width: 130,
                       lang: lang,
-                      onTap: _showSubscriptionSheet,
+                      onTap: () => context.push('/upgrade'),
                     );
                   }
                   final profile = SampleProfiles.whoViewedYou[index];
                   return InkWell(
-                    onTap: _isPaidMember ? () => context.push('/profile', extra: profile) : _showSubscriptionSheet,
+                    onTap: _isPaidMember
+                        ? () => context.push('/profile', extra: profile)
+                        : () => context.push('/upgrade'),
                     child: Container(
                       width: 130,
                       decoration: BoxDecoration(
@@ -1318,9 +1322,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: 140,
                       lang: lang,
                       onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Redirecting to Viewed Profiles Feed')),
-                        );
+                        context.push('/viewed_profiles', extra: {
+                          'isPaidMember': _isPaidMember,
+                          'title': lang == 'en' ? 'Profiles You Viewed' : 'உங்களால் பார்க்கப்பட்ட வரன்கள்',
+                          'profiles': SampleProfiles.whoViewedYou,
+                        });
                       },
                     );
                   }
@@ -1607,13 +1613,16 @@ class _HomeScreenState extends State<HomeScreen> {
             _navIndex = index;
           });
           if (isUpgrade) {
-            _showSubscriptionSheet();
+            context.push('/upgrade');
           } else if (index == 1) {
             // Matches Page
             context.push('/matches', extra: {'isPaidMember': _isPaidMember});
           } else if (index == 2) {
             // Interests Page
             context.push('/interests', extra: {'isPaidMember': _isPaidMember});
+          } else if (index == 3) {
+            // AI Match / AI Search
+            context.push('/ai_search', extra: {'isPaidMember': _isPaidMember});
           } else if (index == 4) {
             // Messages / Communication Center
             context.push('/communication', extra: {'isPaidMember': _isPaidMember});

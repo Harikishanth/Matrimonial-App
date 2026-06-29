@@ -6,12 +6,12 @@ import '../../../core/translation/option_translations.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 import '../../profile/models/profile_model.dart';
 
-class SelectedMatchesScreen extends StatefulWidget {
+class ViewedProfilesScreen extends StatefulWidget {
   final bool isPaidMember;
   final String sectionTitle;
   final List<ProfileModel>? initialProfiles;
 
-  const SelectedMatchesScreen({
+  const ViewedProfilesScreen({
     super.key,
     this.isPaidMember = false,
     required this.sectionTitle,
@@ -19,10 +19,10 @@ class SelectedMatchesScreen extends StatefulWidget {
   });
 
   @override
-  State<SelectedMatchesScreen> createState() => _SelectedMatchesScreenState();
+  State<ViewedProfilesScreen> createState() => _ViewedProfilesScreenState();
 }
 
-class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
+class _ViewedProfilesScreenState extends State<ViewedProfilesScreen> {
   String? _activeSubTab; // Starts as null (no sub-tab selected by default)
   late List<ProfileModel> _allProfiles;
   late List<ProfileModel> _visibleProfiles;
@@ -63,14 +63,14 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
   // ── Location State variables ──
   bool _locSameCity = false;
   bool _locSameState = false;
-  String _locSelectedCountry = 'All Countries'; // 'All Countries', 'India', 'United States of America', etc.
+  String _locSelectedCountry = 'All Countries';
 
   @override
   void initState() {
     super.initState();
     _allProfiles = widget.initialProfiles != null && widget.initialProfiles!.isNotEmpty
         ? List<ProfileModel>.from(widget.initialProfiles!)
-        : List<ProfileModel>.from(SampleProfiles.matchesForYou);
+        : List<ProfileModel>.from(SampleProfiles.whoViewedYou);
     _visibleProfiles = List<ProfileModel>.from(_allProfiles);
   }
 
@@ -84,12 +84,10 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
   void _applyActiveFilter() {
     List<ProfileModel> temp = List<ProfileModel>.from(_allProfiles);
 
-    // ── Apply advanced filters if configured ──
     if (_filterMinAge > 18 || _filterMaxAge < 60) {
       temp = temp.where((p) => p.age >= _filterMinAge && p.age <= _filterMaxAge).toList();
     }
     
-    // Parse height (e.g. "5'4\"" -> 5.3)
     double parseHeight(String h) {
       try {
         final clean = h.replaceAll('"', '').split("'");
@@ -169,7 +167,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
       temp = temp.where((p) => p.familyStatus?.toLowerCase() == _filterFamilyStatus.toLowerCase()).toList();
     }
 
-    // Parse income string
     double parseIncome(String incomeStr) {
       final clean = incomeStr.replaceAll('₹', '').replaceAll('Lakhs', '').replaceAll('Lakh', '').trim();
       if (clean.toLowerCase().contains('under')) return 2.0;
@@ -204,7 +201,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
       temp = temp.where((p) => p.photoUrl != null).toList();
     }
 
-    // ── Apply Location Tab filters ──
     if (_locSameCity) {
       temp = temp.where((p) => p.city == 'Chennai' || p.city == 'Coimbatore' || p.city == 'Bangalore').toList();
     }
@@ -223,7 +219,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
       }).toList();
     }
 
-    // ── Apply quick sub-tab selections ──
     if (_activeSubTab == 'Horoscope Matches') {
       temp = temp.where((p) => p.religion == 'Hindu').toList();
     } else if (_activeSubTab == 'Profiles with Photo') {
@@ -234,7 +229,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
       temp = temp.where((p) => p.isVerified).toList();
     }
 
-    // ── Apply Sorting ──
     if (_sortOption == 'Last Active') {
       temp.sort((a, b) {
         final aActive = a.lastSeen?.contains('now') ?? false;
@@ -244,7 +238,7 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
         return 0;
       });
     } else if (_sortOption == 'Recently Created') {
-      temp.sort((a, b) => b.age.compareTo(a.age)); // Simulate recency using age difference
+      temp.sort((a, b) => b.age.compareTo(a.age));
     } else if (_sortOption == 'Latest Photos') {
       temp.sort((a, b) {
         if (a.photoUrl != null && b.photoUrl == null) return -1;
@@ -258,7 +252,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
     });
   }
 
-  // ── 1. Filters Bottom Sheet ──
   void _openFiltersSheet(String lang) {
     showModalBottomSheet(
       context: context,
@@ -304,7 +297,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
               ),
               child: Column(
                 children: [
-                  // Title Bar
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 16, 20, 8),
                     child: Row(
@@ -369,12 +361,10 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                   ),
                   const Divider(height: 1),
 
-                  // Scrollable Form content
                   Expanded(
                     child: ListView(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       children: [
-                        // Premium Advantage Box
                         Container(
                           margin: const EdgeInsets.only(top: 16),
                           padding: const EdgeInsets.all(16),
@@ -407,7 +397,7 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                                 lang == 'en'
                                     ? 'Find matches from IIT, NIT, IIM, or top organizations like Microsoft and TCS.'
                                     : 'IIT, NIT, IIM அல்லது மைக்ரோசாப்ட், TCS போன்ற முன்னணி நிறுவனங்களின் வரன்களைக் கண்டறியவும்.',
-                                style: const TextStyle(
+                                  style: const TextStyle(
                                   fontSize: 11,
                                   color: Colors.white70,
                                   height: 1.4,
@@ -427,7 +417,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                           ),
                         ),
 
-                        // Basic Details Section
                         buildSectionHeader('Basic Details'),
                         Text(
                           '${translateOption('Age Range', lang)}: ${_filterMinAge.toInt()} - ${_filterMaxAge.toInt()} ${lang == 'en' ? 'Years' : 'வயது'}',
@@ -533,7 +522,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                           },
                         ),
 
-                        // Religious Details Section
                         buildSectionHeader('Religious Details'),
                         DropdownButtonFormField<String>(
                           initialValue: _filterReligion,
@@ -571,7 +559,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                           },
                         ),
 
-                        // Location Details Section
                         buildSectionHeader('Location Details'),
                         CheckboxListTile(
                           title: Text(translateOption('Nearby Profiles', lang)),
@@ -596,7 +583,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                           },
                         ),
 
-                        // Professional Details Section
                         buildSectionHeader('Professional Details'),
                         DropdownButtonFormField<String>(
                           value: _filterOccupation,
@@ -684,7 +670,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                           ],
                         ),
 
-                        // Lifestyle Section
                         buildSectionHeader('Lifestyle'),
                         Text(
                           translateOption('Eating Habits', lang),
@@ -760,7 +745,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                           ],
                         ),
 
-                        // Family Details Section
                         buildSectionHeader('Family Details'),
                         DropdownButtonFormField<String>(
                           value: _filterFamilyStatus,
@@ -801,7 +785,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                           ],
                         ),
 
-                        // Recency Section
                         buildSectionHeader('Recently Created Profiles'),
                         Wrap(
                           spacing: 8,
@@ -825,7 +808,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                           ],
                         ),
 
-                        // Toggle Checkboxes
                         const SizedBox(height: 16),
                         CheckboxListTile(
                           title: Text(translateOption('Mutual matches', lang)),
@@ -849,7 +831,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                     ),
                   ),
 
-                  // Actions bar
                   Container(
                     color: Colors.white,
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -928,7 +909,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
     );
   }
 
-  // ── 2. Sort By Bottom Sheet ──
   void _openSortSheet(String lang) {
     showModalBottomSheet(
       context: context,
@@ -1033,7 +1013,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
     );
   }
 
-  // ── 3. Location Bottom Sheet ──
   void _openLocationSheet(String lang) {
     showModalBottomSheet(
       context: context,
@@ -1106,7 +1085,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                   ),
                   const SizedBox(height: 16),
                   
-                  // Same City Checkbox
                   CheckboxListTile(
                     title: Text(
                       translateOption('Same city', lang),
@@ -1123,7 +1101,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                     },
                   ),
 
-                  // Same State Checkbox
                   CheckboxListTile(
                     title: Text(
                       translateOption('Same state', lang),
@@ -1147,7 +1124,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                   ),
                   const SizedBox(height: 12),
                   
-                  // Country Pills Wrap
                   Wrap(
                     children: [
                       buildCountryPill('United States of America'),
@@ -1162,7 +1138,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
 
                   const SizedBox(height: 24),
                   
-                  // Action Buttons
                   Row(
                     children: [
                       Expanded(
@@ -1219,7 +1194,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
   Widget build(BuildContext context) {
     final lang = context.watch<OnboardingCubit>().state.langCode;
 
-    // List of bubble sort / sub-tab items
     final List<Map<String, dynamic>> subTabs = [
       {'key': 'Filters', 'icon': Icons.tune},
       {'key': 'Sort By', 'icon': Icons.sort},
@@ -1251,7 +1225,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
       ),
       body: Column(
         children: [
-          // ── Scrollable Bubble/Pill Tabs ────────────────────────────────────
           Container(
             color: Colors.white,
             padding: const EdgeInsets.symmetric(vertical: 12),
@@ -1267,7 +1240,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                   return GestureDetector(
                     onTap: () {
                       setState(() {
-                        // Determine action based on tab selected
                         if (tabKey == 'Filters') {
                           _openFiltersSheet(lang);
                         } else if (tabKey == 'Sort By') {
@@ -1275,7 +1247,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                         } else if (tabKey == 'Location') {
                           _openLocationSheet(lang);
                         } else {
-                          // Toggle simple filters
                           if (_activeSubTab == tabKey) {
                             _activeSubTab = null;
                           } else {
@@ -1311,7 +1282,7 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                             style: TextStyle(
                               color: isSelected ? Colors.white : KalyaThiruTheme.darkCharcoal,
                               fontSize: 12,
-                              fontWeight: isSelected ? FontWeight.bold : const Color(0xFF49454F) == Colors.white ? FontWeight.bold : FontWeight.w600,
+                              fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
                             ),
                           ),
                         ],
@@ -1323,7 +1294,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
             ),
           ),
 
-          // ── Vertically Scrollable Profiles Feed ────────────────────────────
           Expanded(
             child: _visibleProfiles.isEmpty
                 ? Center(
@@ -1363,7 +1333,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Image Stack
             AspectRatio(
               aspectRatio: 1.2,
               child: Stack(
@@ -1374,7 +1343,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  // Verified Badge
                   if (p.isVerified)
                     Positioned(
                       top: 12,
@@ -1382,7 +1350,7 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFD2AC47), // Gold trust
+                          color: const Color(0xFFD2AC47),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Row(
@@ -1406,7 +1374,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
               ),
             ),
 
-            // Profile info
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -1461,7 +1428,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                   
                   const SizedBox(height: 12),
                   
-                  // Skill tags
                   Wrap(
                     spacing: 8,
                     children: p.traits.take(2).map((trait) {
@@ -1482,10 +1448,8 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                   const Divider(height: 1),
                   const SizedBox(height: 12),
 
-                  // Actions row
                   Row(
                     children: [
-                      // Bookmark Action
                       IconButton(
                         icon: const Icon(Icons.bookmark_border, color: KalyaThiruTheme.primaryMaroon),
                         onPressed: () {
@@ -1499,7 +1463,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                       ),
                       const SizedBox(width: 8),
 
-                      // Don't Show (மறைக்கவும்) Button
                       Expanded(
                         child: OutlinedButton(
                           onPressed: () => _removeProfile(p.id),
@@ -1520,7 +1483,6 @@ class _SelectedMatchesScreenState extends State<SelectedMatchesScreen> {
                       ),
                       const SizedBox(width: 12),
 
-                      // Connect / Send Interest Button
                       Expanded(
                         child: _connectedProfileIds.contains(p.id)
                             ? OutlinedButton(

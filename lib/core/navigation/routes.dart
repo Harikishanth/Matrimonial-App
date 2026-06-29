@@ -26,6 +26,10 @@ import '../../features/profile/screens/edit_partner_preference_screen.dart';
 import '../../features/profile/screens/edit_partner_preference_section_screen.dart';
 import '../../features/matches/screens/matches_feed_screen.dart';
 import '../../features/matches/screens/selected_matches_screen.dart';
+import '../../features/matches/screens/viewed_profiles_screen.dart';
+import '../../features/search/screens/ai_search_screen.dart';
+import '../../features/subscription/screens/upgrade_screen.dart';
+
 
 class AppRoutes {
   static CustomTransitionPage _slideTransition(BuildContext context, GoRouterState state, Widget child) {
@@ -353,6 +357,47 @@ class AppRoutes {
             ),
           );
         },
+      ),
+      // AI Search Screen
+      GoRoute(
+        path: '/ai_search',
+        pageBuilder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          final isPaid = extra?['isPaidMember'] as bool? ?? false;
+          return _slideTransition(
+            context,
+            state,
+            AiSearchScreen(isPaidMember: isPaid),
+          );
+        },
+      ),
+      // Viewed Profiles Screen
+      GoRoute(
+        path: '/viewed_profiles',
+        pageBuilder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          final isPaid = extra?['isPaidMember'] as bool? ?? false;
+          final title = extra?['title'] as String? ?? 'Profiles You Viewed';
+          final List<ProfileModel>? profiles = extra?['profiles'] as List<ProfileModel>?;
+          return _slideTransition(
+            context,
+            state,
+            ViewedProfilesScreen(
+              isPaidMember: isPaid,
+              sectionTitle: title,
+              initialProfiles: profiles,
+            ),
+          );
+        },
+      ),
+      // Upgrade Screen
+      GoRoute(
+        path: '/upgrade',
+        pageBuilder: (context, state) => _slideTransition(
+          context,
+          state,
+          const UpgradeScreen(),
+        ),
       ),
     ],
   );
