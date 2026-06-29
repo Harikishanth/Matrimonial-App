@@ -35,7 +35,12 @@ class _OtpScreenState extends State<OtpScreen> {
     if (otp.length < 4) {
       otp = '1234';
     }
-    context.go('/onboarding/step1');
+    final isCompleted = context.read<OnboardingCubit>().state.isOnboardingCompleted;
+    if (isCompleted) {
+      context.go('/home');
+    } else {
+      context.go('/onboarding/step1');
+    }
   }
 
   @override

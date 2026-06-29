@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class OnboardingState {
   final String langCode; // 'en' or 'ta'
   final int currentStep;
+  final bool isOnboardingCompleted;
   final String? profileFor;
   final String? firstName;
   final String? middleName;
@@ -107,6 +108,15 @@ class OnboardingState {
   final List<String> preferredSmokingHabits;
   final List<String> preferredDrinkingHabits;
 
+  // Extended partner preference fields
+  final List<String> preferredMotherTongues;
+  final List<String> preferredCountries;
+  final List<String> preferredStates;
+  final List<String> preferredCities;
+  final List<String> preferredEmploymentTypes;
+  final List<String> preferredDoshamTypes;
+  final List<String> preferredPhysicalStatuses;
+
   // Interests and Hobbies
   final List<String> selectedHobbies;
   final List<String> selectedInterests;
@@ -117,6 +127,7 @@ class OnboardingState {
   OnboardingState({
     this.langCode = 'en',
     this.currentStep = 1,
+    this.isOnboardingCompleted = false,
     this.profileFor,
     this.firstName,
     this.middleName,
@@ -210,6 +221,13 @@ class OnboardingState {
     this.preferredMaxIncome,
     this.preferredSmokingHabits = const [],
     this.preferredDrinkingHabits = const [],
+    this.preferredMotherTongues = const [],
+    this.preferredCountries = const [],
+    this.preferredStates = const [],
+    this.preferredCities = const [],
+    this.preferredEmploymentTypes = const [],
+    this.preferredDoshamTypes = const [],
+    this.preferredPhysicalStatuses = const [],
     this.selectedHobbies = const [],
     this.selectedInterests = const [],
     this.selectedSubInterests = const {},
@@ -220,6 +238,7 @@ class OnboardingState {
   OnboardingState copyWith({
     String? langCode,
     int? currentStep,
+    bool? isOnboardingCompleted,
     String? profileFor,
     String? firstName,
     String? middleName,
@@ -313,6 +332,13 @@ class OnboardingState {
     String? preferredMaxIncome,
     List<String>? preferredSmokingHabits,
     List<String>? preferredDrinkingHabits,
+    List<String>? preferredMotherTongues,
+    List<String>? preferredCountries,
+    List<String>? preferredStates,
+    List<String>? preferredCities,
+    List<String>? preferredEmploymentTypes,
+    List<String>? preferredDoshamTypes,
+    List<String>? preferredPhysicalStatuses,
     List<String>? selectedHobbies,
     List<String>? selectedInterests,
     Map<String, List<String>>? selectedSubInterests,
@@ -322,6 +348,7 @@ class OnboardingState {
     return OnboardingState(
       langCode: langCode ?? this.langCode,
       currentStep: currentStep ?? this.currentStep,
+      isOnboardingCompleted: isOnboardingCompleted ?? this.isOnboardingCompleted,
       profileFor: profileFor ?? this.profileFor,
       firstName: firstName ?? this.firstName,
       middleName: middleName ?? this.middleName,
@@ -415,6 +442,13 @@ class OnboardingState {
       preferredMaxIncome: preferredMaxIncome ?? this.preferredMaxIncome,
       preferredSmokingHabits: preferredSmokingHabits ?? this.preferredSmokingHabits,
       preferredDrinkingHabits: preferredDrinkingHabits ?? this.preferredDrinkingHabits,
+      preferredMotherTongues: preferredMotherTongues ?? this.preferredMotherTongues,
+      preferredCountries: preferredCountries ?? this.preferredCountries,
+      preferredStates: preferredStates ?? this.preferredStates,
+      preferredCities: preferredCities ?? this.preferredCities,
+      preferredEmploymentTypes: preferredEmploymentTypes ?? this.preferredEmploymentTypes,
+      preferredDoshamTypes: preferredDoshamTypes ?? this.preferredDoshamTypes,
+      preferredPhysicalStatuses: preferredPhysicalStatuses ?? this.preferredPhysicalStatuses,
       selectedHobbies: selectedHobbies ?? this.selectedHobbies,
       selectedInterests: selectedInterests ?? this.selectedInterests,
       selectedSubInterests: selectedSubInterests ?? this.selectedSubInterests,
@@ -427,6 +461,7 @@ class OnboardingState {
     return {
       'langCode': langCode,
       'currentStep': currentStep,
+      'isOnboardingCompleted': isOnboardingCompleted,
       'profileFor': profileFor,
       'firstName': firstName,
       'middleName': middleName,
@@ -520,6 +555,13 @@ class OnboardingState {
       'preferredMaxIncome': preferredMaxIncome,
       'preferredSmokingHabits': preferredSmokingHabits,
       'preferredDrinkingHabits': preferredDrinkingHabits,
+      'preferredMotherTongues': preferredMotherTongues,
+      'preferredCountries': preferredCountries,
+      'preferredStates': preferredStates,
+      'preferredCities': preferredCities,
+      'preferredEmploymentTypes': preferredEmploymentTypes,
+      'preferredDoshamTypes': preferredDoshamTypes,
+      'preferredPhysicalStatuses': preferredPhysicalStatuses,
       'selectedHobbies': selectedHobbies,
       'selectedInterests': selectedInterests,
       'selectedSubInterests': selectedSubInterests.map((k, v) => MapEntry(k, v)),
@@ -532,6 +574,7 @@ class OnboardingState {
     return OnboardingState(
       langCode: map['langCode'] ?? 'en',
       currentStep: map['currentStep'] ?? 1,
+      isOnboardingCompleted: map['isOnboardingCompleted'] ?? false,
       profileFor: map['profileFor'],
       firstName: map['firstName'],
       middleName: map['middleName'],
@@ -625,6 +668,13 @@ class OnboardingState {
       preferredMaxIncome: map['preferredMaxIncome'],
       preferredSmokingHabits: List<String>.from(map['preferredSmokingHabits'] ?? []),
       preferredDrinkingHabits: List<String>.from(map['preferredDrinkingHabits'] ?? []),
+      preferredMotherTongues: List<String>.from(map['preferredMotherTongues'] ?? []),
+      preferredCountries: List<String>.from(map['preferredCountries'] ?? []),
+      preferredStates: List<String>.from(map['preferredStates'] ?? []),
+      preferredCities: List<String>.from(map['preferredCities'] ?? []),
+      preferredEmploymentTypes: List<String>.from(map['preferredEmploymentTypes'] ?? []),
+      preferredDoshamTypes: List<String>.from(map['preferredDoshamTypes'] ?? []),
+      preferredPhysicalStatuses: List<String>.from(map['preferredPhysicalStatuses'] ?? []),
       selectedHobbies: List<String>.from(map['selectedHobbies'] ?? []),
       selectedInterests: List<String>.from(map['selectedInterests'] ?? []),
       selectedSubInterests: (map['selectedSubInterests'] as Map<String, dynamic>?)?.map(
@@ -680,6 +730,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   }
 
   void updateFields({
+    bool? isOnboardingCompleted,
     String? profileFor,
     String? firstName,
     String? middleName,
@@ -773,6 +824,13 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     String? preferredMaxIncome,
     List<String>? preferredSmokingHabits,
     List<String>? preferredDrinkingHabits,
+    List<String>? preferredMotherTongues,
+    List<String>? preferredCountries,
+    List<String>? preferredStates,
+    List<String>? preferredCities,
+    List<String>? preferredEmploymentTypes,
+    List<String>? preferredDoshamTypes,
+    List<String>? preferredPhysicalStatuses,
     List<String>? selectedHobbies,
     List<String>? selectedInterests,
     Map<String, List<String>>? selectedSubInterests,
@@ -780,6 +838,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     List<String>? preferredCompulsoryFields,
   }) {
     emit(this.state.copyWith(
+      isOnboardingCompleted: isOnboardingCompleted ?? this.state.isOnboardingCompleted,
       profileFor: profileFor ?? this.state.profileFor,
       firstName: firstName ?? this.state.firstName,
       middleName: middleName ?? this.state.middleName,
@@ -873,6 +932,13 @@ class OnboardingCubit extends Cubit<OnboardingState> {
       preferredMaxIncome: preferredMaxIncome ?? this.state.preferredMaxIncome,
       preferredSmokingHabits: preferredSmokingHabits ?? this.state.preferredSmokingHabits,
       preferredDrinkingHabits: preferredDrinkingHabits ?? this.state.preferredDrinkingHabits,
+      preferredMotherTongues: preferredMotherTongues ?? this.state.preferredMotherTongues,
+      preferredCountries: preferredCountries ?? this.state.preferredCountries,
+      preferredStates: preferredStates ?? this.state.preferredStates,
+      preferredCities: preferredCities ?? this.state.preferredCities,
+      preferredEmploymentTypes: preferredEmploymentTypes ?? this.state.preferredEmploymentTypes,
+      preferredDoshamTypes: preferredDoshamTypes ?? this.state.preferredDoshamTypes,
+      preferredPhysicalStatuses: preferredPhysicalStatuses ?? this.state.preferredPhysicalStatuses,
       selectedHobbies: selectedHobbies ?? this.state.selectedHobbies,
       selectedInterests: selectedInterests ?? this.state.selectedInterests,
       selectedSubInterests: selectedSubInterests ?? this.state.selectedSubInterests,

@@ -9,7 +9,7 @@ class EditPartnerPreferenceScreen extends StatelessWidget {
   const EditPartnerPreferenceScreen({super.key});
 
   int _calculatePreferenceCompleteness(OnboardingState state) {
-    int totalFields = 9;
+    int totalFields = 13;
     int filledFields = 0;
 
     if (state.preferredReligion != null) filledFields++;
@@ -17,10 +17,14 @@ class EditPartnerPreferenceScreen extends StatelessWidget {
     if (state.preferredQualifications.isNotEmpty) filledFields++;
     if (state.preferredOccupations.isNotEmpty) filledFields++;
     if (state.preferredMinIncome != null) filledFields++;
+    if (state.preferredMaxIncome != null) filledFields++;
+    if (state.preferredEmploymentTypes.isNotEmpty) filledFields++;
     if (state.preferredEatingHabits.isNotEmpty) filledFields++;
     if (state.preferredSmokingHabits.isNotEmpty) filledFields++;
     if (state.preferredDrinkingHabits.isNotEmpty) filledFields++;
     if (state.preferredMaritalStatuses.isNotEmpty) filledFields++;
+    if (state.preferredCountries.isNotEmpty) filledFields++;
+    if (state.preferredMotherTongues.isNotEmpty) filledFields++;
 
     return ((filledFields / totalFields) * 100).round();
   }
@@ -132,10 +136,14 @@ class EditPartnerPreferenceScreen extends StatelessWidget {
               compulsoryFields: state.preferredCompulsoryFields,
               details: {
                 lang == 'ta' ? 'வயது வரம்பு' : 'Age Range': 
-                    '${state.preferredMinAge} - ${state.preferredMaxAge} Yrs',
+                    lang == 'ta'
+                        ? '${state.preferredMinAge} - ${state.preferredMaxAge} ஆண்டுகள்'
+                        : '${state.preferredMinAge} - ${state.preferredMaxAge} Yrs',
                 lang == 'ta' ? 'உயரம் வரம்பு' : 'Height Range': 
-                    '${state.preferredMinHeight.toStringAsFixed(1)}ft - ${state.preferredMaxHeight.toStringAsFixed(1)}ft',
-                lang == 'ta' ? 'திருமண நிலை' : 'Marital Status': 
+                    lang == 'ta'
+                        ? '${state.preferredMinHeight.toStringAsFixed(1)}அடி - ${state.preferredMaxHeight.toStringAsFixed(1)}அடி'
+                        : '${state.preferredMinHeight.toStringAsFixed(1)}ft - ${state.preferredMaxHeight.toStringAsFixed(1)}ft',
+                lang == 'ta' ? 'திருமணம் நிலை' : 'Marital Status': 
                     state.preferredMaritalStatuses,
               },
             ),
@@ -182,8 +190,10 @@ class EditPartnerPreferenceScreen extends StatelessWidget {
               lang: lang,
               compulsoryFields: state.preferredCompulsoryFields,
               details: {
+                lang == 'ta' ? 'பணி வகை' : 'Employment Type': state.preferredEmploymentTypes,
                 lang == 'ta' ? 'தொழில்' : 'Occupations': state.preferredOccupations,
-                lang == 'ta' ? 'ஆண்டு வருமானம்' : 'Min Annual Income': state.preferredMinIncome,
+                lang == 'ta' ? 'குறைந்தபட்ச வருமானம்' : 'Min Annual Income': state.preferredMinIncome,
+                lang == 'ta' ? 'அதிகபட்ச வருமானம்' : 'Max Annual Income': state.preferredMaxIncome,
               },
             ),
 
@@ -198,6 +208,33 @@ class EditPartnerPreferenceScreen extends StatelessWidget {
                 lang == 'ta' ? 'உணவுப் பழக்கம்' : 'Eating Habits': state.preferredEatingHabits,
                 lang == 'ta' ? 'புகைபிடித்தல்' : 'Smoking': state.preferredSmokingHabits,
                 lang == 'ta' ? 'மது அருந்துதல்' : 'Drinking': state.preferredDrinkingHabits,
+                lang == 'ta' ? 'உடல் நிலை' : 'Physical Status': state.preferredPhysicalStatuses,
+              },
+            ),
+
+            // Card 6: Location
+            _buildPreferenceSectionCard(
+              context: context,
+              title: lang == 'ta' ? 'இருப்பிடம்' : 'Location Details',
+              sectionKey: 'location',
+              lang: lang,
+              compulsoryFields: state.preferredCompulsoryFields,
+              details: {
+                lang == 'ta' ? 'நாடு' : 'Countries': state.preferredCountries,
+                lang == 'ta' ? 'மாநிலம்' : 'States': state.preferredStates,
+                lang == 'ta' ? 'நகரம்' : 'Cities': state.preferredCities,
+              },
+            ),
+
+            // Card 7: Mother Tongue
+            _buildPreferenceSectionCard(
+              context: context,
+              title: lang == 'ta' ? 'தாய்மொழி' : 'Mother Tongue Details',
+              sectionKey: 'mother_tongue',
+              lang: lang,
+              compulsoryFields: state.preferredCompulsoryFields,
+              details: {
+                lang == 'ta' ? 'தாய்மொழி' : 'Mother Tongues': state.preferredMotherTongues,
               },
             ),
           ],

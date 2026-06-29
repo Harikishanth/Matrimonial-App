@@ -33,7 +33,12 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
       // Prototype default fallback
       otp = '123456';
     }
-    context.go('/onboarding/step1');
+    final isCompleted = context.read<OnboardingCubit>().state.isOnboardingCompleted;
+    if (isCompleted) {
+      context.go('/home');
+    } else {
+      context.go('/onboarding/step1');
+    }
   }
 
   @override
