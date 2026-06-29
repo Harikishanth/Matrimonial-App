@@ -17,6 +17,8 @@ import '../../features/communication/screens/communication_center_screen.dart';
 import '../../features/interests/screens/interests_screen.dart';
 import '../../features/profile/screens/profile_menu_screen.dart';
 import '../../features/profile/screens/settings_screen.dart';
+import '../../features/profile/screens/matches_feed_screen.dart';
+import '../../features/profile/screens/selected_matches_screen.dart';
 import '../../features/profile/screens/notifications_settings_screen.dart';
 import '../../features/profile/screens/advanced_settings_screen.dart';
 import '../../features/profile/screens/privacy_settings_screen.dart';
@@ -257,6 +259,35 @@ class AppRoutes {
           const SettingsScreen(),
         ),
       ),
+      // Matches Feed Screen
+      GoRoute(
+        path: '/matches',
+        pageBuilder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          final isPaid = extra?['isPaidMember'] as bool? ?? false;
+          return _slideTransition(
+            context,
+            state,
+            MatchesFeedScreen(isPaidMember: isPaid),
+          );
+        },
+      ),
+      // Selected Matches Screen
+      GoRoute(
+        path: '/selected_matches',
+        pageBuilder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          final isPaid = extra?['isPaidMember'] as bool? ?? false;
+          final title = extra?['title'] as String? ?? 'Preferred Matches';
+          final List<ProfileModel>? profiles = extra?['profiles'] as List<ProfileModel>?;
+          return _slideTransition(
+            context,
+            state,
+            SelectedMatchesScreen(
+              isPaidMember: isPaid,
+              sectionTitle: title,
+              initialProfiles: profiles,
+            ),
       // Notifications Settings Screen
       GoRoute(
         path: '/settings/notifications',
