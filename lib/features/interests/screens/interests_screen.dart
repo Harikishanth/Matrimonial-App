@@ -569,8 +569,8 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
           });
         },
         child: Container(
-          margin: const EdgeInsets.only(right: 8),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          alignment: Alignment.center,
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
           decoration: BoxDecoration(
             color: isSelected ? KalyaThiruTheme.primaryMaroon : Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -580,6 +580,7 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
           ),
           child: Text(
             AppTranslations.translate(labelKey, lang),
+            textAlign: TextAlign.center,
             style: TextStyle(
               color: isSelected ? Colors.white : KalyaThiruTheme.darkCharcoal,
               fontSize: 12,
@@ -628,7 +629,7 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
         ],
         bottom: TabBar(
           controller: _sectionTabController,
-          isScrollable: true,
+          isScrollable: false,
           indicatorColor: KalyaThiruTheme.primaryMaroon,
           indicatorWeight: 2.5,
           labelColor: KalyaThiruTheme.primaryMaroon,
@@ -647,16 +648,16 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
           Container(
             color: Colors.white,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  buildSubTabButton('interests_all', 'all'),
-                  buildSubTabButton('interests_pending', 'pending'),
-                  buildSubTabButton('interests_accepted', 'accepted'),
-                  buildSubTabButton('interests_declined', 'declined'),
-                ],
-              ),
+            child: Row(
+              children: [
+                Expanded(child: buildSubTabButton('interests_all', 'all')),
+                const SizedBox(width: 8),
+                Expanded(child: buildSubTabButton('interests_pending', 'pending')),
+                const SizedBox(width: 8),
+                Expanded(child: buildSubTabButton('interests_accepted', 'accepted')),
+                const SizedBox(width: 8),
+                Expanded(child: buildSubTabButton('interests_declined', 'declined')),
+              ],
             ),
           ),
 
@@ -672,8 +673,8 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
                     children: [
                       Text(
                         _activeSubTab == 'all'
-                            ? AppTranslations.translate('interests_all', lang) + ' ' + AppTranslations.translate('interests_received', lang).split(' ').last
-                            : AppTranslations.translate('interests_' + _activeSubTab, lang) + ' ' + AppTranslations.translate('interests_received', lang).split(' ').last,
+                            ? '${AppTranslations.translate('interests_all', lang)} ${AppTranslations.translate('interests_received', lang).split(' ').last}'
+                            : '${AppTranslations.translate('interests_' + _activeSubTab, lang)} ${AppTranslations.translate('interests_received', lang).split(' ').last}',
                         style: const TextStyle(
                           fontSize: 18,
                           fontFamily: 'Source Serif 4',
@@ -685,8 +686,8 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
                       Text(
                         AppTranslations.translate(
                           _currentSectionIndex == 0
-                              ? 'interests_' + _activeSubTab + '_history_received'
-                              : 'interests_' + _activeSubTab + '_history_sent',
+                              ? 'interests_${_activeSubTab}_history_received'
+                              : 'interests_${_activeSubTab}_history_sent',
                           lang,
                         ),
                         style: const TextStyle(fontSize: 11, color: KalyaThiruTheme.mutedGray),

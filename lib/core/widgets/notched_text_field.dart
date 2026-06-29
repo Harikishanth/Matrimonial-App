@@ -13,7 +13,7 @@ class NotchedTextField extends StatelessWidget {
   final Widget? suffixIcon;
 
   const NotchedTextField({
-    Key? key,
+    super.key,
     required this.labelText,
     this.controller,
     this.obscureText = false,
@@ -23,7 +23,7 @@ class NotchedTextField extends StatelessWidget {
     this.readOnly = false,
     this.onTap,
     this.suffixIcon,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

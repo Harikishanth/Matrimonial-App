@@ -7,11 +7,11 @@ class RegalButton extends StatefulWidget {
   final IconData? icon;
 
   const RegalButton({
-    Key? key,
+    super.key,
     required this.label,
     this.onPressed,
     this.icon,
-  }) : super(key: key);
+  });
 
   @override
   State<RegalButton> createState() => _RegalButtonState();
@@ -99,9 +99,9 @@ class _RegalButtonState extends State<RegalButton> with SingleTickerProviderStat
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [
-                                Colors.white.withOpacity(0.0),
-                                KalyaThiruTheme.antiqueGold.withOpacity(0.25),
-                                Colors.white.withOpacity(0.0),
+                                Colors.white.withValues(alpha: 0.0),
+                                KalyaThiruTheme.antiqueGold.withValues(alpha: 0.25),
+                                Colors.white.withValues(alpha: 0.0),
                               ],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,

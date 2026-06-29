@@ -6,7 +6,7 @@ import '../../../core/theme/theme.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 
 class PhoneVerificationScreen extends StatefulWidget {
-  const PhoneVerificationScreen({Key? key}) : super(key: key);
+  const PhoneVerificationScreen({super.key});
 
   @override
   State<PhoneVerificationScreen> createState() => _PhoneVerificationScreenState();
@@ -111,13 +111,13 @@ class _PhoneVerificationScreenState extends State<PhoneVerificationScreen> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
-                      color: KalyaThiruTheme.outlineBorder.withOpacity(0.25),
+                      color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.25),
                       width: 1.2,
                     ),
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.03),
+                        color: Colors.black.withValues(alpha: 0.03),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
                       ),
@@ -167,12 +167,12 @@ class _PhoneVerificationScreenState extends State<PhoneVerificationScreen> {
                         Container(
                           height: 56,
                           decoration: BoxDecoration(
-                            color: KalyaThiruTheme.softIvory.withOpacity(0.4),
+                            color: KalyaThiruTheme.softIvory.withValues(alpha: 0.4),
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(
                               color: _isValid
                                   ? KalyaThiruTheme.primaryMaroon
-                                  : KalyaThiruTheme.outlineBorder.withOpacity(0.4),
+                                  : KalyaThiruTheme.outlineBorder.withValues(alpha: 0.4),
                               width: _isValid ? 1.5 : 1.0,
                             ),
                           ),
@@ -204,7 +204,7 @@ class _PhoneVerificationScreenState extends State<PhoneVerificationScreen> {
                               Container(
                                 width: 1.0,
                                 height: 28,
-                                color: KalyaThiruTheme.outlineBorder.withOpacity(0.3),
+                                color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.3),
                               ),
                               const SizedBox(width: 12),
                               // Text Field
@@ -231,7 +231,7 @@ class _PhoneVerificationScreenState extends State<PhoneVerificationScreen> {
                                         : 'உங்களது கைப்பேசி எண்',
                                     hintStyle: GoogleFonts.nunitoSans(
                                       fontSize: 15,
-                                      color: KalyaThiruTheme.mutedGray.withOpacity(0.5),
+                                      color: KalyaThiruTheme.mutedGray.withValues(alpha: 0.5),
                                       fontWeight: FontWeight.normal,
                                     ),
                                   ),
@@ -276,7 +276,7 @@ class _PhoneVerificationScreenState extends State<PhoneVerificationScreen> {
                               borderRadius: BorderRadius.circular(8),
                               boxShadow: [
                                 BoxShadow(
-                                  color: KalyaThiruTheme.primaryMaroon.withOpacity(0.2),
+                                  color: KalyaThiruTheme.primaryMaroon.withValues(alpha: 0.2),
                                   blurRadius: 10,
                                   offset: const Offset(0, 4),
                                 ),
@@ -455,7 +455,7 @@ class _PhoneVerificationScreenState extends State<PhoneVerificationScreen> {
                         '© 2024 KalyaThiru Matrimony. All rights reserved.',
                         style: GoogleFonts.nunitoSans(
                           fontSize: 11,
-                          color: KalyaThiruTheme.mutedGray.withOpacity(0.7),
+                          color: KalyaThiruTheme.mutedGray.withValues(alpha: 0.7),
                         ),
                         textAlign: TextAlign.center,
                       ),

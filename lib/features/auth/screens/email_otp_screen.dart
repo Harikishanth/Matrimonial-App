@@ -6,7 +6,7 @@ import '../../../core/theme/theme.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 
 class EmailOtpScreen extends StatefulWidget {
-  const EmailOtpScreen({Key? key}) : super(key: key);
+  const EmailOtpScreen({super.key});
 
   @override
   State<EmailOtpScreen> createState() => _EmailOtpScreenState();
@@ -79,13 +79,13 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
-                      color: KalyaThiruTheme.outlineBorder.withOpacity(0.25),
+                      color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.25),
                       width: 1.2,
                     ),
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.03),
+                        color: Colors.black.withValues(alpha: 0.03),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
                       ),
@@ -101,10 +101,10 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
                           width: 64,
                           height: 64,
                           decoration: BoxDecoration(
-                            color: KalyaThiruTheme.primaryMaroon.withOpacity(0.1),
+                            color: KalyaThiruTheme.primaryMaroon.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(
-                              color: KalyaThiruTheme.primaryMaroon.withOpacity(0.15),
+                              color: KalyaThiruTheme.primaryMaroon.withValues(alpha: 0.15),
                               width: 1.0,
                             ),
                           ),
@@ -189,7 +189,7 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
                                 contentPadding: EdgeInsets.zero,
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: KalyaThiruTheme.outlineBorder.withOpacity(0.3),
+                                    color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.3),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(4),
@@ -257,7 +257,7 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
                             borderRadius: BorderRadius.circular(8),
                             boxShadow: [
                               BoxShadow(
-                                color: KalyaThiruTheme.primaryMaroon.withOpacity(0.2),
+                                color: KalyaThiruTheme.primaryMaroon.withValues(alpha: 0.2),
                                 blurRadius: 10,
                                 offset: const Offset(0, 4),
                               ),
@@ -290,7 +290,7 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
                       // Divider
                       Container(
                         height: 1.0,
-                        color: KalyaThiruTheme.outlineBorder.withOpacity(0.15),
+                        color: KalyaThiruTheme.outlineBorder.withValues(alpha: 0.15),
                       ),
                       const SizedBox(height: 16),
 
@@ -380,7 +380,7 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
                         '© 2024 KalyaThiru Matrimony. All rights reserved.',
                         style: GoogleFonts.nunitoSans(
                           fontSize: 11,
-                          color: KalyaThiruTheme.mutedGray.withOpacity(0.7),
+                          color: KalyaThiruTheme.mutedGray.withValues(alpha: 0.7),
                         ),
                         textAlign: TextAlign.center,
                       ),

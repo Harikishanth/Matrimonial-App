@@ -7,7 +7,7 @@ import '../../../core/widgets/regal_button.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 
 class OtpScreen extends StatefulWidget {
-  const OtpScreen({Key? key}) : super(key: key);
+  const OtpScreen({super.key});
 
   @override
   State<OtpScreen> createState() => _OtpScreenState();

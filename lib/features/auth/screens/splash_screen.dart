@@ -6,7 +6,7 @@ import '../../../core/translation/translations.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -69,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                     gradient: KalyaThiruTheme.auraGold,
                     boxShadow: [
                       BoxShadow(
-                        color: KalyaThiruTheme.antiqueGold.withOpacity(0.3),
+                        color: KalyaThiruTheme.antiqueGold.withValues(alpha: 0.3),
                         blurRadius: 24,
                         spreadRadius: 4,
                       )
