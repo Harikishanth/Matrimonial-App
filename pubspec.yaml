@@ -66,6 +66,15 @@ flutter:
 
   assets:
     - assets/images/onboarding/
+    - profile_creation_setup/myself/
+    - profile_creation_setup/daughter/
+    - profile_creation_setup/son/
+    - profile_creation_setup/sister/
+    - profile_creation_setup/brother/
+    - profile_creation_setup/relative/
+    - profile_creation_setup/friend/
+    - profile_creation_setup/father/
+    - profile_creation_setup/mother/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
