@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../core/theme/theme.dart';
 import '../../../core/translation/translations.dart';
 import '../../../core/translation/option_translations.dart';
@@ -242,7 +243,10 @@ class _CommunicationCenterScreenState extends State<CommunicationCenterScreen>
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Navigator.pop(ctx),
+                  onPressed: () {
+                    Navigator.pop(ctx);
+                    context.push('/upgrade');
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: KalyaThiruTheme.primaryMaroon,
                     padding: const EdgeInsets.symmetric(vertical: 14),
@@ -298,27 +302,24 @@ class _CommunicationCenterScreenState extends State<CommunicationCenterScreen>
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.search, color: KalyaThiruTheme.darkCharcoal),
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(t('comm_search_coming'))),
-              );
-            },
-          ),
-          IconButton(
             icon: const Icon(
               Icons.notifications_none_outlined,
               color: KalyaThiruTheme.darkCharcoal,
             ),
             onPressed: () {},
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 12),
-            child: CircleAvatar(
-              radius: 16,
-              backgroundColor: Colors.grey,
-              backgroundImage: const NetworkImage(
-                'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100',
+          GestureDetector(
+            onTap: () {
+              context.push('/edit_profile');
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 12),
+              child: CircleAvatar(
+                radius: 16,
+                backgroundColor: Colors.grey,
+                backgroundImage: const NetworkImage(
+                  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100',
+                ),
               ),
             ),
           ),
