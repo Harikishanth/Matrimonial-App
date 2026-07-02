@@ -612,13 +612,17 @@ class EditProfileScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontFamily: 'Source Serif 4',
-                        fontWeight: FontWeight.bold,
-                        color: KalyaThiruTheme.primaryMaroon,
-                      ),
+                Expanded(
+                  child: Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontFamily: 'Source Serif 4',
+                          fontWeight: FontWeight.bold,
+                          color: KalyaThiruTheme.primaryMaroon,
+                        ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
                 IconButton(
                   icon: const Icon(Icons.edit, color: KalyaThiruTheme.primaryMaroon, size: 20),
@@ -713,13 +717,17 @@ class EditProfileScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontFamily: 'Source Serif 4',
-                        fontWeight: FontWeight.bold,
-                        color: KalyaThiruTheme.primaryMaroon,
-                      ),
+                Expanded(
+                  child: Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontFamily: 'Source Serif 4',
+                          fontWeight: FontWeight.bold,
+                          color: KalyaThiruTheme.primaryMaroon,
+                        ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
                 IconButton(
                   icon: const Icon(Icons.edit, color: KalyaThiruTheme.primaryMaroon, size: 20),

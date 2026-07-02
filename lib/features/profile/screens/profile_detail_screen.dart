@@ -54,14 +54,14 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
     try {
       final clean = heightStr.replaceAll(RegExp(r'[^0-9.]'), '');
       if (clean.contains('.')) {
-        return double.parse(clean);
+        return double.tryParse(clean) ?? 5.5;
       }
       // Check for feet/inches format, e.g. 5'4"
       if (heightStr.contains("'")) {
         final parts = heightStr.split("'");
-        final ft = double.parse(parts[0].trim());
+        final ft = double.tryParse(parts[0].trim()) ?? 5.0;
         final inchStr = parts[1].replaceAll('"', '').trim();
-        final inch = inchStr.isNotEmpty ? double.parse(inchStr) : 0.0;
+        final inch = inchStr.isNotEmpty ? (double.tryParse(inchStr) ?? 0.0) : 0.0;
         return ft + (inch / 12.0);
       }
     } catch (_) {}
@@ -134,8 +134,8 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
         return actualStr.contains(expected.toString().toLowerCase().trim());
       case 'age':
         try {
-          final int actualAge = int.parse(actual.toString());
-          if (expected is Map<String, int>) {
+          final int? actualAge = int.tryParse(actual.toString());
+          if (actualAge != null && expected is Map<String, int>) {
             final min = expected['min'] ?? 20;
             final max = expected['max'] ?? 40;
             return actualAge >= min && actualAge <= max;
@@ -602,13 +602,15 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
                               color: _isInterestSent ? Colors.green : KalyaThiruTheme.primaryMaroon,
                             ),
                             const SizedBox(width: 8),
-                            Text(
-                              _isInterestSent
-                                  ? _t('INTEREST SENT', 'அனுப்பப்பட்டது', lang)
-                                  : _t('SEND INTEREST', 'ஆர்வம் காட்டு', lang),
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: _isInterestSent ? Colors.green : KalyaThiruTheme.primaryMaroon,
+                            Flexible(
+                              child: Text(
+                                _isInterestSent
+                                    ? _t('INTEREST SENT', 'அனுப்பப்பட்டது', lang)
+                                    : _t('SEND INTEREST', 'ஆர்வம் காட்டு', lang),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: _isInterestSent ? Colors.green : KalyaThiruTheme.primaryMaroon,
+                                ),
                               ),
                             ),
                           ],
@@ -639,9 +641,11 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
                           children: [
                             const Icon(Icons.chat_bubble_outline),
                             const SizedBox(width: 8),
-                            Text(
-                              _t('CHAT', 'அரட்டை', lang),
-                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            Flexible(
+                              child: Text(
+                                _t('CHAT', 'அரட்டை', lang),
+                                style: const TextStyle(fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ],
                         ),
@@ -1002,7 +1006,28 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
   // TAB CONTENT: AM I THEIR MATCH? (USER'S FEATURES VS TARGET'S PREFERENCES)
   Widget _buildAmITheirMatchTab(ProfileModel p, OnboardingState userState, String lang) {
     // 1. Compile comparison points (how user state meets this profile's expectations)
-    final userAge = userState.dob != null ? (DateTime.now().year - DateTime.parse(userState.dob!).year) : 25;
+    int userAge = 25;
+    if (userState.dob != null && userState.dob!.isNotEmpty) {
+      final parsedDate = DateTime.tryParse(userState.dob!);
+      if (parsedDate != null) {
+        userAge = DateTime.now().year - parsedDate.year;
+      } else {
+        try {
+          final parts = userState.dob!.split(RegExp(r'[-/]'));
+          if (parts.length == 3) {
+            int? yearVal;
+            for (var pt in parts) {
+              if (pt.trim().length == 4) {
+                yearVal = int.tryParse(pt.trim());
+              }
+            }
+            if (yearVal != null) {
+              userAge = DateTime.now().year - yearVal;
+            }
+          }
+        } catch (_) {}
+      }
+    }
     final userHeightStr = userState.height ?? "5'6\"";
     final userReligion = userState.religion ?? 'Hindu';
     final userCaste = userState.caste ?? 'Any';

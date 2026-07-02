@@ -53,7 +53,7 @@ class AppRoutes {
   }
 
   static final GoRouter router = GoRouter(
-    initialLocation: '/home',
+    initialLocation: '/',
     redirect: (context, state) {
       try {
         final onboardingState = context.read<OnboardingCubit>().state;

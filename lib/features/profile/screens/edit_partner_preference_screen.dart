@@ -286,36 +286,42 @@ class EditPartnerPreferenceScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Text(
-                      title,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontFamily: 'Source Serif 4',
-                            fontWeight: FontWeight.bold,
-                            color: KalyaThiruTheme.primaryMaroon,
-                          ),
-                    ),
-                    if (isCompulsory) ...[
-                      const SizedBox(width: 8),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                        decoration: BoxDecoration(
-                          color: KalyaThiruTheme.antiqueGold.withValues(alpha: 0.15),
-                          borderRadius: BorderRadius.circular(2),
-                          border: Border.all(color: KalyaThiruTheme.antiqueGold, width: 0.5),
-                        ),
+                Expanded(
+                  child: Row(
+                    children: [
+                      Expanded(
                         child: Text(
-                          lang == 'ta' ? 'கட்டாயம்' : 'Compulsory',
-                          style: const TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                            color: KalyaThiruTheme.antiqueGold,
-                          ),
+                          title,
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                fontFamily: 'Source Serif 4',
+                                fontWeight: FontWeight.bold,
+                                color: KalyaThiruTheme.primaryMaroon,
+                              ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
+                      if (isCompulsory) ...[
+                        const SizedBox(width: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: KalyaThiruTheme.antiqueGold.withValues(alpha: 0.15),
+                            borderRadius: BorderRadius.circular(2),
+                            border: Border.all(color: KalyaThiruTheme.antiqueGold, width: 0.5),
+                          ),
+                          child: Text(
+                            lang == 'ta' ? 'கட்டாயம்' : 'Compulsory',
+                            style: const TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                              color: KalyaThiruTheme.antiqueGold,
+                            ),
+                          ),
+                        ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
                 IconButton(
                   icon: const Icon(Icons.edit, color: KalyaThiruTheme.primaryMaroon, size: 20),

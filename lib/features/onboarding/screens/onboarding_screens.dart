@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:country_state_city/country_state_city.dart' as csc;
 import '../../../core/theme/theme.dart';
 import '../../../core/translation/translations.dart';
 import '../../../core/translation/option_translations.dart';
+import '../../../core/translation/geographic_helper.dart';
 import '../../../core/widgets/notched_text_field.dart';
 import '../../../core/widgets/regal_button.dart';
 import '../../../core/widgets/bottom_sheet_selector.dart';
@@ -1991,8 +1993,13 @@ class _OnboardingStep6ScreenState extends State<OnboardingStep6Screen> {
   String? _citizenship;
   String? _country;
   String? _livingSince;
-  final _stateController = TextEditingController();
-  final _cityController = TextEditingController();
+  String? _stateVal;
+  String? _cityVal;
+
+  List<csc.Country> _allCountries = [];
+  List<csc.State> _allStates = [];
+  List<csc.City> _allCities = [];
+  bool _loadingLocations = false;
 
   @override
   void initState() {
@@ -2001,24 +2008,113 @@ class _OnboardingStep6ScreenState extends State<OnboardingStep6Screen> {
     _citizenship = state.citizenship;
     _country = state.country;
     _livingSince = state.livingSince;
-    _stateController.text = state.state ?? '';
-    _cityController.text = state.city ?? '';
+    _stateVal = state.state;
+    _cityVal = state.city;
 
-    _stateController.addListener(_onTextChanged);
-    _cityController.addListener(_onTextChanged);
+    _initGeographicData();
   }
 
-  void _onTextChanged() {
-    setState(() {});
+  Future<void> _initGeographicData() async {
+    setState(() => _loadingLocations = true);
+    try {
+      _allCountries = await GeographicHelper.getAllCountries();
+      if (_country != null) {
+        final countryModel = _allCountries.firstWhere(
+          (c) => c.name == _country,
+          orElse: () => _allCountries.first,
+        );
+        _allStates = await GeographicHelper.getStatesOfCountry(countryModel.isoCode);
+        _allStates.sort((a, b) => a.name.compareTo(b.name));
+        if (_stateVal != null) {
+          final stateModel = _allStates.firstWhere(
+            (s) => s.name == _stateVal,
+            orElse: () => _allStates.first,
+          );
+          _allCities = await GeographicHelper.getStateCities(countryModel.isoCode, stateModel.isoCode);
+          _allCities.sort((a, b) => a.name.compareTo(b.name));
+        }
+      }
+    } catch (e) {
+      debugPrint("Error initializing geographic data in onboarding: $e");
+    } finally {
+      if (mounted) {
+        setState(() => _loadingLocations = false);
+      }
+    }
   }
 
-  @override
-  void dispose() {
-    _stateController.removeListener(_onTextChanged);
-    _cityController.removeListener(_onTextChanged);
-    _stateController.dispose();
-    _cityController.dispose();
-    super.dispose();
+  Future<void> _onCountryChanged(String val) async {
+    setState(() {
+      _country = val;
+      _stateVal = null;
+      _cityVal = null;
+      _allStates = [];
+      _allCities = [];
+      _loadingLocations = true;
+    });
+    try {
+      final countryModel = _allCountries.firstWhere(
+        (c) => c.name == val,
+        orElse: () => _allCountries.first,
+      );
+      final states = await GeographicHelper.getStatesOfCountry(countryModel.isoCode);
+      states.sort((a, b) => a.name.compareTo(b.name));
+      if (mounted) {
+        setState(() {
+          _allStates = states;
+          if (_allStates.isEmpty) {
+            _stateVal = 'Other';
+            _cityVal = 'Other';
+          }
+        });
+      }
+    } catch (e) {
+      debugPrint("Error loading states in onboarding: $e");
+    } finally {
+      if (mounted) {
+        setState(() => _loadingLocations = false);
+      }
+    }
+  }
+
+  Future<void> _onStateChanged(String val) async {
+    setState(() {
+      _stateVal = val;
+      _cityVal = null;
+      _allCities = [];
+      if (val == 'Other') {
+        _cityVal = 'Other';
+      } else {
+        _loadingLocations = true;
+      }
+    });
+    if (val == 'Other') return;
+    try {
+      final countryModel = _allCountries.firstWhere(
+        (c) => c.name == _country,
+        orElse: () => _allCountries.first,
+      );
+      final stateModel = _allStates.firstWhere(
+        (s) => s.name == val,
+        orElse: () => _allStates.first,
+      );
+      final cities = await GeographicHelper.getStateCities(countryModel.isoCode, stateModel.isoCode);
+      cities.sort((a, b) => a.name.compareTo(b.name));
+      if (mounted) {
+        setState(() {
+          _allCities = cities;
+          if (_allCities.isEmpty) {
+            _cityVal = 'Other';
+          }
+        });
+      }
+    } catch (e) {
+      debugPrint("Error loading cities in onboarding: $e");
+    } finally {
+      if (mounted) {
+        setState(() => _loadingLocations = false);
+      }
+    }
   }
 
   void _saveAndContinue() {
@@ -2026,8 +2122,8 @@ class _OnboardingStep6ScreenState extends State<OnboardingStep6Screen> {
           citizenship: _citizenship,
           country: _country,
           livingSince: _livingSince,
-          state: _stateController.text,
-          city: _cityController.text,
+          state: _stateVal,
+          city: _cityVal,
         );
     context.read<OnboardingCubit>().updateStep(7);
     context.go('/onboarding/step7');
@@ -2039,15 +2135,28 @@ class _OnboardingStep6ScreenState extends State<OnboardingStep6Screen> {
     final String lang = state.langCode;
 
     final citizenships = ['Indian Citizen', 'NRI / Permanent Resident', 'Foreign National'];
-    final countries = ['India', 'United States', 'United Kingdom', 'Singapore', 'Malaysia', 'United Arab Emirates', 'Canada', 'Australia'];
+    final countryOptions = _allCountries.isNotEmpty
+        ? _allCountries.map((c) => c.name).toList()
+        : const ['India', 'United States', 'United Kingdom', 'Singapore', 'Malaysia', 'United Arab Emirates', 'Canada', 'Australia'];
+    
+    final stateOptions = _allStates.isNotEmpty
+        ? _allStates.map((s) => s.name).toList()
+        : const ['Other'];
+
+    final cityOptions = _allCities.isNotEmpty
+        ? _allCities.map((c) => c.name).toList()
+        : const ['Other'];
+
     final years = List.generate(60, (index) => (2028 - index).toString());
 
     final bool isNonIndian = _citizenship != null && _citizenship != 'Indian Citizen';
     final bool isContinueEnabled = _citizenship != null &&
         _country != null &&
         (!isNonIndian || _livingSince != null) &&
-        _stateController.text.trim().isNotEmpty &&
-        _cityController.text.trim().isNotEmpty;
+        _stateVal != null &&
+        _stateVal!.trim().isNotEmpty &&
+        _cityVal != null &&
+        _cityVal!.trim().isNotEmpty;
 
     return OnboardingLayoutWrapper(
       step: 6,
@@ -2065,11 +2174,33 @@ class _OnboardingStep6ScreenState extends State<OnboardingStep6Screen> {
             onSelected: (val) => setState(() => _citizenship = val),
           ),
           const SizedBox(height: 20),
+          if (_loadingLocations)
+            const Padding(
+              padding: EdgeInsets.only(bottom: 12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 14,
+                    height: 14,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      valueColor: AlwaysStoppedAnimation<Color>(KalyaThiruTheme.primaryMaroon),
+                    ),
+                  ),
+                  SizedBox(width: 8),
+                  Text(
+                    "Loading locations...",
+                    style: TextStyle(fontSize: 12, color: KalyaThiruTheme.primaryMaroon),
+                  ),
+                ],
+              ),
+            ),
           BottomSheetSelector(
             labelText: AppTranslations.translate('country', lang),
             selectedValue: _country,
-            options: countries,
-            onSelected: (val) => setState(() => _country = val),
+            options: countryOptions,
+            onSelected: (val) => _onCountryChanged(val),
           ),
           const SizedBox(height: 20),
           if (_citizenship != 'Indian Citizen') ...[
@@ -2081,14 +2212,18 @@ class _OnboardingStep6ScreenState extends State<OnboardingStep6Screen> {
             ),
             const SizedBox(height: 20),
           ],
-          NotchedTextField(
+          BottomSheetSelector(
             labelText: AppTranslations.translate('state', lang),
-            controller: _stateController,
+            selectedValue: _stateVal,
+            options: stateOptions,
+            onSelected: (val) => _onStateChanged(val),
           ),
           const SizedBox(height: 20),
-          NotchedTextField(
+          BottomSheetSelector(
             labelText: AppTranslations.translate('city', lang),
-            controller: _cityController,
+            selectedValue: _cityVal,
+            options: cityOptions,
+            onSelected: (val) => setState(() => _cityVal = val),
           ),
         ],
       ),

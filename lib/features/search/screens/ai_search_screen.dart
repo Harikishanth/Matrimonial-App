@@ -722,46 +722,53 @@ class _AiSearchScreenState extends State<AiSearchScreen>
             color: KalyaThiruTheme.darkCharcoal,
           ),
         ),
-        bottom: TabBar(
-          controller: _tabController,
-          isScrollable: false,
-          indicatorColor: KalyaThiruTheme.primaryMaroon,
-          indicatorWeight: 2.5,
-          labelColor: KalyaThiruTheme.primaryMaroon,
-          unselectedLabelColor: KalyaThiruTheme.mutedGray,
-          labelStyle:
-              const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-          unselectedLabelStyle:
-              const TextStyle(fontSize: 13, fontWeight: FontWeight.normal),
-          tabs: [
-            Tab(text: lang == 'en' ? 'By Criteria' : 'அளவுகோல்'),
-            Tab(text: lang == 'en' ? 'By Profile ID' : 'சுயவிவர ID'),
-            Tab(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(lang == 'en' ? 'Saved Search' : 'சேமிப்புகள்'),
-                  const SizedBox(width: 6),
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                    decoration: BoxDecoration(
-                      color: KalyaThiruTheme.primaryMaroon,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Text(
-                      '0',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(48),
+          child: ClipRect(
+            child: TabBar(
+              controller: _tabController,
+              isScrollable: true,
+              tabAlignment: TabAlignment.start,
+              labelPadding: const EdgeInsets.symmetric(horizontal: 12.0),
+              indicatorColor: KalyaThiruTheme.primaryMaroon,
+              indicatorWeight: 2.5,
+              labelColor: KalyaThiruTheme.primaryMaroon,
+              unselectedLabelColor: KalyaThiruTheme.mutedGray,
+              labelStyle:
+                  const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+              unselectedLabelStyle:
+                  const TextStyle(fontSize: 13, fontWeight: FontWeight.normal),
+              tabs: [
+                Tab(text: lang == 'en' ? 'By Criteria' : 'அளவுகோல்'),
+                Tab(text: lang == 'en' ? 'By Profile ID' : 'சுயவிவர ID'),
+                Tab(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(lang == 'en' ? 'Saved Search' : 'சேமிப்புகள்'),
+                      const SizedBox(width: 6),
+                      Container(
+                        padding:
+                            const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                        decoration: BoxDecoration(
+                          color: KalyaThiruTheme.primaryMaroon,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Text(
+                          '0',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
       body: TabBarView(

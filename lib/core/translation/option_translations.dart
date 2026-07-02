@@ -9,6 +9,7 @@ const Map<String, String> optionTranslationsTa = {
   'Yes': 'ஆம்',
   'No': 'இல்லை',
   'Occasionally': 'எப்போதாவது',
+  'Occupation': 'தொழில்',
 
   // Religions
   'Hindu': 'இந்து',

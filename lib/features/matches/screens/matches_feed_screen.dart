@@ -177,27 +177,16 @@ class _MatchesFeedScreenState extends State<MatchesFeedScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
-              child: Row(
-                children: [
-                  Text(
-                    translateOption(titleKey, lang),
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: KalyaThiruTheme.primaryMaroon,
-                      fontFamily: 'Source Serif 4',
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  if (lang == 'ta')
-                    Text(
-                      '(${translateOption(titleKey, 'ta')})',
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: KalyaThiruTheme.mutedGray,
-                      ),
-                    ),
-                ],
+              child: Text(
+                translateOption(titleKey, lang),
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: KalyaThiruTheme.primaryMaroon,
+                  fontFamily: 'Source Serif 4',
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
             GestureDetector(

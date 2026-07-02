@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:country_state_city/country_state_city.dart' as csc;
 import '../../../core/theme/theme.dart';
 import '../../../core/translation/option_translations.dart';
+import '../../../core/translation/geographic_helper.dart';
+import '../../../core/widgets/bottom_sheet_selector.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
 import '../../profile/models/profile_model.dart';
 
@@ -42,6 +45,12 @@ class _ViewedProfilesScreenState extends State<ViewedProfilesScreen> {
   bool _filterCasteNoBar = false;
   bool _filterNearbyProfiles = false;
   String _filterCountry = 'All';
+  String _filterState = 'All';
+  String _filterCity = 'All';
+  List<csc.Country> _allCountries = [];
+  List<csc.State> _allStates = [];
+  List<csc.City> _allCities = [];
+  bool _loadingLocations = false;
   String _filterEatingHabits = "Doesn't Matter";
   String _filterSmoking = "Doesn't Matter";
   String _filterDrinking = "Doesn't Matter";
@@ -72,6 +81,106 @@ class _ViewedProfilesScreenState extends State<ViewedProfilesScreen> {
         ? List<ProfileModel>.from(widget.initialProfiles!)
         : List<ProfileModel>.from(SampleProfiles.whoViewedYou);
     _visibleProfiles = List<ProfileModel>.from(_allProfiles);
+    _initGeographicData();
+  }
+
+  Future<void> _initGeographicData() async {
+    try {
+      _allCountries = await GeographicHelper.getAllCountries();
+      if (_filterCountry != 'All') {
+        final countryModel = _allCountries.firstWhere(
+          (c) => c.name == _filterCountry,
+          orElse: () => _allCountries.first,
+        );
+        _allStates = await GeographicHelper.getStatesOfCountry(countryModel.isoCode);
+        _allStates.sort((a, b) => a.name.compareTo(b.name));
+        if (_filterState != 'All') {
+          final stateModel = _allStates.firstWhere(
+            (s) => s.name == _filterState,
+            orElse: () => _allStates.first,
+          );
+          _allCities = await GeographicHelper.getStateCities(countryModel.isoCode, stateModel.isoCode);
+          _allCities.sort((a, b) => a.name.compareTo(b.name));
+        }
+      }
+    } catch (e) {
+      debugPrint("Error initializing geographic data in ViewedProfilesScreen: $e");
+    }
+  }
+
+  Future<void> _onFilterCountryChanged(String val, StateSetter setSheetState) async {
+    setSheetState(() {
+      _filterCountry = val;
+      _filterState = 'All';
+      _filterCity = 'All';
+      _allStates = [];
+      _allCities = [];
+      _loadingLocations = true;
+    });
+    if (val == 'All') {
+      setSheetState(() {
+        _loadingLocations = false;
+      });
+      return;
+    }
+    try {
+      final countryModel = _allCountries.firstWhere(
+        (c) => c.name == val,
+        orElse: () => _allCountries.first,
+      );
+      final states = await GeographicHelper.getStatesOfCountry(countryModel.isoCode);
+      states.sort((a, b) => a.name.compareTo(b.name));
+      if (mounted) {
+        setSheetState(() {
+          _allStates = states;
+        });
+      }
+    } catch (e) {
+      debugPrint("Error loading states for filter: $e");
+    } finally {
+      if (mounted) {
+        setSheetState(() {
+          _loadingLocations = false;
+        });
+      }
+    }
+  }
+
+  Future<void> _onFilterStateChanged(String val, StateSetter setSheetState) async {
+    setSheetState(() {
+      _filterState = val;
+      _filterCity = 'All';
+      _allCities = [];
+      if (val != 'All') {
+        _loadingLocations = true;
+      }
+    });
+    if (val == 'All') return;
+    try {
+      final countryModel = _allCountries.firstWhere(
+        (c) => c.name == _filterCountry,
+        orElse: () => _allCountries.first,
+      );
+      final stateModel = _allStates.firstWhere(
+        (s) => s.name == val,
+        orElse: () => _allStates.first,
+      );
+      final cities = await GeographicHelper.getStateCities(countryModel.isoCode, stateModel.isoCode);
+      cities.sort((a, b) => a.name.compareTo(b.name));
+      if (mounted) {
+        setSheetState(() {
+          _allCities = cities;
+        });
+      }
+    } catch (e) {
+      debugPrint("Error loading cities for filter: $e");
+    } finally {
+      if (mounted) {
+        setSheetState(() {
+          _loadingLocations = false;
+        });
+      }
+    }
   }
 
   void _removeProfile(String id) {
@@ -125,6 +234,14 @@ class _ViewedProfilesScreenState extends State<ViewedProfilesScreen> {
 
     if (_filterCountry != 'All') {
       temp = temp.where((p) => p.country.toLowerCase() == _filterCountry.toLowerCase()).toList();
+    }
+
+    if (_filterState != 'All' && _filterState.isNotEmpty) {
+      temp = temp.where((p) => p.state.toLowerCase() == _filterState.toLowerCase()).toList();
+    }
+
+    if (_filterCity != 'All' && _filterCity.isNotEmpty) {
+      temp = temp.where((p) => p.city.toLowerCase() == _filterCity.toLowerCase()).toList();
     }
 
     if (_filterEatingHabits != "Doesn't Matter") {
@@ -335,6 +452,10 @@ class _ViewedProfilesScreenState extends State<ViewedProfilesScreen> {
                               _filterCasteNoBar = false;
                               _filterNearbyProfiles = false;
                               _filterCountry = 'All';
+                              _filterState = 'All';
+                              _filterCity = 'All';
+                              _allStates = [];
+                              _allCities = [];
                               _filterEatingHabits = "Doesn't Matter";
                               _filterSmoking = "Doesn't Matter";
                               _filterDrinking = "Doesn't Matter";
@@ -453,17 +574,12 @@ class _ViewedProfilesScreenState extends State<ViewedProfilesScreen> {
                         ),
 
                         const SizedBox(height: 12),
-                        DropdownButtonFormField<String>(
-                          initialValue: _filterCreatedBy,
-                          decoration: InputDecoration(
-                            labelText: translateOption('Profile Created By', lang),
-                            border: const OutlineInputBorder(),
-                          ),
-                          items: ['All', 'Self', 'Parents', 'Sibling'].map((opt) {
-                            return DropdownMenuItem(value: opt, child: Text(opt));
-                          }).toList(),
-                          onChanged: (val) {
-                            setSheetState(() => _filterCreatedBy = val ?? 'All');
+                        BottomSheetSelector(
+                          labelText: translateOption('Profile Created By', lang),
+                          selectedValue: _filterCreatedBy,
+                          options: const ['All', 'Self', 'Parents', 'Sibling'],
+                          onSelected: (val) {
+                            setSheetState(() => _filterCreatedBy = val);
                           },
                         ),
 
@@ -493,47 +609,32 @@ class _ViewedProfilesScreenState extends State<ViewedProfilesScreen> {
                         ),
 
                         const SizedBox(height: 16),
-                        DropdownButtonFormField<String>(
-                          value: _filterMotherTongue,
-                          decoration: InputDecoration(
-                            labelText: translateOption('Mother Tongue', lang),
-                            border: const OutlineInputBorder(),
-                          ),
-                          items: ["Doesn't Matter", 'Tamil', 'Telugu', 'Kannada', 'Malayalam', 'Hindi', 'English'].map((opt) {
-                            return DropdownMenuItem(value: opt, child: Text(translateOption(opt, lang)));
-                          }).toList(),
-                          onChanged: (val) {
-                            setSheetState(() => _filterMotherTongue = val ?? "Doesn't Matter");
+                        BottomSheetSelector(
+                          labelText: translateOption('Mother Tongue', lang),
+                          selectedValue: _filterMotherTongue,
+                          options: const ["Doesn't Matter", 'Tamil', 'Telugu', 'Kannada', 'Malayalam', 'Hindi', 'English'],
+                          onSelected: (val) {
+                            setSheetState(() => _filterMotherTongue = val);
                           },
                         ),
 
                         const SizedBox(height: 16),
-                        DropdownButtonFormField<String>(
-                          value: _filterPhysicalStatus,
-                          decoration: InputDecoration(
-                            labelText: translateOption('Physical Status', lang),
-                            border: const OutlineInputBorder(),
-                          ),
-                          items: ["Doesn't Matter", 'Normal', 'Physically Challenged'].map((opt) {
-                            return DropdownMenuItem(value: opt, child: Text(translateOption(opt, lang)));
-                          }).toList(),
-                          onChanged: (val) {
-                            setSheetState(() => _filterPhysicalStatus = val ?? "Doesn't Matter");
+                        BottomSheetSelector(
+                          labelText: translateOption('Physical Status', lang),
+                          selectedValue: _filterPhysicalStatus,
+                          options: const ["Doesn't Matter", 'Normal', 'Physically Challenged'],
+                          onSelected: (val) {
+                            setSheetState(() => _filterPhysicalStatus = val);
                           },
                         ),
 
                         buildSectionHeader('Religious Details'),
-                        DropdownButtonFormField<String>(
-                          initialValue: _filterReligion,
-                          decoration: InputDecoration(
-                            labelText: translateOption('Religion', lang),
-                            border: const OutlineInputBorder(),
-                          ),
-                          items: ['All', 'Hindu', 'Muslim', 'Christian'].map((opt) {
-                            return DropdownMenuItem(value: opt, child: Text(opt));
-                          }).toList(),
-                          onChanged: (val) {
-                            setSheetState(() => _filterReligion = val ?? 'All');
+                        BottomSheetSelector(
+                          labelText: translateOption('Religion', lang),
+                          selectedValue: _filterReligion,
+                          options: const ['All', 'Hindu', 'Muslim', 'Christian'],
+                          onSelected: (val) {
+                            setSheetState(() => _filterReligion = val);
                           },
                         ),
 
@@ -569,62 +670,78 @@ class _ViewedProfilesScreenState extends State<ViewedProfilesScreen> {
                           },
                         ),
 
-                        DropdownButtonFormField<String>(
-                          initialValue: _filterCountry,
-                          decoration: InputDecoration(
-                            labelText: lang == 'en' ? 'Country' : 'நாடு',
-                            border: const OutlineInputBorder(),
+                        if (_loadingLocations)
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 12.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: 14,
+                                  height: 14,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    valueColor: AlwaysStoppedAnimation<Color>(KalyaThiruTheme.primaryMaroon),
+                                  ),
+                                ),
+                                SizedBox(width: 8),
+                                Text(
+                                  "Loading locations...",
+                                  style: TextStyle(fontSize: 12, color: KalyaThiruTheme.primaryMaroon),
+                                ),
+                              ],
+                            ),
                           ),
-                          items: ['All', 'India', 'United States', 'Singapore', 'United Kingdom'].map((opt) {
-                            return DropdownMenuItem(value: opt, child: Text(opt));
-                          }).toList(),
-                          onChanged: (val) {
-                            setSheetState(() => _filterCountry = val ?? 'All');
-                          },
+
+                        BottomSheetSelector(
+                          labelText: lang == 'en' ? 'Country' : 'நாடு',
+                          selectedValue: _filterCountry,
+                          options: ['All', ...(_allCountries.isNotEmpty ? _allCountries.map((c) => c.name).toList() : const ['India', 'United States', 'Singapore', 'United Kingdom'])],
+                          onSelected: (val) => _onFilterCountryChanged(val, setSheetState),
                         ),
+                        const SizedBox(height: 16),
+                        BottomSheetSelector(
+                          labelText: lang == 'en' ? 'State' : 'மாநிலம்',
+                          selectedValue: _filterState,
+                          options: ['All', ..._allStates.map((s) => s.name)],
+                          onSelected: (val) => _onFilterStateChanged(val, setSheetState),
+                        ),
+                        const SizedBox(height: 16),
+                        BottomSheetSelector(
+                          labelText: lang == 'en' ? 'City' : 'நகரம்',
+                          selectedValue: _filterCity,
+                          options: ['All', ..._allCities.map((c) => c.name)],
+                          onSelected: (val) => setSheetState(() => _filterCity = val),
+                        ),
+                        const SizedBox(height: 16),
 
                         buildSectionHeader('Professional Details'),
-                        DropdownButtonFormField<String>(
-                          value: _filterOccupation,
-                          decoration: InputDecoration(
-                            labelText: translateOption('Occupation', lang),
-                            border: const OutlineInputBorder(),
-                          ),
-                          items: ['Any', 'Software Engineer', 'Doctor / Surgeon', 'IAS / IPS / Civil Services', 'Chartered Accountant', 'Professor / Teacher', 'Business Owner', 'Architect', 'Banker', 'Defence Personnel'].map((opt) {
-                            return DropdownMenuItem(value: opt, child: Text(translateOption(opt, lang)));
-                          }).toList(),
-                          onChanged: (val) {
-                            setSheetState(() => _filterOccupation = val ?? 'Any');
+                        BottomSheetSelector(
+                          labelText: translateOption('Occupation', lang),
+                          selectedValue: _filterOccupation,
+                          options: const ['Any', 'Software Engineer', 'Doctor / Surgeon', 'IAS / IPS / Civil Services', 'Chartered Accountant', 'Professor / Teacher', 'Business Owner', 'Architect', 'Banker', 'Defence Personnel'],
+                          onSelected: (val) {
+                            setSheetState(() => _filterOccupation = val);
                           },
                         ),
 
                         const SizedBox(height: 16),
-                        DropdownButtonFormField<String>(
-                          value: _filterEmploymentType,
-                          decoration: InputDecoration(
-                            labelText: translateOption('Employment Type', lang),
-                            border: const OutlineInputBorder(),
-                          ),
-                          items: ['Any', 'Private Sector Job', 'Government / PSU Job', 'Business / Self-Employed', 'Not Working / Student'].map((opt) {
-                            return DropdownMenuItem(value: opt, child: Text(translateOption(opt, lang)));
-                          }).toList(),
-                          onChanged: (val) {
-                            setSheetState(() => _filterEmploymentType = val ?? 'Any');
+                        BottomSheetSelector(
+                          labelText: translateOption('Employment Type', lang),
+                          selectedValue: _filterEmploymentType,
+                          options: const ['Any', 'Private Sector Job', 'Government / PSU Job', 'Business / Self-Employed', 'Not Working / Student'],
+                          onSelected: (val) {
+                            setSheetState(() => _filterEmploymentType = val);
                           },
                         ),
 
                         const SizedBox(height: 16),
-                        DropdownButtonFormField<String>(
-                          value: _filterEducation,
-                          decoration: InputDecoration(
-                            labelText: translateOption('Education', lang),
-                            border: const OutlineInputBorder(),
-                          ),
-                          items: ['Any', 'Doctorate / PhD', 'Master\'s Degree', 'Bachelor\'s Degree', 'Diploma', 'High School'].map((opt) {
-                            return DropdownMenuItem(value: opt, child: Text(translateOption(opt, lang)));
-                          }).toList(),
-                          onChanged: (val) {
-                            setSheetState(() => _filterEducation = val ?? 'Any');
+                        BottomSheetSelector(
+                          labelText: translateOption('Education', lang),
+                          selectedValue: _filterEducation,
+                          options: const ['Any', 'Doctorate / PhD', 'Master\'s Degree', 'Bachelor\'s Degree', 'Diploma', 'High School'],
+                          onSelected: (val) {
+                            setSheetState(() => _filterEducation = val);
                           },
                         ),
 
@@ -637,33 +754,23 @@ class _ViewedProfilesScreenState extends State<ViewedProfilesScreen> {
                         Row(
                           children: [
                             Expanded(
-                              child: DropdownButtonFormField<String>(
-                                value: _filterIncomeFrom,
-                                decoration: InputDecoration(
-                                  labelText: translateOption('Income From', lang),
-                                  border: const OutlineInputBorder(),
-                                ),
-                                items: ['Any', '₹3 Lakhs', '₹5 Lakhs', '₹8 Lakhs', '₹12 Lakhs', '₹18 Lakhs', '₹25 Lakhs', '₹40 Lakhs'].map((opt) {
-                                  return DropdownMenuItem(value: opt, child: Text(translateOption(opt, lang)));
-                                }).toList(),
-                                onChanged: (val) {
-                                  setSheetState(() => _filterIncomeFrom = val ?? 'Any');
+                              child: BottomSheetSelector(
+                                labelText: translateOption('Income From', lang),
+                                selectedValue: _filterIncomeFrom,
+                                options: const ['Any', '₹3 Lakhs', '₹5 Lakhs', '₹8 Lakhs', '₹12 Lakhs', '₹18 Lakhs', '₹25 Lakhs', '₹40 Lakhs'],
+                                onSelected: (val) {
+                                  setSheetState(() => _filterIncomeFrom = val);
                                 },
                               ),
                             ),
                             const SizedBox(width: 12),
                             Expanded(
-                              child: DropdownButtonFormField<String>(
-                                value: _filterIncomeTo,
-                                decoration: InputDecoration(
-                                  labelText: translateOption('Income To', lang),
-                                  border: const OutlineInputBorder(),
-                                ),
-                                items: ['Any', '₹3 Lakhs', '₹5 Lakhs', '₹8 Lakhs', '₹12 Lakhs', '₹18 Lakhs', '₹25 Lakhs', '₹40 Lakhs', '₹40 Lakhs+'].map((opt) {
-                                  return DropdownMenuItem(value: opt, child: Text(translateOption(opt, lang)));
-                                }).toList(),
-                                onChanged: (val) {
-                                  setSheetState(() => _filterIncomeTo = val ?? 'Any');
+                              child: BottomSheetSelector(
+                                labelText: translateOption('Income To', lang),
+                                selectedValue: _filterIncomeTo,
+                                options: const ['Any', '₹3 Lakhs', '₹5 Lakhs', '₹8 Lakhs', '₹12 Lakhs', '₹18 Lakhs', '₹25 Lakhs', '₹40 Lakhs', '₹40 Lakhs+'],
+                                onSelected: (val) {
+                                  setSheetState(() => _filterIncomeTo = val);
                                 },
                               ),
                             ),
@@ -746,17 +853,12 @@ class _ViewedProfilesScreenState extends State<ViewedProfilesScreen> {
                         ),
 
                         buildSectionHeader('Family Details'),
-                        DropdownButtonFormField<String>(
-                          value: _filterFamilyStatus,
-                          decoration: InputDecoration(
-                            labelText: translateOption('Family Status', lang),
-                            border: const OutlineInputBorder(),
-                          ),
-                          items: ["Doesn't Matter", 'Rich / Affluent', 'Upper Middle Class', 'Middle Class', 'Lower Middle Class'].map((opt) {
-                            return DropdownMenuItem(value: opt, child: Text(translateOption(opt, lang)));
-                          }).toList(),
-                          onChanged: (val) {
-                            setSheetState(() => _filterFamilyStatus = val ?? "Doesn't Matter");
+                        BottomSheetSelector(
+                          labelText: translateOption('Family Status', lang),
+                          selectedValue: _filterFamilyStatus,
+                          options: const ["Doesn't Matter", 'Rich / Affluent', 'Upper Middle Class', 'Middle Class', 'Lower Middle Class'],
+                          onSelected: (val) {
+                            setSheetState(() => _filterFamilyStatus = val);
                           },
                         ),
 
@@ -853,6 +955,10 @@ class _ViewedProfilesScreenState extends State<ViewedProfilesScreen> {
                                 _filterCasteNoBar = false;
                                 _filterNearbyProfiles = false;
                                 _filterCountry = 'All';
+                                _filterState = 'All';
+                                _filterCity = 'All';
+                                _allStates = [];
+                                _allCities = [];
                                 _filterEatingHabits = "Doesn't Matter";
                                 _filterSmoking = "Doesn't Matter";
                                 _filterDrinking = "Doesn't Matter";
