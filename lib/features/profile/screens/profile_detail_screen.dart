@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/theme/theme.dart';
 import '../../onboarding/cubit/onboarding_cubit.dart';
@@ -237,23 +238,9 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> with SingleTi
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () async {
-                    final prefs = await SharedPreferences.getInstance();
-                    await prefs.setBool('is_paid_member', true);
-                    setState(() {
-                      _isPaidMember = true;
-                    });
+                  onPressed: () {
                     Navigator.pop(context);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          lang == 'en'
-                              ? 'Thank you! Premium activated.'
-                              : 'நன்றி! பிரீமியம் சேவை செயல்படுத்தப்பட்டது.',
-                        ),
-                        backgroundColor: Colors.green,
-                      ),
-                    );
+                    context.push('/upgrade');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: KalyaThiruTheme.primaryMaroon,

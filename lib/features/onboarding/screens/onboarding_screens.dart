@@ -233,6 +233,8 @@ class OnboardingStep1Screen extends StatelessWidget {
               final String labelEn = opt['labelEn'];
               final String labelTa = opt['labelTa'];
               final bool isSelected = state.profileFor == key;
+              final String fileName = (key == 'myself' || key == 'relative') ? 'screen.png' : '$key.png';
+              final String assetPath = 'profile_creation_setup/$key/$fileName';
 
               return InkWell(
                 onTap: () => cubit.updateFields(profileFor: key),
@@ -266,22 +268,22 @@ class OnboardingStep1Screen extends StatelessWidget {
                             children: [
                               // Cream rounded-circle background container for the illustration
                               Container(
-                                width: 56,
-                                height: 56,
+                                width: 76,
+                                height: 76,
+                                clipBehavior: Clip.antiAlias,
                                 decoration: BoxDecoration(
                                   color: const Color(0xFFF3EDE9), // Sandalwood / Cream background matching design
-                                  borderRadius: BorderRadius.circular(28),
+                                  borderRadius: BorderRadius.circular(38),
                                 ),
-                                padding: const EdgeInsets.all(6),
                                 child: Image.asset(
-                                  'assets/images/onboarding/$key.png',
-                                  fit: BoxFit.contain,
+                                  assetPath,
+                                  fit: BoxFit.cover,
                                   errorBuilder: (context, error, stackTrace) {
                                     // Fallback Icon if asset fails to load
                                     return Icon(
                                       opt['icon'],
                                       color: isSelected ? KalyaThiruTheme.primaryMaroon : KalyaThiruTheme.mutedGray,
-                                      size: 24,
+                                      size: 28,
                                     );
                                   },
                                 ),

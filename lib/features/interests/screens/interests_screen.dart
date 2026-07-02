@@ -269,7 +269,10 @@ class _InterestsScreenState extends State<InterestsScreen> with SingleTickerProv
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Navigator.pop(ctx),
+                  onPressed: () {
+                    Navigator.pop(ctx);
+                    context.push('/upgrade');
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: KalyaThiruTheme.primaryMaroon,
                     padding: const EdgeInsets.symmetric(vertical: 14),

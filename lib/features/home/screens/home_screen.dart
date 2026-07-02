@@ -334,18 +334,8 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: () {
-                  _togglePaidState(true);
                   Navigator.pop(context);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        lang == 'en'
-                            ? 'Plan Upgraded successfully!'
-                            : 'திட்டம் வெற்றிகரமாக மேம்படுத்தப்பட்டது!',
-                      ),
-                      backgroundColor: KalyaThiruTheme.primaryMaroon,
-                    ),
-                  );
+                  context.push('/upgrade');
                 },
                 child: Text(lang == 'en' ? 'ACTIVATE NOW' : 'இப்போது செயல்படுத்தவும்'),
               ),
@@ -427,6 +417,255 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 12),
               ],
             ),
+          ),
+        );
+      },
+    );
+  }
+
+  // Premium photo management bottom sheet
+  void _showPhotoBottomSheet(BuildContext context, OnboardingState state, String lang) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) {
+        final isFemale = state.gender?.toLowerCase() == 'female';
+        final hasCustomPhoto = state.photoPath != null && state.photoPath!.isNotEmpty;
+        
+        return Container(
+          decoration: const BoxDecoration(
+            color: Color(0xFFFEF8F4), // Heritage cream background
+            borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 10,
+                offset: Offset(0, -2),
+              ),
+            ],
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Premium handle bar
+              Center(
+                child: Container(
+                  width: 44,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: KalyaThiruTheme.outlineVariant,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
+              // Header
+              Text(
+                lang == 'en' ? 'Manage Profile Photo' : 'சுயவிவரப் புகைப்படம்',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: KalyaThiruTheme.primaryMaroon,
+                  fontFamily: 'Outfit',
+                ),
+              ),
+              const SizedBox(height: 6),
+              Text(
+                lang == 'en' 
+                    ? 'Upload or update your profile picture to get 3x higher matches.' 
+                    : '3 மடங்கு அதிக வரன்களைப் பெற உங்கள் புகைப்படத்தைப் பதிவேற்றவும் அல்லது மாற்றவும்.',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 13,
+                  color: KalyaThiruTheme.mutedGray,
+                ),
+              ),
+              const SizedBox(height: 24),
+              
+              // Camera option card
+              InkWell(
+                onTap: () {
+                  // Simulate Camera Click: update state with a new premium face
+                  final String newPhoto = isFemale
+                      ? 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400' // Premium female face
+                      : 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400'; // Premium male face
+                  context.read<OnboardingCubit>().updateFields(photoPath: newPhoto);
+                  Navigator.pop(context);
+                  
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        lang == 'en' 
+                            ? 'Camera photo uploaded successfully!' 
+                            : 'புகைப்படம் வெற்றிகரமாகப் பதிவேற்றப்பட்டது!',
+                      ),
+                      backgroundColor: KalyaThiruTheme.primaryMaroon,
+                    ),
+                  );
+                },
+                borderRadius: BorderRadius.circular(12),
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: KalyaThiruTheme.outlineBorder, width: 1.5),
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.white,
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
+                          color: Color(0xFFF3EDE9),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.camera_alt_outlined,
+                          color: KalyaThiruTheme.primaryMaroon,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              lang == 'en' ? 'Take a Photo' : 'புகைப்படம் எடுக்கவும்',
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: KalyaThiruTheme.primaryMaroon,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              lang == 'en' ? 'Use camera to capture directly' : 'நேரடியாகக் படம் பிடிக்க கேமராவைப் பயன்படுத்தவும்',
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: KalyaThiruTheme.mutedGray,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Icon(Icons.chevron_right, color: KalyaThiruTheme.primaryMaroon),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 12),
+              
+              // Gallery option card
+              InkWell(
+                onTap: () {
+                  // Simulate Gallery Pick: update state with a new premium face
+                  final String newPhoto = isFemale
+                      ? 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400' // Premium female face
+                      : 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400'; // Premium male face
+                  context.read<OnboardingCubit>().updateFields(photoPath: newPhoto);
+                  Navigator.pop(context);
+                  
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        lang == 'en' 
+                            ? 'Gallery photo replaced successfully!' 
+                            : 'கேலரி புகைப்படம் வெற்றிகரமாக மாற்றப்பட்டது!',
+                      ),
+                      backgroundColor: KalyaThiruTheme.primaryMaroon,
+                    ),
+                  );
+                },
+                borderRadius: BorderRadius.circular(12),
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: KalyaThiruTheme.outlineBorder, width: 1.5),
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.white,
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
+                          color: Color(0xFFF3EDE9),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.photo_library_outlined,
+                          color: KalyaThiruTheme.primaryMaroon,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              lang == 'en' ? 'Choose from Gallery' : 'கேலரியில் இருந்து தேர்ந்தெடுக்கவும்',
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: KalyaThiruTheme.primaryMaroon,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              lang == 'en' ? 'Pick a photo from your photo library' : 'உங்கள் கேலரியில் இருந்து ஒரு படத்தைத் தேர்ந்தெடுக்கவும்',
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: KalyaThiruTheme.mutedGray,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Icon(Icons.chevron_right, color: KalyaThiruTheme.primaryMaroon),
+                    ],
+                  ),
+                ),
+              ),
+              
+              // Delete Option (only visible if photo exists)
+              if (hasCustomPhoto) ...[
+                const SizedBox(height: 16),
+                const Divider(color: KalyaThiruTheme.outlineVariant),
+                const SizedBox(height: 8),
+                TextButton.icon(
+                  onPressed: () {
+                    // Reset photo
+                    context.read<OnboardingCubit>().updateFields(photoPath: '');
+                    Navigator.pop(context);
+                    
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          lang == 'en' 
+                              ? 'Profile photo removed.' 
+                              : 'சுயவிவரப் புகைப்படம் நீக்கப்பட்டது.',
+                        ),
+                        backgroundColor: KalyaThiruTheme.primaryMaroon,
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.delete_outline, color: Colors.redAccent),
+                  label: Text(
+                    lang == 'en' ? 'Remove Current Photo' : 'தற்போதைய புகைப்படத்தை நீக்கு',
+                    style: const TextStyle(
+                      color: Colors.redAccent,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+              ],
+              const SizedBox(height: 16),
+            ],
           ),
         );
       },
@@ -600,36 +839,42 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Row(
                   children: [
-                    Stack(
-                      children: [
-                        CircleAvatar(
-                          radius: 28,
-                          backgroundImage: NetworkImage(
-                            state.photoPath != null
-                                ? state.photoPath!
-                                : 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400',
-                          ),
+                    GestureDetector(
+                      onTap: () => _showPhotoBottomSheet(context, state, lang),
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: Stack(
+                          children: [
+                            CircleAvatar(
+                              radius: 28,
+                              backgroundImage: NetworkImage(
+                                state.photoPath != null && state.photoPath!.isNotEmpty
+                                    ? state.photoPath!
+                                    : 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400',
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: Container(
+                                padding: const EdgeInsets.all(2),
+                                decoration: BoxDecoration(
+                                  color: _isVerified || isProfileComplete
+                                      ? Colors.blue
+                                      : KalyaThiruTheme.antiqueGold,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: Colors.white, width: 1.5),
+                                ),
+                                child: Icon(
+                                  _isVerified || isProfileComplete ? Icons.verified : Icons.add,
+                                  color: Colors.white,
+                                  size: 10,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Container(
-                            padding: const EdgeInsets.all(2),
-                            decoration: BoxDecoration(
-                              color: _isVerified || isProfileComplete
-                                  ? Colors.blue
-                                  : KalyaThiruTheme.antiqueGold,
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.white, width: 1.5),
-                            ),
-                            child: Icon(
-                              _isVerified || isProfileComplete ? Icons.verified : Icons.add,
-                              color: Colors.white,
-                              size: 10,
-                            ),
-                          ),
-                        )
-                      ],
+                      ),
                     ),
                     const SizedBox(width: 16),
                     Expanded(
@@ -658,7 +903,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     if (!_isPaidMember)
                       ElevatedButton(
-                        onPressed: _showSubscriptionSheet,
+                        onPressed: () => context.push('/upgrade'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFFFBF00),
                           foregroundColor: Colors.black,
